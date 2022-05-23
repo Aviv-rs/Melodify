@@ -1,0 +1,33 @@
+.app-header {
+  font-family: merienda;
+  display: flex;
+  justify-content: space-between;
+  background: $clr1;
+  .app-nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    a {
+      @include my-btn($bg: $clr1);
+      display: block;
+      transition: color, 0.2s;
+      &:hover {
+        box-shadow: inset 0px -8px $clr4;
+        color: $clr4;
+      }
+
+      &.link-active {
+        box-shadow: inset 0px -8px $clr4;
+        color: $clr4;
+        background: darken($clr1, 8%);
+      }
+    }
+  }
+
+  .logo {
+    padding-inline-start: 3em;
+    width: 160px;
+    height: 45px;
+    align-self: center;
+  }
+}

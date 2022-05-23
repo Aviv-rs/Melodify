@@ -1,0 +1,136 @@
+.toy-add-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &.active .toy-add {
+    max-height: 500px;
+    padding: 25px 30px;
+    overflow: visible;
+  }
+
+  .btn-open-add {
+    @include my-btn($clr: $clr5, $bg: $clr3, $hover: $clr1);
+    border-radius: 4em;
+    &:hover {
+      color: $clr3;
+    }
+  }
+  &.active .btn-open-add {
+    background: $clr1;
+    color: $clr3;
+  }
+}
+
+.toy-add {
+  display: grid;
+  grid: max(200px) 1fr 1fr 1fr/1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background: $clr3;
+  width: fit-content;
+  margin: 1rem auto 2rem;
+  overflow: hidden;
+  max-height: 0;
+  border-radius: 8px;
+  transition: max-height, 0.2s;
+
+  .img-container {
+    grid-column: 1/-1;
+    max-height: 200px;
+  }
+
+  .form-group {
+    position: relative;
+
+    input:not(#labels_input) {
+      outline: none;
+      display: block;
+      border: 1px solid #ccc;
+      padding-inline-start: 1rem;
+      font-size: 16px;
+      height: 2.5rem;
+      border-bottom-width: 2px;
+      transition: all, 0.2s;
+      border-radius: 8px;
+      background: none;
+      &:focus {
+        border-color: $clr4;
+      }
+      &:focus ~ label,
+      &:not(:placeholder-shown):not(:focus) ~ label {
+        top: -0.5rem;
+        left: 0.8rem;
+        font-size: 14px;
+        color: $clr5;
+        background: #fff;
+      }
+      &::placeholder {
+        color: transparent;
+      }
+      &:focus::placeholder {
+        color: initial;
+      }
+    }
+
+    .search-wrapper {
+      border: 1px solid #ccc;
+      line-height: 1.8;
+      padding-inline-start: 1rem;
+      border-bottom-width: 2px;
+      transition: all, 0.2s;
+
+      input {
+        font-size: 16px;
+      }
+    }
+
+    & label {
+      color: lighten($clr5, 30%);
+      cursor: text;
+      position: absolute;
+      left: 1rem;
+      top: 0.6em;
+      transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    }
+
+    &.labels {
+      grid-column: 1/-1;
+
+      .input-labels {
+        width: 100%;
+      }
+    }
+  }
+
+  .btn-add-toy {
+    grid-row: 3;
+    grid-column: 1/-1;
+    width: fit-content;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    @include my-btn($clr: $clr3, $hover: lighten($clr1, 8%));
+    border-radius: 4em;
+  }
+
+  .submit-container {
+    grid-column: 1/-1;
+    position: relative;
+    display: flex;
+
+    .btn-add-img {
+      align-self: center;
+      cursor: pointer;
+      background: #f2f2f2;
+      border: 1px solid #222222;
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    input[type='file'] {
+      display: none;
+    }
+  }
+}

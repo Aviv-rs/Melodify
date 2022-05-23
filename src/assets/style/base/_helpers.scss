@@ -1,0 +1,40 @@
+// Flex
+.flex {
+  display: flex;
+}
+.inline-flex {
+  display: inline-flex;
+}
+
+// List
+.clean-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Text
+
+.tag-text {
+  color: $clr1;
+  text-transform: uppercase;
+  @include type(boldCondensed);
+}
+
+// Aspect ratios
+
+.ratio-16-9 {
+  @include aspect-ratio(100, 56);
+}
+
+.ratio-square {
+  @include aspect-ratio(100, 100);
+}
+
+.ratio-card {
+  @include aspect-ratio(100, 80);
+}
+
+.ratio-poster {
+  @include aspect-ratio(100, 150);
+}

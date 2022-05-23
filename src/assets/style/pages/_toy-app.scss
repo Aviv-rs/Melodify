@@ -1,0 +1,208 @@
+.toy-app {
+  font-family: Bahnschrift;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: $layoutPadding 1fr $layoutPadding;
+
+  @include for-mobile-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+    .search-wrapper {
+      min-width: auto !important;
+    }
+
+    .toy-list {
+      justify-content: center;
+    }
+  }
+
+  @include for-narrow-layout {
+    @include layoutGTC($break-narrow);
+  }
+
+  @include for-normal-layout {
+    @include layoutGTC($break-normal);
+  }
+
+  @include for-wide-layout {
+    @include layoutGTC($break-wide);
+  }
+
+  & > * {
+    grid-column: 2;
+  }
+  .toy-filter {
+    margin-top: 3rem;
+
+    form {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+
+      @include for-mobile-layout {
+        display: grid;
+        grid: 1fr 1fr/1fr 1fr 1fr;
+        align-items: start;
+
+        label[for='name'] {
+          grid-column: 1/-1;
+          .toy-search {
+            grid-column: 1/-1;
+            width: 100%;
+          }
+        }
+      }
+
+      @include for-narrow-layout {
+        display: grid;
+        grid: 1fr 1fr/1fr 1fr 1fr;
+        align-items: start;
+
+        label[for='name'] {
+          grid-column: 1/-1;
+          .toy-search {
+            grid-column: 1/-1;
+            width: 100%;
+          }
+        }
+      }
+
+      @include for-normal-layout {
+        display: flex;
+        align-items: center;
+      }
+
+      * {
+        outline: none;
+      }
+
+      .search-wrapper {
+        height: em(43px);
+        line-height: 1.8;
+        background: $clr3;
+        min-width: 400px;
+      }
+
+      .toy-search {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 7px;
+        height: 43px;
+      }
+    }
+  }
+
+  .toy-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    gap: 2rem;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    // width: 890px;
+
+    button {
+      @include my-btn($type: regular, $padding: 6px, $hover: $clr4);
+      position: relative;
+      transition: padding 0.4s;
+
+      &:not(:disabled):hover {
+        background: darken($clr4, 8%);
+      }
+
+      &.btn-next:not(:disabled):hover {
+        padding-inline-end: 1.25em;
+
+        &::after {
+          content: '►';
+          position: absolute;
+          right: 0;
+        }
+      }
+      &.btn-prev:not(:disabled):hover {
+        padding-inline-start: 1.25em;
+
+        &::after {
+          content: '◄';
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+.toy-preview {
+  background: $clr3;
+  box-shadow: 0 0 5px 1px lighten($clr5, 20%);
+  width: 200px;
+  max-height: 250px;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+
+  .img-container {
+    max-height: 50%;
+    img {
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+    }
+  }
+
+  .toy-details {
+    padding: 0 1rem;
+
+    .toy-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toy-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+
+      .btn-delete-toy {
+        align-self: flex-end;
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
+
+.user-msg {
+  color: white;
+  padding: 10px;
+  font-size: 1.4em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: grey;
+  transition: 0.4s;
+}
+.user-msg button {
+  float: right;
+  border: 0;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.success {
+  background-color: rgb(41, 189, 73);
+}
+.danger {
+  background-color: rgb(216, 59, 59);
+}
