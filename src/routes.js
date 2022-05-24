@@ -1,6 +1,6 @@
 export const routes = [
     { path: "/", element: <HomePage /> },
-    { path: "/playlist/:playlistId?", element: <StationEdit /> },
+    { path: "/station/:stationId?", element: <StationDetails /> },
     { path: "/search", element: <SearchPage /> },
 
 ]
