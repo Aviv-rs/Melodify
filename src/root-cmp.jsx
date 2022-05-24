@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // import { AppHeader } from './cmps/app-header.jsx'
 // import { UserMsg } from './cmps/user-msg.jsx'
 // import routes from './routes.js'
-// import { Loader } from "./cmps/loader"
+// import { Loader } from "./data/lottie-animations/music-loader.json"
 
 export function App() {
   return (
