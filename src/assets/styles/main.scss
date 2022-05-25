@@ -1,15 +1,17 @@
-// /* setup */
-// @import './setup/typography';
-// @import './setup/variables';
-// @import './setup/mixins';
-// @import './setup/functions';
+/* setup */
+@import './setup/typography';
+@import './setup/variables';
+@import './setup/mixins';
+@import './setup/functions';
 
 // /* base */
-// @import './basics/base';
-// @import './basics/helpers';
+@import './basics/base';
+@import './basics/helpers';
+@import './basics/layout';
 
 // /* cmps */
-// @import './cmp/app-header';
+@import './cmps/app-header';
+@import './cmps/navbar';
 
-// /* pages */
+/* pages */
 

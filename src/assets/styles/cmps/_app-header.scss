@@ -1,33 +1,28 @@
 .app-header {
-  // font-family: merienda;
   display: flex;
-  justify-content: space-between;
-  background: $clr1;
-  .app-nav {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    a {
-      @include my-btn($bg: $clr1);
-      display: block;
-      transition: color, 0.2s;
-      &:hover {
-        box-shadow: inset 0px -8px $clr4;
-        color: $clr4;
-      }
+  justify-content: flex-end;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  padding-inline-end: 32px;
+  align-items: center;
 
-      &.link-active {
-        box-shadow: inset 0px -8px $clr4;
-        color: $clr4;
-        background: darken($clr1, 8%);
-      }
-    }
+  .btn-login{
+    border-radius: 500px;
+    font-size: inherit;
+    padding-block: 12px;
+    padding-inline: 32px;
   }
 
-  .logo {
-    padding-inline-start: 3em;
-    width: 160px;
-    height: 45px;
-    align-self: center;
+  .btn-signup{
+    font-weight: 700;
+    background-color: transparent;
+    border: 0px;
+    border-radius: 500px;
+    text-align: center;
+    vertical-align: middle;
+    color: var(--text-subdued,#6a6a6a);
+    padding-block: 14px;
+    padding-inline: 32px;
   }
 }
