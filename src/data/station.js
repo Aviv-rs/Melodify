@@ -32,13 +32,17 @@ const station = {
     "fullName" : "Kyle Smith"
   },
   "likedByUsers": [
-    {"_id" : "628a6e62b1f6f147074b1ff5", 
+    {
+      "_id" : "628a6e62b1f6f147074b1ff5", 
   "username" : "leila.P", 
-  "fullName" : "Leila Parks"},
+  "fullName" : "Leila Parks"
+},
 
-  , {"_id" : "628a71b2b1f6f147074b1ff6", 
+  , {
+    "_id" : "628a71b2b1f6f147074b1ff6", 
   "username" : "summerz", 
-  "fullName" : "Sam Marks"}
+  "fullName" : "Sam Marks"
+}
 ],
   "songs": [
     {
@@ -79,7 +83,9 @@ const station = {
   ]
 }
 
-const user = {"_id" : "628a6e62b1f6f147074b1ff5", 
+const user = {
+  "_id" : "628a6e62b1f6f147074b1ff5", 
 "username" : "leila.P", 
 "password" : "avocados4life",
-"fullName" : "Leila Parks"}
+"fullName" : "Leila Parks"
+}
