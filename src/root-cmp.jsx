@@ -1,17 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import {routes} from './routes.js'
-// import { AppHeader } from './cmps/app-header.jsx'
+import { AppHeader } from './cmps/app-header.jsx'
 // import { UserMsg } from './cmps/user-msg.jsx'
 
 
 
 export function App() {
   return (
-    <div className="app">
-     
-
+    <div className="app main-layout">
       <Router>
-        {/* <AppHeader /> */}
+        <AppHeader />
         <Routes>
           {routes.map(route => (
             <Route
