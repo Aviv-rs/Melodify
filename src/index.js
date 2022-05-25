@@ -6,13 +6,13 @@ import { App } from './root-cmp'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import configureStore from './configure-store'
 
-const store = configureStore()
+// const store = configureStore()
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <Provider store={store}>
+  // <Provider store={store}>
     <App />
-  </Provider>
+  // {/* </Provider> */}
 )
 
 serviceWorkerRegistration.unregister();
