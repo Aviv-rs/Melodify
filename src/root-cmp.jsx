@@ -1,18 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import {routes} from './routes.js'
-// import { AppHeader } from './cmps/app-header.jsx'
-// import { UserMsg } from './cmps/user-msg.jsx'
-// import routes from './routes.js'
-// import { Loader } from "./cmps/loader"
+import { AppHeader } from './cmps/app-header.jsx'
 import { Navbar} from './cmps/navbar.jsx'
+// import { UserMsg } from './cmps/user-msg.jsx'
 
 export function App() {
   return (
     <div className="app main-layout">
-        {/* <AppHeader /> */}
-    { <Navbar/> } 
-   
-      {/* <Loader/> */}
+      <div className="main-view-container">
+      <AppHeader />
       <Router>
         <Routes>
           {routes.map(route => (
@@ -24,6 +20,9 @@ export function App() {
           ))}
         </Routes>
       </Router>
+      </div>
+    { <Navbar/> } 
+      
       {/* <UserMsg /> */}
     </div>
   )

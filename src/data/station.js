@@ -38,7 +38,7 @@ const station = {
   "fullName" : "Leila Parks"
 },
 
-  , {
+   {
     "_id" : "628a71b2b1f6f147074b1ff6", 
   "username" : "summerz", 
   "fullName" : "Sam Marks"
@@ -69,7 +69,7 @@ const station = {
       }
     },
   ],
-  "activityLog": [
+  "activities": [
     {
       id: 'a101',
       doneBy: {
@@ -87,5 +87,10 @@ const user = {
   "_id" : "628a6e62b1f6f147074b1ff5", 
 "username" : "leila.P", 
 "password" : "avocados4life",
-"fullName" : "Leila Parks"
+"fullName" : "Leila Parks",
+"avatar" : "https://thumbs.dreamstime.com/z/illustration-cute-gentlemen-avocado-gentleman-vector-84825371.jpg",
+"likedSongs": [{"id": "VDvr08sCPOc",
+"title": "Remember the name",
+"url": "https://www.youtube.com/watch?v=VDvr08sCPOc",
+"imgUrl": "	https://i.ytimg.com/vi/VDvr08sCPOc/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLCzIpVuDtabT7NmQNSK5X1fDnh95g"}]
 }
