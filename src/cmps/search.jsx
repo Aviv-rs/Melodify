@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import { youtubeService } from '../services/youtube.service'
 
 export const Search = () => {
-    // getVideos('beyonce')
+    
+    const [search, setSearch] = useState(null)
+    const [searchStation, setSearchStation] = useState(null)
     async function getVideos(value) {
         try {
             const videos = youtubeService.serachIput(value)
-            console.log("🚀 ~ file: search.jsx ~ line 8 ~ getVideos ~ videos", videos)
             return videos
         }
         catch (error) {
@@ -14,10 +16,21 @@ export const Search = () => {
 
     }
 
+    const submitValue = async () => {
+        console.log('search', search)
+        const videos = await getVideos(search)
+        console.log("🚀 ~ file: search.jsx ~ line 22 ~ submitValue ~ videos", videos)
+        setSearchStation(videos)
+        
+    }
+
 
 
     return (
-        <div>search</div>
+        <div>search
+            <input type="text" placeholder="search" onChange={e => setSearch(e.target.value)} />
+            <button onClick={submitValue}>search</button>
+        </div>
     )
 
 }

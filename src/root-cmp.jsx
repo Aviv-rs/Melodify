@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import {routes} from './routes.js'
 import { AppHeader } from './cmps/app-header.jsx'
 import { Navbar} from './cmps/navbar.jsx'
+import {MusicPlayer} from './cmps/music-player'
 // import { UserMsg } from './cmps/user-msg.jsx'
 
 export function App() {
@@ -23,6 +24,7 @@ export function App() {
       </Router>
       </div>
     { <Navbar/> } 
+    { <MusicPlayer videoId ='TmKh7lAwnBI'/> } 
       
       {/* <UserMsg /> */}
     </div>

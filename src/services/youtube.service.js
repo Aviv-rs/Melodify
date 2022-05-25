@@ -19,10 +19,7 @@ async function serachIput(value) {
             }
         })
         console.log("🚀 ~ file: youtube.service.js ~ line 19 ~ serachIput ~ videos", videos)
-
-
-
-        return data
+        return videos
     } catch (error) {
         console.log('request faild', error)
         idx = (idx >= keys.length) ? 0 : idx += 1

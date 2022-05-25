@@ -3,8 +3,8 @@ import YouTube from 'react-youtube'
 
 export const MusicPlayer = ({ videoId }) => {
     const opts = {
-        height: '300',
-        width: '300',
+        height: '0',
+        width: '0',
         playerVars: {
             // https://developers.google.com/youtube/player_parameters
             autoplay: 1,
