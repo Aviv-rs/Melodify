@@ -1,33 +1,61 @@
-
+import { useRef, useState } from 'react'
 import YouTube from 'react-youtube'
-//https://www.youtube.com/watch?v=_nBlN9yp9R8&t=396s
-export function MusicPlayer() {
+
+export const MusicPlayer = ({ videoId }) => {
     const opts = {
-        // height: '390',
-        // width: '640',
+        height: '300',
+        width: '300',
         playerVars: {
-            //   https://developers.google.com/youtube/player_parameters
+            // https://developers.google.com/youtube/player_parameters
             autoplay: 1,
         },
     }
-
-    const videoOnReady = (event) => {
-        // access to player in all event handlers via event.target
-        // event.target.pauseVideo()
-        const player = event.target
-
-        console.log('player', player)
-        console.log('player', player.getCurrentTime())
+    const playRef = useRef()
+    const pauseRef = useRef()
+    const [videoTime, setVideoTime] = useState(null)
+    const rangeRef = useRef()
+    const videoOnReady = ({ target }) => {
+        playRef.current.onclick = () => {
+            target.playVideo()
+        }
+        pauseRef.current.onclick = () => {
+            target.pauseVideo()
+        }
+        setVideoTime(target.getDuration())
+        rangeRef.current.onchange = (ev) => {
+            console.log('ev.target.value', ev.target.value);
+            target.seekTo(+ev.target.value)
+            console.log("🚀 ~ file: music-player.jsx ~ line 29 ~ videoOnReady ~ target", target)
+        }
     }
 
     const videoOnPlay = (event) => {
-        const player = event.target
-        player.playVideoAt(50)
-        console.log('player', player.getCurrentTime())
+        // const player = event.target
+        // console.log('player', player.getCurrentTime())
     }
-    return <YouTube videoId="_nBlN9yp9R8" opts={opts} onReady={videoOnReady} onPlay={videoOnPlay} />
+    const onStateChange = (event) => {
+        console.log('event.data', event.data)
+
+    }
+    return (
+        <div>
+            <button ref={pauseRef} >pause</button>
+            <button ref={playRef} >play</button>
+           
+
+                <input type="range" min={0} max={videoTime} ref={rangeRef} /> 
+                <div> videoTime{videoTime}</div>
+          
+            <YouTube videoId={videoId}
+                opts={opts}
+                onReady={videoOnReady}
+                onPlay={videoOnPlay}
+                onStateChange={onStateChange}
+            />
+        </div>
+    )
+
+
 }
-
-
 
 
