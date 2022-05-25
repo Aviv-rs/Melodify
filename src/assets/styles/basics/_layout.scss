@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas:
         "nav-container main-view"
-        "now-playing-bar now-playing-bar";
+        "music-player music-player";
     grid-template-columns: 250px 1fr;
     grid-template-rows:  1fr 100px;
     height: 100%;
@@ -13,6 +13,3 @@
   color: $clr8;
 }
 
-.main-view-container{
-
-}

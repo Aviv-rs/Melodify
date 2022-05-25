@@ -4,7 +4,8 @@ import { SearchPage } from "./pages/search-page"
 
 export const routes = [
     { path: "/", element: <HomePage /> },
-    { path: "/station/:stationId?", element: <StationDetails /> },
+    { path: "/station/:stationId", element: <StationDetails /> },
+    { path: "/station", element: <StationDetails /> },
     { path: "/search", element: <SearchPage /> },
 
 ]

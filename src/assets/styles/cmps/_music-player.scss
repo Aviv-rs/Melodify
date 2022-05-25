@@ -1,0 +1,19 @@
+.music-player {
+    grid-area: music-player;
+    display: flex;
+    justify-content: center;
+
+    .player-controls {
+        .btn-toggle-play {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            color: #000;
+            border: none;
+        }
+    }
+
+}
