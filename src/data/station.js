@@ -92,5 +92,8 @@ const user = {
 "likedSongs": [{"id": "VDvr08sCPOc",
 "title": "Remember the name",
 "url": "https://www.youtube.com/watch?v=VDvr08sCPOc",
-"imgUrl": "	https://i.ytimg.com/vi/VDvr08sCPOc/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLCzIpVuDtabT7NmQNSK5X1fDnh95g"}]
+"imgUrl": "	https://i.ytimg.com/vi/VDvr08sCPOc/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLCzIpVuDtabT7NmQNSK5X1fDnh95g"}
+],
+"likedStations": [{"_id": "5cksxjas89xjsa8xjsa8jxs09",
+"name": "Best workout mix"}]
 }

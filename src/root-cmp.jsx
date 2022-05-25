@@ -7,9 +7,9 @@ import { Navbar} from './cmps/navbar.jsx'
 export function App() {
   return (
     <div className="app main-layout">
+      <Router>
       <div className="main-view-container">
       <AppHeader />
-      <Router>
         <Routes>
           {routes.map(route => (
             <Route
@@ -19,9 +19,9 @@ export function App() {
             />
           ))}
         </Routes>
-      </Router>
       </div>
-    { <Navbar/> } 
+     <Navbar/> 
+      </Router>
       
       {/* <UserMsg /> */}
     </div>

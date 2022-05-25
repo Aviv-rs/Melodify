@@ -1,0 +1,7 @@
+export {ReactComponent as Logo} from '../assets/imgs/logo.svg'
+export {ReactComponent as Home} from '../assets/imgs/home.svg'
+export {ReactComponent as HomeActive} from '../assets/imgs/home-active.svg'
+export {ReactComponent as Search} from '../assets/imgs/search.svg'
+export {ReactComponent as SearchActive} from '../assets/imgs/search-active.svg'
+export {ReactComponent as Library} from '../assets/imgs/library.svg'
+export {ReactComponent as LibraryActive} from '../assets/imgs/library-active.svg'
