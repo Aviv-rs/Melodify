@@ -1,0 +1,11 @@
+.song-preview{
+    display: flex;
+    gap: 5px;
+    img{
+        width: 50px;
+    }
+
+    .title{
+        align-self: center;
+    }
+}

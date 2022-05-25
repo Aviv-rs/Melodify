@@ -3,10 +3,11 @@ import { routes } from './routes.js'
 import { AppHeader } from './cmps/app-header.jsx'
 import { Navbar } from './cmps/navbar.jsx'
 import { MusicPlayer } from './cmps/music-player'
+
 // import { UserMsg } from './cmps/user-msg.jsx'
 
 export function App() {
-
+  
   return (
     <div className="app main-layout">
       <Router>
@@ -23,7 +24,7 @@ export function App() {
           </Routes>
         </div>
         {<Navbar />}
-        {<MusicPlayer videoId='TmKh7lAwnBI' />}
+        {<MusicPlayer songId='TmKh7lAwnBI' />}
 
         {/* <UserMsg /> */}
       </Router>
