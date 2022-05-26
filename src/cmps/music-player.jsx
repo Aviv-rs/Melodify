@@ -37,7 +37,7 @@ export const MusicPlayer = ({ songId }) => {
                     {isPlaying ? <PauseIcon /> : <PlayIcon />}
                 </button>
                 <input type="range" min={0} max={songTime} ref={rangeRef} />
-                <div> songTime{songTime}</div>
+                <div> {songTime}</div>
             </div>
 
             <YouTube videoId={songId}
