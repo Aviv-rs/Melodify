@@ -13,10 +13,8 @@ const theme = createTheme({
 
 export const PlayBackBar = ({ disabled, handleChange, value, width }) => {
     return (
-        <Box sx={{ width: width }}>
-            <ThemeProvider theme={theme}>
-                <Slider disabled={disabled} color="neutral" aria-label="playback-bar" value={value} onChange={handleChange} />
-            </ThemeProvider>
-        </Box>
+        <ThemeProvider theme={theme}>
+            <Slider sx={{ width: width }} disabled={disabled} color="neutral" aria-label="playback-bar" value={value} onChange={handleChange} />
+        </ThemeProvider>
     )
 }

@@ -1,19 +1,23 @@
 .music-player {
     grid-area: music-player;
     display: flex;
-    justify-content: center;
+    align-items: center;
     justify-content: space-between;
+    padding: 0 16px;
+    border-top: 1px solid #282828;
+    background-color: $clr3;
 
     .MuiSlider-thumb {
         height: 12px;
         width: 12px;
     }
+
     img {
         width: 56px;
     }
 
-    .volume-slide{
-        div{
+    .volume-slide {
+        div {
             padding: 1rem;
         }
     }
@@ -22,20 +26,29 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        align-items: center;
+        flex: 1;
+
 
         .player-controls-buttons {
             display: flex;
             justify-content: center;
+            margin-bottom: 8px;
             gap: 16px;
+        }
+
+        .MuiSlider-root {
+            padding: 0;
         }
 
         .playBackSlide {
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .slideTime {
-            font-size: 0.6875rem;
+            font-size: 11px;
             line-height: 1rem;
             color: $clr9;
         }
@@ -63,11 +76,10 @@
             background: transparent;
             color: rgba(255, 255, 255, .7);
         }
-        .MuiSlider-root {
-            padding: 3px;
-        }
+
+
     }
 
-    
+
 
 }

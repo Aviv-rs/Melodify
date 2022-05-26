@@ -37,7 +37,7 @@ export const MusicPlayer = ({ songId }) => {
         setSong(target)
         setTotalTime(+target.getDuration())
     }
-    const songOnPlay = ({ target }) => {
+    const songOnPlay = () => {
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
         currTimeInterval.current = setInterval(() => setSongTime((prevSongTime) => prevSongTime + 1), 1000)
     }
@@ -99,7 +99,6 @@ export const MusicPlayer = ({ songId }) => {
                 {/* TODO: add volume range input (make another component using material UI) */}
             </div>
             <div className='volume-slide'>
-                <div></div>
                 <PlayBackBar disabled={!song} handleChange={handleVolumeChange} value={volume} width={100} />
             </div>
             <YouTube videoId={songId}

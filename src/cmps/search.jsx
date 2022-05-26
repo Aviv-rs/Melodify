@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { youtubeService } from '../services/youtube.service'
+import { SearchBarIcon } from '../services/img.import.service'
 
 export const Search = ({ onSearchSongs }) => {
     //TODO: make search results appear on change with debounce [can be on submit for development stage]
@@ -23,10 +24,14 @@ export const Search = ({ onSearchSongs }) => {
 
 
     return (
-        <div>
+        <div className="input-container">
             <form onSubmit={onSearch}>
-                <input type="text" placeholder="search" onChange={({ target }) => setSearch(target.value)} />
-                <button>search</button>
+                <button> <SearchBarIcon /> </button>
+                <input type="search"
+                    id="search"
+                    placeholder="Playlists or songs"
+                    autoComplete="off"
+                    onChange={({ target }) => setSearch(target.value)} />
             </form>
         </div>
     )

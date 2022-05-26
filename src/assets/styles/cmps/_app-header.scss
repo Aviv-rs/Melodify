@@ -4,24 +4,23 @@
   height: 60px;
   position: sticky;
   top: 0;
-  padding-inline-end: 32px;
   align-items: center;
 
-  .btn-login{
+  .btn-login {
     border-radius: 500px;
     font-size: inherit;
     padding-block: 12px;
     padding-inline: 32px;
   }
 
-  .btn-signup{
+  .btn-signup {
     font-weight: 700;
     background-color: transparent;
     border: 0px;
     border-radius: 500px;
     text-align: center;
     vertical-align: middle;
-    color: var(--text-subdued,#6a6a6a);
+    color: var(--text-subdued, #6a6a6a);
     padding-block: 14px;
     padding-inline: 32px;
   }
