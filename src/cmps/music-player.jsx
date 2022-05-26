@@ -1,48 +1,48 @@
 import { useRef, useState } from 'react'
 import YouTube from 'react-youtube'
-import { Play, Pause } from '../services/img.import.service'
+import { useSelector } from 'react-redux'
+import { PlayIcon, PauseIcon } from '../services/img.import.service'
 
-export const MusicPlayer = ({ videoId }) => {
+export const MusicPlayer = ({ songId }) => {
+    const { currSong } = useSelector((storeState) => storeState.currSongModule)
+
+    if (currSong) songId = currSong.songId
     const opts = {
         height: '0',
         width: '0',
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-        },
     }
 
     const rangeRef = useRef()
+    const [songTime, setSongTime] = useState(null)
     const [isPlaying, setIsPlaying] = useState(false)
-    const [videoTime, setVideoTime] = useState(null)
-    const [video, setVideo] = useState(null)
+    const [song, setSong] = useState(null)
 
-    const videoOnReady = ({ target }) => {
-        setVideo(target)
-        setVideoTime(target.getDuration())
+    const songOnReady = ({ target }) => {
+        setSong(target)
+        setSongTime(target.getDuration())
         rangeRef.current.onchange = (ev) => {
             target.seekTo(+ev.target.value)
         }
     }
 
-    const toggleVideoPlay = () => {
-        if (!video) return
+    const toggleSongPlay = () => {
+        if (!song) return
         setIsPlaying((prevIsPlaying) => !prevIsPlaying)
-        isPlaying ? video.pauseVideo() : video.playVideo()
+        isPlaying ? song.pauseVideo() : song.playVideo()
     }
-
     return (
         <div className='music-player'>
             <div className="player-controls">
-                <button onClick={toggleVideoPlay} className="btn-toggle-play" >
-                    {isPlaying ? <Pause /> : <Play />}
+                <button onClick={toggleSongPlay} className="btn-toggle-play" >
+                    {isPlaying ? <PauseIcon /> : <PlayIcon />}
                 </button>
-                <input type="range" min={0} max={videoTime} ref={rangeRef} />
-                <div> videoTime{videoTime}</div>
+                <input type="range" min={0} max={songTime} ref={rangeRef} />
+                <div> {songTime}</div>
             </div>
 
-            <YouTube videoId={videoId}
+            <YouTube videoId={songId}
                 opts={opts}
-                onReady={videoOnReady}
+                onReady={songOnReady}
             />
         </div>
     )
