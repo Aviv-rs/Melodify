@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useSelector } from 'react-redux'
-import { PlayIcon, PauseIcon } from '../services/img.import.service'
+import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon } from '../services/img.import.service'
+import { PlayBackBar } from './slider'
 
 export const MusicPlayer = ({ songId }) => {
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
@@ -12,18 +13,20 @@ export const MusicPlayer = ({ songId }) => {
         width: '0',
     }
 
-    const rangeRef = useRef()
     const [songTime, setSongTime] = useState(null)
     const [isPlaying, setIsPlaying] = useState(false)
     const [song, setSong] = useState(null)
 
     const songOnReady = ({ target }) => {
         setSong(target)
-        setSongTime(target.getDuration())
-        rangeRef.current.onchange = (ev) => {
-            target.seekTo(+ev.target.value)
-        }
     }
+
+    // TODO: add an interval function that will change the current time of the song
+    const handlePlaybackChange = ({ target }) => {
+        setSongTime(target.value)
+        song.seekTo(+target.value)
+    }
+
 
     const toggleSongPlay = () => {
         if (!song) return
@@ -33,10 +36,18 @@ export const MusicPlayer = ({ songId }) => {
     return (
         <div className='music-player'>
             <div className="player-controls">
-                <button onClick={toggleSongPlay} className="btn-toggle-play" >
-                    {isPlaying ? <PauseIcon /> : <PlayIcon />}
-                </button>
-                <input type="range" min={0} max={songTime} ref={rangeRef} />
+                <div className="player-controls-buttons">
+
+                    <button className='btn-play-prev' ><PlayPrevIcon fill='#b3b3b3' /></button>
+                    <button onClick={toggleSongPlay} className="btn-toggle-play" >
+                        {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                    </button>
+                    <button className='btn-play-next'><PlayNextIcon fill='#b3b3b3' /></button>
+                    {/* TODO: add time left and duration of song */}
+                </div>
+                {/* TODO: add active and hover state styles (look at spotify's player for reference) */}
+                <PlayBackBar disabled={!song} handleChange={handlePlaybackChange} />
+                {/* TODO: add volume range input (make another component using material UI) */}
                 <div> {songTime}</div>
             </div>
 

@@ -83,7 +83,9 @@ const station = {
       }
     },
   ],
-  "activities": [
+}
+
+  const activities = [
     {
       id: 'a101',
       doneBy: {
@@ -95,7 +97,6 @@ const station = {
       doneAt: 17258891775
     }
   ]
-}
 
 const user = {
   "_id" : "628a6e62b1f6f147074b1ff5", 
