@@ -49,11 +49,11 @@ export const Navbar = () => {
                 </li>
                 <li>
                     <nav>
-                        <NavLink to="liked">
+                        <NavLink to="station/liked">
                             <div className="liked-songs">
                                 <LikedSongs fill="#b3b3b3" />
                             </div>
-                            <span>Liked Songs</span> 
+                            <span>Liked Songs</span>
                         </NavLink>
                     </nav>
                 </li>
