@@ -43,8 +43,8 @@ export const StationDetails = () => {
         console.log('adding song to station', song)
         //DONE: add song to the current station
         setStation(prevStation => ({ ...prevStation, songs: [...prevStation.songs, song] }))
-        //TODO: add the station to local storage 
-        //TODO: adding a song to a station that is already exist 
+        //DONE: add the station to local storage 
+        //DONE: adding a song to a station that is already exist 
     }
 
     const displaySongResults = (songs) => {
