@@ -30,11 +30,13 @@
             display: flex;
             gap: 16px;
             align-items: center;
-
+            
+            &.active > *, 
             &:hover svg ,
             &:hover span {
                 color: white;
                 fill: white;
+                transition: 0.4s;
             }
         }
 

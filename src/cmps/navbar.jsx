@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 // nav links svg icons
 import { Logo, Home, HomeActive, Search, SearchActive, Library, LibraryActive, CreatePlaylists, LikedSongs } from '../services/img.import.service'
 
+
 // memo (?)
 export const Navbar = () => {
     return (
@@ -48,7 +49,7 @@ export const Navbar = () => {
                 </li>
                 <li>
                     <nav>
-                        <NavLink to="library">
+                        <NavLink to="liked">
                             <div className="liked-songs">
                                 <LikedSongs fill="#b3b3b3" />
                             </div>
