@@ -9,6 +9,6 @@ export const SongPreview = ({ song, isInSearchPage, onAddSong }) => {
     return (<div onClick={loadSong} className="song-preview">
         <img src={song.imgUrl} alt="" />
         <div className="title">{song.title}</div>
-        {isInSearchPage && <button onClick={() => onAddSong(song)}>Add</button>}
+        {!isInSearchPage && <button onClick={() => onAddSong(song)}>Add</button>}
     </div>)
 }
