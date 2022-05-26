@@ -1,6 +1,10 @@
 .song-preview{
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.3fr 2fr 60px 20px  ;
     gap: 5px;
+    padding: 2px;
+    cursor: default;
+
     img{
         width: 50px;
     }

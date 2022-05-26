@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    currSong: null//current song - this is a song that is played right now from search. not from playlist/station
+    currSong: null
 }
 
 
