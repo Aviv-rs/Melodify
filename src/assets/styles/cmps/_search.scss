@@ -1,0 +1,30 @@
+.input-container {
+    width: 364px;
+    height: 40px;
+    background-color: white;
+    border-radius: 2rem;
+    margin-left: 25px;
+
+    form {
+        align-items: center;
+        gap: 5px;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    input {
+        width: 80%;
+        height: 100%;
+        border: none;
+        outline: none;
+        margin: 10px;
+        font-size: 0.875rem;
+    }
+
+    button {
+        background-color: inherit;
+        border: none;
+    }
+
+}
