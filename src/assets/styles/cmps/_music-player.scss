@@ -2,6 +2,21 @@
     grid-area: music-player;
     display: flex;
     justify-content: center;
+    justify-content: space-between;
+
+    .MuiSlider-thumb {
+        height: 12px;
+        width: 12px;
+    }
+    img {
+        width: 56px;
+    }
+
+    .volume-slide{
+        div{
+            padding: 1rem;
+        }
+    }
 
     .player-controls {
         display: flex;
@@ -12,6 +27,17 @@
             display: flex;
             justify-content: center;
             gap: 16px;
+        }
+
+        .playBackSlide {
+            display: flex;
+            gap: 10px;
+        }
+
+        .slideTime {
+            font-size: 0.6875rem;
+            line-height: 1rem;
+            color: $clr9;
         }
 
         .btn-toggle-play {
@@ -37,11 +63,11 @@
             background: transparent;
             color: rgba(255, 255, 255, .7);
         }
-
-        .MuiSlider-thumb {
-            height: 12px;
-            width: 12px;
+        .MuiSlider-root {
+            padding: 3px;
         }
     }
+
+    
 
 }

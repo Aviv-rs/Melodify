@@ -11,11 +11,11 @@ const theme = createTheme({
     },
 })
 
-export const PlayBackBar = ({ disabled, handleChange }) => {
+export const PlayBackBar = ({ disabled, handleChange, value, width }) => {
     return (
-        <Box sx={{ width: 200 }}>
+        <Box sx={{ width: width }}>
             <ThemeProvider theme={theme}>
-                <Slider disabled={disabled} color="neutral" aria-label="playback-bar" onChange={handleChange} />
+                <Slider disabled={disabled} color="neutral" aria-label="playback-bar" value={value} onChange={handleChange} />
             </ThemeProvider>
         </Box>
     )
