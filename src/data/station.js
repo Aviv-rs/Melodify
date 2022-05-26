@@ -112,6 +112,7 @@ const station2 = {
     "Relax",
     "Meditation"
   ],
+<<<<<<< HEAD
   "createdAt": 1621119918991,
   "createdBy": {
     "_id": "6283d13fb9a7e752c1c0fbrt",
@@ -878,6 +879,11 @@ const user = {
 
 const activities = {
   "activities": [
+=======
+}
+
+  const activities = [
+>>>>>>> d7dd2cac328835e4e145996c10b4d855c8ad92ab
     {
       id: 'a101',
       doneBy: {
@@ -889,4 +895,22 @@ const activities = {
       doneAt: 17258891775
     }
   ]
+<<<<<<< HEAD
 }
+=======
+
+const user = {
+  "_id" : "628a6e62b1f6f147074b1ff5", 
+"username" : "leila.P", 
+"password" : "avocados4life",
+"fullName" : "Leila Parks",
+"avatar" : "https://thumbs.dreamstime.com/z/illustration-cute-gentlemen-avocado-gentleman-vector-84825371.jpg",
+"likedSongs": [{"id": "VDvr08sCPOc",
+"title": "Remember the name",
+"url": "https://www.youtube.com/watch?v=VDvr08sCPOc",
+"imgUrl": "	https://i.ytimg.com/vi/VDvr08sCPOc/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLCzIpVuDtabT7NmQNSK5X1fDnh95g"}
+],
+"likedStations": [{"_id": "5cksxjas89xjsa8xjsa8jxs09",
+"name": "Best workout mix"}]
+}
+>>>>>>> d7dd2cac328835e4e145996c10b4d855c8ad92ab

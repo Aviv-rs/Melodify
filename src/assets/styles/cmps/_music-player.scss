@@ -4,6 +4,16 @@
     justify-content: center;
 
     .player-controls {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .player-controls-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
         .btn-toggle-play {
             display: flex;
             align-items: center;
@@ -13,6 +23,24 @@
             border-radius: 32px;
             color: #000;
             border: none;
+        }
+
+        .btn-play-next,
+        .btn-play-prev {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            width: 32px;
+            border-radius: 32px;
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, .7);
+        }
+
+        .MuiSlider-thumb {
+            height: 12px;
+            width: 12px;
         }
     }
 

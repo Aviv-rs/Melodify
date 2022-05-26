@@ -9,3 +9,6 @@ export {ReactComponent as PlayIcon} from '../assets/imgs/play.svg'
 export {ReactComponent as PauseIcon} from '../assets/imgs/pause.svg'
 export {ReactComponent as CreatePlaylists} from '../assets/imgs/create-playlists.svg'
 export {ReactComponent as LikedSongs} from '../assets/imgs/liked-songs.svg'
+export {ReactComponent as PlayNextIcon} from '../assets/imgs/play-next.svg'
+export {ReactComponent as PlayPrevIcon} from '../assets/imgs/play-prev.svg'
+
