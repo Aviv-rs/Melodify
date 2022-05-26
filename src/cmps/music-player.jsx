@@ -51,7 +51,8 @@ export const MusicPlayer = ({ songId }) => {
                 <div> {songTime}</div>
             </div>
 
-            <YouTube videoId={songId}
+            <YouTube
+                videoId={songId}
                 opts={opts}
                 onReady={songOnReady}
             />
