@@ -55,8 +55,22 @@ const station = {
       "username" : "summerz", 
       "fullName" : "Sam Marks"
     },
-      "addedAt": 162521765262
+      "addedAt": 162521765262,
+      "likedByUsers": [
+        {
+          "_id" : "628a6e62b1f6f147074b1ff5", 
+      "username" : "leila.P", 
+      "fullName" : "Leila Parks"
     },
+    
+       {
+        "_id" : "628a71b2b1f6f147074b1ff6", 
+      "username" : "summerz", 
+      "fullName" : "Sam Marks"
+    }
+    ],
+    },
+    
     {
       "id": "VDvr08sCPOc",
       "title": "Remember the name",
@@ -69,7 +83,9 @@ const station = {
       }
     },
   ],
-  "activities": [
+}
+
+  const activities = [
     {
       id: 'a101',
       doneBy: {
@@ -81,7 +97,6 @@ const station = {
       doneAt: 17258891775
     }
   ]
-}
 
 const user = {
   "_id" : "628a6e62b1f6f147074b1ff5", 

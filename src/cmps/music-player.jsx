@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useSelector } from 'react-redux'
-import { Play, Pause } from '../services/img.import.service'
+import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon } from '../services/img.import.service'
+import { PlayBackBar } from './slider'
+
 export const MusicPlayer = ({ songId }) => {
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
 
@@ -9,46 +11,49 @@ export const MusicPlayer = ({ songId }) => {
     const opts = {
         height: '0',
         width: '0',
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-            // autoplay: 1,
-        },
-    }
-    const playRef = useRef()
-    const pauseRef = useRef()
-    const [songTime, setSongTime] = useState(null)
-    const rangeRef = useRef()
-    const songOnReady = ({ target }) => {
-        playRef.current.onclick = () => {
-            target.playVideo()
-        }
-        pauseRef.current.onclick = () => {
-            target.pauseVideo()
-        }
-        setSongTime(target.getDuration())
-        rangeRef.current.onchange = (ev) => {
-            target.seekTo(+ev.target.value)
-        }
     }
 
-    const songOnPlay = (event) => {
-        // const player = event.target
-        // console.log('player', player.getCurrentTime())
+    const [songTime, setSongTime] = useState(null)
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [song, setSong] = useState(null)
+
+    const songOnReady = ({ target }) => {
+        setSong(target)
     }
-    const onStateChange = (event) => {
-        console.log('event.data', event.data)
+
+    // TODO: add an interval function that will change the current time of the song
+    const handlePlaybackChange = ({ target }) => {
+        setSongTime(target.value)
+        song.seekTo(+target.value)
+    }
+
+
+    const toggleSongPlay = () => {
+        if (!song) return
+        setIsPlaying((prevIsPlaying) => !prevIsPlaying)
+        isPlaying ? song.pauseVideo() : song.playVideo()
     }
     return (
-        <div>
-            <button ref={pauseRef} >pause</button>
-            <button ref={playRef} >play</button>
-            <input type="range" min={0} max={songTime} ref={rangeRef} />
-            <div> songTime{songTime}</div>
+        <div className='music-player'>
+            <div className="player-controls">
+                <div className="player-controls-buttons">
+
+                    <button className='btn-play-prev' ><PlayPrevIcon fill='#b3b3b3' /></button>
+                    <button onClick={toggleSongPlay} className="btn-toggle-play" >
+                        {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                    </button>
+                    <button className='btn-play-next'><PlayNextIcon fill='#b3b3b3' /></button>
+                    {/* TODO: add time left and duration of song */}
+                </div>
+                {/* TODO: add active and hover state styles (look at spotify's player for reference) */}
+                <PlayBackBar disabled={!song} handleChange={handlePlaybackChange} />
+                {/* TODO: add volume range input (make another component using material UI) */}
+                <div> {songTime}</div>
+            </div>
+
             <YouTube videoId={songId}
                 opts={opts}
                 onReady={songOnReady}
-                onPlay={songOnPlay}
-                onStateChange={onStateChange}
             />
         </div>
     )
