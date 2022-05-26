@@ -1,33 +1,26 @@
 import { useState } from 'react'
 import { youtubeService } from '../services/youtube.service'
 
-export const Search = () => {
-    
+export const Search = ({displaySongs}) => {
+    //TODO: add debounce
     const [search, setSearch] = useState(null)
-    const [searchStation, setSearchStation] = useState(null)
-    async function getVideos(value) {
+    async function getSongs(value) {
         try {
-            const videos = youtubeService.serachIput(value)
-            return videos
+            const songs = await youtubeService.getSongs(value)
+            return songs
         }
         catch (error) {
-            console.log('Can not get videos', error);
+            console.log('Can not get songs', error);
         }
-
     }
 
     const submitValue = async () => {
-        console.log('search', search)
-        const videos = await getVideos(search)
-        console.log("🚀 ~ file: search.jsx ~ line 22 ~ submitValue ~ videos", videos)
-        setSearchStation(videos)
-        
+        const songs = await getSongs(search)
+        displaySongs(songs)
     }
-
-
-
+    
     return (
-        <div>search
+        <div>
             <input type="text" placeholder="search" onChange={e => setSearch(e.target.value)} />
             <button onClick={submitValue}>search</button>
         </div>

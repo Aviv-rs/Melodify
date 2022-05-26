@@ -1,19 +1,20 @@
 import { useRef, useState } from 'react'
 import YouTube from 'react-youtube'
+import { useSelector } from 'react-redux'
 import { PlayIcon, PauseIcon } from '../services/img.import.service'
 
 export const MusicPlayer = ({ songId }) => {
+    const { currSong } = useSelector((storeState) => storeState.currSongModule)
+
+    if (currSong) songId = currSong.songId
     const opts = {
         height: '0',
         width: '0',
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-        },
     }
 
     const rangeRef = useRef()
-    const [isPlaying, setIsPlaying] = useState(false)
     const [songTime, setSongTime] = useState(null)
+    const [isPlaying, setIsPlaying] = useState(false)
     const [song, setSong] = useState(null)
 
     const songOnReady = ({ target }) => {
@@ -29,7 +30,6 @@ export const MusicPlayer = ({ songId }) => {
         setIsPlaying((prevIsPlaying) => !prevIsPlaying)
         isPlaying ? song.pauseVideo() : song.playVideo()
     }
-
     return (
         <div className='music-player'>
             <div className="player-controls">
