@@ -11,11 +11,11 @@ export const storageService = {
 function query(entityType, delay = 600) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
-    return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
             // reject('OOOOPs')
             resolve(entities)
-        }, delay)   
+        }, delay)
     })
     // return Promise.resolve(entities)
 }
@@ -69,7 +69,7 @@ function _makeId(length = 5) {
 function postMany(entityType, newEntities) {
     return query(entityType)
         .then(entities => {
-            newEntities = newEntities.map(entity => ({...entity, _id: _makeId()}))
+            newEntities = newEntities.map(entity => ({ ...entity, _id: _makeId() }))
             entities.push(...newEntities)
             _save(entityType, entities)
             return entities

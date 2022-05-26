@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { youtubeService } from '../services/youtube.service'
 
-export const Search = ({displaySongs}) => {
-    //TODO: add debounce
+export const Search = ({ onSearchSongs }) => {
+    //TODO: make search results appear on change with debounce [can be on submit for development stage]
     const [search, setSearch] = useState(null)
-    async function getSongs(value) {
+
+    const getSongs = async (value) => {
         try {
             const songs = await youtubeService.getSongs(value)
             return songs
@@ -14,15 +15,19 @@ export const Search = ({displaySongs}) => {
         }
     }
 
-    const submitValue = async () => {
+    const onSearch = async (ev) => {
+        ev.preventDefault()
         const songs = await getSongs(search)
-        displaySongs(songs)
+        onSearchSongs(songs)
     }
-    
+
+
     return (
         <div>
-            <input type="text" placeholder="search" onChange={e => setSearch(e.target.value)} />
-            <button onClick={submitValue}>search</button>
+            <form onSubmit={onSearch}>
+                <input type="text" placeholder="search" onChange={({ target }) => setSearch(target.value)} />
+                <button>search</button>
+            </form>
         </div>
     )
 

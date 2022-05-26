@@ -1,10 +1,9 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { getActionAddStation } from '../store/actions/station.action.js'
+import { getActionAddStation, getActionUpdateStation } from '../store/actions/station.action.js'
 
 
 const STORAGE_KEY = 'station'
-const stationChannel = new BroadcastChannel('stationChannel')
 
 export const stationService = {
     save,
@@ -13,8 +12,8 @@ export const stationService = {
 
 
 async function save(station) {
-    var savedStation
-    if (station._id) {
+    let savedStation
+    if (station?._id) {
         savedStation = await storageService.put(STORAGE_KEY, station)
         //TODO:
         // stationChannel.postMessage(getActionUpdateStation(savedStation))
@@ -22,7 +21,7 @@ async function save(station) {
     } else {
         //TODO: mini user inside of station 
         savedStation = await storageService.post(STORAGE_KEY, station)
-        stationChannel.postMessage(getActionAddStation(savedStation))
+        getActionAddStation(savedStation)
     }
     return savedStation
 }
@@ -35,7 +34,7 @@ function getEmptyStation() {
             "Motivating",
             "Workout"
         ],
-        createdAt: 1541652422,
+        createdAt: new Date(),
         createdBy: {
             _id: "6283d13fb9a7e752c1c0fdcb",
             username: "kyle_s",
@@ -54,6 +53,6 @@ function getEmptyStation() {
                 fullName: "Sam Marks"
             }
         ],
-        "songs": []
+        songs: []
     }
 }

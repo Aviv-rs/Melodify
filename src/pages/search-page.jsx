@@ -9,8 +9,8 @@ export const SearchPage = () => {
     return <section className="search-page">
         <h1>Search for playlists or songs</h1>
         <Search displaySongs={displaySongs} />
-        <div>{songs ? 
-        <SongList songs ={songs} isInSearchPage={true} onAddSong={null}/>
-        : ''}</div>
+        <div>{songs &&
+            <SongList songs={songs} isInSearchPage={true} onAddSong={null} />
+        }</div>
     </section>
 }
