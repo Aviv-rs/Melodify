@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useSelector } from 'react-redux'
 import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon } from '../services/img.import.service'
@@ -8,6 +8,7 @@ import { PlayBackBar } from './slider'
 export const MusicPlayer = ({ songId }) => {
 
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
+    const  {station}  = useSelector((storeState) => storeState.stationModule)
     if (currSong) songId = currSong.songId
     const opts = {
         height: '0',
@@ -20,6 +21,18 @@ export const MusicPlayer = ({ songId }) => {
     const [isPlaying, setIsPlaying] = useState(false)
     const [song, setSong] = useState(null)
 
+    useEffect(() =>{
+        if(!song) return
+        loadPlayList()
+    },[song])
+
+    const loadPlayList =() =>{
+        if(song &&  station?.songs.length >0){
+            const stationIds = station.songs.map(song => song.songId)
+            song.cuePlaylist(stationIds)
+        } 
+    }
+
     const songOnReady = ({ target }) => {
         setSong(target)
         setTotalTime(+target.getDuration())
@@ -28,18 +41,18 @@ export const MusicPlayer = ({ songId }) => {
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
         currTimeInterval.current = setInterval(() => setSongTime((prevSongTime) => prevSongTime + 1), 1000)
     }
-
+    
     const handleTimeChange = ({ target }) => {
         setSongTime(+target.value)
         song.seekTo(+target.value)
     }
-
+    
     const handleVolumeChange = ({ target }) => {
         setVolume(+target.value)
         song.setVolume(+target.value)
     }
-
-
+    
+    
     const toggleSongPlay = () => {
         if (!song) return
         setIsPlaying((prevIsPlaying) => !prevIsPlaying)
@@ -55,6 +68,15 @@ export const MusicPlayer = ({ songId }) => {
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
     }
 
+    const onPlayNext =() =>{
+        song.nextVideo()
+        console.log("🚀 ~ file: music-player.jsx ~ line 69 ~ onPlayNext ~ song.getVideoData()", song.getVideoData())
+    }
+    const onPlayPrev =() =>{
+        console.log('onPlayPrev', song);
+        song.previousVideo()
+    }
+
 
 
     return (
@@ -62,15 +84,15 @@ export const MusicPlayer = ({ songId }) => {
             {currSong ? <img src={currSong.imgUrl} alt="" /> : <div></div>}
             <div className="player-controls">
                 <div className="player-controls-buttons">
-                    <button className='btn-play-prev' ><PlayPrevIcon fill='#b3b3b3' /></button>
+                    <button className='btn-play-prev' onClick={onPlayPrev} ><PlayPrevIcon fill='#b3b3b3' /></button>
                     <button onClick={toggleSongPlay} className="btn-toggle-play" >
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
-                    <button className='btn-play-next'><PlayNextIcon fill='#b3b3b3' /></button>
+                    <button className='btn-play-next' onClick={onPlayNext}><PlayNextIcon fill='#b3b3b3' /></button>
                 </div>
                 <div className='playBackSlide'>
                     <div className='slideTime'> {utilService.convertSecToMin(songTime)}</div>
-                    <PlayBackBar disabled={!song} handleChange={handleTimeChange} value={songTime} width={200} />
+                    <PlayBackBar disabled={!song} handleChange={handleTimeChange} value={songTime/songTotalTime *100} width={200} />
                     <div className='slideTime'> {utilService.convertSecToMin(songTotalTime)}</div>
                 </div>
                 {/* TODO: change time text font */}

@@ -54,6 +54,7 @@ export const StationDetails = () => {
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details">
         <h1>{station.name}</h1>
+        <SongList songs={station.songs} isInSearchPage={true} onAddSong={null} station={station} />
         <Search onSearchSongs={displaySongResults} />
         <div>{songResults &&
             <SongList songs={songResults} isInSearchPage={false} onAddSong={onAddSong} />
