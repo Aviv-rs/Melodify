@@ -5,11 +5,12 @@ import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMute
 import { utilService } from '../services/util.service'
 import { PlayBackBar } from './slider'
 
-export const MusicPlayer = ({ songId }) => {
+export const MusicPlayer = () => {
 
-    const { currSong } = useSelector((storeState) => storeState.currSongModule)
+    // const { currSong } = useSelector((storeState) => storeState.currSongModule)
     const { station } = useSelector((storeState) => storeState.stationModule)
-    if (currSong) songId = currSong.songId
+    const currSong = station.songs[station.currSongIdx]
+    
     const opts = {
         height: '0',
         width: '0',
@@ -22,20 +23,20 @@ export const MusicPlayer = ({ songId }) => {
     const [volume, setVolume] = useState(70)
 
 
-    useEffect(() => {
-        if (!station) return
-        loadPlayList()
-    }, [station, currSong])
+    // useEffect(() => {
+    //     if (!station) return
+    //     loadPlayList()
+    // }, [station, currSong])
 
 
-    const loadPlayList = () => {
-        if (player && station?.songs.length > 0) {
-            const stationIds = station.songs.map(song => song.songId)
-            console.log('the magic happens!!!', stationIds);
-            // player.cuePlaylist(stationIds)
-            player.loadPlaylist(stationIds)
-        }
-    }
+    // const loadPlayList = () => {
+    //     if (player && station?.songs.length > 0) {
+    //         const stationIds = station.songs.map(song => song.songId)
+    //         console.log('the magic happens!!!', stationIds);
+    //         // player.cuePlaylist(stationIds)
+    //         player.loadPlaylist(stationIds)
+    //     }
+    // }
 
     const playerOnReady = ({ target }) => {
         setPlayer(target)
@@ -73,13 +74,13 @@ export const MusicPlayer = ({ songId }) => {
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
     }
 
-    const onPlayNext = () => {
-        player.nextVideo()
-    }
-    const onPlayPrev = () => {
-        console.log('onPlayPrev', player);
-        player.previousVideo()
-    }
+    // const onPlayNext = () => {
+    //     player.nextVideo()
+    // }
+    // const onPlayPrev = () => {
+    //     console.log('onPlayPrev', player);
+    //     player.previousVideo()
+    // }
 
 
 
@@ -90,11 +91,11 @@ export const MusicPlayer = ({ songId }) => {
             </div>
             <div className="player-controls">
                 <div className="player-controls-buttons">
-                    <button className='btn-play-prev' onClick={onPlayPrev} ><PlayPrevIcon fill='#b3b3b3' /></button>
+                    <button className='btn-play-prev' ><PlayPrevIcon fill='#b3b3b3' /></button>
                     <button onClick={toggleSongPlay} className="btn-toggle-play" >
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
-                    <button className='btn-play-next' onClick={onPlayNext}><PlayNextIcon fill='#b3b3b3' /></button>
+                    <button className='btn-play-next'><PlayNextIcon fill='#b3b3b3' /></button>
                 </div>
                 <div className='playBackSlide'>
                     <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
@@ -125,3 +126,11 @@ export const MusicPlayer = ({ songId }) => {
         </div>
     )
 }
+
+
+// test data
+// const ids = ["tcYodQoapMg",
+//     , "QYh6mYIJG2Y",
+//     "1ekZEVeXwek",
+//     "SXiSVQZLje8",
+//     "QYh6mYIJG2Y"]

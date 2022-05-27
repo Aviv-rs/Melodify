@@ -24,7 +24,7 @@ export function App() {
           </Routes>
         </div>
         {<Navbar />}
-        {<MusicPlayer songId='TmKh7lAwnBI' />}
+        {<MusicPlayer/>}
 
         {/* <UserMsg /> */}
       </Router>

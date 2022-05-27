@@ -53,6 +53,7 @@ function getEmptyStation() {
                 fullName: "Sam Marks"
             }
         ],
+        currSongIdx: 0,
         songs: []
     }
 }

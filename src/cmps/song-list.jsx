@@ -6,6 +6,7 @@ export const SongList = ({ songs, isInSearchPage, onAddSong, station = null }) =
             isInSearchPage={isInSearchPage}
             onAddSong={onAddSong}
             station={station}
+            currSongIdx = {idx}
             key={idx}
         />)}
     </section>
