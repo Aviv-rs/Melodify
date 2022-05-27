@@ -5,8 +5,6 @@ export const SongPreview = ({ song, isInSearchPage, onAddSong, station = null })
     const dispatch = useDispatch()
     const onPlaySong = () => {
         dispatch(setCurrSong(song))
-        // if(station) dispatch(setCurrStation(station))
-        if(station) console.log('curr station', station);
     }
     
     return (<div className="song-preview">

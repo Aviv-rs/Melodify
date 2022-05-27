@@ -15,66 +15,70 @@ export const MusicPlayer = ({ songId }) => {
         width: '0',
     }
     const currTimeInterval = useRef()
-    const [songTime, setSongTime] = useState(0)
-    const [volume, setVolume] = useState(70)
-    const [songTotalTime, setTotalTime] = useState(0)
+    const [player, setPlayer] = useState(null)
     const [isPlaying, setIsPlaying] = useState(false)
-    const [song, setSong] = useState(null)
+    const [songTime, setSongTime] = useState(0)
+    const [songTotalTime, setTotalTime] = useState(0)
+    const [volume, setVolume] = useState(70)
+
 
     useEffect(() =>{
-        if(!song) return
+        if(!station) return
         loadPlayList()
-    },[song])
+    },[station, currSong])
+    
 
-    const loadPlayList =() =>{
-        if(song &&  station?.songs.length >0){
+    const loadPlayList = () =>{
+        if(player &&  station?.songs.length >0){
             const stationIds = station.songs.map(song => song.songId)
-            song.cuePlaylist(stationIds)
+            console.log('the magic happens!!!',stationIds);
+            // player.cuePlaylist(stationIds)
+            player.loadPlaylist(stationIds)
         } 
     }
 
-    const songOnReady = ({ target }) => {
-        setSong(target)
+    const playerOnReady = ({ target }) => {
+        setPlayer(target)
         setTotalTime(+target.getDuration())
     }
-    const songOnPlay = () => {
+
+    const playerOnPlay = () => {
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
         currTimeInterval.current = setInterval(() => setSongTime((prevSongTime) => prevSongTime + 1), 1000)
     }
     
     const handleTimeChange = ({ target }) => {
         setSongTime(+target.value)
-        song.seekTo(+target.value)
+        player.seekTo(+target.value)
     }
     
     const handleVolumeChange = ({ target }) => {
         setVolume(+target.value)
-        song.setVolume(+target.value)
+        player.setVolume(+target.value)
     }
     
     
     const toggleSongPlay = () => {
-        if (!song) return
+        if (!player) return
         setIsPlaying((prevIsPlaying) => !prevIsPlaying)
         if (isPlaying) {
-            song.pauseVideo()
+            player.pauseVideo()
         }
         else {
-            song.playVideo()
+            player.playVideo()
         }
     }
 
-    const songOnPause = () => {
+    const playerOnPause = () => {
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
     }
 
     const onPlayNext =() =>{
-        song.nextVideo()
-        console.log("🚀 ~ file: music-player.jsx ~ line 69 ~ onPlayNext ~ song.getVideoData()", song.getVideoData())
+        player.nextVideo()
     }
     const onPlayPrev =() =>{
-        console.log('onPlayPrev', song);
-        song.previousVideo()
+        console.log('onPlayPrev', player);
+        player.previousVideo()
     }
 
 
@@ -92,23 +96,21 @@ export const MusicPlayer = ({ songId }) => {
                 </div>
                 <div className='playBackSlide'>
                     <div className='slideTime'> {utilService.convertSecToMin(songTime)}</div>
-                    <PlayBackBar disabled={!song} handleChange={handleTimeChange} value={songTime/songTotalTime *100} width={200} />
+                    <PlayBackBar disabled={!player} handleChange={handleTimeChange} value={songTime/songTotalTime *100} width={200} />
                     <div className='slideTime'> {utilService.convertSecToMin(songTotalTime)}</div>
                 </div>
                 {/* TODO: change time text font */}
                 {/* TODO: add volume range input (make another component using material UI) */}
             </div>
             <div className='volume-slide'>
-                <PlayBackBar disabled={!song} handleChange={handleVolumeChange} value={volume} width={100} />
+                <PlayBackBar disabled={!player} handleChange={handleVolumeChange} value={volume} width={100} />
             </div>
             <YouTube videoId={songId}
                 opts={opts}
-                onReady={songOnReady}
-                onPlay={songOnPlay}
-                onPause={songOnPause}
+                onReady={playerOnReady}
+                onPlay={playerOnPlay}
+                onPause={playerOnPause}
             />
         </div>
     )
 }
-
-
