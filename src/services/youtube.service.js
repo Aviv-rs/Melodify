@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { keys } from './keys'
-const idx = 0
+const idx = 1
 const YT_KEY = keys[idx]
 export const youtubeService = {
     getSongs
@@ -19,7 +19,8 @@ async function getSongs(value) {
         })
         return songs
     } catch (error) {
-        console.log('request faild', error)
+        console.log('request faild hiiiiiiiiii', error)
         idx = (idx >= keys.length) ? 0 : idx += 1
+        console.log("🚀 ~ file: youtube.service.js ~ line 24 ~ getSongs ~ idx", idx)
     }
 }

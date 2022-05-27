@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 // nav links svg icons
-import { Logo, Home, HomeActive, Search, SearchActive, Library, LibraryActive, CreatePlaylists, LikedSongs } from '../services/img.import.service'
+import { Logo, HomeIcon, HomeActiveIcon, SearchIcon, SearchActiveIcon, LibraryIcon, LibraryActiveIcon, CreatePlaylistsIcon, LikedSongsIcon } from '../services/img.import.service'
 
 
 // memo (?)
@@ -16,7 +16,7 @@ export const Navbar = () => {
                 <li>
                     <nav>
                         <NavLink to="/">
-                            <Home fill="#b3b3b3" />
+                            <HomeIcon fill="#b3b3b3" />
                             <span>Home</span>
                         </NavLink>
                     </nav>
@@ -24,7 +24,7 @@ export const Navbar = () => {
                 <li>
                     <nav>
                         <NavLink to="search">
-                            <Search fill="#b3b3b3" />
+                            <SearchIcon fill="#b3b3b3" />
                             <span>Search</span>
                         </NavLink>
                     </nav>
@@ -32,7 +32,7 @@ export const Navbar = () => {
                 <li>
                     <nav>
                         <NavLink to="library">
-                            <Library fill="#b3b3b3" />
+                            <LibraryIcon fill="#b3b3b3" />
                             <span>Your Library</span>
                         </NavLink>
                     </nav>
@@ -40,8 +40,8 @@ export const Navbar = () => {
                 <li>
                     <nav className="create-playlists-nav">
                         <NavLink to="station">
-                            <div className="create-playlist">
-                                <CreatePlaylists fill="#000" />
+                            <div className="create-playlists">
+                                <CreatePlaylistsIcon fill="#000" />
                             </div>
                             <span>Create Playlist</span>
                         </NavLink>
@@ -51,7 +51,7 @@ export const Navbar = () => {
                     <nav>
                         <NavLink to="station/liked">
                             <div className="liked-songs">
-                                <LikedSongs fill="#b3b3b3" />
+                                <LikedSongsIcon fill="#b3b3b3" />
                             </div>
                             <span>Liked Songs</span>
                         </NavLink>
