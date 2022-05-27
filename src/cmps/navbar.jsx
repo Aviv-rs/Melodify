@@ -40,7 +40,7 @@ export const Navbar = () => {
                 <li>
                     <nav className="create-playlists-nav">
                         <NavLink to="station">
-                            <div className="create-playlists">
+                            <div className="create-playlist">
                                 <CreatePlaylists fill="#000" />
                             </div>
                             <span>Create Playlist</span>

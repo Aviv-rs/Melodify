@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useSelector } from 'react-redux'
-import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon } from '../services/img.import.service'
+import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon } from '../services/img.import.service'
 import { utilService } from '../services/util.service'
 import { PlayBackBar } from './slider'
 
@@ -59,7 +59,9 @@ export const MusicPlayer = ({ songId }) => {
 
     return (
         <div className='music-player'>
-            {currSong ? <img src={currSong.imgUrl} alt="" /> : <div></div>}
+            <div className="song-details">
+                {currSong && <img src={currSong.imgUrl} alt="" />}
+            </div>
             <div className="player-controls">
                 <div className="player-controls-buttons">
                     <button className='btn-play-prev' ><PlayPrevIcon fill='#b3b3b3' /></button>
@@ -69,15 +71,22 @@ export const MusicPlayer = ({ songId }) => {
                     <button className='btn-play-next'><PlayNextIcon fill='#b3b3b3' /></button>
                 </div>
                 <div className='playBackSlide'>
-                    <div className='slideTime'> {utilService.convertSecToMin(songTime)}</div>
+                    <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
                     <PlayBackBar disabled={!song} handleChange={handleTimeChange} value={songTime} width={500} />
-                    <div className='slideTime'> {utilService.convertSecToMin(songTotalTime)}</div>
+                    <div className='total-time'> {utilService.convertSecToMin(songTotalTime)}</div>
                 </div>
                 {/* TODO: change time text font */}
                 {/* TODO: add volume range input (make another component using material UI) */}
             </div>
-            <div className='volume-slide'>
-                <PlayBackBar disabled={!song} handleChange={handleVolumeChange} value={volume} width={100} />
+            <div className='right-side-controls'>
+                <div className="volume-controls">
+                    <button className="btn-volume">
+                        {volume > 0 ? <VolumeIcon />
+                            :
+                            <VolumeMuteIcon />}
+                    </button>
+                    <PlayBackBar disabled={!song} handleChange={handleVolumeChange} value={volume} width={100} />
+                </div>
             </div>
             <YouTube videoId={songId}
                 opts={opts}

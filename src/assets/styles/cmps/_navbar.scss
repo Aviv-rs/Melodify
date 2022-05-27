@@ -38,10 +38,13 @@
             &.active>*,
             &:hover svg,
             &:hover span {
-                color: white;
-                fill: white;
+                color: $clr8;
+                fill: $clr8;
                 transition: 0.4s;
             }
+
+            // TODO:make the background of the add playlist white and not the fill
+
         }
 
         span {
@@ -52,7 +55,7 @@
             margin-top: 24px;
         }
 
-        .create-playlists {
+        .create-playlist {
             background-color: $clr7;
             height: 24px;
             justify-content: center;
