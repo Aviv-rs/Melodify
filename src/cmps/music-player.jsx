@@ -1,44 +1,35 @@
 import { useEffect, useRef, useState } from 'react'
 import YouTube from 'react-youtube'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon } from '../services/img.import.service'
 import { utilService } from '../services/util.service'
 import { PlayBackBar } from './slider'
+import { setCurrSong } from '../store/actions/current-song.action'
+import { getActionSetStation } from '../store/actions/station.action'
 
-export const MusicPlayer = ({ songId }) => {
+export const MusicPlayer = () => {
 
-    const { currSong } = useSelector((storeState) => storeState.currSongModule)
     const { station } = useSelector((storeState) => storeState.stationModule)
-    if (currSong) songId = currSong.songId
+    const { currSong } = useSelector((storeState) => storeState.currSongModule)
+
     const opts = {
         height: '0',
         width: '0',
     }
+
     const currTimeInterval = useRef()
+    const dispatch = useDispatch()
     const [player, setPlayer] = useState(null)
     const [isPlaying, setIsPlaying] = useState(false)
     const [songTime, setSongTime] = useState(0)
     const [songTotalTime, setTotalTime] = useState(0)
-    const [volume, setVolume] = useState(70)
+    const [volume, setVolume] = useState(100)
 
 
-    useEffect(() => {
-        if (!station) return
-        loadPlayList()
-    }, [station, currSong])
-
-
-    const loadPlayList = () => {
-        if (player && station?.songs.length > 0) {
-            const stationIds = station.songs.map(song => song.songId)
-            console.log('the magic happens!!!', stationIds);
-            // player.cuePlaylist(stationIds)
-            player.loadPlaylist(stationIds)
-        }
-    }
 
     const playerOnReady = ({ target }) => {
         setPlayer(target)
+        target.playVideo()
         setTotalTime(+target.getDuration())
     }
 
@@ -57,7 +48,6 @@ export const MusicPlayer = ({ songId }) => {
         player.setVolume(+target.value)
     }
 
-
     const toggleSongPlay = () => {
         if (!player) return
         setIsPlaying((prevIsPlaying) => !prevIsPlaying)
@@ -73,14 +63,19 @@ export const MusicPlayer = ({ songId }) => {
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
     }
 
-    const onPlayNext = () => {
-        player.nextVideo()
+    const onChangeSong = (diff) => {
+        const newStation = { ...station }
+        newStation.currSongIdx = newStation.currSongIdx + diff
+        if (newStation.currSongIdx < 0) {
+            player.seekTo(0)
+            setSongTime(0)
+            return
+        } else if (newStation.currSongIdx >= newStation.songs.length) return
+        const currSong = newStation.songs[newStation.currSongIdx]
+        dispatch(getActionSetStation(newStation))
+        dispatch(setCurrSong(currSong))
+        setSongTime(0)
     }
-    const onPlayPrev = () => {
-        console.log('onPlayPrev', player);
-        player.previousVideo()
-    }
-
 
 
     return (
@@ -90,15 +85,15 @@ export const MusicPlayer = ({ songId }) => {
             </div>
             <div className="player-controls">
                 <div className="player-controls-buttons">
-                    <button className='btn-play-prev' onClick={onPlayPrev} ><PlayPrevIcon fill='#b3b3b3' /></button>
+                    <button className='btn-play-prev' onClick={() => onChangeSong(-1)} ><PlayPrevIcon fill='#b3b3b3' /></button>
                     <button onClick={toggleSongPlay} className="btn-toggle-play" >
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
-                    <button className='btn-play-next' onClick={onPlayNext}><PlayNextIcon fill='#b3b3b3' /></button>
+                    <button className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
                 </div>
                 <div className='playBackSlide'>
                     <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
-                    <PlayBackBar disabled={!player} handleChange={handleTimeChange} value={songTime} width={500} />
+                    <PlayBackBar maxValue={songTotalTime} disabled={!player} handleChange={handleTimeChange} value={songTime} width={500} />
                     <div className='total-time'> {utilService.convertSecToMin(songTotalTime)}</div>
                 </div>
                 {/* TODO: change time text font */}
@@ -116,11 +111,13 @@ export const MusicPlayer = ({ songId }) => {
                 </div>
             </div>
 
-            <YouTube videoId={songId}
+            <YouTube
+                videoId={currSong?.id}
                 opts={opts}
                 onReady={playerOnReady}
                 onPlay={playerOnPlay}
                 onPause={playerOnPause}
+                onEnd={() => onChangeSong(1)}
             />
         </div>
     )

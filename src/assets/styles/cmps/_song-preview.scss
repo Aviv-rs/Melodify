@@ -1,15 +1,35 @@
-.song-preview{
+.song-preview {
     display: grid;
-    grid-template-columns: 0.3fr 2fr 60px 20px  ;
+    grid-template-columns: 60px 60px 2fr 20px;
     gap: 5px;
     padding: 2px;
     cursor: default;
+    height: 56px;
+    align-items: center;
 
-    img{
+    &:hover {
+        .btn-play {
+            opacity: 1;
+        }
+    }
+
+    .btn-play {
+        background-color: transparent;
+        opacity: 0;
+
+        &>* {
+            fill: $clr8;
+        }
+
+
+
+    }
+
+    img {
         width: 50px;
     }
 
-    .title{
+    .title {
         align-self: center;
     }
 }

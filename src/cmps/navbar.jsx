@@ -38,9 +38,9 @@ export const Navbar = () => {
                     </nav>
                 </li>
                 <li>
-                    <nav className="create-playlists-nav">
+                    <nav className="create-playlist-nav">
                         <NavLink to="station">
-                            <div className="create-playlists">
+                            <div className="create-playlist">
                                 <CreatePlaylistsIcon fill="#000" />
                             </div>
                             <span>Create Playlist</span>
