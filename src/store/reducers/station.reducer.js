@@ -23,6 +23,12 @@ export function stationReducer(state = INITIAL_STATE, action) {
             }
     
 
+        case 'SET_STATION':
+            return {
+                ...state,
+                station: action.station
+            }
+
         default:
             return state
     }

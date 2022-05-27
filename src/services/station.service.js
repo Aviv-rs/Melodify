@@ -1,6 +1,5 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { getActionAddStation, getActionUpdateStation } from '../store/actions/station.action.js'
 
 
 const STORAGE_KEY = 'station'
@@ -21,7 +20,6 @@ async function save(station) {
     } else {
         //TODO: mini user inside of station 
         savedStation = await storageService.post(STORAGE_KEY, station)
-        getActionAddStation(savedStation)
     }
     return savedStation
 }
