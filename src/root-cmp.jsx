@@ -24,11 +24,7 @@ export function App() {
           </Routes>
         </div>
         {<Navbar />}
-<<<<<<< HEAD
-        {<MusicPlayer/>}
-=======
         {<MusicPlayer />}
->>>>>>> 10229ea4c2cceb129c8c4e9e5460bc6a8de8263f
 
         {/* <UserMsg /> */}
       </Router>
