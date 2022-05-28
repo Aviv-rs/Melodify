@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { Search } from "../cmps/search"
 import { SongList } from "../cmps/song-list"
+import { Hero } from "../cmps/hero"
 import { stationService } from "../services/station.service"
 import { getActionSetStation } from "../store/actions/station.action"
-
+import { uploadImg } from '../services/cloudinary-service'
 export const StationDetails = () => {
     const dispatch = useDispatch()
     const { stationId } = useParams()
@@ -52,9 +53,20 @@ export const StationDetails = () => {
         setSongResults(songs)
     }
 
+    const handleImgUpload = async (ev) => {
+        try {
+            const src = await uploadImg(ev)
+            const newStation = { ...station, coverUrl: src }
+            setStation(newStation)
+            const savedStation = await stationService.save(newStation)
+        } catch {
+            console.log('could not upload image')
+        }
+    }
+
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details">
-        <h1>{station.name}</h1>
+        <Hero station={station} handleImgUpload={handleImgUpload} />
         <SongList songs={station.songs} isSearchResults={false} onAddSong={null} station={station} />
         <Search onSearchSongs={displaySongResults} />
         <div>{songResults &&
