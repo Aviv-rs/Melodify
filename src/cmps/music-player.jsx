@@ -3,7 +3,7 @@ import YouTube from 'react-youtube'
 import { useDispatch, useSelector } from 'react-redux'
 import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon } from '../services/img.import.service'
 import { utilService } from '../services/util.service'
-import { PlayBackBar } from './slider'
+import { SliderBar } from './slider'
 import { setCurrSong } from '../store/actions/current-song.action'
 import { getActionSetStation } from '../store/actions/station.action'
 
@@ -24,7 +24,6 @@ export const MusicPlayer = () => {
     const [songTime, setSongTime] = useState(0)
     const [songTotalTime, setTotalTime] = useState(0)
     const [volume, setVolume] = useState(100)
-
 
 
     const playerOnReady = ({ target }) => {
@@ -65,6 +64,7 @@ export const MusicPlayer = () => {
 
     const onChangeSong = (diff) => {
         const newStation = { ...station }
+
         newStation.currSongIdx = newStation.currSongIdx + diff
         if (newStation.currSongIdx < 0) {
             player.seekTo(0)
@@ -75,6 +75,7 @@ export const MusicPlayer = () => {
         dispatch(getActionSetStation(newStation))
         dispatch(setCurrSong(currSong))
         setSongTime(0)
+        setIsPlaying(true)
     }
 
 
@@ -93,11 +94,9 @@ export const MusicPlayer = () => {
                 </div>
                 <div className='playBackSlide'>
                     <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
-                    <PlayBackBar maxValue={songTotalTime} disabled={!player} handleChange={handleTimeChange} value={songTime} width={500} />
+                    <SliderBar maxValue={songTotalTime} disabled={!player} handleChange={handleTimeChange} value={songTime} width={500} />
                     <div className='total-time'> {utilService.convertSecToMin(songTotalTime)}</div>
                 </div>
-                {/* TODO: change time text font */}
-                {/* TODO: add volume range input (make another component using material UI) */}
             </div>
 
             <div className='right-side-controls'>
@@ -107,7 +106,7 @@ export const MusicPlayer = () => {
                             :
                             <VolumeMuteIcon />}
                     </button>
-                    <PlayBackBar disabled={!player} handleChange={handleVolumeChange} value={volume} width={100} />
+                    <SliderBar disabled={!player} handleChange={handleVolumeChange} value={volume} width={100} />
                 </div>
             </div>
 
