@@ -7,12 +7,29 @@
     box-shadow: 0 4px 4px rgb(0 0 0 / 30%);
     top: 176px;
     left: 329px;
+
     // .exit-button{
-        // color: rgba(255,255,255,.7);
+    // color: rgba(255,255,255,.7);
     // }
-    .edit-details-title{
+    .edit-details-title {
         display: grid;
         grid-template-columns: 1fr 2fr 20px;
+    }
+
+    .img-input {
+        display: none;
+    }
+
+    .title-input {
+        background: rgba(255, 255, 255, .1);
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #fff;
+        font-family: inherit;
+        font-size: 14px;
+        height: 40px;
+        padding: 0 12px;
+        width: 100%;
     }
 
 }

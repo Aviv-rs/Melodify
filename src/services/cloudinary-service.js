@@ -1,6 +1,8 @@
 
-// FETCH
-export const uploadImg = async (ev) => {
+export const cloudinaryService = {
+    uploadImg
+}
+async function uploadImg(ev) {
     // Defining our variables
     const UPLOAD_PRESET = 'okr6cxy4' // Insert yours
     const CLOUD_NAME = 'dfhp1qewd' // Insert yours
@@ -22,5 +24,6 @@ export const uploadImg = async (ev) => {
         console.error('ERROR!', err)
     }
 }
+
 
 
