@@ -3,12 +3,15 @@
     height: 40vh;
     display: flex;
 
+    .hero-img-main {
+        max-height: 232px;
+        max-width: 232px;
+        margin-top: 100px;
+    }
+
     .hero-img {
         width: 22vw;
         height: 20vw;
-        max-height: 150px;
-        max-width: 150px;
-        margin-top: 100px;
         margin-left: 10px;
         margin-bottom: 20px;
         margin-right: 20px;
@@ -17,7 +20,7 @@
         box-shadow: 0 0 10px 0 rgb(0 0 0 / 46%);
         display: flex;
         align-items: center;
-        
+
 
         .pencil {
             height: 48px;
@@ -34,25 +37,28 @@
             object-fit: cover;
         }
 
-        
+
     }
 
     .hero-img:hover {
         .pencil {
             display: block;
+            
         }
 
         .station-def-icon {
             display: none;
         }
+
         img {
-            position: absolute;
+            display: none;
             z-index: -1;
         }
     }
 
     .hero-details {
         margin-top: 150px;
+
         span {
             font-size: 12px;
         }

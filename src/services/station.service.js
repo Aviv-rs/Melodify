@@ -39,6 +39,7 @@ function getEmptyStation() {
     return {
         name: "My Playlist #2",
         coverUrl: "",
+        description:"",
         tags: [
             "Motivating",
             "Workout"
