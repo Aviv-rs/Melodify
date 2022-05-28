@@ -7,7 +7,7 @@ import { MusicPlayer } from './cmps/music-player'
 // import { UserMsg } from './cmps/user-msg.jsx'
 
 export function App() {
-  
+
   return (
     <div className="app main-layout">
       <Router>
@@ -24,7 +24,7 @@ export function App() {
           </Routes>
         </div>
         {<Navbar />}
-        {<MusicPlayer songId='TmKh7lAwnBI' />}
+        {<MusicPlayer />}
 
         {/* <UserMsg /> */}
       </Router>

@@ -9,7 +9,7 @@ export const utilService = {
 function convertSecToMin(totalSeconds) {
     const minutes = Math.floor(totalSeconds / 60)
     const seconds = totalSeconds % 60
-    return `${_padTo2Digits(minutes)}:${_padTo2Digits(seconds)}`
+    return `${minutes}:${_padTo2Digits(seconds)}`
 }
 
 function _padTo2Digits(num) {

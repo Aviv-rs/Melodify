@@ -38,21 +38,35 @@
             &.active>*,
             &:hover svg,
             &:hover span {
-                color: white;
-                fill: white;
+                color: $clr8;
+                fill: $clr8;
                 transition: 0.4s;
             }
+
+            &:hover,
+            &.active {
+                .create-playlist {
+                    background-color: $clr8;
+
+                    svg {
+
+                        fill: $clr3;
+                    }
+                }
+            }
+
+
         }
 
         span {
             color: $clr7;
         }
 
-        .create-playlists-nav {
+        .create-playlist-nav {
             margin-top: 24px;
         }
 
-        .create-playlists {
+        .create-playlist {
             background-color: $clr7;
             height: 24px;
             justify-content: center;
@@ -60,6 +74,12 @@
             border-radius: 2px;
             display: flex;
             align-items: center;
+
+            svg {
+                fill: #000
+            }
+
+
 
         }
 

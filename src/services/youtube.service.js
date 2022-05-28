@@ -11,7 +11,7 @@ async function getSongs(value) {
         const songs = data.items.map(item => {
             return {
                 title: item.snippet.title,
-                songId: item.id.videoId,
+                id: item.id.videoId,
                 description: item.snippet.description,
                 imgUrl: item.snippet.thumbnails.high.url,
                 publishedAt: item.snippet.publishTime

@@ -1,14 +1,15 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useMatch } from 'react-router-dom'
 // nav links svg icons
 import { Logo, HomeIcon, HomeActiveIcon, SearchIcon, SearchActiveIcon, LibraryIcon, LibraryActiveIcon, CreatePlaylistsIcon, LikedSongsIcon } from '../services/img.import.service'
-
 
 // memo (?)
 export const Navbar = () => {
     return (
+
         <nav className="nav-container">
             <div className="logo-container">
                 <NavLink to="/">
+
                     <Logo className="logo-svg" />
                 </NavLink>
             </div>
@@ -31,16 +32,17 @@ export const Navbar = () => {
                 </li>
                 <li>
                     <nav>
-                        <NavLink to="library">
+                        <NavLink to="library"
+                        >
                             <LibraryIcon fill="#b3b3b3" />
                             <span>Your Library</span>
                         </NavLink>
                     </nav>
                 </li>
                 <li>
-                    <nav className="create-playlists-nav">
+                    <nav className="create-playlist-nav">
                         <NavLink to="station">
-                            <div className="create-playlists">
+                            <div className="create-playlist">
                                 <CreatePlaylistsIcon fill="#000" />
                             </div>
                             <span>Create Playlist</span>

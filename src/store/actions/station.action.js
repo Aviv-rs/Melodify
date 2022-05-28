@@ -23,6 +23,16 @@ export function getActionUpdateStation(station) {
 
     }
 }
+export function getActionSetStation(station) {
+    return async (dispatch) => {
+        try {
+            dispatch({ type: 'SET_STATION', station })
+        } catch (err) {
+            console.log('err:', err)
+        }
+
+    }
+}
 
 export function addStation(station) {
     return async (dispatch) => {
@@ -49,5 +59,3 @@ export function updateStation(station) {
         }
     }
 }
-
-//TODO: getActionUpdateStation(savedStation)
