@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { Search } from '../cmps/search'
 import { SongList } from '../cmps/song-list'
+import { GenreList } from '../cmps/genre-list'
+import { genres } from '../data/station'
+
 export const SearchPage = () => {
     const [songs, setSongs] = useState(null)
     const displaySongResults = (songs) => {
@@ -12,5 +15,8 @@ export const SearchPage = () => {
         <div>{songs &&
             <SongList songs={songs} isSearchResults={false} onAddSong={null} />
         }</div>
+        <div> 
+        <GenreList genres={genres}/>
+        </div>
     </section>
 }

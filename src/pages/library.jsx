@@ -4,19 +4,19 @@ import { StationList } from "../cmps/station-list"
 
 export const Library = () => {
 
-    const [stations, setStations] = useState([])
+    // TO BE CHANGED 
+    const [stations, setStations] = useState(null)
 
     useEffect(() => {
         loadStations()
     }, [])
 
     const loadStations = async () => {
-        try {
+        // try {
             const stations = await stationService.query()
-            setStations(stations)
-        } catch (err) {
-            console.log(err)
-        }
+            console.log("stations2", stations);
+            if (stations) setStations(stations)
+        // } catch (err) {        
     }
 
     return <section className="library">
