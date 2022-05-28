@@ -13,6 +13,6 @@ export const StationPreview = ({ station }) => {
             <StationDefaultIcon />
         </div>
         <div className="station-name"> {station.name} </div>
-        <div className="station-creator">{station.createdBy.fullName}</div>
+        <div className="station-creator">By {station.createdBy.fullName}</div>
     </div>
 }

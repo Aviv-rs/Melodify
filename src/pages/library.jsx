@@ -20,6 +20,7 @@ export const Library = () => {
     }
 
     return <section className="library">
+        <div className="library-title"> <h1>Library</h1> </div>
         {stations && <StationList stations={stations} />}
     </section>
 }

@@ -1,0 +1,17 @@
+.library {
+    min-height: 100%;
+
+    .library-title {
+        place-content: space-between;
+        align-items: center;
+        color: $clr8;
+        display: flex;
+        margin: 16px 0px;
+    }
+
+    .station-list {
+        .station-preview {
+            cursor: pointer;
+        }
+    }
+}
