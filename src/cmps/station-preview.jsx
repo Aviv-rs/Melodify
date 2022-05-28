@@ -8,7 +8,7 @@ export const StationPreview = ({ station }) => {
     const onGoToStation = () => {
         navigate(`/station/${station._id}`)
     }
-
+    // TODO: rename class names
     return <div className="station-preview" onClick={onGoToStation}>
         <div className="inner-container">
             <div className="station-cover">

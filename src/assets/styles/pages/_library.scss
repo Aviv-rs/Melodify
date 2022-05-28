@@ -9,6 +9,9 @@
         margin: 16px 0px;
     }
 
+
+    // TODO: get the station list on a file on his own
+
     .station-list {
 
         display: grid;
@@ -28,7 +31,7 @@
         .station-preview {
             cursor: pointer;
             background-color: $clr3;
-            border-radius: 1em;
+            border-radius: 6px;
             flex: 1;
             padding: 16px;
             position: relative;
@@ -47,6 +50,10 @@
                         box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
                         padding-bottom: 100%;
                         position: relative;
+
+                        img {
+                            box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+                        }
 
                         .icon-container {
                             align-items: center;
@@ -81,28 +88,44 @@
                     }
                 }
 
-                &:hover {
-                    .station-cover button {
-                        opacity: 1;
-                        bottom: 8px;
-                    }
-                }
+                // station preview hover
+
 
                 .station-details {
                     min-height: 62px;
 
 
 
+                    .station-name {
+                        font-size: 16px;
+                        line-height: 1.5rem;
+                        text-transform: none;
+                        letter-spacing: normal;
+                        font-weight: 700;
+                        padding-bottom: 4px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
                     .station-creator {
                         box-sizing: border-box;
                         margin-block: 0px;
-                        font-size: 0.8125rem;
                         line-height: 1rem;
                         font-weight: 400;
                         color: $clr9;
-
+                        font-family: circular-medium;
                     }
                 }
+            }
+
+            &:hover {
+                .station-cover button {
+                    opacity: 1 !important;
+                    bottom: 8px !important;
+                }
+
+                background-color: $clr11
             }
         }
 
