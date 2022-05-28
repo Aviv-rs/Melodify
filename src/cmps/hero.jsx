@@ -17,7 +17,7 @@ export const Hero = ({ station, handleImgUpload }) => {
                 <h1>{station.name}</h1>
             </div>
 
-            {isModalOpen && <StationModal setIsModalOpen= {setIsModalOpen} handleImgUpload={handleImgUpload}/>}
+            {isModalOpen && <StationModal setIsModalOpen= {setIsModalOpen} handleImgUpload={handleImgUpload}  station={station}/>}
 
         </article>
     )
