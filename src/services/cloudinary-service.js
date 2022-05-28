@@ -1,6 +1,6 @@
 
 export const cloudinaryService = {
-    uploadImg,
+    uploadImg
 }
 async function uploadImg(ev) {
     // Defining our variables
@@ -24,4 +24,6 @@ async function uploadImg(ev) {
         console.error('ERROR!', err)
     }
 }
+
+
 

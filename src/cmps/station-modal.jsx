@@ -3,8 +3,6 @@ import { ExitBttn, StationDetailsPencil, StationDetMusic, StationDefaultIcon } f
 
 export const StationModal = ({ setIsModalOpen, handleImgUpload, station }) => {
 
-
-
     return <div className="station-modal">
         <div className='edit-details-title'>
             <h1>Edit details</h1>
@@ -20,6 +18,7 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station }) => {
                     : <StationDefaultIcon className='station-def-icon' />}
             </div>
         </label>
-        <input id='inputImg' onChange={handleImgUpload} type="file"></input>
+        <input className='img-input' id='inputImg' onChange={handleImgUpload} type="file"></input>
+        <input className='title-input' type="text" />
     </div>
 }

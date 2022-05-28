@@ -7,6 +7,7 @@ import { Hero } from "../cmps/hero"
 import { stationService } from "../services/station.service"
 import { getActionSetStation } from "../store/actions/station.action"
 import { cloudinaryService } from '../services/cloudinary-service'
+
 export const StationDetails = () => {
     const dispatch = useDispatch()
     const { stationId } = useParams()
@@ -15,7 +16,6 @@ export const StationDetails = () => {
 
     const [songResults, setSongResults] = useState(null)
     const [station, setStation] = useState(null)
-
 
     useEffect(() => {
         if (station) return
@@ -59,11 +59,13 @@ export const StationDetails = () => {
             const newStation = { ...station, coverUrl: src }
             setStation(newStation)
             const savedStation = await stationService.save(newStation)
-            
+
         } catch {
             console.log('could not upload image')
         }
     }
+
+   
 
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details">
