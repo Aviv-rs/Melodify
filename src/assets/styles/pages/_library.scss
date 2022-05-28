@@ -44,7 +44,6 @@
 
                     .img-container {
                         background-color: #333;
-                        -webkit-box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
                         box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
                         padding-bottom: 100%;
                         position: relative;
@@ -60,6 +59,32 @@
                             top: 0;
                             width: 100%;
                         }
+
+                        button {
+                            @include btn-toggle-play();
+                            position: absolute;
+                            bottom: 0;
+                            right: 8px;
+                            z-index: 2;
+                            box-shadow: 0 8px 8px rgb(0 0 0 / 30%);
+                            transition: all .3s ease;
+                            opacity: 0;
+
+                            &>* {
+                                width: 18px;
+                                height: 18px;
+                            }
+                        }
+
+
+
+                    }
+                }
+
+                &:hover {
+                    .station-cover button {
+                        opacity: 1;
+                        bottom: 8px;
                     }
                 }
 
