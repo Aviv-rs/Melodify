@@ -1,5 +1,20 @@
+import { StationList } from '../cmps/station-list'
+
+
 export const HomePage = ()=>{
-    return <section className="home-page">
-        <h1>Melodify home page</h1>
-    </section>
+    return (
+        <main>
+            <section className="home-page">
+             <StationList/>
+            </section>
+        </main>
+    )
 }
+
+
+
+
+
+
+
+    
