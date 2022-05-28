@@ -9,10 +9,20 @@ export const StationPreview = ({ station }) => {
     }
 
     return <div className="station-preview" onClick={onGoToStation}>
-        <div className="station-cover">
-            <StationDefaultIcon />
+        <div className="inner-container">
+            <div className="station-cover">
+                <div className="img-container">
+                    {/* TODO: seperate between with and without imgUrl */}
+                    <div className="icon-container">
+                        <StationDefaultIcon />
+                    </div>
+
+                </div>
+            </div>
+            <div className="station-details">
+                <div className="station-name"> {station.name} </div>
+                <div className="station-creator">By {station.createdBy.fullName}</div>
+            </div>
         </div>
-        <div className="station-name"> {station.name} </div>
-        <div className="station-creator">By {station.createdBy.fullName}</div>
     </div>
 }

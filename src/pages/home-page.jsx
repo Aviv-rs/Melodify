@@ -1,11 +1,11 @@
 import { StationList } from '../cmps/station-list'
 
 
-export const HomePage = ()=>{
+export const HomePage = () => {
     return (
         <main>
             <section className="home-page">
-             <StationList/>
+                {/* <StationList/> */}
             </section>
         </main>
     )
@@ -17,4 +17,4 @@ export const HomePage = ()=>{
 
 
 
-    
+

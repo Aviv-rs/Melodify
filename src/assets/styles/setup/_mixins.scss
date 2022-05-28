@@ -1,34 +1,38 @@
 /* Media queries Breakpoint mixins */
 
 @mixin for-mobile-layout {
-  @media (max-width: $padded-break-narrow) {
+  @media (max-width: $break-sm) {
     @content;
   }
 }
 
-@mixin for-narrow-layout {
-  @media (min-width: $padded-break-narrow) {
+@mixin for-small-layout {
+  @media (min-width: $break-sm) {
     @content;
   }
 }
 
-@mixin for-normal-layout {
-  @media (min-width: $padded-break-normal) {
+@mixin for-medium-layout {
+  @media (min-width: $break-md) {
     @content;
   }
 }
 
-@mixin for-wide-layout {
-  @media (min-width: $padded-break-wide) {
+@mixin for-large-layout {
+  @media (min-width: $break-lg) {
     @content;
   }
 }
 
-@mixin layoutGTC($max) {
-  grid-template-columns:
-    minmax($layoutPadding, 1fr)
-    minmax(auto, $max)
-    minmax($layoutPadding, 1fr);
+@mixin for-extra-large-layout {
+  @media (min-width: $break-xl) {
+    @content;
+  }
+}
+
+@mixin layoutGTC($column-count, $grid-gap) {
+  grid-gap: $grid-gap;
+  grid-template-columns: repeat($column-count, minmax(0, 1fr));
 }
 
 /* Media  Mixins */
@@ -37,20 +41,23 @@
 @mixin aspect-ratio($width: 1, $height: 1) {
   position: relative;
   overflow: hidden;
+
   &:before {
     content: '';
     display: block;
     width: 100%;
     padding-top: ($height / $width) * 100%;
   }
-  > * {
+
+  >* {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
   }
-  > img {
+
+  >img {
     height: 100%;
     object-fit: cover;
   }
@@ -68,7 +75,7 @@
 // Buttons
 
 // prettier-ignore
-@mixin my-btn($type: regular,$bg: $clr4,$clr: $clr2,$padding: em(18px) em(38px),$hover: darken($bg, 8%)) {
+@mixin my-btn($type: regular, $bg: $clr4, $clr: $clr2, $padding: em(18px) em(38px), $hover: darken($bg, 8%)) {
   border: none;
   cursor: pointer;
   text-transform: uppercase;
@@ -76,15 +83,19 @@
   padding: $padding;
   font-size: em(14px);
 
-  @if $type == regular {
+  @if $type ==regular {
     background-color: $bg;
     color: $clr;
+
     &:hover {
       background-color: $hover;
     }
-  }@else if $type == light {
+  }
+
+  @else if $type ==light {
     background-color: $clr3;
     color: $clr5;
+
     &:hover {
       background-color: $clr1;
       color: $clr3;
@@ -92,13 +103,11 @@
   }
 }
 
-@mixin btn(
-  $type: regular,
+@mixin btn($type: regular,
   $bg: $clr1,
   $clr: $clr3,
   $padding: em(24px) em(44px),
-  $hover: darken($bg, 8%)
-) {
+  $hover: darken($bg, 8%)) {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
@@ -112,22 +121,29 @@
 
   transition: background-color 0.2s;
 
-  @if $type == regular {
+  @if $type ==regular {
     background-color: $bg;
     color: $clr;
+
     &:hover {
       background-color: $hover;
     }
-  } @else if $type == dark {
+  }
+
+  @else if $type ==dark {
     background-color: $clr2;
     color: $clr3;
+
     &:hover {
       background-color: $clr1;
       color: $clr3;
     }
-  } @else if $type == light {
+  }
+
+  @else if $type ==light {
     background-color: $clr3;
     color: $clr2;
+
     &:hover {
       background-color: $clr1;
       color: $clr3;
@@ -138,19 +154,26 @@
 // Type
 
 @mixin type($type: bold) {
+
   // type options:
   // 1.bold
   // 2.boldCondensed
   // 3.condensed
-  @if $type == bold {
+  @if $type ==bold {
     font-variation-settings: 'wght' 430;
-  } @else if $type == boldCondensed {
+  }
+
+  @else if $type ==boldCondensed {
     font-variation-settings: 'wght' 430, 'wdth' 80;
     letter-spacing: em(6.72px);
-  } @else if $type == condensed {
+  }
+
+  @else if $type ==condensed {
     font-variation-settings: 'wdth' 80;
     letter-spacing: em(6.72px);
-  } @else if $type == light {
+  }
+
+  @else if $type ==light {
     font-variation-settings: 'wght' 200;
   }
 }
