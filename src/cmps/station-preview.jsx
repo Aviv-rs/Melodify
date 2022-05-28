@@ -13,17 +13,15 @@ export const StationPreview = ({ station }) => {
         <div className="inner-container">
             <div className="station-cover">
                 <div className="img-container">
-                    {/* TODO: seperate between with and without imgUrl */}
-
+                    <button className="btn-toggle-play" >
+                        {<PlayIcon />}
+                    </button>
 
                     <div className="icon-container">
                         {station.coverUrl ?
                             <img src={`${station.coverUrl}`} alt="The playlist cover image" />
                             :
                             <StationDefaultIcon />}
-                        {/* <button className="btn-toggle-play" >
-                            {<PlayIcon />}
-                        </button> */}
                     </div>
 
                 </div>

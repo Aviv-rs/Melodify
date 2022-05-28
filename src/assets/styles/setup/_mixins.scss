@@ -39,21 +39,21 @@
 
 // Buttons
 
-@mixin toggle-play-btn($bg: $clr4, $clr: $clr6) {
+@mixin btn-toggle-play($bg: $clr4, $clr: $clr6) {
   background-color: $bg;
   color: $clr;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
-  width: 32px;
+  height: 48px;
+  width: 48px;
   border-radius: 500px;
-
   border: none;
+  padding: 0;
 
   &:hover {
-    transform: scale(1.06);
-    background-color: lighten($clr, 8%);
+    transform: scale(1.04);
+    background-color: lighten($bg, 1.5%);
   }
 }
 
