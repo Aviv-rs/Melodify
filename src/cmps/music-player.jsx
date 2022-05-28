@@ -33,6 +33,7 @@ export const MusicPlayer = () => {
     }
 
     const playerOnPlay = () => {
+        setIsPlaying(true)
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
         currTimeInterval.current = setInterval(() => setSongTime((prevSongTime) => prevSongTime + 1), 1000)
     }

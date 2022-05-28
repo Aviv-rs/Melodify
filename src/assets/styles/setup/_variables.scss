@@ -16,10 +16,13 @@ $clr11: #282828;
 $layoutPadding: 20px;
 
 // LAYOUT BREAKPOINTS
-$break-narrow: 664px;
-$break-normal: 896px;
-$break-wide: 1128px;
+$break-sm: 640px;
+$break-md: 810px;
+$break-lg: 1040px;
+$break-xl: 1330px;
 
-$padded-break-narrow: $break-narrow + $layoutPadding * 3;
-$padded-break-normal: $break-normal + $layoutPadding * 3;
-$padded-break-wide: $break-wide + $layoutPadding * 3;
+
+
+// $padded-break-narrow: $break-narrow + $layoutPadding * 3;
+// $padded-break-normal: $break-normal + $layoutPadding * 3;
+// $padded-break-wide: $break-wide + $layoutPadding * 3;
