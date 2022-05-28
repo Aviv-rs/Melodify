@@ -13,7 +13,10 @@
   color: $clr8;
 
   .main-view-container {
-    padding: 0 32px;
     grid-area: main-view;
+    position: absolute;
+    overflow-y: scroll;
+    padding: 0 32px;
+    inset: 0;
   }
 }

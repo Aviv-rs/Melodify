@@ -35,46 +35,28 @@
   grid-template-columns: repeat($column-count, minmax(0, 1fr));
 }
 
-/* Media  Mixins */
 
-//aspect ratio mixin
-@mixin aspect-ratio($width: 1, $height: 1) {
-  position: relative;
-  overflow: hidden;
-
-  &:before {
-    content: '';
-    display: block;
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
-
-  >* {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  >img {
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-// Mixin for removing hover efects on iphone screen
-@mixin hover-supported {
-  @media not all and (pointer: coarse) {
-    &:hover {
-      @content;
-    }
-  }
-}
 
 // Buttons
 
-// prettier-ignore
+@mixin toggle-play-btn($bg: $clr4, $clr: $clr6) {
+  background-color: $bg;
+  color: $clr;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 500px;
+
+  border: none;
+
+  &:hover {
+    transform: scale(1.06);
+    background-color: lighten($clr, 8%);
+  }
+}
+
 @mixin my-btn($type: regular, $bg: $clr4, $clr: $clr2, $padding: em(18px) em(38px), $hover: darken($bg, 8%)) {
   border: none;
   cursor: pointer;

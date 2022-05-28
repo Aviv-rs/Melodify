@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { StationDefaultIcon } from "../services/img.import.service"
+import { PlayIcon } from "../services/img.import.service"
 
 export const StationPreview = ({ station }) => {
     const navigate = useNavigate()
@@ -13,8 +14,16 @@ export const StationPreview = ({ station }) => {
             <div className="station-cover">
                 <div className="img-container">
                     {/* TODO: seperate between with and without imgUrl */}
+
+
                     <div className="icon-container">
-                        <StationDefaultIcon />
+                        {station.coverUrl ?
+                            <img src={`${station.coverUrl}`} alt="The playlist cover image" />
+                            :
+                            <StationDefaultIcon />}
+                        {/* <button className="btn-toggle-play" >
+                            {<PlayIcon />}
+                        </button> */}
                     </div>
 
                 </div>
