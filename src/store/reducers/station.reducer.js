@@ -11,12 +11,17 @@ export function stationReducer(state = INITIAL_STATE, action) {
                 ...state,
                 station: action.station
             }
-
         case 'UPDATE_STATION':
             return {
                 ...state,
                 station: action.station
             }
+        case 'SET_STATION':
+            return {
+                ...state,
+                station: action.station
+            }
+    
 
         case 'SET_STATION':
             return {

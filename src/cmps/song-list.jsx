@@ -6,6 +6,7 @@ export const SongList = ({ songs, isSearchResults, onAddSong, station = null }) 
             isSearchResult={isSearchResults}
             onAddSong={onAddSong}
             station={station}
+            currSongIdx = {idx}
             key={idx}
             songIdx={idx}
         />)}
