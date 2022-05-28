@@ -85,7 +85,9 @@ export const StationDetails = () => {
     return <section className="station-details">
         <Hero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle}/>
         <SongList songs={station.songs} isSearchResults={false} onAddSong={null} station={station} />
-        <Search onSearchSongs={displaySongResults} />
+        <div className="search-container">
+        <Search isInStationDetails={true} onSearchSongs={displaySongResults} />
+        </div>
         <div>{songResults &&
             <SongList songs={songResults} isSearchResults={true} onAddSong={onAddSong} />
         }</div>

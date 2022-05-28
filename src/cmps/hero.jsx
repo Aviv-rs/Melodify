@@ -15,6 +15,7 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
             <div className='hero-details'>
                 <span>PLAYLIST</span>
                 <h1>{station.name}</h1>
+                <span>{station.description}</span>
             </div>
 
             {isModalOpen && <StationModal onSubmit={onSubmit} setDescription={setDescription} setTitle={setTitle} setIsModalOpen= {setIsModalOpen} handleImgUpload={handleImgUpload}  station={station}/>}
