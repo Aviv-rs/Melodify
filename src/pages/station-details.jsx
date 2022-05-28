@@ -16,6 +16,8 @@ export const StationDetails = () => {
 
     const [songResults, setSongResults] = useState(null)
     const [station, setStation] = useState(null)
+    const [description, setDescription] = useState(null)
+    const [title, setTitle] = useState(null)
 
     useEffect(() => {
         if (station) return
@@ -65,11 +67,23 @@ export const StationDetails = () => {
         }
     }
 
-   
+    const onSubmit = async () =>{
+        try {
+            const newStation = { ...station, name: title, description }
+            setStation(newStation)
+            const savedStation = await stationService.save(newStation)
+
+        } catch {
+            console.log('could not save title and description')
+        }
+    }
+
+    
+
 
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details">
-        <Hero station={station} handleImgUpload={handleImgUpload} />
+        <Hero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle}/>
         <SongList songs={station.songs} isSearchResults={false} onAddSong={null} station={station} />
         <Search onSearchSongs={displaySongResults} />
         <div>{songResults &&
