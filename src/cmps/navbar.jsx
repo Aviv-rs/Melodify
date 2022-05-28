@@ -1,6 +1,16 @@
 import { NavLink, useMatch } from 'react-router-dom'
 // nav links svg icons
-import { Logo, HomeIcon, HomeActiveIcon, SearchIcon, SearchActiveIcon, LibraryIcon, LibraryActiveIcon, CreatePlaylistsIcon, LikedSongsIcon } from '../services/img.import.service'
+import {
+    Logo,
+    HomeIcon,
+    HomeActiveIcon,
+    SearchIcon,
+    SearchActiveIcon,
+    LibraryIcon,
+    LibraryActiveIcon,
+    CreatePlaylistsIcon,
+    LikedSongsIcon
+} from '../services/img.import.service'
 
 // memo (?)
 export const Navbar = () => {

@@ -1,0 +1,18 @@
+.station-modal {
+    width: 450px;
+    height: 324px;
+    background-color: $clr11;
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 30%);
+    top: 176px;
+    left: 329px;
+    // .exit-button{
+        // color: rgba(255,255,255,.7);
+    // }
+    .edit-details-title{
+        display: grid;
+        grid-template-columns: 1fr 2fr 20px;
+    }
+
+}

@@ -38,7 +38,7 @@ async function save(station) {
 function getEmptyStation() {
     return {
         name: "My Playlist #2",
-        coverUrl: "https://mosaic.scdn.co/640/ab67616d0000b273063fc4921a6d7fbac76e9bbaab67616d0000b273582f703c73240fe327aa05d6ab67616d0000b2736ca5c90113b30c3c43ffb8f4ab67616d0000b273985bf5ede2fe4a048ee85f28",
+        coverUrl: "",
         tags: [
             "Motivating",
             "Workout"
