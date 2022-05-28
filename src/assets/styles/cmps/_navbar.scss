@@ -43,7 +43,18 @@
                 transition: 0.4s;
             }
 
-            // TODO:make the background of the add playlist white and not the fill
+            &:hover,
+            &.active {
+                .create-playlist {
+                    background-color: $clr8;
+
+                    svg {
+
+                        fill: $clr3;
+                    }
+                }
+            }
+
 
         }
 
@@ -63,6 +74,12 @@
             border-radius: 2px;
             display: flex;
             align-items: center;
+
+            svg {
+                fill: #000
+            }
+
+
 
         }
 

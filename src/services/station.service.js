@@ -7,8 +7,19 @@ const STORAGE_KEY = 'station'
 export const stationService = {
     save,
     getEmptyStation,
+    query,
+    getById
 }
 
+async function query() {
+    const stations = await storageService.query(STORAGE_KEY)
+    return stations
+}
+
+async function getById(stationId) {
+    const station = await storageService.get(STORAGE_KEY, stationId)
+    return station
+}
 
 async function save(station) {
     let savedStation
