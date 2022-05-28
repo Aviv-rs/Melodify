@@ -12,16 +12,11 @@ export const Library = () => {
     }, [])
 
     const loadStations = async () => {
-<<<<<<< HEAD
         // try {
             const stations = await stationService.query()
             console.log("stations2", stations);
             if (stations) setStations(stations)
         // } catch (err) {        
-=======
-        const stations = await stationService.query()
-        if (stations) setStations(stations)
->>>>>>> 4bb181caaa1b31f7427f40748fdcbcfb886df3f2
     }
 
     return <section className="library">

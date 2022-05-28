@@ -1,0 +1,32 @@
+.genre-container {
+    padding-bottom: 32px;
+    // height: 100vh;
+    width: 100%;
+    height: 100%;
+
+    h2 {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.75rem;
+        letter-spacing: -0.04em;
+        
+    }
+
+    .genre-list {
+        @include for-medium-layout {
+            @include layoutGTC(3, 18px);
+        }
+
+        @include for-large-layout {
+            @include layoutGTC(4, 24px);
+        }
+
+        @include for-extra-large-layout {
+            @include layoutGTC(5, 24px);
+        }
+
+
+        
+    }
+
+}
