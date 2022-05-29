@@ -106,7 +106,7 @@ export const StationDetails = () => {
                     <BtnExit />
                 </div>
             </div> :
-                <span className="flex flex-end" onClick={() => setIsSearchOpen(true)}>FIND MORE</span>
+                <span className="flex flex-end" onClick={() => {setIsSearchOpen(true)}}>FIND MORE</span>
             }
 
         </div>
