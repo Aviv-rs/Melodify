@@ -25,6 +25,7 @@ export const MusicPlayer = () => {
     const [songTime, setSongTime] = useState(0)
     const [songTotalTime, setTotalTime] = useState(0)
     const [volume, setVolume] = useState(100)
+    const [mute, setMute] = useState(false)
 
     useEffect(() => {
         setSongTime(0)
@@ -52,6 +53,7 @@ export const MusicPlayer = () => {
     const handleVolumeChange = ({ target }) => {
         setVolume(+target.value)
         player.setVolume(+target.value)
+        target.value > 0 ? setMute(false) : setMute(true)
     }
 
     const toggleSongPlay = () => {

@@ -23,15 +23,13 @@ export const StationPreview = ({ station }) => {
         dispatch(getActionSetStation(station))
     }
 
-
-
     // TODO: rename class names
     return <div className="station-preview" onClick={onGoToStation}>
         <div className="inner-container">
             <div className="station-cover">
                 <div className="img-container">
                     <button className="btn-toggle-play" onClick={onPlayStation} >
-                        {<PlayIcon />}
+                        <PlayIcon />
                     </button>
 
                     <div className="icon-container">
