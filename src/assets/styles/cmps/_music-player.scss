@@ -8,6 +8,9 @@
     background-color: $clr3;
     overflow: hidden;
 
+    position: sticky;
+    bottom: 0;
+
     .song-details {
         width: 30%;
 
