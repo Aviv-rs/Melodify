@@ -17,29 +17,265 @@
 
 // server.js
 
+// DEMO *STATION*
+
+// {
+//   "_id": "5cksxjas89xjsa8xjsa8jxs459",
+//   "name": "French Classic Hits",
+//   "coverUrl": "https://i.scdn.co/image/ab67706c0000bebb740a579d239ead3b5b60356d",
+//   "tags": [
+//     "French",
+//     "Hits"
+//   ],
+//   "createdAt": 1415119918991,
+//   "createdBy": {
+//     "_id": "6283d13fb9a7e752c1c0fdcb",
+//     "username": "kyle_s",
+//     "fullName": "Kyle Smith"
+//   },
+//   "likedByUsers": [
+//     {
+//       "_id": "628a6e62b1f6f147074b1ff5",
+//       "username": "leila.P",
+//       "fullName": "Leila Parks"
+//     },
+
+//     {
+//       "_id": "628a71b2b1f6f147074b1ff6",
+//       "username": "summerz",
+//       "fullName": "Sam Marks"
+//     }
+//   ],
+// },
+
+
+// DEMO *SONG* FOR ADDING NEW SONGS :
+
+
+  // {
+  //   "id": "Obim8BYGnOE",
+  //   "title": "'Eminem - Til I collapse",
+  //   "url": "https://www.youtube.com/watch?v=Obim8BYGnOE",
+  //   "imgUrl": "https://i.ytimg.com/vi/Obim8BYGnOE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA68kovT2nZYzUWEI8nYr_MFMF8aQ",
+  //   "addedBy": {
+  //     "_id": "628a71b2b1f6f147074b1ff6",
+  //     "username": "summerz",
+  //     "fullName": "Sam Marks"
+  //   },
+  //   "addedAt": 162521765262,
+  //   "likedByUsers": [
+  //     {
+  //       "_id": "628a6e62b1f6f147074b1ff5",
+  //       "username": "leila.P",
+  //       "fullName": "Leila Parks"
+  //     },
+
+  //     {
+  //       "_id": "628a71b2b1f6f147074b1ff6",
+  //       "username": "summerz",
+  //       "fullName": "Sam Marks"
+  //     }
+  //   ],
+  // },
 
 // STATIONS
 // TODO :LIKED SONGS USER TO CHANGE FOLLOWING NEW USERS CREATED
 
 export const tags = [
-  "Workout",
-  "Relax",
-  "Meditation",
-  "Summer",
-  "Motivating",
-  "Sunny",
-  "Tropical",
-  "Throwback",
-  "French",
   "Hits",
+  "Workout",
+  "Summer",
   "Hip Hop",
-  "Focus",
-  "Studying",
+  "Meditation",
   "Chill",
-  "Love"
+  "Throwback",
+  "Sunny",
+  "Relax",
+  "French",
+  "Motivating",
+  "Tropical",
+  "Studying",
+  "Love",
+  "Focus"
 ]
 
 export const demoDataStations = [
+
+  {
+    "_id": "5cksxjas89xjs56GHDx",
+    "name": "Tropical Sunset",
+    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebb71cbf7aff2c8d6ee402af304",
+    "tags": [
+      "Tropical",
+      "Chill"
+    ],
+    "createdAt": 1415119918991,
+    "createdBy": {
+      "_id": "6283d13fb9a7e752c1c0fdcb",
+      "username": "kyle_s",
+      "fullName": "Kyle Smith"
+    },
+    "likedByUsers": [
+      {
+        "_id": "628a6e62b1f6f147074b1ff5",
+        "username": "leila.P",
+        "fullName": "Leila Parks"
+      },
+  
+      {
+        "_id": "628a71b2b1f6f147074b1ff6",
+        "username": "summerz",
+        "fullName": "Sam Marks"
+      }
+    ],
+  },
+
+  {
+    "_id": "5cksxjas89xjsa8xjsa8jxs357",
+    "name": "70's Golden Age",
+    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebbb4755a392bfecd5646f0c936",
+    "tags": [
+      "Throwback",
+      "Hits"
+    ],
+    "createdAt": 1415119918991,
+    "createdBy": {
+      "_id": "6283d13fb9a7e752c1c0fdcb",
+      "username": "kyle_s",
+      "fullName": "Kyle Smith"
+    },
+    "likedByUsers": [
+      {
+        "_id": "628a6e62b1f6f147074b1ff5",
+        "username": "leila.P",
+        "fullName": "Leila Parks"
+      },
+  
+      {
+        "_id": "628a71b2b1f6f147074b1ff6",
+        "username": "summerz",
+        "fullName": "Sam Marks"
+      }
+    ],
+  },
+
+  {
+    "_id": "5cksxjas89xjsa8xjsa8jxs459",
+    "name": "2022 French Hits",
+    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebbbf4be1a9f107d4d496dc1536",
+    "tags": [
+      "French",
+      "Hits"
+    ],
+    "createdAt": 1415119918991,
+    "createdBy": {
+      "_id": "6283d13fb9a7e752c1c0fdcb",
+      "username": "kyle_s",
+      "fullName": "David Elbaz"
+    },
+    "likedByUsers": [
+      {
+        "_id": "628a6e62b1f6f147074b1ff5",
+        "username": "leila.P",
+        "fullName": "Leila Parks"
+      },
+  
+      {
+        "_id": "628a71b2b1f6f147074b1ff6",
+        "username": "summerz",
+        "fullName": "Sam Marks"
+      }
+    ],
+  },
+
+  {
+    "_id": "5cksxjas89xjsa8xjsa8jxs459",
+    "name": "Hip-Hop Hits 2022",
+    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebb86c8562c1ed6220c1efb94b3",
+    "tags": [
+      "Hip Hop",
+      "Hits"
+    ],
+    "createdAt": 1415119918991,
+    "createdBy": {
+      "_id": "6283d13fb9a7e752c1c0fdcb",
+      "username": "kyle_s",
+      "fullName": "Yoni Geller"
+    },
+    "likedByUsers": [
+      {
+        "_id": "628a6e62b1f6f147074b1ff5",
+        "username": "leila.P",
+        "fullName": "Leila Parks"
+      },
+  
+      {
+        "_id": "628a71b2b1f6f147074b1ff6",
+        "username": "summerz",
+        "fullName": "Sam Marks"
+      }
+    ],
+  },
+
+  {
+    "_id": "5cksxjas89xjsa8xjsa8jxs459",
+    "name": "Top Old School US",
+    "coverUrl": "https://i.scdn.co/image/ab67616d00001e025b18f1a07315c0f092648a9e",
+    "tags": [
+      "Hip Hop",
+      "Motivating"
+    ],
+    "createdAt": 1415119918991,
+    "createdBy": {
+      "_id": "6283d13fb9a7e752c1c0fdcb",
+      "username": "kyle_s",
+      "fullName": "Aviv Roas"
+    },
+    "likedByUsers": [
+      {
+        "_id": "628a6e62b1f6f147074b1ff5",
+        "username": "leila.P",
+        "fullName": "Leila Parks"
+      },
+  
+      {
+        "_id": "628a71b2b1f6f147074b1ff6",
+        "username": "summerz",
+        "fullName": "Sam Marks"
+      }
+    ],
+  },
+
+  {
+    "_id": "5cksxjas89xjsa8xjsa8jxs459",
+    "name": "WRKT 2022 MIX",
+    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebb740a579d239ead3b5b60356d",
+    "tags": [
+      "Workout",
+      "Motivating"
+    ],
+    "createdAt": 1415119918991,
+    "createdBy": {
+      "_id": "6283d13fb9a7e752c1c0fdcb",
+      "username": "kyle_s",
+      "fullName": "Kyle Smith"
+    },
+    "likedByUsers": [
+      {
+        "_id": "628a6e62b1f6f147074b1ff5",
+        "username": "leila.P",
+        "fullName": "Leila Parks"
+      },
+
+      {
+        "_id": "628a71b2b1f6f147074b1ff6",
+        "username": "summerz",
+        "fullName": "Sam Marks"
+      }
+    ],
+  },
+
+
   {
     "_id": "5cksxjas89xjsa8xjsa8jxs09",
     "name": "Best Workout Mix",
@@ -117,7 +353,32 @@ export const demoDataStations = [
             "fullName": "Sam Marks"
           }
         ],
-      }
+      },
+      {
+        "id": "Obim8BYG34",
+        "title": "'Basto - Again and again",
+        "url": "https://music.youtube.com/watch?v=1EM7-9L2pdI",
+        "imgUrl": "https://i.ytimg.com/vi/1EM7-9L2pdI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA68kovT2nZYzUWEI8nYr_MFMF8aQ",
+        "addedBy": {
+          "_id": "628a71b2b1f6f147074b1ff6",
+          "username": "summerz",
+          "fullName": "Sam Marks"
+        },
+        "addedAt": 162521765262,
+        "likedByUsers": [
+          {
+            "_id": "628a6e62b1f6f147074b1ff5",
+            "username": "leila.P",
+            "fullName": "Leila Parks"
+          },
+    
+          {
+            "_id": "628a71b2b1f6f147074b1ff6",
+            "username": "summerz",
+            "fullName": "Sam Marks"
+          }
+        ],
+      },
     ]
   },
 
@@ -208,7 +469,7 @@ export const demoDataStations = [
   {
     "_id": "5cksxjas89xjsa8xjsa8jxs989",
     "name": "Summer and Cocktails 🏝️🍹",
-    "coverUrl": "https://mosaic.scdn.co/640/ab67616d0000b273063fc4921a6d7fbac76e9bbaab67616d0000b273582f703c73240fe327aa05d6ab67616d0000b2736ca5c90113b30c3c43ffb8f4ab67616d0000b273985bf5ede2fe4a048ee85f28",
+    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebba3908a576ac468092735cf38",
     "tags": [
       "Summer",
       "Sunny",
