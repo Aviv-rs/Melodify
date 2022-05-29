@@ -19,7 +19,7 @@ export { ReactComponent as VolumeMuteIcon } from '../assets/imgs/volume-mute.svg
 export { ReactComponent as StationDefaultIcon } from '../assets/imgs/station-default.svg'
 export { ReactComponent as StationDetailsPencil } from '../assets/imgs/station-details-pencil.svg'
 
-export { ReactComponent as ExitBttn } from '../assets/imgs/exit-button.svg'
+export { ReactComponent as BtnExit } from '../assets/imgs/exit-button.svg'
 
 // TODO: render the navbar with an array of icons, keep our code DRY
 // TODO: render the matching active icons
