@@ -23,13 +23,13 @@ export const HomePage = () => {
         <main>
             <section className="home-page">
                 {
-                    tags.map(tag => {
+                    tags.map((tag, idx) => {
                         const stationsByTag = stations.filter(station => station.tags.includes(tag))
-                        return <section className="station-collection">
+                        return <section key={idx} className="station-collection">
                             <div className="tag-title-container">
                                 <h2 className="tag-title">{tag}</h2>
                             </div>
-                            <StationList key={tag} stations={stationsByTag} />
+                            <StationList stations={stationsByTag} />
                         </section>
                     })
                 }
