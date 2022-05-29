@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon } from '../services/img.import.service'
 import { utilService } from '../services/util.service'
 import { SliderBar } from './slider'
-import { setCurrSong } from '../store/actions/current-song.action'
+import { setCurrSong, setIsPlaying } from '../store/actions/current-song.action'
 import { getActionSetStation } from '../store/actions/station.action'
 import { Link } from 'react-router-dom'
 
@@ -12,25 +12,32 @@ export const MusicPlayer = () => {
 
     const { station } = useSelector((storeState) => storeState.stationModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
+    const { isPlaying } = useSelector((storeState) => storeState.currSongModule)
 
     const opts = {
         height: '0',
         width: '0',
     }
 
+
     const currTimeInterval = useRef()
     const dispatch = useDispatch()
     const [player, setPlayer] = useState(null)
-    const [isPlaying, setIsPlaying] = useState(false)
+    // const [isPlaying, dispatch(setIsPlaying(!isPlaying))] = useState(false)
     const [songTime, setSongTime] = useState(0)
     const [songTotalTime, setTotalTime] = useState(0)
     const [volume, setVolume] = useState(100)
-    const [mute, setMute] = useState(false)
+
+    const isDisabled = !player || !currSong
 
     useEffect(() => {
-        setSongTime(0)
-        setIsPlaying(true)
+        // setSongTime(0)
+        // dispatch(setIsPlaying(true))
     }, [currSong])
+
+    useEffect(() => {
+        player?.setVolume(volume)
+    }, [volume])
 
 
     const playerOnReady = ({ target }) => {
@@ -40,7 +47,7 @@ export const MusicPlayer = () => {
     }
 
     const playerOnPlay = () => {
-        setIsPlaying(true)
+        dispatch(setIsPlaying(true))
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
         currTimeInterval.current = setInterval(() => setSongTime((prevSongTime) => prevSongTime + 1), 1000)
     }
@@ -53,12 +60,11 @@ export const MusicPlayer = () => {
     const handleVolumeChange = ({ target }) => {
         setVolume(+target.value)
         player.setVolume(+target.value)
-        target.value > 0 ? setMute(false) : setMute(true)
     }
 
     const toggleSongPlay = () => {
         if (!player) return
-        setIsPlaying((prevIsPlaying) => !prevIsPlaying)
+        dispatch(setIsPlaying(!isPlaying))
         if (isPlaying) {
             player.pauseVideo()
         }
@@ -84,7 +90,7 @@ export const MusicPlayer = () => {
         dispatch(getActionSetStation(newStation))
         dispatch(setCurrSong(currSong))
         setSongTime(0)
-        setIsPlaying(true)
+        dispatch(setIsPlaying(true))
     }
 
 
@@ -106,27 +112,29 @@ export const MusicPlayer = () => {
             </div>
             <div className="player-controls">
                 <div className="player-controls-buttons">
-                    <button className='btn-play-prev' onClick={() => onChangeSong(-1)} ><PlayPrevIcon fill='#b3b3b3' /></button>
-                    <button onClick={toggleSongPlay} className="btn-toggle-play" >
+                    <button disabled={isDisabled} className='btn-play-prev' onClick={() => onChangeSong(-1)} ><PlayPrevIcon fill='#b3b3b3' /></button>
+                    <button disabled={isDisabled} onClick={toggleSongPlay} className="btn-toggle-play" >
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
-                    <button className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
+                    <button disabled={isDisabled} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
                 </div>
                 <div className='playBackSlide'>
                     <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
-                    <SliderBar maxValue={songTotalTime} disabled={!player} handleChange={handleTimeChange} value={songTime} width={500} />
+                    <SliderBar maxValue={songTotalTime} disabled={isDisabled} handleChange={handleTimeChange} value={songTime} width={500} />
                     <div className='total-time'> {utilService.convertSecToMin(songTotalTime)}</div>
                 </div>
             </div>
 
             <div className='right-side-controls'>
                 <div className="volume-controls">
-                    <button className="btn-volume">
+                    <button disabled={isDisabled} onClick={() => {
+                        volume > 0 ? setVolume(0) : setVolume(100)
+                    }} className="btn-volume">
                         {volume > 0 ? <VolumeIcon />
                             :
                             <VolumeMuteIcon />}
                     </button>
-                    <SliderBar disabled={!player} handleChange={handleVolumeChange} value={volume} width={100} />
+                    <SliderBar disabled={!currSong} handleChange={handleVolumeChange} value={volume} width={100} />
                 </div>
             </div>
 
@@ -143,9 +151,4 @@ export const MusicPlayer = () => {
 }
 
 
-// test data
-// const ids = ["tcYodQoapMg",
-//     , "QYh6mYIJG2Y",
-//     "1ekZEVeXwek",
-//     "SXiSVQZLje8",
-//     "QYh6mYIJG2Y"]
+

@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-    currSong: null
+    currSong: null,
+    isPlaying: false
 }
 
 
@@ -10,6 +11,11 @@ export function currSongReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 currSong: action.song
+            }
+        case 'SET_IS_PLAYING':
+            return {
+                ...state,
+                isPlaying: action.isPlaying
             }
 
         default:
