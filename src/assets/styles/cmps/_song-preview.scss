@@ -1,8 +1,8 @@
 .song-preview {
     display: grid;
-    grid-template-columns: 60px 60px 2fr 20px;
+    grid-template-columns: 60px 60px 2fr 80px;
     gap: 5px;
-    padding: 2px;
+    padding: 6px;
     cursor: default;
     height: 56px;
     align-items: center;
@@ -11,6 +11,8 @@
         .btn-play {
             opacity: 1;
         }
+
+        background-color: rgba(255,255,255,.1);
     }
 
     .btn-play {
@@ -31,5 +33,20 @@
 
     .title {
         align-self: center;
+    }
+
+    .button-add {
+        border-radius: 500px;
+        font-size: inherit;
+        padding-block: 12px;
+        padding-inline: 26px;
+        -webkit-tap-highlight-color: transparent;
+        background-color: transparent;
+        color: $clr2;
+        border: 1px solid var(--essential-subdued,#878787);
+    }
+
+    .button-add:focus-visible {
+        outline: -webkit-focus-ring-color auto 1px;
     }
 }
