@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c9ca1a4e.css",
+    "main.js": "/static/js/main.c267b601.js",
+    "static/media/bahnschrift.ttf": "/static/media/bahnschrift.23b347dac5478c8b4500.ttf",
+    "static/media/logo.png": "/static/media/logo.ef68766a9e086162e0b4.png",
+    "static/media/Merienda-Regular.ttf": "/static/media/Merienda-Regular.53d1a3f1031a51480ad3.ttf",
+    "index.html": "/index.html",
+    "main.c9ca1a4e.css.map": "/static/css/main.c9ca1a4e.css.map",
+    "main.c267b601.js.map": "/static/js/main.c267b601.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c9ca1a4e.css",
+    "static/js/main.c267b601.js"
+  ]
+}

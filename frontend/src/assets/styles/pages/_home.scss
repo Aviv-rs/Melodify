@@ -1,0 +1,16 @@
+.home-page {
+    grid-gap: 24px;
+    display: grid;
+    padding-top: 24px;
+
+    .station-collection {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+        min-height: 300px;
+        min-width: 100%;
+        position: relative;
+
+
+    }
+}
