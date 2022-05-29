@@ -1,35 +1,117 @@
 .station-modal {
-    width: 450px;
-    height: 324px;
-    background-color: $clr11;
-    position: absolute;
-    border-radius: 8px;
-    box-shadow: 0 4px 4px rgb(0 0 0 / 30%);
-    top: 176px;
-    left: 329px;
+       left: 0;
+       top: 0;
+       bottom: 0;
+       width: 100wh;
+       right: 0;
+       position: fixed;
+       background-color: rgb(0 0 0 / 70%);
+       z-index: 3;
 
-    // .exit-button{
-    // color: rgba(255,255,255,.7);
-    // }
-    .edit-details-title {
-        display: grid;
-        grid-template-columns: 1fr 2fr 20px;
-    }
+    .station-modal-content {
+        width: 500px;
+        height: 400px;
+        background-color: $clr11;
+        position: absolute;
+        border-radius: 8px;
+        box-shadow: 0 4px 4px rgb(0 0 0 / 30%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
-    .img-input {
-        display: none;
-    }
 
-    .title-input {
-        background: rgba(255, 255, 255, .1);
-        border: 1px solid transparent;
-        border-radius: 4px;
-        color: #fff;
-        font-family: inherit;
-        font-size: 14px;
-        height: 40px;
-        padding: 0 12px;
-        width: 100%;
+        .modal-hero-img {
+            height: 180px;
+            width: 180px;
+        }
+
+        .edit-details-title {
+            display: grid;
+            grid-template-columns: 1fr 2fr 20px;
+            padding: 24px;
+        }
+
+        label {
+            height: 0;
+        }
+
+        .bttns-input {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .edit-details-inputs {
+            display: flex;
+            grid-gap: 16px;
+            padding: 0 21px 0px;
+        }
+
+        .img-input {
+            display: none;
+        }
+
+        .title-input {
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            height: 40px;
+            padding: 0 12px;
+            width: 100%;
+
+        }
+
+        .title-input:focus-visible {
+            border-radius: 0px;
+            outline: none;
+        }
+
+        .album-image-description {
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            height: 100%;
+            height: 124px;
+            padding: 8px 8px 28px;
+            resize: none;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .album-image-description:focus-visible {
+            border-radius: 0px;
+            outline: none;
+        }
+
+        .save-button {
+            border-radius: 500px;
+            font-size: inherit;
+            padding-block: 12px;
+            padding-inline: 32px;
+        }
+
+        .save-button:focus-visible {
+            outline: -webkit-focus-ring-color auto 1px;
+        }
+
+        .save-button:hover {
+            padding-inline: 35px;
+        }
+
+        .station-modal-text {
+            font-size: 0.6875rem;
+            line-height: 1rem;
+            text-transform: none;
+            letter-spacing: normal;
+            padding: 21px;
+        }
     }
 
 }
