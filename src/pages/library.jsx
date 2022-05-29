@@ -13,9 +13,8 @@ export const Library = () => {
 
     const loadStations = async () => {
         // try {
-            const stations = await stationService.query()
-            console.log("stations2", stations);
-            if (stations) setStations(stations)
+        const stations = await stationService.query()
+        if (stations) setStations(stations)
         // } catch (err) {        
     }
 

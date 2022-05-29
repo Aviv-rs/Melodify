@@ -1,5 +1,4 @@
 import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
 
 
 const STORAGE_KEY = 'station'
@@ -39,7 +38,7 @@ function getEmptyStation() {
     return {
         name: "My Playlist #2",
         coverUrl: "",
-        description:"",
+        description: "",
         tags: [
             "Motivating",
             "Workout"
