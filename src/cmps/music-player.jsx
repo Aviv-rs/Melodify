@@ -25,6 +25,11 @@ export const MusicPlayer = () => {
     const [songTotalTime, setTotalTime] = useState(0)
     const [volume, setVolume] = useState(100)
 
+    useEffect(() => {
+        setSongTime(0)
+        setIsPlaying(true)
+    }, [currSong])
+
 
     const playerOnReady = ({ target }) => {
         setPlayer(target)

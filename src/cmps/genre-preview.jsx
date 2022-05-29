@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom"
 
 
 export function GenrePreview({ genre }) {
-    console.log("genre", genre);
 
     const navigate = useNavigate()
 
