@@ -1,6 +1,6 @@
 import { SongPreview } from '../cmps/song-preview'
 export const SongList = ({ songs, isSearchResults, onAddSong, station = null }) => {
-    return <section>
+    return <section className='song-list'>
         {songs.map((song, idx) => <SongPreview
             song={song}
             isSearchResult={isSearchResults}

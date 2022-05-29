@@ -31,16 +31,19 @@
 }
 
 .search-station-details{
+    
     input{
         background-color: rgba(255,255,255,.1);
         border: 0;
-        border-radius: 4px;
+        // border-radius: 4px;
         color: rgba(255,255,255,.7);
         height: 40px;
         opacity: 1;
-        padding: 8px 32px;
+        // padding: 8px 32px;
         text-overflow: ellipsis;
-        transition-duration: .3s;
+        transition-duration: .3s; 
+        width: 100%;
+        
     }
     input:focus-visible {
         border-radius: 0px;
@@ -51,5 +54,15 @@
         background-color: inherit;
         border: none;
         fill: white;
+        height: 100%;
+        padding: 5.5px;
+    }
+
+    form {
+        align-items: center;
+        display: flex;
+        width: 368px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.1);
     }
 }

@@ -19,6 +19,6 @@ export const SongPreview = ({ song, songIdx, isSearchResult, onAddSong, station 
         </div>
         <img src={song.imgUrl} alt="" />
         <div className="title">{song.title}</div>
-        {isSearchResult && <button onClick={() => onAddSong(song)}>Add</button>}
+        {isSearchResult && <button className='button-add' onClick={() => onAddSong(song)}>Add</button>}
     </div>)
 }

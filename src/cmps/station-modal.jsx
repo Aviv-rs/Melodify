@@ -1,4 +1,4 @@
-import { ExitBttn, StationDetailsPencil, StationDefaultIcon } from '../services/img.import.service'
+import { BtnExit, StationDetailsPencil, StationDefaultIcon } from '../services/img.import.service'
 
 export const StationModal = ({ setIsModalOpen, handleImgUpload, station, setTitle, setDescription, onSubmit }) => {
     //TODO: add close modal option by pressing outside the modal
@@ -7,13 +7,13 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, setTitl
             <div className='edit-details-title'>
                 <h1>Edit details</h1>
                 <span></span>
-                <ExitBttn className='exit-button' onClick={() => setIsModalOpen(false)} />
+                <BtnExit className='exit-button' onClick={() => setIsModalOpen(false)} />
             </div>
             <div className='edit-details-inputs'>
                 <label htmlFor="inputImg">
                     <div className='hero-img modal-hero-img'>
                         <StationDetailsPencil className='pencil' />
-                        {(station.coverUrl.length > 0) ?
+                        {(station.coverUrl) ?
                             <img src={station.coverUrl} alt="" />
                             : <StationDefaultIcon className='station-def-icon' />}
                     </div>
