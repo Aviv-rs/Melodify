@@ -6,6 +6,7 @@ import { utilService } from '../services/util.service'
 import { SliderBar } from './slider'
 import { setCurrSong } from '../store/actions/current-song.action'
 import { getActionSetStation } from '../store/actions/station.action'
+import { Link } from 'react-router-dom'
 
 export const MusicPlayer = () => {
 
@@ -87,8 +88,19 @@ export const MusicPlayer = () => {
 
     return (
         <div className='music-player'>
-            <div className="song-details">
-                {currSong && <img src={currSong.imgUrl} alt="" />}
+            <div className="left-side-controls">
+                <div className="song-details">
+                    <div className="song-img-container">
+
+                        {currSong && <img src={currSong.imgUrl} alt="" />}
+                    </div>
+                    <div className="song-info">
+                        <div className="song-name long-txt">{currSong?.title}</div>
+                        <Link to={`station/${station?._id}`}>
+                            <div className="station-name">{station?.name}</div>
+                        </Link>
+                    </div>
+                </div>
             </div>
             <div className="player-controls">
                 <div className="player-controls-buttons">

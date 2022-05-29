@@ -11,12 +11,71 @@
     position: sticky;
     bottom: 0;
 
-    .song-details {
+    .left-side-controls {
         width: 30%;
+        min-width: 180px;
 
-        img {
-            width: 56px;
+        .song-details {
+            align-items: center;
+            flex-direction: row;
+            justify-content: flex-start;
+            display: flex;
+            position: relative;
+            transform: translateX(0);
+            transition: transform .25s cubic-bezier(.3, 0, 0, 1);
+
+            .song-img-container {
+                min-width: 56px;
+                min-height: 56px;
+                width: 56px;
+                height: 56px;
+            }
+
+            .song-info {
+                font-family: circular-medium;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                row-gap: 3px;
+                margin: 0 14px;
+                overflow: hidden;
+
+
+                .song-name {
+                    white-space: nowrap;
+
+                    &:hover {
+                        animation: long-txt 12s;
+                    }
+                }
+
+
+
+
+
+                @keyframes long-txt {
+                    0% {
+                        transform: translate(0, 0);
+                    }
+
+                    100% {
+                        transform: translate(-150%, 0);
+                    }
+                }
+
+                .station-name {
+                    color: $clr7;
+                    font-size: 0.785rem;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
         }
+
+
     }
 
 
