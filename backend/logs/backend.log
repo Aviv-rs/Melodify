@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 29.5.2022, 19:36:44 - INFO - Server is running on port: 3030
 29.5.2022, 19:36:51 - INFO - Server is running on port: 3030
 29.5.2022, 19:37:05 - INFO - Server is running on port: 3030
@@ -465,3 +466,5 @@
 5/30/2022, 10:48:15 PM - DEBUG - Getting Stations
 5/30/2022, 10:48:20 PM - INFO - Req was made
 5/30/2022, 10:48:20 PM - DEBUG - Getting Stations
+=======
+>>>>>>> 0f17db52db7688f464f6a1314ad4390d18828481

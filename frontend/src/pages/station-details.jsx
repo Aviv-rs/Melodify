@@ -9,6 +9,7 @@ import { getActionSetStation } from "../store/actions/station.action"
 import { cloudinaryService } from '../services/cloudinary.service'
 import { BtnExit } from '../services/img.import.service'
 import getAverageColor from 'get-average-color'
+import { youtubeService } from "../services/youtube.service"
 
 
 export const StationDetails = () => {
@@ -55,8 +56,10 @@ export const StationDetails = () => {
 
 
     const onAddSong = async (song) => {
-        console.log('adding song to station', song)
-        const newStation = { ...station, songs: [...station.songs, song] }
+        
+        song.duration = await youtubeService.getSongDuration(song.id)
+        song.createdAt = Date.now()
+        const newStation = {...station, songs: [...station.songs, song] }
         setStation(newStation)
         if (station?._id) {
             const savedStation = await stationService.save(newStation)
