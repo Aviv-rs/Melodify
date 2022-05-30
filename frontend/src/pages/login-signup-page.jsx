@@ -4,13 +4,20 @@ import { useDispatch } from 'react-redux'
 
 export const LoginSignupPage = () => {
     const dispatch = useDispatch()
-    const onUserLogin = credentials => {
-        console.log(credentials)
-        dispatch(onLogin(credentials))
+
+    const onUserLogin = async credentials => {
+        try {
+            await dispatch(onLogin(credentials))
+        } catch (err) {
+            throw err
+        }
     }
-    const onUserSignup = credentials => {
-        console.log(credentials)
-        dispatch(onSignup(credentials))
+    const onUserSignup = async credentials => {
+        try {
+            await dispatch(onSignup(credentials))
+        } catch (err) {
+            throw err
+        }
     }
     return (
         <section className="user-login">

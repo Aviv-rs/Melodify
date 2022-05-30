@@ -759,8 +759,8 @@ export const demoDataStations = [
 
 const user = {
   "_id": "6283d13fb9a7e752c1c0fdcb",
-  "username": "melodifyDYA",
-  "password": "avocados4life",
+  "username": "summerz",
+  "password": "382959299",
   "avatar": "https://thumbs.dreamstime.com/z/illustration-cute-gentlemen-avocado-gentleman-vector-84825371.jpg",
   "likedSongs": [{
     "id": "VDvr08sCPOc",

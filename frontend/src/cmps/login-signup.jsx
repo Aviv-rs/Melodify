@@ -10,18 +10,19 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { Alert } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { useNavigate } from 'react-router-dom'
+import { useMatch, useNavigate } from 'react-router-dom'
 import { setUserMsg } from '../store/actions/user.action'
 
 export const LoginSignup = props => {
-  const [isSignup, setIsSignup] = React.useState(false)
+  const [isSignup, setIsSignup] = React.useState(!useMatch('login'))
   const [isWrongLogin, setIsWrongLogin] = React.useState(false)
   const navigate = useNavigate()
 
+
+
+
   const handleSubmit = async ev => {
     ev.preventDefault()
-    navigate('/music')
-    return
     const data = new FormData(ev.currentTarget)
     const credentials = {
       username: data.get('username'),
@@ -32,15 +33,15 @@ export const LoginSignup = props => {
     if (isSignup) {
       try {
         await props.onSignup(credentials)
-        navigate('/')
+        navigate('/music')
       } catch {
         setUserMsg({ txt: 'Cannot login', type: 'danger' })
       }
     } else {
       try {
         await props.onLogin(credentials)
-        navigate('/')
-      } catch {
+        navigate('/music')
+      } catch (err) {
         setIsWrongLogin(true)
       }
     }
@@ -127,6 +128,7 @@ export const LoginSignup = props => {
             <Grid container justifyContent="flex-end">
               <Link
                 onClick={() => {
+                  isSignup ? navigate('/login') : navigate('/signup')
                   setIsSignup(!isSignup)
                   setIsWrongLogin(false)
                 }}

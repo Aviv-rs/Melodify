@@ -21,7 +21,7 @@ export const StationPreview = ({ station }) => {
 
 
     useEffect(() => {
-        if(stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
+        if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
         else setIsPlayShow(false)
     }, [station, isPlaying, stationModule])
 
