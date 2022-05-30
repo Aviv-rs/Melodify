@@ -18,15 +18,17 @@ export const SongPreview = ({ song, songIdx, isSearchResult, onAddSong, station 
     }
     // TODO: play on double click, add pause option from here
     return (<div className="song-preview">
-        {/* <div className='play-song-container' onClick={onPlaySong}> */}
-        <div className='play-song-container'>
-            <button onClick={onTogglePlaySong} className="btn-play"> <PlayIcon /> </button>
+        <div className='play-song-container' onClick={onTogglePlaySong}>
+            {/* <div className='play-song-container'> */}
+            <button className="btn-play"> <PlayIcon /> </button>
             <span className='song-number'>{songIdx + 1}</span>
         </div>
         <img src={song.imgUrl} alt="" />
         <div className="title">{song.title}</div>
-        <span>5 days ago</span>
-        <span>3:14</span>
+        {!isSearchResult && <span>5 days ago</span>}
+        {!isSearchResult && <span>3:14</span>}
+
+        {isSearchResult && <span></span>}
         {isSearchResult && <button className='button-add' onClick={() => onAddSong(song)}>Add</button>}
     </div>)
 }

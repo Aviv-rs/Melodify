@@ -53,10 +53,11 @@
     }
 
     .button-add {
+        width: 59px;
+        padding-block: 6.5px;
         border-radius: 500px;
         font-size: inherit;
-        padding-block: 12px;
-        padding-inline: 26px;
+        padding-inline: 15px;
         -webkit-tap-highlight-color: transparent;
         background-color: transparent;
         color: $clr2;
