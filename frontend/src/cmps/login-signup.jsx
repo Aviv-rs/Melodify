@@ -10,13 +10,13 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { Alert } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { useNavigate } from 'react-router-dom'
 import { setUserMsg } from '../store/actions/user.action'
 
 export const LoginSignup = props => {
   const [isSignup, setIsSignup] = React.useState(false)
   const [isWrongLogin, setIsWrongLogin] = React.useState(false)
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const handleSubmit = async ev => {
     ev.preventDefault()
@@ -30,14 +30,14 @@ export const LoginSignup = props => {
     if (isSignup) {
       try {
         await props.onSignup(credentials)
-        history.push('/toy')
+        navigate('/')
       } catch {
         setUserMsg({ txt: 'Cannot login', type: 'danger' })
       }
     } else {
       try {
         await props.onLogin(credentials)
-        history.push('/toy')
+        navigate('/')
       } catch {
         setIsWrongLogin(true)
       }

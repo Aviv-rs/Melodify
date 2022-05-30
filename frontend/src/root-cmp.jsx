@@ -7,6 +7,7 @@ import { MusicPlayer } from './cmps/music-player'
 
 
 export function App() {
+
   return (
     <div className="app main-layout">
       <Router>

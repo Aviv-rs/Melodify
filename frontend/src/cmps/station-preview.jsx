@@ -8,6 +8,7 @@ import { setCurrSong } from '../store/actions/current-song.action'
 
 export const StationPreview = ({ station }) => {
 
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -20,6 +21,7 @@ export const StationPreview = ({ station }) => {
         const { songs } = station
         if (!songs || !songs?.length) return
         dispatch(setCurrSong(songs[0]))
+        station.currSongIdx = 0
         dispatch(getActionSetStation(station))
     }
 
