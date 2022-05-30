@@ -32,6 +32,9 @@ export const StationDetails = () => {
         if (station) return
         loadStation()
     }, [])
+    useEffect(() => {
+        getAvgColor(station?.coverUrl)
+    }, [station?.coverUrl])
 
     const loadStation = async () => {
         if (!stationId) {
