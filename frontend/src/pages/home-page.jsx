@@ -24,6 +24,9 @@ export const HomePage = () => {
             <section className="home-page">
                 {
                     tags.map((tag, idx) => {
+                        // stationService.query({createdBy:{
+                        //     userName:'melodifyDYA'
+                        // }})
                         const stationsByTag = stations.filter(station => station.tags.includes(tag))
                         return <section key={idx} className="station-collection">
                             <div className="tag-title-container">

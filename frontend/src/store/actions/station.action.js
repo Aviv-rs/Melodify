@@ -9,7 +9,6 @@ export function getActionAddStation(station) {
         } catch (err) {
             console.log('err:', err)
         }
-
     }
 }
 

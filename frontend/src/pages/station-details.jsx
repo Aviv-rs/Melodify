@@ -6,10 +6,9 @@ import { SongList } from "../cmps/song-list"
 import { Hero } from "../cmps/hero"
 import { stationService } from "../services/station.service"
 import { getActionSetStation } from "../store/actions/station.action"
-import { cloudinaryService } from '../services/cloudinary-service'
+import { cloudinaryService } from '../services/cloudinary.service'
 import { BtnExit } from '../services/img.import.service'
 
-// import image from '../assets/imgs/logo-background.png'
 
 
 export const StationDetails = () => {
@@ -57,6 +56,7 @@ export const StationDetails = () => {
         setStation(newStation)
         if (station?._id) {
             const savedStation = await stationService.save(newStation)
+            console.log('saved station', savedStation)
             if (station._id === stationModule.station._id) {
                 dispatch(getActionSetStation(savedStation))
             }
@@ -106,7 +106,7 @@ export const StationDetails = () => {
                     <BtnExit />
                 </div>
             </div> :
-                <span className="flex flex-end" onClick={() => {setIsSearchOpen(true)}}>FIND MORE</span>
+                <span className="flex flex-end" onClick={() => { setIsSearchOpen(true) }}>FIND MORE</span>
             }
 
         </div>

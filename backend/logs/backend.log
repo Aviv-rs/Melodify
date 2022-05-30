@@ -123,3 +123,13 @@
 29.5.2022, 20:58:57 - INFO - Server is running on port: 3030
 29.5.2022, 20:59:16 - INFO - Req was made
 29.5.2022, 20:59:16 - DEBUG - Getting Stations
+29.5.2022, 21:02:47 - INFO - Server is running on port: 3030
+29.5.2022, 21:52:49 - ERROR - while finding station 5cksxjas89xjsa8xjsa8jxs09 | {}
+29.5.2022, 21:52:49 - ERROR - Failed to get station | {}
+29.5.2022, 21:52:54 - ERROR - while finding station 5cksxjas89xjsa8xjsa8jxs09 | {}
+29.5.2022, 21:52:54 - ERROR - Failed to get station | {}
+29.5.2022, 21:55:27 - INFO - Req was made
+29.5.2022, 21:55:27 - DEBUG - Getting Stations
+29.5.2022, 22:04:38 - INFO - Server is running on port: 3030
+29.5.2022, 22:05:22 - INFO - Req was made
+29.5.2022, 22:05:22 - DEBUG - Getting Stations
