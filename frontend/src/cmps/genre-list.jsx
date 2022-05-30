@@ -1,8 +1,9 @@
 import { GenrePreview } from "./genre-preview"
+import {Loader} from "./loader"
 
-export function GenreList({ genres }) {
-
-    if (!genres) return <div>Loading Genres...</div> //TODO LOADER
+export function GenreList({  }) {
+    const genres = null
+    if (true) return <div><Loader/></div> //TODO LOADER
     return (
         <section className="genre-container ">
             <h2 className="genre-title">Browse all</h2>
