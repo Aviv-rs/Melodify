@@ -5,6 +5,7 @@ import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMute
 import { utilService } from '../services/util.service'
 import { SliderBar } from './slider'
 import { setCurrSong, setIsPlaying } from '../store/actions/current-song.action'
+import { setPlayer } from '../store/actions/player.action'
 import { getActionSetStation } from '../store/actions/station.action'
 import { Link } from 'react-router-dom'
 
@@ -13,6 +14,7 @@ export const MusicPlayer = () => {
     const { station } = useSelector((storeState) => storeState.stationModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
     const { isPlaying } = useSelector((storeState) => storeState.currSongModule)
+    const { player } = useSelector((storeState) => storeState.playerModule)
 
     const opts = {
         height: '0',
@@ -22,7 +24,7 @@ export const MusicPlayer = () => {
 
     const currTimeInterval = useRef()
     const dispatch = useDispatch()
-    const [player, setPlayer] = useState(null)
+    // const [player, setPlayer] = useState(null)
     // const [isPlaying, dispatch(setIsPlaying(!isPlaying))] = useState(false)
     const [songTime, setSongTime] = useState(0)
     const [songTotalTime, setTotalTime] = useState(0)
@@ -41,8 +43,10 @@ export const MusicPlayer = () => {
 
 
     const playerOnReady = ({ target }) => {
-        setPlayer(target)
         target.playVideo()
+        setSongTime(0)
+        dispatch(setPlayer(target))
+        // setPlayer(target)
         setTotalTime(+target.getDuration())
     }
 
@@ -75,6 +79,7 @@ export const MusicPlayer = () => {
 
     const playerOnPause = () => {
         if (currTimeInterval.current) clearInterval(currTimeInterval.current)
+        dispatch(setIsPlaying(false))
     }
 
     const onChangeSong = (diff) => {

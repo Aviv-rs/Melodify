@@ -7,7 +7,7 @@ import { getActionSetStation } from '../store/actions/station.action'
 import { setCurrSong } from '../store/actions/current-song.action'
 export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit }) => {
 
-    console.log('station', station)
+    
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [colorAvg, setColorAvg] = useState('rgb(83,83,83)')
