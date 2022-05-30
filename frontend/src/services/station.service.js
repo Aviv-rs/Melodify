@@ -44,7 +44,7 @@ async function save(station) {
 
 function getEmptyStation() {
     return {
-        name: "My playlist",
+        name: "New playlist",
         coverUrl: "",
         description: "",
         tags: [

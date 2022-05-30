@@ -20,8 +20,8 @@ export const SongPreview = ({ song, songIdx, isSearchResult, onAddSong, station 
     return (<div className="song-preview">
         {/* <div className='play-song-container' onClick={onPlaySong}> */}
         <div className='play-song-container'>
-            <button  className="btn-play"> <PlayIcon /> </button>
-            <span className='song-number'>{songIdx +1 }</span>
+            <button onClick={onTogglePlaySong} className="btn-play"> <PlayIcon /> </button>
+            <span className='song-number'>{songIdx + 1}</span>
         </div>
         <img src={song.imgUrl} alt="" />
         <div className="title">{song.title}</div>

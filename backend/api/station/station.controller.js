@@ -31,6 +31,7 @@ async function addStation(req, res) {
   try {
     const station = req.body
     const addedStation = await stationService.add(station)
+    console.log(addedStation);
     res.json(addedStation)
   } catch (err) {
     logger.error('Failed to add station', err)

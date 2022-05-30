@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { stationService } from '../services/station.service'
 import { tags } from '../data/station'
-import { demoDataStations } from '../data/station'
 import { StationList } from '../cmps/station-list'
 
 
@@ -14,8 +13,6 @@ export const HomePage = () => {
     }, [])
 
     const loadStations = async () => {
-        // const stations = await stationService.query()
-        // if (!stations) return
         const stations = await stationService.query()
         setStations(stations)
     }
