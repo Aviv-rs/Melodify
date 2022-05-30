@@ -266,6 +266,141 @@
 30/05/2022, 18:11:26 - DEBUG - Getting Stations
 30/05/2022, 18:24:19 - INFO - Req was made
 30/05/2022, 18:24:19 - DEBUG - Getting Stations
+<<<<<<< HEAD
+30.5.2022, 18:56:54 - INFO - Req was made
+30.5.2022, 18:56:54 - DEBUG - Getting Stations
+30.5.2022, 18:58:20 - INFO - Req was made
+30.5.2022, 18:58:20 - DEBUG - Getting Stations
+30.5.2022, 19:04:26 - INFO - Req was made
+30.5.2022, 19:04:26 - DEBUG - Getting Stations
+30.5.2022, 19:04:30 - INFO - Req was made
+30.5.2022, 19:04:30 - DEBUG - Getting Stations
+30.5.2022, 19:04:31 - INFO - Req was made
+30.5.2022, 19:04:31 - DEBUG - Getting Stations
+30.5.2022, 19:04:41 - INFO - Req was made
+30.5.2022, 19:04:41 - DEBUG - Getting Stations
+30.5.2022, 19:04:43 - INFO - Req was made
+30.5.2022, 19:04:43 - DEBUG - Getting Stations
+30.5.2022, 19:04:52 - INFO - Req was made
+30.5.2022, 19:04:52 - DEBUG - Getting Stations
+30.5.2022, 19:06:09 - INFO - Req was made
+30.5.2022, 19:06:09 - DEBUG - Getting Stations
+30.5.2022, 19:08:39 - INFO - Req was made
+30.5.2022, 19:08:39 - DEBUG - Getting Stations
+30.5.2022, 19:09:18 - INFO - Req was made
+30.5.2022, 19:09:18 - DEBUG - Getting Stations
+30.5.2022, 19:13:03 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:13:04 - INFO - New connected socket [id: dEyJG7VbmmzUxdnjAAAL]
+30.5.2022, 19:13:04 - INFO - Req was made
+30.5.2022, 19:13:04 - DEBUG - Getting Stations
+30.5.2022, 19:13:12 - INFO - Req was made
+30.5.2022, 19:13:12 - DEBUG - Getting Stations
+30.5.2022, 19:13:16 - INFO - Req was made
+30.5.2022, 19:13:16 - DEBUG - Getting Stations
+30.5.2022, 19:25:15 - DEBUG - auth.service - login with username: lol
+30.5.2022, 19:25:15 - INFO - Req was made
+30.5.2022, 19:25:15 - DEBUG - Getting Stations
+30.5.2022, 19:25:15 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:28:45 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:28:45 - INFO - Req was made
+30.5.2022, 19:28:45 - DEBUG - Getting Stations
+30.5.2022, 19:28:45 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:30:23 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:30:23 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:31:33 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:31:33 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:31:38 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:31:39 - INFO - New connected socket [id: dbfPhN69m2jbmF34AAAN]
+30.5.2022, 19:31:41 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:31:41 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:32:25 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:32:25 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:32:45 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:32:45 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:33:02 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:33:02 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:35:47 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:35:47 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:37:04 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:37:04 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:37:08 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:37:08 - INFO - New connected socket [id: ctZxREAN4rIogGcbAAAP]
+30.5.2022, 19:37:15 - DEBUG - auth.service - login with username: hello
+30.5.2022, 19:37:16 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:38:52 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:38:53 - INFO - New connected socket [id: RKBRN62LfhRIPshTAAAR]
+30.5.2022, 19:38:57 - DEBUG - auth.service - login with username: err
+30.5.2022, 19:38:57 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:39:22 - DEBUG - auth.service - login with username: err
+30.5.2022, 19:39:22 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:39:45 - DEBUG - auth.service - login with username: err
+30.5.2022, 19:39:45 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 19:41:43 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:41:44 - INFO - New connected socket [id: hN2Ns6oJ9AfyujEcAAAT]
+30.5.2022, 19:42:47 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:42:48 - INFO - New connected socket [id: NaLCgVe8z8TwLi8-AAAV]
+30.5.2022, 19:42:57 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:42:58 - INFO - New connected socket [id: KUw_RN_WKFgSIXs7AAAX]
+30.5.2022, 19:43:38 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:43:39 - INFO - New connected socket [id: gi-_zzizSNdaqIvNAAAZ]
+30.5.2022, 19:45:40 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:45:40 - INFO - New connected socket [id: LdxSWrjnSNmmrAvOAAAb]
+30.5.2022, 19:46:41 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:46:42 - INFO - New connected socket [id: riPkjGTUdqbtb2cgAAAd]
+30.5.2022, 19:46:47 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:46:48 - INFO - New connected socket [id: 4rKdHFPynEuU-OcfAAAf]
+30.5.2022, 19:46:57 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:46:58 - INFO - New connected socket [id: IhgQscSsZ9UWkCeoAAAh]
+30.5.2022, 19:47:00 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:47:01 - INFO - New connected socket [id: 3qJeJa28f713xi72AAAj]
+30.5.2022, 19:47:04 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 19:47:04 - INFO - New connected socket [id: qDgHfGRCE_DnnLEZAAAl]
+30.5.2022, 20:08:47 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 20:08:48 - INFO - New connected socket [id: Y007bwhR5sySuATXAAAn]
+30.5.2022, 20:09:03 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 20:09:04 - INFO - New connected socket [id: m5A5OGrWsR_EEIaEAAAp]
+30.5.2022, 20:09:42 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 20:09:43 - INFO - New connected socket [id: PRumATZPmU5eyGHQAAAr]
+30.5.2022, 20:09:57 - INFO - New connected socket [id: YZmxuJtEcfzWRKRQAAAt]
+30.5.2022, 20:09:59 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 20:10:07 - DEBUG - auth.service - login with username: puki
+30.5.2022, 20:10:07 - ERROR - Failed to Login Invalid username or password
+30.5.2022, 20:26:58 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 20:26:59 - INFO - New connected socket [id: cTOTWO8LMhnXfu2vAAAv]
+30.5.2022, 20:26:59 - INFO - Req was made
+30.5.2022, 20:26:59 - DEBUG - Getting Stations
+30.5.2022, 20:27:00 - INFO - Req was made
+30.5.2022, 20:27:00 - DEBUG - Getting Stations
+30.5.2022, 20:29:59 - DEBUG - auth.service - login with username: melodifyDYA
+30.5.2022, 20:29:59 - INFO - User login:  | {"_id":"6294fef3e2c44b9d48fd052f","likedSongs":[],"likedStations":[],"username":"melodifyDYA","isAdmin":true,"fullname":"Melodify"}
+30.5.2022, 20:29:59 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: cTOTWO8LMhnXfu2vAAAv]
+30.5.2022, 20:31:10 - DEBUG - auth.service - login with username: melodifyDYA
+30.5.2022, 20:31:10 - INFO - User login:  | {"_id":"6294fef3e2c44b9d48fd052f","likedSongs":[],"likedStations":[],"username":"melodifyDYA","isAdmin":true,"fullname":"Melodify"}
+30.5.2022, 20:31:10 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: cTOTWO8LMhnXfu2vAAAv]
+30.5.2022, 20:31:10 - INFO - Req was made
+30.5.2022, 20:31:10 - DEBUG - Getting Stations
+30.5.2022, 20:32:39 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 20:32:40 - INFO - New connected socket [id: TePFtUQd86LJtDTlAAAx]
+30.5.2022, 20:32:40 - INFO - Req was made
+30.5.2022, 20:32:40 - DEBUG - Getting Stations
+30.5.2022, 20:32:40 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: TePFtUQd86LJtDTlAAAx]
+30.5.2022, 20:46:02 - INFO - Req was made
+30.5.2022, 20:46:02 - DEBUG - Getting Stations
+30.5.2022, 20:50:53 - INFO - Req was made
+30.5.2022, 20:50:53 - DEBUG - Getting Stations
+30.5.2022, 20:58:01 - INFO - Req was made
+30.5.2022, 20:58:01 - DEBUG - Getting Stations
+30.5.2022, 20:58:02 - INFO - Req was made
+30.5.2022, 20:58:02 - DEBUG - Getting Stations
+30.5.2022, 20:58:09 - INFO - Req was made
+30.5.2022, 20:58:09 - DEBUG - Getting Stations
+30.5.2022, 21:35:27 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 21:35:55 - INFO - New connected socket [id: uxeEZsXrBL7uXraNAAAz]
+30.5.2022, 21:37:39 - INFO - Socket disconnected [id: undefined]
+30.5.2022, 22:03:00 - INFO - New connected socket [id: T7lPvMLpDxrni6RwAAA1]
+30.5.2022, 22:57:08 - INFO - Req was made
+30.5.2022, 22:57:08 - DEBUG - Getting Stations
+=======
 30/05/2022, 18:35:19 - INFO - New connected socket [id: iTpjfO6QtOmAI5UvAAAB]
 30/05/2022, 18:35:25 - INFO - Socket disconnected [id: undefined]
 30/05/2022, 18:35:26 - INFO - New connected socket [id: KWsdi2ak5HeXHLiLAAAD]
@@ -484,6 +619,7 @@
 5/30/2022, 10:54:26 PM - INFO - New connected socket [id: tVVUp09ktox51z2UAABv]
 5/30/2022, 10:54:29 PM - INFO - Socket disconnected [id: undefined]
 5/30/2022, 10:54:29 PM - INFO - New connected socket [id: hYA42-n7nzw6f1f0AABx]
+<<<<<<< HEAD
 5/30/2022, 10:59:19 PM - INFO - Socket disconnected [id: undefined]
 5/30/2022, 10:59:19 PM - INFO - New connected socket [id: 1dQeBSSWmsPFQ9PWAABz]
 5/30/2022, 11:06:32 PM - INFO - Socket disconnected [id: undefined]
@@ -500,3 +636,6 @@
 5/30/2022, 11:19:06 PM - INFO - New connected socket [id: Y-66FOG1pNoDSjTZAACA]
 5/30/2022, 11:19:55 PM - INFO - Socket disconnected [id: undefined]
 5/30/2022, 11:19:56 PM - INFO - New connected socket [id: Q5SFn8_ym1X9Xqe7AACC]
+=======
+>>>>>>> cc79a0026d21693be2be4895dc2829427e8f1370
+>>>>>>> 6b361d9164bdc37a5c67dd41e7afde05be7e655e

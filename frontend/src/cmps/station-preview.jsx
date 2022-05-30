@@ -21,12 +21,12 @@ export const StationPreview = ({ station }) => {
 
 
     useEffect(() => {
-        if(stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
+        if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
         else setIsPlayShow(false)
     }, [station, isPlaying, stationModule])
 
     const onGoToStation = () => {
-        navigate(`station/${station._id}`)
+        navigate(`/music/station/${station._id}`)
     }
 
     const onTogglePlayer = (ev) => {

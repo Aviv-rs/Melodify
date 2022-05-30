@@ -20,6 +20,8 @@ export { ReactComponent as StationDefaultIcon } from '../assets/imgs/station-def
 export { ReactComponent as StationDetailsPencil } from '../assets/imgs/station-details-pencil.svg'
 export { ReactComponent as BtnExit } from '../assets/imgs/exit-button.svg'
 export { ReactComponent as Clock } from '../assets/imgs/clock.svg'
+export { ReactComponent as ArrowDownIcon } from '../assets/imgs/arrow-down.svg'
+export { ReactComponent as ArrowUpIcon } from '../assets/imgs/arrow-up.svg'
 
 // TODO: render the navbar with an array of icons, keep our code DRY
 // TODO: render the matching active icons
