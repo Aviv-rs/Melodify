@@ -20,6 +20,8 @@ export const LoginSignup = props => {
 
   const handleSubmit = async ev => {
     ev.preventDefault()
+    navigate('/music')
+    return
     const data = new FormData(ev.currentTarget)
     const credentials = {
       username: data.get('username'),

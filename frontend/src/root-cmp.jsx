@@ -1,31 +1,21 @@
+import { MusicApp } from './music-app';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { routes } from './routes.js'
-import { AppHeader } from './cmps/app-header.jsx'
-import { Navbar } from './cmps/navbar.jsx'
-import { MusicPlayer } from './cmps/music-player'
+import { LoginSignupPage } from './pages/login-signup-page';
 // import { UserMsg } from './cmps/user-msg.jsx'
+
 
 
 export function App() {
 
   return (
-    <div className="app main-layout">
+    <div className="app">
       <Router>
-        <div className="main-view-container">
-          <AppHeader />
-          <Routes>
-            {routes.map(route => (
-              <Route
-                key={route.path}
-                element={route.element}
-                path={route.path}
-              />
-            ))}
-          </Routes>
-        </div>
-        <Navbar />
-        <MusicPlayer />
-        {/* <UserMsg /> */}
+        <Routes>
+          <Route path={'music/*'} element={<MusicApp />} />
+          <Route path={'login'} element={<LoginSignupPage />} />
+          <Route path={'signup'} element={<LoginSignupPage />} />
+          {/* <Route path={'/'} element={<WelcomePage />} /> */}
+        </Routes>
       </Router>
     </div>
   )

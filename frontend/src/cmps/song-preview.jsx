@@ -17,7 +17,8 @@ export const SongPreview = ({ song, songIdx, isSearchResult, onAddSong, station 
     useEffect(() => {
         if(stationModule?.station?._id === station?._id 
             && currSong?.id === song.id ) setIsPlayShow(isPlaying)
-    }, [station, isPlaying, currSong])
+            else setIsPlayShow(false)
+    }, [station, isPlaying, currSong, stationModule])
 
     const onTogglePlayer = () => {
         if(currSong?.id !== song.id) dispatch(setCurrSong(song))

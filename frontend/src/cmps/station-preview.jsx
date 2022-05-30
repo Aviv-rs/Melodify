@@ -21,11 +21,12 @@ export const StationPreview = ({ station }) => {
 
 
     useEffect(() => {
-        if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
-    }, [station, isPlaying])
+        if(stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
+        else setIsPlayShow(false)
+    }, [station, isPlaying, stationModule])
 
     const onGoToStation = () => {
-        navigate(`/station/${station._id}`)
+        navigate(`station/${station._id}`)
     }
 
     const onTogglePlayer = (ev) => {
@@ -43,18 +44,10 @@ export const StationPreview = ({ station }) => {
 
     const onPlayStation = () => {
         dispatch(getActionSetStation(station))
-        dispatch(setCurrSong(station.songs[0]))
-        // dispatch(setCurrSong(station.songs[station.currSongIdx]))
+        // dispatch(setCurrSong(station.songs[0]))
+        dispatch(setCurrSong(station.songs[station.currSongIdx]))
         setIsPlayShow(true)
     }
-
-    // const onPlayStation = (ev) => {
-    //     ev.stopPropagation()
-    //     const { songs } = station
-    //     if (!songs || !songs?.length) return
-    //     dispatch(setCurrSong(songs[0]))
-    //     dispatch(getActionSetStation(station))
-    // }
 
     // TODO: rename class names
     return <div className="station-preview" onClick={onGoToStation}>
@@ -71,7 +64,6 @@ export const StationPreview = ({ station }) => {
                             :
                             <StationDefaultIcon />}
                     </div>
-
                 </div>
             </div>
             <div className="station-details">
