@@ -1,0 +1,73 @@
+.welcome-page {
+    background-color: #121212;
+    background-image: url ('https://images.pexels.com/photos/213207/pexels-photo-213207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    display: grid;
+    height: 100vh;
+
+    @include for-medium-layout {
+        @include layoutGTC(3, 18px);
+    }
+
+    @include for-large-layout {
+        @include layoutGTC(3, 24px);
+    }
+
+    @include for-extra-large-layout {
+        @include layoutGTC(3, 24px);
+    }
+
+    .logo-container {
+        height: 80px;
+        margin: 20px;
+        g {
+        fill: #1db954;
+        
+        }
+
+    }
+
+    .main-welcome  {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #1db954;
+        font-family: gotham-bold;
+        font-size: 30px;
+        text-shadow:
+
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+
+        // .text-flicker-in-glow{
+        //     animation: text-flicker-in-glow 4s linear both;
+        // }
+        
+    }
+
+    button {
+        margin-top: 40px;
+        border: none;
+        font-weight: 900;
+        letter-spacing: 0.1px;
+        font-size: 1.25rem;
+        background-color: #1db954;
+        width: 175px;
+        height: 50px;
+        border-radius: 1.375rem;
+        border: 2px solid #93ebb2;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
+
+}
+
+
+
+
