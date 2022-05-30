@@ -1,4 +1,4 @@
-import { StationPreview } from '../cmps/station-preview'
+import { StationPreview } from './station-preview'
 
 export const StationList = ({ stations }) => {
     if (!stations) return

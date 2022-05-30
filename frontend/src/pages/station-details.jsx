@@ -8,13 +8,14 @@ import { stationService } from "../services/station.service"
 import { getActionSetStation } from "../store/actions/station.action"
 import { cloudinaryService } from '../services/cloudinary.service'
 import { BtnExit } from '../services/img.import.service'
+import getAverageColor from 'get-average-color'
 
 
 
 export const StationDetails = () => {
     const dispatch = useDispatch()
     const { stationId } = useParams()
-
+    const [colorAvg, setColorAvg] = useState('rgb(83,83,83)')
     const navigate = useNavigate()
     const stationModule = useSelector(storeState => storeState.stationModule)
 
@@ -47,6 +48,7 @@ export const StationDetails = () => {
         // TODO: show user an indication that playlist wasnt found
         setStation(station)
         setIsSearchOpen(false)
+        getAvgColor(station.coverUrl)
     }
 
 
@@ -78,6 +80,14 @@ export const StationDetails = () => {
         }
     }
 
+    const getAvgColor = (url) => {
+        getAverageColor(url).then(rgb => {
+            const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
+            console.log("🚀 ~ file: station-details.jsx ~ line 86 ~ getAverageColor ~ color", color)
+            setColorAvg(color)
+        })
+    }
+
     const onSubmit = async () => {
         try {
             const newStation = { ...station, name: title, description }
@@ -93,10 +103,12 @@ export const StationDetails = () => {
 
 
     if (!station) return <div>Loading...</div> //TODO: add loader
-    return <section className="station-details">
+    return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
+    {/* // return <section className="station-details" style={{ background: `background: linear-gradient( ${colorAvg}, black)` }}> */}
+        
         <Hero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle} />
         <SongList songs={station.songs} isSearchResults={false} onAddSong={null} station={station} />
-        <div >
+        <div className="search-station-details-main" >
             {isSearchOpen ? <div className="flex space-between">
                 <div className="search-container">
                     <h1>Let's find something for your playlist</h1>

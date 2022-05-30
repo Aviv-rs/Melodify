@@ -95,6 +95,39 @@ export const tags = [
 
 export const demoDataStations = [
 
+
+
+  {
+    "_id": "5cksxjas89xjsa8xjsa8jxs459",
+    "name": "Calming Music +",
+    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebb908df2f19e6437cddfd4238d",
+    "tags": [
+      "Meditation",
+      "Relax"
+    ],
+    "createdAt": 1415119918991,
+    "createdBy": {
+      "_id": "6283d13fb9a7e752c1c0fdcb",
+      "username": "kyle_s",
+      "fullName": "Kyle Smith"
+    },
+    "likedByUsers": [
+      {
+        "_id": "628a6e62b1f6f147074b1ff5",
+        "username": "leila.P",
+        "fullName": "Leila Parks"
+      },
+
+      {
+        "_id": "628a71b2b1f6f147074b1ff6",
+        "username": "summerz",
+        "fullName": "Sam Marks"
+      }
+    ],
+  },
+
+
+
   {
     "_id": "6283d13fb9a7e752c1c0fdcb",
     "name": "Tropical Sunset",
@@ -182,7 +215,7 @@ export const demoDataStations = [
 
   {
     "name": "WRKT 2022 MIX",
-    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebb740a579d239ead3b5b60356d",
+    "coverUrl": "https://i.scdn.co/image/ab67706c0000bebb91cd1c6f67b7b404b1a8fab9",
     "tags": [
       "Workout",
       "Motivating"

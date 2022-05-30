@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StationDetailsPencil, StationDetMusic, StationDefaultIcon, PlayIcon, PauseIcon } from '../services/img.import.service'
+import { StationDetailsPencil, StationDetMusic, StationDefaultIcon, PlayIcon, PauseIcon, Clock } from '../services/img.import.service'
 import { StationModal } from './station-modal'
 import getAverageColor from 'get-average-color'
 import { useDispatch } from 'react-redux'
@@ -11,11 +11,9 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [colorAvg, setColorAvg] = useState('rgb(83,83,83)')
-    // const [classAvgColor, setClassAvgColor] = useState(`background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%), $clr10`)
     const [isPlay, setIsPlay] = useState(false)
     useEffect(() => {
         getAvgColor()
-        // if (colorAvg) setClassAvgColor()
     }, [station])
     const getAvgColor = () => {
         getAverageColor(station.coverUrl).then(rgb => {
@@ -38,7 +36,8 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
 
 
     return (
-        <article className='hero-container' style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%), ${colorAvg}` }}>
+        // <article className='hero-container' style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%), ${colorAvg}` }}>
+        <article className='hero-container'>
             <div className='hero-content' >
 
                 <div className='hero-img hero-img-main' onClick={() => setIsModalOpen(true)}>
@@ -63,6 +62,13 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
                     <span></span>
                 }
             </div>
+                <div className='table-header'>
+                    <span className='ashtag'>#</span>
+                    <span>TITLE</span>
+                    <span></span>
+                    <span>DATE ADDED</span>
+                    <Clock/>
+                </div>
         </article>
     )
 }
