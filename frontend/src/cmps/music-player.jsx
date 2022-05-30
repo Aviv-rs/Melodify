@@ -92,7 +92,9 @@ export const MusicPlayer = () => {
     }
 
     const onChangeSong = (diff) => {
+        console.log('diff', diff);
         const newStation = { ...station }
+        console.log("🚀 ~ file: music-player.jsx ~ line 85 ~ onChangeSong ~ newStation", newStation)
 
         newStation.currSongIdx = newStation.currSongIdx + diff
         if (newStation.currSongIdx < 0) {
@@ -129,7 +131,8 @@ export const MusicPlayer = () => {
                     <button disabled={isDisabled} onClick={toggleSongPlay} className="btn-toggle-play" >
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
-                    <button disabled={isDisabled} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
+                    {/* <button disabled={isDisabled} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button> */}
+                    <button  className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
                 </div>
                 <div className='playBackSlide'>
                     <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>

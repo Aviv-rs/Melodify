@@ -213,6 +213,7 @@
 30/05/2022, 16:26:27 - DEBUG - Getting Stations
 30/05/2022, 16:27:04 - INFO - Req was made
 30/05/2022, 16:27:04 - DEBUG - Getting Stations
+<<<<<<< HEAD
 30.5.2022, 16:31:24 - INFO - Req was made
 30.5.2022, 16:31:24 - DEBUG - Getting Stations
 30.5.2022, 16:42:56 - INFO - Req was made
@@ -706,3 +707,37 @@
 30.5.2022, 18:49:17 - INFO - New connected socket [id: WnXFTh1AUswLxoU5AAAJ]
 30.5.2022, 18:52:24 - INFO - Req was made
 30.5.2022, 18:52:24 - DEBUG - Getting Stations
+=======
+30/05/2022, 16:29:13 - INFO - Req was made
+30/05/2022, 16:29:13 - DEBUG - Getting Stations
+30/05/2022, 16:36:05 - INFO - Req was made
+30/05/2022, 16:36:05 - DEBUG - Getting Stations
+30/05/2022, 16:39:18 - INFO - Req was made
+30/05/2022, 16:39:18 - DEBUG - Getting Stations
+30/05/2022, 16:50:05 - INFO - Req was made
+30/05/2022, 16:50:05 - DEBUG - Getting Stations
+30/05/2022, 16:50:45 - INFO - Req was made
+30/05/2022, 16:50:45 - DEBUG - Getting Stations
+30/05/2022, 16:52:35 - INFO - Req was made
+30/05/2022, 16:52:35 - DEBUG - Getting Stations
+30/05/2022, 16:53:43 - INFO - Req was made
+30/05/2022, 16:53:43 - DEBUG - Getting Stations
+30/05/2022, 16:54:55 - INFO - Req was made
+30/05/2022, 16:54:55 - DEBUG - Getting Stations
+30/05/2022, 17:05:21 - INFO - Req was made
+30/05/2022, 17:05:21 - DEBUG - Getting Stations
+30/05/2022, 17:09:08 - INFO - Req was made
+30/05/2022, 17:09:08 - DEBUG - Getting Stations
+30/05/2022, 17:11:28 - INFO - Req was made
+30/05/2022, 17:11:28 - DEBUG - Getting Stations
+30/05/2022, 17:12:37 - INFO - Req was made
+30/05/2022, 17:12:37 - DEBUG - Getting Stations
+30/05/2022, 17:12:42 - INFO - Req was made
+30/05/2022, 17:12:42 - DEBUG - Getting Stations
+30/05/2022, 17:13:46 - INFO - Req was made
+30/05/2022, 17:13:46 - DEBUG - Getting Stations
+30/05/2022, 18:11:26 - INFO - Req was made
+30/05/2022, 18:11:26 - DEBUG - Getting Stations
+30/05/2022, 18:24:19 - INFO - Req was made
+30/05/2022, 18:24:19 - DEBUG - Getting Stations
+>>>>>>> e23fe26265d98dcfc2112adb19ceb540c9d447b6
