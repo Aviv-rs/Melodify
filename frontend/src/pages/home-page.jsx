@@ -16,7 +16,8 @@ export const HomePage = () => {
     const loadStations = async () => {
         // const stations = await stationService.query()
         // if (!stations) return
-        setStations(demoDataStations)
+        const stations = await stationService.query()
+        setStations(stations)
     }
 
     return (
@@ -24,9 +25,7 @@ export const HomePage = () => {
             <section className="home-page">
                 {
                     tags.map((tag, idx) => {
-                        // stationService.query({createdBy:{
-                        //     userName:'melodifyDYA'
-                        // }})
+
                         const stationsByTag = stations.filter(station => station.tags.includes(tag))
                         return <section key={idx} className="station-collection">
                             <div className="tag-title-container">

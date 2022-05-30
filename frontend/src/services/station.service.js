@@ -44,7 +44,7 @@ async function save(station) {
 
 function getEmptyStation() {
     return {
-        name: "",
+        name: "My playlist",
         coverUrl: "",
         description: "",
         tags: [
@@ -52,7 +52,6 @@ function getEmptyStation() {
         ],
         createdAt: Date.now(),
         createdBy: {
-
         },
         likedByUsers: [
 

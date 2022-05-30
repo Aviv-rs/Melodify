@@ -2,7 +2,6 @@ const authService = require('../api/auth/auth.service')
 const asyncLocalStorage = require('../services/als.service')
 
 async function setupAsyncLocalStorage(req, res, next) {
-  console.log(req.url)
 
   const storage = {}
   asyncLocalStorage.run(storage, () => {

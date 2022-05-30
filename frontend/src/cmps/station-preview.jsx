@@ -43,7 +43,7 @@ export const StationPreview = ({ station }) => {
             </div>
             <div className="station-details">
                 <div className="station-name"> {station.name} </div>
-                <div className="station-creator">By {station.createdBy.fullName}</div>
+                <div className="station-creator">By {station.createdBy.fullname}</div>
             </div>
         </div>
     </div>
