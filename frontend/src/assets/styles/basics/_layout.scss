@@ -3,7 +3,7 @@
   grid-template-areas:
     "nav-container main-view"
     "music-player music-player";
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 241px 1fr;
   grid-template-rows: 1fr 90px;
   height: 100%;
   min-height: 100vh;
@@ -16,7 +16,7 @@
     grid-area: main-view;
     position: absolute;
     overflow-y: scroll;
-    padding: 0 32px;
+    // padding: 0 32px;
     inset: 0;
   }
 }
