@@ -11,11 +11,11 @@ import { useEffect, useState } from "react"
 export const StationPreview = ({ station }) => {
 
     const [isPlayShow, setIsPlayShow] = useState(false)
-    const  stationModule  = useSelector((storeState) => storeState.stationModule)
+    const stationModule = useSelector((storeState) => storeState.stationModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
-   
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -33,13 +33,13 @@ export const StationPreview = ({ station }) => {
         ev.stopPropagation()
         if (!currSong) {
             onPlayStation()
-        }else if (stationModule.station._id !== station._id) onPlayStation()
+        } else if (stationModule.station._id !== station._id) onPlayStation()
         else if (isPlaying) {
             player.pauseVideo()
         }
-        else if (!isPlaying){
+        else if (!isPlaying) {
             player.playVideo()
-        } 
+        }
     }
 
     const onPlayStation = () => {
@@ -55,7 +55,7 @@ export const StationPreview = ({ station }) => {
             <div className="station-cover">
                 <div className="img-container">
                     <button className="btn-toggle-play" onClick={onTogglePlayer} >
-                    {isPlayShow ? <PauseIcon /> : <PlayIcon />}
+                        {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                     </button>
 
                     <div className="icon-container">

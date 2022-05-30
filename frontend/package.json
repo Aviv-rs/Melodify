@@ -25,6 +25,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "sass": "^1.52.1",
+    "socket.io-client": "^4.5.1",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.5.3",
     "workbox-broadcast-update": "^6.5.3",
