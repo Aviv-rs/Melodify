@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 29.5.2022, 19:36:44 - INFO - Server is running on port: 3030
 29.5.2022, 19:36:51 - INFO - Server is running on port: 3030
 29.5.2022, 19:37:05 - INFO - Server is running on port: 3030
@@ -689,3 +690,6 @@
 5/30/2022, 11:37:25 PM - INFO - New connected socket [id: o2wd8i2opQFAd8pWAACu]
 5/30/2022, 11:39:05 PM - INFO - Socket disconnected [id: undefined]
 5/30/2022, 11:39:05 PM - INFO - New connected socket [id: 3iCrFshwFcNJCsvJAACw]
+=======
+30/05/2022, 23:37:19 - INFO - Socket disconnected [id: undefined]
+>>>>>>> ff2225b8fe4c673039e330a1f514e407a0d0014b
