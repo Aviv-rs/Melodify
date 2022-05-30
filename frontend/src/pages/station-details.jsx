@@ -6,10 +6,9 @@ import { SongList } from "../cmps/song-list"
 import { Hero } from "../cmps/hero"
 import { stationService } from "../services/station.service"
 import { getActionSetStation } from "../store/actions/station.action"
-import { cloudinaryService } from '../services/cloudinary-service'
+import { cloudinaryService } from '../services/cloudinary.service'
 import { BtnExit } from '../services/img.import.service'
 import getAverageColor from 'get-average-color'
-
 
 
 export const StationDetails = () => {
@@ -33,6 +32,9 @@ export const StationDetails = () => {
         if (station) return
         loadStation()
     }, [])
+    useEffect(() => {
+        getAvgColor(station?.coverUrl)
+    }, [station?.coverUrl])
 
     const loadStation = async () => {
         if (!stationId) {
@@ -58,6 +60,7 @@ export const StationDetails = () => {
         setStation(newStation)
         if (station?._id) {
             const savedStation = await stationService.save(newStation)
+            console.log('saved station', savedStation)
             if (station._id === stationModule.station._id) {
                 dispatch(getActionSetStation(savedStation))
             }
@@ -73,7 +76,6 @@ export const StationDetails = () => {
             const src = await cloudinaryService.uploadImg(ev)
             const newStation = { ...station, coverUrl: src }
             setStation(newStation)
-            const savedStation = await stationService.save(newStation)
         } catch {
             console.log('could not upload image')
         }
@@ -91,7 +93,6 @@ export const StationDetails = () => {
         try {
             const newStation = { ...station, name: title, description }
             setStation(newStation)
-            const savedStation = await stationService.save(newStation)
 
         } catch {
             console.log('could not save title and description')
@@ -103,8 +104,8 @@ export const StationDetails = () => {
 
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
-    {/* // return <section className="station-details" style={{ background: `background: linear-gradient( ${colorAvg}, black)` }}> */}
-        
+        {/* // return <section className="station-details" style={{ background: `background: linear-gradient( ${colorAvg}, black)` }}> */}
+
         <Hero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle} />
         <SongList songs={station.songs} isSearchResults={false} onAddSong={null} station={station} />
         <div className="search-station-details-main" >

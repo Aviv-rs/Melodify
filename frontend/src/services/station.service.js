@@ -1,66 +1,60 @@
-import { storageService } from './async-storage.service.js'
-
-
-const STORAGE_KEY = 'station'
+import axios from 'axios'
 
 export const stationService = {
+    query,
+    getById,
+    remove,
     save,
     getEmptyStation,
-    query,
-    getById
 }
+const BASE_URL =
+    process.env.NODE_ENV == 'production'
+        ? '/api/station'
+        : 'http://localhost:3030/api/station/'
 
-async function query() {
-    const stations = await storageService.query(STORAGE_KEY)
-    return stations
+
+
+async function query(filterBy, pageSize) {
+    const { data } = await axios.get(BASE_URL, {
+        params: { filterBy, pageSize },
+    })
+    return data
 }
-
 async function getById(stationId) {
-    const station = await storageService.get(STORAGE_KEY, stationId)
-    return station
+    const { data } = await axios.get(BASE_URL + stationId)
+    return data
 }
-
+async function remove(stationId) {
+    const { data } = await axios.delete(BASE_URL + stationId)
+    return data
+}
 async function save(station) {
-    let savedStation
-    if (station?._id) {
-        savedStation = await storageService.put(STORAGE_KEY, station)
-        //TODO:
-        // stationChannel.postMessage(getActionUpdateStation(savedStation))
-
+    if (station._id) {
+        const { data } = await axios.put(BASE_URL + station._id, station)
+        return data
     } else {
-        //TODO: mini user inside of station 
-        savedStation = await storageService.post(STORAGE_KEY, station)
+        const { data } = await axios.post(BASE_URL, station)
+        console.log(data)
+        return data
     }
-    return savedStation
 }
+
+
+
 
 function getEmptyStation() {
     return {
-        name: "My Playlist #2",
+        name: "New playlist",
         coverUrl: "",
         description: "",
         tags: [
-            "Motivating",
-            "Workout"
+
         ],
-        createdAt: new Date(),
+        createdAt: Date.now(),
         createdBy: {
-            _id: "6283d13fb9a7e752c1c0fdcb",
-            username: "kyle_s",
-            fullName: "Kyle Smith"
         },
         likedByUsers: [
-            {
-                _id: "628a6e62b1f6f147074b1ff5",
-                username: "leila.P",
-                fullName: "Leila Parks"
-            },
 
-            {
-                _id: "628a71b2b1f6f147074b1ff6",
-                username: "summerz",
-                fullName: "Sam Marks"
-            }
         ],
         currSongIdx: 0,
         songs: []

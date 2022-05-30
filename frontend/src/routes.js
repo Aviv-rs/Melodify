@@ -9,5 +9,4 @@ export const routes = [
     { path: "station", element: <StationDetails /> },
     { path: "search", element: <SearchPage /> },
     { path: "library", element: <Library /> },
-
 ]

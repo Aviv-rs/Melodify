@@ -4,7 +4,6 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(queryParams) {
   // const MAX_PAGE_SIZE = 15
-  console.log(queryParams);
   const { filterBy, pageSize } = queryParams
   const collection = await dbService.getCollection('station')
   const stationAmount = await collection.estimatedDocumentCount()
