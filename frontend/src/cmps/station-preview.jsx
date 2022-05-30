@@ -25,7 +25,7 @@ export const StationPreview = ({ station }) => {
     }, [station, isPlaying])
 
     const onGoToStation = () => {
-        navigate(`/station/${station._id}`)
+        navigate(`/music/station/${station._id}`)
     }
 
     const onTogglePlayer = (ev) => {

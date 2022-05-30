@@ -44,7 +44,7 @@ export const StationDetails = () => {
 
         const station = await stationService.getById(stationId)
         if (!station) {
-            navigate('/library')
+            navigate('/music/library')
             return
         }
         // TODO: show user an indication that playlist wasnt found

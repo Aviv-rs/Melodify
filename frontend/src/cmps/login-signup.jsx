@@ -20,8 +20,6 @@ export const LoginSignup = props => {
 
   const handleSubmit = async ev => {
     ev.preventDefault()
-    navigate('/music')
-    return
     const data = new FormData(ev.currentTarget)
     const credentials = {
       username: data.get('username'),
@@ -32,14 +30,14 @@ export const LoginSignup = props => {
     if (isSignup) {
       try {
         await props.onSignup(credentials)
-        navigate('/')
+        navigate('/music')
       } catch {
         setUserMsg({ txt: 'Cannot login', type: 'danger' })
       }
     } else {
       try {
         await props.onLogin(credentials)
-        navigate('/')
+        navigate('/music')
       } catch {
         setIsWrongLogin(true)
       }
