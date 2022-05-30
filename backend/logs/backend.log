@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 29.5.2022, 19:36:44 - INFO - Server is running on port: 3030
 29.5.2022, 19:36:51 - INFO - Server is running on port: 3030
 29.5.2022, 19:37:05 - INFO - Server is running on port: 3030
@@ -213,6 +214,26 @@
 30/05/2022, 16:26:27 - DEBUG - Getting Stations
 30/05/2022, 16:27:04 - INFO - Req was made
 30/05/2022, 16:27:04 - DEBUG - Getting Stations
+<<<<<<< HEAD
+5/30/2022, 6:24:37 PM - INFO - Server is running on port: 3030
+5/30/2022, 6:24:42 PM - INFO - New connected socket [id: oduJGH8uSo9K623HAAAB]
+5/30/2022, 6:25:50 PM - INFO - Req was made
+5/30/2022, 6:25:50 PM - DEBUG - Getting Stations
+5/30/2022, 6:26:52 PM - INFO - Server is running on port: 3030
+5/30/2022, 6:26:53 PM - INFO - New connected socket [id: RwvYKP93lvw08w7aAAAB]
+5/30/2022, 6:33:55 PM - INFO - Req was made
+5/30/2022, 6:33:55 PM - DEBUG - Getting Stations
+5/30/2022, 6:34:02 PM - INFO - Req was made
+5/30/2022, 6:34:02 PM - DEBUG - Getting Stations
+5/30/2022, 6:37:18 PM - INFO - Req was made
+5/30/2022, 6:37:18 PM - DEBUG - Getting Stations
+5/30/2022, 6:40:45 PM - INFO - Server is running on port: 3030
+5/30/2022, 6:40:49 PM - INFO - New connected socket [id: kk-bKCG8v3X4Pcb_AAAB]
+5/30/2022, 6:40:52 PM - INFO - Req was made
+5/30/2022, 6:40:52 PM - DEBUG - Getting Stations
+5/30/2022, 6:44:35 PM - INFO - Req was made
+5/30/2022, 6:44:35 PM - DEBUG - Getting Stations
+=======
 30/05/2022, 16:29:13 - INFO - Req was made
 30/05/2022, 16:29:13 - DEBUG - Getting Stations
 30/05/2022, 16:36:05 - INFO - Req was made
@@ -245,6 +266,7 @@
 30/05/2022, 18:11:26 - DEBUG - Getting Stations
 30/05/2022, 18:24:19 - INFO - Req was made
 30/05/2022, 18:24:19 - DEBUG - Getting Stations
+<<<<<<< HEAD
 30.5.2022, 18:56:54 - INFO - Req was made
 30.5.2022, 18:56:54 - DEBUG - Getting Stations
 30.5.2022, 18:58:20 - INFO - Req was made
@@ -378,3 +400,223 @@
 30.5.2022, 22:03:00 - INFO - New connected socket [id: T7lPvMLpDxrni6RwAAA1]
 30.5.2022, 22:57:08 - INFO - Req was made
 30.5.2022, 22:57:08 - DEBUG - Getting Stations
+=======
+30/05/2022, 18:35:19 - INFO - New connected socket [id: iTpjfO6QtOmAI5UvAAAB]
+30/05/2022, 18:35:25 - INFO - Socket disconnected [id: undefined]
+30/05/2022, 18:35:26 - INFO - New connected socket [id: KWsdi2ak5HeXHLiLAAAD]
+30/05/2022, 18:35:34 - INFO - Socket disconnected [id: undefined]
+30/05/2022, 18:35:34 - INFO - New connected socket [id: G5lZvmJrp7dpZnADAAAF]
+30/05/2022, 18:35:50 - INFO - Socket disconnected [id: undefined]
+30/05/2022, 18:35:51 - INFO - New connected socket [id: WzQMk6I9MZkG1RgiAAAH]
+30/05/2022, 18:35:51 - INFO - Req was made
+30/05/2022, 18:35:51 - DEBUG - Getting Stations
+30/05/2022, 18:37:02 - INFO - Req was made
+30/05/2022, 18:37:02 - DEBUG - Getting Stations
+30/05/2022, 18:37:07 - INFO - Req was made
+30/05/2022, 18:37:07 - DEBUG - Getting Stations
+30/05/2022, 18:37:08 - INFO - Req was made
+30/05/2022, 18:37:08 - DEBUG - Getting Stations
+30/05/2022, 18:37:11 - INFO - Req was made
+30/05/2022, 18:37:11 - DEBUG - Getting Stations
+30/05/2022, 18:38:15 - INFO - Socket disconnected [id: undefined]
+30/05/2022, 18:38:16 - INFO - New connected socket [id: LGWoGrnOrdgMBn0xAAAJ]
+30/05/2022, 18:40:31 - INFO - Socket disconnected [id: undefined]
+30/05/2022, 18:40:32 - INFO - New connected socket [id: _t1rNjZFVlcTjUFZAAAL]
+30/05/2022, 18:40:38 - INFO - Req was made
+30/05/2022, 18:40:38 - DEBUG - Getting Stations
+30/05/2022, 18:40:48 - INFO - Socket disconnected [id: undefined]
+30/05/2022, 18:40:49 - INFO - New connected socket [id: bcyY8NbZsxjCBRcbAAAN]
+30/05/2022, 18:40:51 - INFO - Req was made
+30/05/2022, 18:40:51 - DEBUG - Getting Stations
+30/05/2022, 18:41:01 - INFO - Req was made
+30/05/2022, 18:41:01 - DEBUG - Getting Stations
+30/05/2022, 18:41:27 - INFO - Req was made
+30/05/2022, 18:41:27 - DEBUG - Getting Stations
+30/05/2022, 18:41:33 - INFO - Req was made
+30/05/2022, 18:41:33 - DEBUG - Getting Stations
+30/05/2022, 18:41:37 - INFO - Req was made
+30/05/2022, 18:41:37 - DEBUG - Getting Stations
+30/05/2022, 18:41:41 - INFO - Req was made
+30/05/2022, 18:41:41 - DEBUG - Getting Stations
+30/05/2022, 18:42:41 - INFO - Req was made
+30/05/2022, 18:42:41 - DEBUG - Getting Stations
+30/05/2022, 18:43:37 - INFO - Socket disconnected [id: undefined]
+30/05/2022, 18:43:38 - INFO - New connected socket [id: 4Nh1st12_4TRstLMAAAP]
+30/05/2022, 18:43:43 - INFO - Req was made
+30/05/2022, 18:43:43 - DEBUG - Getting Stations
+30/05/2022, 18:43:47 - INFO - Req was made
+30/05/2022, 18:43:47 - DEBUG - Getting Stations
+30/05/2022, 18:44:01 - INFO - Socket disconnected [id: undefined]
+30/05/2022, 18:44:02 - INFO - New connected socket [id: HJbhPvSUr_FYRtwnAAAR]
+30/05/2022, 18:44:03 - INFO - Req was made
+30/05/2022, 18:44:03 - DEBUG - Getting Stations
+30/05/2022, 18:44:13 - INFO - Req was made
+30/05/2022, 18:44:13 - DEBUG - Getting Stations
+30/05/2022, 18:44:17 - INFO - Req was made
+30/05/2022, 18:44:17 - DEBUG - Getting Stations
+30/05/2022, 18:44:21 - INFO - Req was made
+30/05/2022, 18:44:21 - DEBUG - Getting Stations
+30/05/2022, 19:00:37 - INFO - Socket disconnected [id: undefined]
+>>>>>>> 6acf5343a67db1c2eb5bea38547e62c02b3a81a8
+5/30/2022, 7:07:32 PM - INFO - Req was made
+5/30/2022, 7:07:32 PM - DEBUG - Getting Stations
+5/30/2022, 7:09:59 PM - INFO - New connected socket [id: W-DseXnK4oFEy0zCAAAD]
+5/30/2022, 7:10:12 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:10:13 PM - INFO - New connected socket [id: PfyP303gSvJJxexMAAAF]
+5/30/2022, 7:10:56 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:10:56 PM - INFO - New connected socket [id: wrjw1C89qVt-jUCKAAAH]
+5/30/2022, 7:10:57 PM - INFO - Req was made
+5/30/2022, 7:10:57 PM - DEBUG - Getting Stations
+5/30/2022, 7:25:32 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:25:33 PM - INFO - New connected socket [id: z3ikXhi_kI5tdoB3AAAJ]
+5/30/2022, 7:25:40 PM - INFO - Req was made
+5/30/2022, 7:25:40 PM - DEBUG - Getting Stations
+5/30/2022, 7:25:41 PM - INFO - Req was made
+5/30/2022, 7:25:41 PM - DEBUG - Getting Stations
+5/30/2022, 7:25:43 PM - INFO - Req was made
+5/30/2022, 7:25:43 PM - DEBUG - Getting Stations
+5/30/2022, 7:32:20 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:32:21 PM - INFO - New connected socket [id: CgO6R2D_qSlmQtZaAAAL]
+5/30/2022, 7:33:01 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:33:02 PM - INFO - New connected socket [id: KITq8NEjJSD2vBJuAAAN]
+5/30/2022, 7:34:54 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:34:54 PM - INFO - New connected socket [id: ZhAMrfaM6YCDMOZMAAAP]
+5/30/2022, 7:49:36 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:49:37 PM - INFO - New connected socket [id: GWnyVzXyjROAa56BAAAR]
+5/30/2022, 7:49:47 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:49:48 PM - INFO - New connected socket [id: O5Uw7YcO9C4YEeOAAAAT]
+5/30/2022, 7:52:41 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:52:41 PM - INFO - New connected socket [id: _dN2exo47vOwrOx7AAAV]
+5/30/2022, 7:52:45 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:52:45 PM - INFO - New connected socket [id: D_yIEY3Fap4YBYKQAAAX]
+5/30/2022, 7:52:47 PM - INFO - New connected socket [id: hjn5kdazTpfQ5BleAAAZ]
+5/30/2022, 7:52:54 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:52:54 PM - INFO - New connected socket [id: xMQwz4q3LXOXpzXXAAAb]
+5/30/2022, 7:53:27 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:53:28 PM - INFO - New connected socket [id: 0US_NQMjL7svNnYlAAAd]
+5/30/2022, 7:53:30 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:53:42 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:53:43 PM - INFO - New connected socket [id: xeOMBW5hKX6oGzshAAAf]
+5/30/2022, 7:56:41 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 7:56:42 PM - INFO - New connected socket [id: w_czQxnaG-yMlt7pAAAh]
+5/30/2022, 8:02:35 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:02:35 PM - INFO - New connected socket [id: gp6KshJXeCo8RNvUAAAj]
+5/30/2022, 8:14:28 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:15:35 PM - INFO - New connected socket [id: bjHkIekqhvZLhV4MAAAl]
+5/30/2022, 8:15:38 PM - INFO - New connected socket [id: ZKM7mL9fSNLo5lBrAAAn]
+5/30/2022, 8:15:43 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:15:46 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:15:47 PM - INFO - New connected socket [id: 134WZAxQ4Na7HhfGAAAp]
+5/30/2022, 8:17:15 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:17:16 PM - INFO - New connected socket [id: W_jFqooe6UNbQL1GAAAr]
+5/30/2022, 8:20:38 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:20:39 PM - INFO - New connected socket [id: AVPU3VU99BmZyciDAAAt]
+5/30/2022, 8:20:40 PM - INFO - Req was made
+5/30/2022, 8:20:40 PM - DEBUG - Getting Stations
+5/30/2022, 8:21:50 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:21:51 PM - INFO - New connected socket [id: I9Lyzu0awYRf-juqAAAv]
+5/30/2022, 8:24:00 PM - INFO - Req was made
+5/30/2022, 8:24:00 PM - DEBUG - Getting Stations
+5/30/2022, 8:26:33 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:26:34 PM - INFO - New connected socket [id: 3B4ltxkpE_IhxBScAAAx]
+5/30/2022, 8:26:36 PM - INFO - Req was made
+5/30/2022, 8:26:36 PM - DEBUG - Getting Stations
+5/30/2022, 8:27:14 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:27:15 PM - INFO - New connected socket [id: mjosz-vNRUEBElNAAAAz]
+5/30/2022, 8:27:17 PM - INFO - Req was made
+5/30/2022, 8:27:17 PM - DEBUG - Getting Stations
+5/30/2022, 8:28:19 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:28:20 PM - INFO - New connected socket [id: AvqkGRaPPqaq73XZAAA1]
+5/30/2022, 8:29:51 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:29:52 PM - INFO - New connected socket [id: 9Q6JokQYjBkrY1I9AAA3]
+5/30/2022, 8:31:03 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:33:10 PM - INFO - New connected socket [id: cenm13XM3P2h0ozZAAA5]
+5/30/2022, 8:33:13 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:33:14 PM - INFO - New connected socket [id: YFyQpHg82aZ36ajuAAA7]
+5/30/2022, 8:33:16 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:33:17 PM - INFO - New connected socket [id: 9J3qzOhxFMj9GLvXAAA9]
+5/30/2022, 8:33:28 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:33:29 PM - INFO - New connected socket [id: Yiu4BxW3xCpl8nABAAA_]
+5/30/2022, 8:34:17 PM - INFO - Req was made
+5/30/2022, 8:34:17 PM - DEBUG - Getting Stations
+5/30/2022, 8:34:25 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:34:26 PM - INFO - New connected socket [id: os3BrH3TmKagpzK6AABB]
+5/30/2022, 8:40:07 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:40:08 PM - INFO - New connected socket [id: 8OHPKTTy-CeTbRLPAABD]
+5/30/2022, 8:46:26 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:46:27 PM - INFO - New connected socket [id: AMtPpt4ow-jfInu-AABF]
+5/30/2022, 8:51:25 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:51:26 PM - INFO - New connected socket [id: yM9Bsl74Xc-T0LClAABH]
+5/30/2022, 8:51:32 PM - INFO - Req was made
+5/30/2022, 8:51:32 PM - DEBUG - Getting Stations
+5/30/2022, 8:52:17 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:52:17 PM - INFO - New connected socket [id: uuZDAKcNntjgt41AAABJ]
+5/30/2022, 8:52:18 PM - INFO - Req was made
+5/30/2022, 8:52:18 PM - DEBUG - Getting Stations
+5/30/2022, 8:52:20 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 8:52:21 PM - INFO - New connected socket [id: JbeHquQYIoN-KOm6AABL]
+5/30/2022, 9:12:46 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:12:47 PM - INFO - New connected socket [id: G4BlFw4a7jhYy-XEAABN]
+5/30/2022, 9:13:40 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:13:40 PM - INFO - New connected socket [id: libPpSMe_TrV_EreAABP]
+5/30/2022, 9:17:44 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:17:45 PM - INFO - New connected socket [id: LwYPqiHwvh-8KDtHAABR]
+5/30/2022, 9:18:15 PM - INFO - Req was made
+5/30/2022, 9:18:15 PM - DEBUG - Getting Stations
+5/30/2022, 9:18:19 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:18:19 PM - INFO - New connected socket [id: 2gjnuQoM5naNWfHNAABT]
+5/30/2022, 9:18:26 PM - INFO - New connected socket [id: QmxaU3WzQtq9WkvpAABV]
+5/30/2022, 9:18:29 PM - INFO - Req was made
+5/30/2022, 9:18:29 PM - DEBUG - Getting Stations
+5/30/2022, 9:18:30 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:18:40 PM - INFO - Req was made
+5/30/2022, 9:18:40 PM - DEBUG - Getting Stations
+5/30/2022, 9:18:45 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:18:46 PM - INFO - New connected socket [id: 8-a-BygNIKMu1TOiAABX]
+5/30/2022, 9:23:24 PM - INFO - Req was made
+5/30/2022, 9:23:24 PM - DEBUG - Getting Stations
+5/30/2022, 9:23:29 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:23:30 PM - INFO - New connected socket [id: 2QDc1EWrxhOEGcgYAABZ]
+5/30/2022, 9:25:33 PM - INFO - Req was made
+5/30/2022, 9:25:33 PM - DEBUG - Getting Stations
+5/30/2022, 9:25:41 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:25:41 PM - INFO - New connected socket [id: 4DEVn6UjdqlvuZP9AABb]
+5/30/2022, 9:53:29 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:53:30 PM - INFO - New connected socket [id: ZStjjCx1jrflTNd_AABd]
+5/30/2022, 9:59:47 PM - INFO - Req was made
+5/30/2022, 9:59:47 PM - DEBUG - Getting Stations
+5/30/2022, 9:59:50 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 9:59:51 PM - INFO - New connected socket [id: VXNW_8InEQ1it4U-AABf]
+5/30/2022, 10:05:31 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:05:32 PM - INFO - New connected socket [id: R_VIr_IIrqmCHe3iAABh]
+5/30/2022, 10:39:55 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:39:56 PM - INFO - New connected socket [id: ZwNbnEvwZnbEany0AABj]
+5/30/2022, 10:45:45 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:45:54 PM - INFO - New connected socket [id: yP9DmIy7asLv3d9ZAABl]
+5/30/2022, 10:47:00 PM - INFO - Req was made
+5/30/2022, 10:47:00 PM - DEBUG - Getting Stations
+5/30/2022, 10:47:04 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:47:04 PM - INFO - New connected socket [id: tPgPTRGJMUqiLTsXAABn]
+5/30/2022, 10:48:15 PM - INFO - Req was made
+5/30/2022, 10:48:15 PM - DEBUG - Getting Stations
+5/30/2022, 10:48:20 PM - INFO - Req was made
+5/30/2022, 10:48:20 PM - DEBUG - Getting Stations
+=======
+>>>>>>> 0f17db52db7688f464f6a1314ad4390d18828481
+5/30/2022, 10:51:12 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:51:16 PM - INFO - Req was made
+5/30/2022, 10:51:16 PM - DEBUG - Getting Stations
+5/30/2022, 10:51:35 PM - INFO - New connected socket [id: Yzd0jm67kgyN2QTqAABp]
+5/30/2022, 10:51:39 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:51:42 PM - INFO - New connected socket [id: GzDWE8yEMaIly_3sAABr]
+5/30/2022, 10:52:27 PM - INFO - Req was made
+5/30/2022, 10:52:27 PM - DEBUG - Getting Stations
+5/30/2022, 10:52:32 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:52:34 PM - INFO - New connected socket [id: zNnSAtZZeaFMl_3nAABt]
+5/30/2022, 10:52:35 PM - INFO - Req was made
+5/30/2022, 10:52:35 PM - DEBUG - Getting Stations
+5/30/2022, 10:54:26 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:54:26 PM - INFO - New connected socket [id: tVVUp09ktox51z2UAABv]
+5/30/2022, 10:54:29 PM - INFO - Socket disconnected [id: undefined]
+5/30/2022, 10:54:29 PM - INFO - New connected socket [id: hYA42-n7nzw6f1f0AABx]
+>>>>>>> cc79a0026d21693be2be4895dc2829427e8f1370
