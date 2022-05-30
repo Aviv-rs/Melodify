@@ -24,8 +24,6 @@ export const MusicPlayer = () => {
 
     const currTimeInterval = useRef()
     const dispatch = useDispatch()
-    // const [player, setPlayer] = useState(null)
-    // const [isPlaying, dispatch(setIsPlaying(!isPlaying))] = useState(false)
     const [songTime, setSongTime] = useState(0)
     const [songTotalTime, setTotalTime] = useState(0)
     const [volume, setVolume] = useState(100)
@@ -33,8 +31,7 @@ export const MusicPlayer = () => {
     const isDisabled = !player || !currSong
 
     useEffect(() => {
-        // setSongTime(0)
-        // dispatch(setIsPlaying(true))
+        
     }, [currSong])
 
     useEffect(() => {

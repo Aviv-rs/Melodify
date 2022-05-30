@@ -2,35 +2,43 @@ import { useEffect, useState } from 'react';
 import { StationDetailsPencil, StationDetMusic, StationDefaultIcon, PlayIcon, PauseIcon, Clock } from '../services/img.import.service'
 import { StationModal } from './station-modal'
 import getAverageColor from 'get-average-color'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getActionSetStation } from '../store/actions/station.action'
 import { setCurrSong } from '../store/actions/current-song.action'
 export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit }) => {
 
-    
+
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [colorAvg, setColorAvg] = useState('rgb(83,83,83)')
-    const [isPlay, setIsPlay] = useState(false)
+    const [isPlayShow, setIsPlayShow] = useState(false)
+    const  stationModule  = useSelector((storeState) => storeState.stationModule)
+    const { player } = useSelector((storeState) => storeState.playerModule)
+    const { isPlaying } = useSelector(storeState => storeState.currSongModule)
+    const { currSong } = useSelector((storeState) => storeState.currSongModule)
     useEffect(() => {
-        getAvgColor()
-    }, [station])
-    const getAvgColor = () => {
-        getAverageColor(station.coverUrl).then(rgb => {
-            console.log(rgb)
-            const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
-            setColorAvg(color)
-        })
+        if(stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
+    }, [station, isPlaying])
+
+
+    const onTogglePlayer = () => {
+        if (!currSong) {
+            onPlayStation()
+        }
+        else if (stationModule.station._id !== station._id) onPlayStation()
+        else if (isPlaying) {
+            player.pauseVideo()
+        }
+        else if (!isPlaying){
+            player.playVideo()
+        } 
     }
 
-    const togglePlay = () => {
-        setIsPlay((prevIsplay) => !prevIsplay)
-        if (!isPlay) onPlaySong()
-    }
+    
 
-    const onPlaySong = () => {
+    const onPlayStation = () => {
         dispatch(getActionSetStation(station))
         dispatch(setCurrSong(station.songs[station.currSongIdx]))
+        setIsPlayShow(true)
     }
     //TODO : consult with the head team about pause song from here. This move might change alot..
 
@@ -55,20 +63,20 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
             </div>
             <div className='hero-footer'>
                 {station.songs.length > 0 ?
-                    <button onClick={togglePlay}>
-                        {isPlay ? <PauseIcon /> : <PlayIcon />}
+                    <button onClick={onTogglePlayer}>
+                        {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                     </button>
                     :
                     <span></span>
                 }
             </div>
-                <div className='table-header'>
-                    <span className='ashtag'>#</span>
-                    <span>TITLE</span>
-                    <span></span>
-                    <span>DATE ADDED</span>
-                    <Clock/>
-                </div>
+            <div className='table-header'>
+                <span className='ashtag'>#</span>
+                <span>TITLE</span>
+                <span></span>
+                <span>DATE ADDED</span>
+                <Clock />
+            </div>
         </article>
     )
 }
