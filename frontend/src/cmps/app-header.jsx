@@ -10,8 +10,8 @@ export const AppHeader = () => {
 
     return <header className="app-header">
         <div className="btns-container">
-            <button onClick={() => onNavigate('signup')} className="btn-signup">Sign up</button>
-            <button onClick={() => onNavigate('login')} className="btn-login">Log in</button>
+            <button onClick={() => onNavigate('/signup')} className="btn-signup">Sign up</button>
+            <button onClick={() => onNavigate('/login')} className="btn-login">Log in</button>
         </div>
     </header>
 }

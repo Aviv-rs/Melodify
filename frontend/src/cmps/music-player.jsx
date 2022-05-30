@@ -30,14 +30,15 @@ export const MusicPlayer = () => {
 
     const isDisabled = !player || !currSong
 
-    useEffect(() => {
-        
-    }, [currSong])
 
     useEffect(() => {
-        player?.setVolume(volume)
-    }, [volume])
-
+        return () => {
+            dispatch(setPlayer(null))
+            dispatch(setCurrSong(null))
+            dispatch(getActionSetStation(null))
+            if (currTimeInterval.current) clearInterval(currTimeInterval.current)
+        }
+    }, [])
 
     const playerOnReady = ({ target }) => {
         target.playVideo()
@@ -61,6 +62,17 @@ export const MusicPlayer = () => {
     const handleVolumeChange = ({ target }) => {
         setVolume(+target.value)
         player.setVolume(+target.value)
+    }
+
+    const handleMute = () => {
+        if (volume > 0) {
+            setVolume(0)
+            player.setVolume(0)
+        }
+        else {
+            setVolume(70)
+            player.setVolume(70)
+        }
     }
 
     const toggleSongPlay = () => {
@@ -95,7 +107,6 @@ export const MusicPlayer = () => {
         dispatch(setIsPlaying(true))
     }
 
-
     return (
         <div className='music-player'>
             <div className="left-side-controls">
@@ -129,9 +140,7 @@ export const MusicPlayer = () => {
 
             <div className='right-side-controls'>
                 <div className="volume-controls">
-                    <button disabled={isDisabled} onClick={() => {
-                        volume > 0 ? setVolume(0) : setVolume(100)
-                    }} className="btn-volume">
+                    <button disabled={isDisabled} onClick={handleMute} className="btn-volume">
                         {volume > 0 ? <VolumeIcon />
                             :
                             <VolumeMuteIcon />}

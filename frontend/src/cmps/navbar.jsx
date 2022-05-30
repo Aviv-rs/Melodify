@@ -18,15 +18,14 @@ export const Navbar = () => {
 
         <nav className="nav-container">
             <div className="logo-container">
-                <NavLink to="/">
-
+                <NavLink to="/music">
                     <Logo className="logo-svg" />
                 </NavLink>
             </div>
             <ul className="nav-list">
                 <li>
                     <nav>
-                        <NavLink to="/">
+                        <NavLink end to="/music">
                             <HomeIcon fill="#b3b3b3" />
                             <span>Home</span>
                         </NavLink>
