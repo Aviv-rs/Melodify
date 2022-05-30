@@ -32,8 +32,7 @@ export const StationPreview = ({ station }) => {
         ev.stopPropagation()
         if (!currSong) {
             onPlayStation()
-        }
-        else if (stationModule.station._id !== station._id) onPlayStation()
+        }else if (stationModule.station._id !== station._id) onPlayStation()
         else if (isPlaying) {
             player.pauseVideo()
         }
@@ -44,7 +43,8 @@ export const StationPreview = ({ station }) => {
 
     const onPlayStation = () => {
         dispatch(getActionSetStation(station))
-        dispatch(setCurrSong(station.songs[station.currSongIdx]))
+        dispatch(setCurrSong(station.songs[0]))
+        // dispatch(setCurrSong(station.songs[station.currSongIdx]))
         setIsPlayShow(true)
     }
 
