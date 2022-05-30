@@ -11,7 +11,6 @@ import { BtnExit } from '../services/img.import.service'
 import getAverageColor from 'get-average-color'
 
 
-
 export const StationDetails = () => {
     const dispatch = useDispatch()
     const { stationId } = useParams()
@@ -74,7 +73,6 @@ export const StationDetails = () => {
             const src = await cloudinaryService.uploadImg(ev)
             const newStation = { ...station, coverUrl: src }
             setStation(newStation)
-            const savedStation = await stationService.save(newStation)
         } catch {
             console.log('could not upload image')
         }
@@ -92,7 +90,6 @@ export const StationDetails = () => {
         try {
             const newStation = { ...station, name: title, description }
             setStation(newStation)
-            const savedStation = await stationService.save(newStation)
 
         } catch {
             console.log('could not save title and description')
@@ -104,8 +101,8 @@ export const StationDetails = () => {
 
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
-    {/* // return <section className="station-details" style={{ background: `background: linear-gradient( ${colorAvg}, black)` }}> */}
-        
+        {/* // return <section className="station-details" style={{ background: `background: linear-gradient( ${colorAvg}, black)` }}> */}
+
         <Hero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle} />
         <SongList songs={station.songs} isSearchResults={false} onAddSong={null} station={station} />
         <div className="search-station-details-main" >
