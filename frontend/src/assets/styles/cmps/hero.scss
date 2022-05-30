@@ -14,7 +14,7 @@
         .hero-img {
             width: 22vw;
             height: 20vw;
-            margin-left: 10px;
+            margin-left: 32px;
             margin-bottom: 20px;
             margin-right: 20px;
             justify-content: center;
@@ -78,10 +78,27 @@
         background: rgba(40, 39, 39, 0.181);
         display: flex;
         align-items: center;
-        padding: 12px;
+        padding: 12px 12px 15px 32px;
 
         button {
             @include btn-toggle-play()
+        }
+    }
+
+    .table-header {
+        display: grid;
+        grid-template-columns:  60px 60px 2fr 1fr 80px;
+        gap: 5px;
+        padding: 6px;
+        cursor: default;
+        height: 56px;
+        align-items: center;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        color: #b3b3b3;
+        .ashtag{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
