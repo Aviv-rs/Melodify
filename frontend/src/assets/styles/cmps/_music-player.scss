@@ -49,7 +49,7 @@
                     }
                 }
 
-                
+
 
 
 
@@ -79,180 +79,190 @@
 
 
     }
-    button {
+
+    .like-btn {
         border: none;
         background-color: inherit;
-    }
-
-
-
-    .MuiSlider-root {
-        padding: 0;
-
-        .MuiSlider-thumb {
-            height: 12px;
-            width: 12px;
-            display: none;
-
-            &:hover {
-                box-shadow: none;
-
-            }
-        }
+        height: 32px;
+        min-width: 32px;
+        width: 32px;
 
         &:hover {
-            cursor: default;
+            fill: #fff;
+        }
 
-            .MuiSlider-thumb {
-                display: block;
-            }
+        svg {
+            height: 16px;
+            width: 16px;
+        }
+    }
+}
+
+
+
+.MuiSlider-root {
+    padding: 0;
+
+    .MuiSlider-thumb {
+        height: 12px;
+        width: 12px;
+        display: none;
+
+        &:hover {
+            box-shadow: none;
+
+        }
+    }
+
+    &:hover {
+        cursor: default;
+
+        .MuiSlider-thumb {
+            display: block;
+        }
+
+        .MuiSlider-track {
+            background-color: #1db954;
+            border-color: #1db954;
+        }
+    }
+
+    .MuiSlider-rail {
+        background-color: $clr9;
+        opacity: 0.48;
+    }
+}
+
+
+.right-side-controls {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .volume-controls {
+        display: flex;
+        align-items: center;
+        width: 125px;
+        column-gap: 3px;
+
+
+        &:hover {
 
             .MuiSlider-track {
                 background-color: #1db954;
                 border-color: #1db954;
-            }
-        }
-
-        .MuiSlider-rail {
-            background-color: $clr9;
-            opacity: 0.48;
-        }
-    }
-
-
-    .right-side-controls {
-        width: 30%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-
-        .volume-controls {
-            display: flex;
-            align-items: center;
-            width: 125px;
-            column-gap: 3px;
-
-
-            &:hover {
-
-                .MuiSlider-track {
-                    background-color: #1db954;
-                    border-color: #1db954;
-
-                }
-
-                .MuiSlider-thumb {
-                    display: block;
-                }
-            }
-
-
-            .btn-volume {
-                align-items: center;
-                justify-content: center;
-                display: flex;
-                background-color: transparent;
-                border: none;
-                color: rgba(255, 255, 255, .7);
-                height: 32px;
-                min-width: 32px;
-                width: 32px;
-                padding: 0;
-                z-index: 1;
-
-
-                &:hover.btn-volume {
-                    color: $clr8;
-                    fill: $clr8;
-                }
 
             }
 
-            &>* {
-                fill: rgba(255, 255, 255, 0.702);
+            .MuiSlider-thumb {
+                display: block;
             }
         }
 
 
-    }
-
-    .player-controls {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        width: 40%;
-        font-family: circular-light;
-
-        .player-controls-buttons {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 8px;
-            gap: 16px;
-        }
-
-
-        .playBackSlide {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            width: 100%;
-            height: 16px;
-
-            .MuiSlider-root {
-                width: 100%;
-            }
-        }
-
-        .time-elapsed,
-        .total-time {
-            font-size: 11px;
-            line-height: 1rem;
-            color: $clr9;
-            min-width: 40px;
-            text-align: left;
-        }
-
-        .time-elapsed {
-            text-align: right;
-        }
-
-        .btn-toggle-play {
-            display: flex;
+        .btn-volume {
             align-items: center;
             justify-content: center;
-            height: 32px;
-            width: 32px;
-            border-radius: 32px;
-            color: $clr6;
-            background-color: $clr8;
+            display: flex;
+            background-color: transparent;
             border: none;
-
-            &:hover {
-                transform: scale(1.06);
-            }
-        }
-
-        .btn-play-next,
-        .btn-play-prev {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 32px;
-            width: 32px;
-            border-radius: 32px;
-            border: none;
-            background: transparent;
             color: rgba(255, 255, 255, .7);
+            height: 32px;
+            min-width: 32px;
+            width: 32px;
+            padding: 0;
+            z-index: 1;
 
-            &:hover>* {
+
+            &:hover.btn-volume {
+                color: $clr8;
                 fill: $clr8;
             }
+
         }
 
-
+        &>* {
+            fill: rgba(255, 255, 255, 0.702);
+        }
     }
 
+
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    font-family: circular-light;
+
+    .player-controls-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+        gap: 16px;
+    }
+
+
+    .playBackSlide {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        width: 100%;
+        height: 16px;
+
+        .MuiSlider-root {
+            width: 100%;
+        }
+    }
+
+    .time-elapsed,
+    .total-time {
+        font-size: 11px;
+        line-height: 1rem;
+        color: $clr9;
+        min-width: 40px;
+        text-align: left;
+    }
+
+    .time-elapsed {
+        text-align: right;
+    }
+
+    .btn-toggle-play {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        width: 32px;
+        border-radius: 32px;
+        color: $clr6;
+        background-color: $clr8;
+        border: none;
+
+        &:hover {
+            transform: scale(1.06);
+        }
+    }
+
+    .btn-play-next,
+    .btn-play-prev {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        width: 32px;
+        border-radius: 32px;
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, .7);
+
+        &:hover>* {
+            fill: $clr8;
+        }
+    }
 
 
 }

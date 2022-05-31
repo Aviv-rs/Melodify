@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { StationDefaultIcon } from "../../services/img.import.service"
-import { PlayIcon, PauseIcon } from "../../services/img.import.service"
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { StationDefaultIcon } from '../../services/img.import.service'
+import { PlayIcon, PauseIcon } from '../../services/img.import.service'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { setCurrSong } from '../../store/actions/current-song.action'
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
 
 export const StationPreview = ({ station }) => {
@@ -43,8 +43,7 @@ export const StationPreview = ({ station }) => {
 
     const onPlayStation = () => {
         dispatch(getActionSetStation(station))
-        // dispatch(setCurrSong(station.songs[0]))
-        dispatch(setCurrSong(station.songs[station.currSongIdx]))
+        dispatch(setCurrSong(station.songs[0]))
         setIsPlayShow(true)
     }
 
@@ -67,7 +66,7 @@ export const StationPreview = ({ station }) => {
             </div>
             <div className="station-details">
                 <div className="station-name"> {station.name} </div>
-                <div className="station-creator">By {station.createdBy.fullname}</div>
+                <div className="station-creator">  {station.createdBy.fullname && 'By ' + station.createdBy.fullname}</div>
             </div>
         </div>
     </div>

@@ -65,14 +65,9 @@ export const MusicPlayer = () => {
     }
 
     const handleMute = () => {
-        if (volume > 0) {
-            setVolume(0)
-            player.setVolume(0)
-        }
-        else {
-            setVolume(70)
-            player.setVolume(70)
-        }
+        const volumeToSet = volume > 0 ? 0 : 70
+        setVolume(volumeToSet)
+        player.setVolume(volumeToSet)
     }
 
     const toggleSongPlay = () => {
@@ -121,8 +116,8 @@ export const MusicPlayer = () => {
                             <div className="station-name">{station?.name}</div>
                         </Link>
                     </div>
-                    <button className="liked-btn">
-                        <LikedSongsIcon fill="#b3b3b3" />
+                    <button className="like-btn">
+                        {currSong && <LikedSongsIcon fill="#181818" stroke="#b3b3b3" />}
                     </button>
                 </div>
             </div>

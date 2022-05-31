@@ -1,7 +1,7 @@
-import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-import thunk from "redux-thunk";
-import { currSongReducer } from "./reducers/current-song.reducer";
-import { stationReducer } from "./reducers/station.reducer";
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { currSongReducer } from './reducers/current-song.reducer';
+import { stationReducer } from './reducers/station.reducer';
 import { playerReducer } from './reducers/player.reducer'
 import { userReducer } from './reducers/user.reducer'
 import { headerReducer } from './reducers/header.reducer'
