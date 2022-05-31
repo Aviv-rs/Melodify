@@ -8,12 +8,12 @@
 
     @include for-medium-layout {
         @include layoutGTC(1, 18px);
-        
+
     }
 
     @include for-large-layout {
         @include layoutGTC(1, 24px);
-        
+
     }
 
     @include for-extra-large-layout {
@@ -35,22 +35,25 @@
     }
 
     .main-welcome {
-
-
-        display: flex;
         align-items: center;
         flex-direction: column;
         color: $clr6;
         font-family: gotham-bold;
         font-size: 30px;
+
+
+        // .text-flicker-in-glow{
+        //     animation: text-flicker-in-glow 4s linear both;
+        // }
+
         text-shadow:
 
             0 0 7px $clr8,
             0 0 10px $clr8,
             0 0 21px $clr8;
-            // 0 0 42px #0fa,
-            // 0 0 60px #1db954,
-            // 0 0 70px green;
+        // 0 0 42px #0fa,
+        // 0 0 60px #1db954,
+        // 0 0 70px green;
 
         .text-container {
             animation: blur-out-contract-bck 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) reverse both;
@@ -96,4 +99,5 @@
         transform: translateZ(-500px);
         filter: blur(12px) opacity(0%);
     }
+
 }

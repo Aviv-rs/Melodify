@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { AppHeader } from './cmps/app-header'
-import { Navbar } from './cmps/navbar.jsx'
-import { MusicPlayer } from './cmps/music-player'
-import { routes } from "./routes";
+import { AppHeader } from '../cmps/base/app-header'
+import { Navbar } from '../cmps/base/navbar'
+import { MusicPlayer } from '../cmps/base/music-player'
+import { routes } from "../routes";
 
 export function MusicApp() {
     return <div className="main-layout">

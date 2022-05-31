@@ -1,4 +1,4 @@
-import { BtnExit, StationDetailsPencil, StationDefaultIcon } from '../services/img.import.service'
+import { BtnExit, StationDetailsPencil, StationDefaultIcon } from '../../services/img.import.service'
 
 export const StationModal = ({ setIsModalOpen, handleImgUpload, station, setTitle, setDescription, onSubmit }) => {
     //TODO: add close modal option by pressing outside the modal
@@ -20,8 +20,8 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, setTitl
                 </label>
                 <input className='img-input' id='inputImg' onChange={handleImgUpload} type="file"></input>
                 <div className='bttns-input'>
-                    <input onChange={({target}) =>setTitle(target.value)} className='title-input' type="text" placeholder='Add a name' />
-                    <textarea onChange={({target}) =>setDescription(target.value)} className='album-image-description' placeholder='Add an optional description' name="" id="" cols="30" rows="10"></textarea>
+                    <input onChange={({ target }) => setTitle(target.value)} className='title-input' type="text" placeholder='Add a name' />
+                    <textarea onChange={({ target }) => setDescription(target.value)} className='album-image-description' placeholder='Add an optional description' name="" id="" cols="30" rows="10"></textarea>
                     <button className='save-button' onClick={onSubmit}>Save</button>
                 </div>
             </div>

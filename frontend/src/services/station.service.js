@@ -31,10 +31,11 @@ async function remove(stationId) {
 async function save(station) {
     if (station._id) {
         const { data } = await axios.put(BASE_URL + station._id, station)
+        console.log('updated station', data);
         return data
     } else {
         const { data } = await axios.post(BASE_URL, station)
-        console.log(data)
+        console.log('added station', data);
         return data
     }
 }
