@@ -2,18 +2,21 @@
     .hero-content {
         height: 30vh;
         max-height: 500px;
-        min-height: 340px;
+        min-height: 280px;
         display: flex;
+        align-items: flex-end;
 
         .hero-img-main {
             max-height: 232px;
             max-width: 232px;
-            margin-top: 100px;
+            margin-top: 24px;
         }
 
         .hero-img {
             width: 22vw;
             height: 20vw;
+            min-width: 192px;
+            min-height: 192px;
             margin-left: 32px;
             margin-bottom: 20px;
             margin-right: 20px;

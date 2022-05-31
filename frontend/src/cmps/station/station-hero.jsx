@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { setCurrSong } from '../../store/actions/current-song.action'
 export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit }) => {
+console.log("🚀 ~ file: hero.jsx ~ line 9 ~ Hero ~ station", station)
 
-
+    
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)

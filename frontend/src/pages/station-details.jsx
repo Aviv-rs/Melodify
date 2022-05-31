@@ -6,6 +6,7 @@ import { SongList } from "../cmps/song/song-list"
 import { Hero } from "../cmps/station/station-hero"
 import { stationService } from "../services/station.service"
 import { getActionSetStation } from "../store/actions/station.action"
+import { setHeaderColor } from "../store/actions/header.action"
 import { cloudinaryService } from '../services/cloudinary.service'
 import { BtnExit } from '../services/img.import.service'
 import getAverageColor from 'get-average-color'
@@ -102,6 +103,7 @@ export const StationDetails = () => {
         getAverageColor(url).then(rgb => {
             const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
             setColorAvg(color)
+            dispatch(setHeaderColor(color))
         })
     }
 

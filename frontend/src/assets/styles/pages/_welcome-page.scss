@@ -1,42 +1,47 @@
 .welcome-page {
-    background-color: #121212;
-    background-image: url ('https://images.pexels.com/photos/213207/pexels-photo-213207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-color: $clr1;
+    // background-image: url('https://images.pexels.com/photos/213207/pexels-photo-213207.jpeg');
+    background-image: url(../../imgs/Melodify_welcome.jpeg);
     display: grid;
     height: 100vh;
+    background-size: cover;
 
     @include for-medium-layout {
-        @include layoutGTC(3, 18px);
+        @include layoutGTC(1, 18px);
+
     }
 
     @include for-large-layout {
-        @include layoutGTC(3, 24px);
+        @include layoutGTC(1, 24px);
+
     }
 
     @include for-extra-large-layout {
-        @include layoutGTC(3, 24px);
+        @include layoutGTC(1, 24px);
     }
 
     .logo-container {
-        height: 80px;
+        height: 60px;
         margin: 20px;
 
-        g {
-            fill: #1db954;
+        svg {
+            width: 200px;
+        }
 
+        g {
+            fill: $clr6;
         }
 
     }
 
     .main-welcome {
-
-        display: flex;
+        <<<<<<< HEAD=======>>>>>>>8cf854a775d3f323e97532ca832f195d4b3136ec display: flex;
         align-items: center;
-        justify-content: center;
         flex-direction: column;
-        color: #1db954;
+        color: $clr6;
         font-family: gotham-bold;
         font-size: 30px;
-        text-shadow: 0 0 7px #fff,
+        <<<<<<< HEAD text-shadow: 0 0 7px #fff,
         0 0 10px #fff,
         0 0 21px #fff,
         0 0 42px #0fa,
@@ -45,6 +50,23 @@
         //     animation: text-flicker-in-glow 4s linear both;
         // }
 
+        =======text-shadow:
+
+            0 0 7px $clr8,
+            0 0 10px $clr8,
+            0 0 21px $clr8;
+        // 0 0 42px #0fa,
+        // 0 0 60px #1db954,
+        // 0 0 70px green;
+
+        .text-container {
+            animation: blur-out-contract-bck 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) reverse both;
+        }
+
+
+
+
+        >>>>>>>8cf854a775d3f323e97532ca832f195d4b3136ec
     }
 
     button {
@@ -65,4 +87,24 @@
         }
     }
 
+    <<<<<<< HEAD=======
+}
+
+
+
+
+
+@keyframes blur-out-contract-bck {
+    0% {
+        transform: translateZ(0);
+        filter: blur(0.01);
+    }
+
+    100% {
+        letter-spacing: -0.5em;
+        transform: translateZ(-500px);
+        filter: blur(12px) opacity(0%);
+    }
+
+    >>>>>>>8cf854a775d3f323e97532ca832f195d4b3136ec
 }

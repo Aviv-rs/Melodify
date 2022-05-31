@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useDispatch, useSelector } from 'react-redux'
-import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon } from '../../services/img.import.service'
+import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon, LikedSongsIcon } from '../../services/img.import.service'
 import { utilService } from '../../services/util.service'
 import { SliderBar } from '../util/slider'
 import { setCurrSong, setIsPlaying } from '../../store/actions/current-song.action'
@@ -121,6 +121,9 @@ export const MusicPlayer = () => {
                             <div className="station-name">{station?.name}</div>
                         </Link>
                     </div>
+                    <button className="liked-btn">
+                        <LikedSongsIcon fill="#b3b3b3" />
+                    </button>
                 </div>
             </div>
             <div className="player-controls">
@@ -131,13 +134,13 @@ export const MusicPlayer = () => {
                     </button>
                     {/* <button disabled={isDisabled} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button> */}
                     <button disabled={!station} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
-                </div>
+                </div >
                 <div className='playBackSlide'>
                     <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
                     <SliderBar maxValue={songTotalTime} disabled={isDisabled} handleChange={handleTimeChange} value={songTime} width={500} />
                     <div className='total-time'> {utilService.convertSecToMin(songTotalTime)}</div>
                 </div>
-            </div>
+            </div >
 
             <div className='right-side-controls'>
                 <div className="volume-controls">
@@ -158,7 +161,7 @@ export const MusicPlayer = () => {
                 onPause={playerOnPause}
                 onEnd={() => onChangeSong(1)}
             />
-        </div>
+        </div >
     )
 }
 
