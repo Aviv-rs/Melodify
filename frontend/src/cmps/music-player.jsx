@@ -123,8 +123,8 @@ export const MusicPlayer = () => {
                             <div className="station-name">{station?.name}</div>
                         </Link>
                     </div>
-                    <button className="liked-btn">
-                        <LikedSongsIcon fill="#b3b3b3" />
+                    <button className="like-btn">
+                       {currSong && <LikedSongsIcon fill="#181818" stroke="#b3b3b3" /> }
                     </button>
                 </div>
             </div>
