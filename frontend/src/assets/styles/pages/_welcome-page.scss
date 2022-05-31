@@ -1,5 +1,5 @@
 .welcome-page {
-    background-color: #121212;
+    background-color: $clr1;
     // background-image: url('https://images.pexels.com/photos/213207/pexels-photo-213207.jpeg');
     background-image: url(../../imgs/Melodify_welcome.jpeg);
     display: grid;
@@ -29,7 +29,7 @@
         }
 
         g {
-            fill: black;
+            fill: $clr6;
         }
 
     }
@@ -40,17 +40,17 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        color: black;
+        color: $clr6;
         font-family: gotham-bold;
         font-size: 30px;
         text-shadow:
 
-            0 0 7px #fff,
-            0 0 10px #fff,
-            0 0 21px #fff,
-            0 0 42px #0fa,
-            0 0 60px #1db954,
-            0 0 70px green;
+            0 0 7px $clr8,
+            0 0 10px $clr8,
+            0 0 21px $clr8;
+            // 0 0 42px #0fa,
+            // 0 0 60px #1db954,
+            // 0 0 70px green;
 
         .text-container {
             animation: blur-out-contract-bck 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) reverse both;
