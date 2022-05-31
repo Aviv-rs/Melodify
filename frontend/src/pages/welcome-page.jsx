@@ -10,7 +10,7 @@ export const WelcomePage = () => {
                 <Logo />
             </div>
             <div className="main-welcome">
-                <div className="neon-effect">MUSIC. ANYWHERE.</div>
+                <div className="text-container">MUSIC. ANYWHERE.</div>
 
                 <Link to="/music">
                     <button>Try it for free</button>
