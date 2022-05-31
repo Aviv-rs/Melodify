@@ -1033,3 +1033,55 @@
 31.5.2022, 13:44:59 - DEBUG - Getting Stations
 =======
 >>>>>>> 8cf854a775d3f323e97532ca832f195d4b3136ec
+31.5.2022, 14:08:04 - INFO - Socket disconnected [id: undefined]
+31.5.2022, 14:09:36 - INFO - New connected socket [id: M3_OwSfIQ7yMHYTKAACL]
+31.5.2022, 14:09:36 - INFO - Setting socket.userId = 6295ac5b1a996e801aee1df7 for socket [id: M3_OwSfIQ7yMHYTKAACL]
+31.5.2022, 14:09:46 - INFO - Socket disconnected [id: undefined]
+31.5.2022, 14:09:47 - INFO - New connected socket [id: 2__cn-j4n7G24CNYAACN]
+31.5.2022, 14:09:47 - INFO - Setting socket.userId = 6295ac5b1a996e801aee1df7 for socket [id: 2__cn-j4n7G24CNYAACN]
+31.5.2022, 14:12:20 - INFO - Socket disconnected [id: undefined]
+31.5.2022, 14:12:21 - INFO - New connected socket [id: TP82Z-BkfS_NK9crAACP]
+31.5.2022, 14:12:22 - INFO - Setting socket.userId = 6295ac5b1a996e801aee1df7 for socket [id: TP82Z-BkfS_NK9crAACP]
+31.5.2022, 14:12:50 - INFO - Req was made
+31.5.2022, 14:12:50 - DEBUG - Getting Stations
+31.5.2022, 14:13:33 - INFO - Req was made
+31.5.2022, 14:13:33 - DEBUG - Getting Stations
+31.5.2022, 14:13:48 - INFO - Socket disconnected [id: undefined]
+31.5.2022, 14:13:48 - INFO - New connected socket [id: 1gI1u3hdMq19EieuAACR]
+31.5.2022, 14:13:49 - INFO - Setting socket.userId = 6295ac5b1a996e801aee1df7 for socket [id: 1gI1u3hdMq19EieuAACR]
+31.5.2022, 14:17:44 - INFO - Req was made
+31.5.2022, 14:17:44 - DEBUG - Getting Stations
+31.5.2022, 14:17:48 - INFO - Req was made
+31.5.2022, 14:17:48 - DEBUG - Getting Stations
+31.5.2022, 14:17:51 - INFO - Req was made
+31.5.2022, 14:17:51 - DEBUG - Getting Stations
+31.5.2022, 14:17:54 - INFO - Req was made
+31.5.2022, 14:17:54 - DEBUG - Getting Stations
+31.5.2022, 14:17:57 - INFO - Req was made
+31.5.2022, 14:17:57 - DEBUG - Getting Stations
+31.5.2022, 14:18:16 - INFO - Req was made
+31.5.2022, 14:18:16 - DEBUG - Getting Stations
+31.5.2022, 14:18:20 - INFO - Req was made
+31.5.2022, 14:18:20 - DEBUG - Getting Stations
+31.5.2022, 14:18:22 - INFO - Socket disconnected [id: undefined]
+31.5.2022, 14:18:23 - INFO - New connected socket [id: KqlWG2tugz-kfpsEAACT]
+31.5.2022, 14:18:23 - INFO - Setting socket.userId = 6295ac5b1a996e801aee1df7 for socket [id: KqlWG2tugz-kfpsEAACT]
+31.5.2022, 14:18:23 - INFO - Req was made
+31.5.2022, 14:18:23 - DEBUG - Getting Stations
+31.5.2022, 14:18:27 - INFO - Socket disconnected [id: undefined]
+31.5.2022, 14:18:27 - INFO - New connected socket [id: T-IpWybKuNWJ1qg9AACV]
+31.5.2022, 14:18:28 - INFO - Setting socket.userId = 6295ac5b1a996e801aee1df7 for socket [id: T-IpWybKuNWJ1qg9AACV]
+31.5.2022, 14:18:28 - INFO - Req was made
+31.5.2022, 14:18:28 - DEBUG - Getting Stations
+31.5.2022, 14:21:12 - INFO - Socket disconnected [id: undefined]
+31.5.2022, 14:21:13 - INFO - New connected socket [id: JGZ-txwppTyEsC0OAACX]
+31.5.2022, 14:21:13 - INFO - Req was made
+31.5.2022, 14:21:13 - DEBUG - Getting Stations
+31.5.2022, 14:21:13 - INFO - Setting socket.userId = 6295ac5b1a996e801aee1df7 for socket [id: JGZ-txwppTyEsC0OAACX]
+31.5.2022, 14:21:37 - INFO - Req was made
+31.5.2022, 14:21:37 - DEBUG - Getting Stations
+31.5.2022, 14:21:56 - INFO - Socket disconnected [id: undefined]
+31.5.2022, 14:21:57 - INFO - New connected socket [id: JyscaLKmAQko3NsbAACZ]
+31.5.2022, 14:21:57 - INFO - Req was made
+31.5.2022, 14:21:57 - DEBUG - Getting Stations
+31.5.2022, 14:21:57 - INFO - Setting socket.userId = 6295ac5b1a996e801aee1df7 for socket [id: JyscaLKmAQko3NsbAACZ]
