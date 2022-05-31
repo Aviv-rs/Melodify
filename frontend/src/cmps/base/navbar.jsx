@@ -26,7 +26,7 @@ export const Navbar = () => {
             <ul className="nav-list">
                 <li>
                     <nav>
-                        <NavLink reloadDocument="true" end to="/music">
+                        <NavLink end to="/music">
                             <HomeIcon fill="#b3b3b3" />
                             <span>Home</span>
                         </NavLink>

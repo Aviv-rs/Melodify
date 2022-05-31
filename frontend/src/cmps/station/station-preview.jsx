@@ -43,8 +43,7 @@ export const StationPreview = ({ station }) => {
 
     const onPlayStation = () => {
         dispatch(getActionSetStation(station))
-        // dispatch(setCurrSong(station.songs[0]))
-        dispatch(setCurrSong(station.songs[station.currSongIdx]))
+        dispatch(setCurrSong(station.songs[0]))
         setIsPlayShow(true)
     }
 
@@ -67,7 +66,7 @@ export const StationPreview = ({ station }) => {
             </div>
             <div className="station-details">
                 <div className="station-name"> {station.name} </div>
-                <div className="station-creator">By {station.createdBy.fullname}</div>
+                <div className="station-creator">  {station.createdBy.fullname && 'By ' + station.createdBy.fullname}</div>
             </div>
         </div>
     </div>

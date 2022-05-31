@@ -6,7 +6,7 @@ export function getActionSetStation(station) {
     return { type: 'SET_STATION', station }
 }
 
-export function addStation(station) {
+export function saveStation(station) {
     return async (dispatch) => {
         try {
             const savedStation = await stationService.save(station)
@@ -19,15 +19,4 @@ export function addStation(station) {
     }
 }
 
-export function updateStation(station) {
-    return async (dispatch) => {
-        try {
-            const savedStation = await stationService.save(station)
-            console.log('Updated Station', savedStation);
-            dispatch(getActionSetStation(savedStation))
-            return savedStation
-        } catch (err) {
-            console.log('Cannot Update station', err)
-        }
-    }
-}
+
