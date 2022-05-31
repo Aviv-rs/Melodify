@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useDispatch, useSelector } from 'react-redux'
-import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon } from '../services/img.import.service'
+import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon, LikedSongsIcon } from '../services/img.import.service'
 import { utilService } from '../services/util.service'
 import { SliderBar } from './slider'
 import { setCurrSong, setIsPlaying } from '../store/actions/current-song.action'
@@ -123,6 +123,9 @@ export const MusicPlayer = () => {
                             <div className="station-name">{station?.name}</div>
                         </Link>
                     </div>
+                    <button className="liked-btn">
+                        <LikedSongsIcon fill="#b3b3b3" />
+                    </button>
                 </div>
             </div>
             <div className="player-controls">
@@ -132,7 +135,7 @@ export const MusicPlayer = () => {
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
                     {/* <button disabled={isDisabled} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button> */}
-                    <button  className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
+                    <button className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
                 </div>
                 <div className='playBackSlide'>
                     <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
