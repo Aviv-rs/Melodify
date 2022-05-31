@@ -4,6 +4,7 @@ import { Navbar } from '../cmps/base/navbar'
 import { MusicPlayer } from '../cmps/base/music-player'
 import { routes } from "../routes";
 
+
 export function MusicApp() {
     return <div className="main-layout">
         <div className="main-view-container">
@@ -12,7 +13,7 @@ export function MusicApp() {
                 {routes.map(route => <Route key={route.path} element={route.element} path={route.path} />)}
             </Routes>
         </div>
-        <Navbar />
+        <Navbar />  
         <MusicPlayer />
     </div>
 }
