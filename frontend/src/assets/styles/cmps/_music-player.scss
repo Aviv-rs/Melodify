@@ -86,6 +86,11 @@
         height: 32px;
         min-width: 32px;
         width: 32px;
+
+        &:hover {
+            fill: #fff;
+        }
+
         svg {
             height: 16px;
             width: 16px;
@@ -261,6 +266,3 @@
 
 
 }
-
-
-
