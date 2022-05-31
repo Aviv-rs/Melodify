@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { Search } from "../cmps/search"
-import { SongList } from "../cmps/song-list"
-import { Hero } from "../cmps/hero"
+import { Search } from "../cmps/search/search"
+import { SongList } from "../cmps/song/song-list"
+import { Hero } from "../cmps/station/station-hero"
 import { stationService } from "../services/station.service"
 import { getActionSetStation } from "../store/actions/station.action"
 import { setHeaderColor } from "../store/actions/header.action"
@@ -11,6 +11,9 @@ import { cloudinaryService } from '../services/cloudinary.service'
 import { BtnExit } from '../services/img.import.service'
 import getAverageColor from 'get-average-color'
 import { youtubeService } from "../services/youtube.service"
+import { DragDropContext } from 'react-beautiful-dnd'
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { SearchResultList } from "../cmps/search/search-result-list"
 
 
 export const StationDetails = () => {
@@ -30,12 +33,17 @@ export const StationDetails = () => {
 
 
     useEffect(() => {
-        // if(params.stationId) setIsSearchOpen(false)
         if (station) return
         loadStation()
     }, [])
+
+    useEffectUpdate(() => {
+        if (!stationId) window.location.reload()
+    }, [stationId])
+
     useEffect(() => {
-        getAvgColor(station?.coverUrl)
+
+        station?.coverUrl && getAvgColor(station?.coverUrl)
     }, [station?.coverUrl])
 
     const loadStation = async () => {
@@ -57,18 +65,24 @@ export const StationDetails = () => {
 
 
     const onAddSong = async (song) => {
-        
+
         song.duration = await youtubeService.getSongDuration(song.id)
         song.createdAt = Date.now()
-        const newStation = {...station, songs: [...station.songs, song] }
-        setStation(newStation)
+        const newStation = { ...station, songs: [...station.songs, song] }
         if (station?._id) {
             const savedStation = await stationService.save(newStation)
-            console.log('saved station', savedStation)
-            if (station._id === stationModule.station._id) {
+            setStation(savedStation)
+
+            if (station?._id === stationModule?.station._id) {
                 dispatch(getActionSetStation(savedStation))
+
             }
-        } else stationService.save(newStation)
+        } else {
+            const savedStation = await stationService.save(newStation)
+            setStation(savedStation)
+            dispatch(getActionSetStation(savedStation))
+
+        }
     }
 
     const displaySongResults = (songs) => {
@@ -88,7 +102,6 @@ export const StationDetails = () => {
     const getAvgColor = (url) => {
         getAverageColor(url).then(rgb => {
             const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
-            console.log("🚀 ~ file: station-details.jsx ~ line 86 ~ getAverageColor ~ color", color)
             setColorAvg(color)
             dispatch(setHeaderColor(color))
         })
@@ -104,15 +117,21 @@ export const StationDetails = () => {
         }
     }
 
+    const onDragEnd = () => {
+        // TODO: reorder columns
+    }
 
 
 
+    const isStationEmpty = !station?.songs.length
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
-        {/* // return <section className="station-details" style={{ background: `background: linear-gradient( ${colorAvg}, black)` }}> */}
 
         <Hero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle} />
-        <SongList songs={station.songs} isSearchResults={false} onAddSong={null} station={station} />
+        {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
+            <SongList songs={station.songs} station={station} />
+        </DragDropContext>}
+
         <div className="search-station-details-main" >
             {isSearchOpen ? <div className="flex space-between">
                 <div className="search-container">
@@ -128,7 +147,7 @@ export const StationDetails = () => {
 
         </div>
         <div>{songResults &&
-            <SongList songs={songResults} isSearchResults={true} onAddSong={onAddSong} />
+            <SearchResultList searchResults={songResults} onAddSong={onAddSong} />
         }</div>
     </section>
 }

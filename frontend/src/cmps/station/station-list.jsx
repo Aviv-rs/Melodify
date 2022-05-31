@@ -8,5 +8,6 @@ export const StationList = ({ stations }) => {
             key={idx}
         />)}
     </section>
+
 }
 

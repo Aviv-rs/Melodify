@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { stationService } from '../services/station.service'
 import { tags } from '../data/station'
-import { StationList } from '../cmps/station-list'
+import { StationList } from '../cmps/station/station-list'
 
 
 export const HomePage = () => {

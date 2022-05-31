@@ -1,5 +1,4 @@
 
-
 export { ReactComponent as Logo } from '../assets/imgs/logo.svg'
 export { ReactComponent as HomeIcon } from '../assets/imgs/home.svg'
 export { ReactComponent as HomeActiveIcon } from '../assets/imgs/home-active.svg'
@@ -22,6 +21,7 @@ export { ReactComponent as BtnExit } from '../assets/imgs/exit-button.svg'
 export { ReactComponent as Clock } from '../assets/imgs/clock.svg'
 export { ReactComponent as ArrowDownIcon } from '../assets/imgs/arrow-down.svg'
 export { ReactComponent as ArrowUpIcon } from '../assets/imgs/arrow-up.svg'
+export { ReactComponent as DefaultAvatarIcon } from '../assets/imgs/default-avatar.svg'
 
 // TODO: render the navbar with an array of icons, keep our code DRY
 // TODO: render the matching active icons

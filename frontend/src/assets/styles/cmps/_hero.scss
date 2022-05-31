@@ -90,15 +90,16 @@
 
     .table-header {
         display: grid;
-        grid-template-columns:  60px 60px 2fr 1fr 80px;
+        grid-template-columns: 60px 60px 2fr 1fr 80px;
         gap: 5px;
         padding: 6px;
         cursor: default;
         height: 56px;
         align-items: center;
-        border-bottom: 1px solid rgba(255,255,255,.1);
-        color: #b3b3b3;
-        .ashtag{
+        border-bottom: 1px solid rgba(255, 255, 255, .1);
+        color: $clr7;
+
+        .ashtag {
             display: flex;
             justify-content: center;
             align-items: center;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { stationService } from "../services/station.service"
-import { StationList } from "../cmps/station-list"
+import { StationList } from "../cmps/station/station-list"
 
 export const Library = () => {
 
