@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { StationDefaultIcon } from "../../services/img.import.service"
-import { PlayIcon, PauseIcon } from "../../services/img.import.service"
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { StationDefaultIcon } from '../../services/img.import.service'
+import { PlayIcon, PauseIcon } from '../../services/img.import.service'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { setCurrSong } from '../../store/actions/current-song.action'
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
 
 export const StationPreview = ({ station }) => {
