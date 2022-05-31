@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
-import { StationDetailsPencil, StationDetMusic, StationDefaultIcon, PlayIcon, PauseIcon, Clock } from '../services/img.import.service'
+import { StationDetailsPencil, StationDetMusic, StationDefaultIcon, PlayIcon, PauseIcon, Clock } from '../../services/img.import.service'
 import { StationModal } from './station-modal'
 import getAverageColor from 'get-average-color'
 import { useDispatch, useSelector } from 'react-redux'
-import { getActionSetStation } from '../store/actions/station.action'
-import { setCurrSong } from '../store/actions/current-song.action'
+import { getActionSetStation } from '../../store/actions/station.action'
+import { setCurrSong } from '../../store/actions/current-song.action'
 export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit }) => {
 
 
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
-    const  stationModule  = useSelector((storeState) => storeState.stationModule)
+    const stationModule = useSelector((storeState) => storeState.stationModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
     useEffect(() => {
-        if(stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
+        if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
     }, [station, isPlaying])
 
 
@@ -28,12 +28,12 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
         else if (isPlaying) {
             player.pauseVideo()
         }
-        else if (!isPlaying){
+        else if (!isPlaying) {
             player.playVideo()
-        } 
+        }
     }
 
-    
+
 
     const onPlayStation = () => {
         dispatch(getActionSetStation(station))
@@ -71,13 +71,13 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
                     <span></span>
                 }
             </div>
-            <div className='table-header'>
+            {station._id && <div className='table-header'>
                 <span className='ashtag'>#</span>
                 <span>TITLE</span>
                 <span></span>
                 <span>DATE ADDED</span>
                 <Clock />
-            </div>
+            </div>}
         </article>
     )
 }

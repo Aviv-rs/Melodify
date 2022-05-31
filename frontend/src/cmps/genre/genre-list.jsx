@@ -1,5 +1,5 @@
 import { GenrePreview } from "./genre-preview"
-import { Loader } from "./loader"
+import { Loader } from "../util/loader"
 
 export function GenreList({ genres }) {
     if (!genres) return <div><Loader /></div> //TODO LOADER

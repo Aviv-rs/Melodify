@@ -57,7 +57,6 @@ async function login(userCred) {
   }
 }
 async function signup(userCred) {
-  userCred.score = 10000
   // const user = await storageService.post('user', userCred)
   const user = await httpService.post('auth/signup', userCred)
   // socketService.emit('set-user-socket', user._id);
@@ -86,11 +85,6 @@ function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
 }
 
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'user1', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
-// })()
 
 // This is relevant when backend is connected
 // ;(async () => {

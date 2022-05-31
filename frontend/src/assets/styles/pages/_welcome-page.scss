@@ -19,14 +19,15 @@
     .logo-container {
         height: 80px;
         margin: 20px;
+
         g {
-        fill: #1db954;
-        
+            fill: #1db954;
+
         }
 
     }
 
-    .main-welcome  {
+    .main-welcome {
 
         display: flex;
         align-items: center;
@@ -35,9 +36,7 @@
         color: #1db954;
         font-family: gotham-bold;
         font-size: 30px;
-        text-shadow:
-
-        0 0 7px #fff,
+        text-shadow: 0 0 7px #fff,
         0 0 10px #fff,
         0 0 21px #fff,
         0 0 42px #0fa,
@@ -45,7 +44,7 @@
         // .text-flicker-in-glow{
         //     animation: text-flicker-in-glow 4s linear both;
         // }
-        
+
     }
 
     button {
@@ -67,7 +66,3 @@
     }
 
 }
-
-
-
-

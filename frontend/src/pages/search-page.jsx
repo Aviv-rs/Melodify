@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Search } from '../cmps/search'
-import { SongList } from '../cmps/song-list'
-import { GenreList } from '../cmps/genre-list'
+import { Search } from '../cmps/search/search'
+import { SearchResultList } from '../cmps/search/search-result-list'
+import { GenreList } from '../cmps/genre/genre-list'
 import { genres } from '../data/genres'
 
 export const SearchPage = () => {
@@ -13,10 +13,10 @@ export const SearchPage = () => {
         {/* <h1>Search for playlists or songs</h1> */}
         <Search onSearchSongs={displaySongResults} />
         <div>{songs &&
-            <SongList songs={songs} isSearchResults={false} onAddSong={null} />
+            <SearchResultList searchResults={songs} onAddSong={null} />
         }</div>
-        <div> 
-        <GenreList genres={genres}/>
+        <div>
+            <GenreList genres={genres} />
         </div>
     </section>
 }

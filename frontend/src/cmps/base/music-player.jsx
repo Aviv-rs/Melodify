@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useDispatch, useSelector } from 'react-redux'
-import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon } from '../services/img.import.service'
-import { utilService } from '../services/util.service'
-import { SliderBar } from './slider'
-import { setCurrSong, setIsPlaying } from '../store/actions/current-song.action'
-import { setPlayer } from '../store/actions/player.action'
-import { getActionSetStation } from '../store/actions/station.action'
+import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon } from '../../services/img.import.service'
+import { utilService } from '../../services/util.service'
+import { SliderBar } from '../util/slider'
+import { setCurrSong, setIsPlaying } from '../../store/actions/current-song.action'
+import { setPlayer } from '../../store/actions/player.action'
+import { getActionSetStation } from '../../store/actions/station.action'
 import { Link } from 'react-router-dom'
 
 export const MusicPlayer = () => {
@@ -92,16 +92,14 @@ export const MusicPlayer = () => {
     }
 
     const onChangeSong = (diff) => {
-        console.log('diff', diff);
         const newStation = { ...station }
-        console.log("🚀 ~ file: music-player.jsx ~ line 85 ~ onChangeSong ~ newStation", newStation)
 
         newStation.currSongIdx = newStation.currSongIdx + diff
         if (newStation.currSongIdx < 0) {
             player.seekTo(0)
             setSongTime(0)
             return
-        } else if (newStation.currSongIdx >= newStation.songs.length) return
+        } else if (newStation.currSongIdx >= newStation.songs.length || !station) return
         const currSong = newStation.songs[newStation.currSongIdx]
         dispatch(getActionSetStation(newStation))
         dispatch(setCurrSong(currSong))
@@ -127,12 +125,12 @@ export const MusicPlayer = () => {
             </div>
             <div className="player-controls">
                 <div className="player-controls-buttons">
-                    <button disabled={isDisabled} className='btn-play-prev' onClick={() => onChangeSong(-1)} ><PlayPrevIcon fill='#b3b3b3' /></button>
+                    <button disabled={!station} className='btn-play-prev' onClick={() => onChangeSong(-1)} ><PlayPrevIcon fill='#b3b3b3' /></button>
                     <button disabled={isDisabled} onClick={toggleSongPlay} className="btn-toggle-play" >
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
                     {/* <button disabled={isDisabled} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button> */}
-                    <button  className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
+                    <button disabled={!station} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
                 </div>
                 <div className='playBackSlide'>
                     <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
