@@ -5,7 +5,7 @@ import { getActionSetStation } from '../../store/actions/station.action'
 import { useEffect, useState } from 'react'
 import ReactTimeAgo from 'react-time-ago'
 import { Draggable } from 'react-beautiful-dnd'
-import { MoreButton } from '../../services/img.import.service'
+
 
 
 export const SongPreview = ({ song, songIdx, station }) => {
@@ -58,16 +58,12 @@ export const SongPreview = ({ song, songIdx, station }) => {
                     {!song?.createdAt && <span></span>}
                 </span>
                 <span>{duration}</span>
-<<<<<<< HEAD
-                <span><MoreButton/></span>
-=======
                 <button className='btn-more-options'><BtnMoreIcon /></button>
                 {/* {<div className="options-menu">
             <ul className="option-list clean-list">
                 <li className="option" onMouseDown={onUserLogout}>Logout</li>
             </ul>
         </div>} */}
->>>>>>> cabd8bd563d88958c5b9aca7908d1ef97a4dd0d9
 
             </div>
         }

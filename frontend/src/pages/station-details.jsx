@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Search } from '../cmps/search/search'
 import { SongList } from '../cmps/song/song-list'
-import { Hero } from '../cmps/station/station-hero'
+import { StationHero } from '../cmps/station/station-hero'
 import { stationService } from '../services/station.service'
 import { getActionSetStation } from '../store/actions/station.action'
 import { setHeaderColor } from '../store/actions/header.action'
@@ -141,7 +141,7 @@ export const StationDetails = () => {
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
 
-        <Hero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle} />
+        <StationHero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle} />
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
             <SongList songs={station.songs} station={station} />
         </DragDropContext>}

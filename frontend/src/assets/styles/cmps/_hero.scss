@@ -83,6 +83,15 @@
         align-items: center;
         padding: 12px 12px 15px 32px;
 
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .button-more-hero-footer svg {
+            fill: #b3b3b3;
+        }
+
         button {
             @include btn-toggle-play()
         }

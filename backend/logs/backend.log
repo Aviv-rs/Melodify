@@ -1818,3 +1818,51 @@
 1.6.2022, 12:05:06 - INFO - New connected socket [id: E7CTQTqvqV42TCcEAAAC]
 1.6.2022, 12:05:07 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: E7CTQTqvqV42TCcEAAAC]
 >>>>>>> cabd8bd563d88958c5b9aca7908d1ef97a4dd0d9
+01/06/2022, 12:15:43 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 12:15:46 - INFO - New connected socket [id: 5pOoFYKSmlbEbvL5AACX]
+01/06/2022, 12:15:46 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: 5pOoFYKSmlbEbvL5AACX]
+01/06/2022, 12:20:00 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 12:20:06 - INFO - New connected socket [id: Q4xA-1GMDsPsWw0NAACZ]
+01/06/2022, 12:20:07 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: Q4xA-1GMDsPsWw0NAACZ]
+01/06/2022, 12:20:16 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 12:20:18 - INFO - New connected socket [id: hSLSCA6mgvY__SYRAACb]
+01/06/2022, 12:20:19 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: hSLSCA6mgvY__SYRAACb]
+01/06/2022, 12:23:00 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 12:23:02 - INFO - New connected socket [id: 8CB1N6hCWKqPS0NgAACd]
+01/06/2022, 12:23:02 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: 8CB1N6hCWKqPS0NgAACd]
+01/06/2022, 12:28:10 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 12:28:14 - INFO - New connected socket [id: t1ivZcG-h2GMoF9zAACf]
+01/06/2022, 12:28:15 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: t1ivZcG-h2GMoF9zAACf]
+01/06/2022, 12:40:26 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 12:40:28 - INFO - New connected socket [id: bRBnKHzI9hrHJaGFAACh]
+01/06/2022, 12:40:29 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: bRBnKHzI9hrHJaGFAACh]
+01/06/2022, 12:40:38 - INFO - Req was made
+01/06/2022, 12:40:38 - DEBUG - Getting Stations
+01/06/2022, 12:41:10 - INFO - Req was made
+01/06/2022, 12:41:10 - DEBUG - Getting Stations
+01/06/2022, 12:41:50 - INFO - Req was made
+01/06/2022, 12:41:50 - DEBUG - Getting Stations
+01/06/2022, 12:41:59 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 12:42:01 - INFO - New connected socket [id: qhbBA6o4y2h-5pBDAACj]
+01/06/2022, 12:42:01 - INFO - Req was made
+01/06/2022, 12:42:01 - DEBUG - Getting Stations
+01/06/2022, 12:42:01 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: qhbBA6o4y2h-5pBDAACj]
+01/06/2022, 12:42:40 - INFO - Req was made
+01/06/2022, 12:42:40 - DEBUG - Getting Stations
+01/06/2022, 12:42:50 - INFO - Req was made
+01/06/2022, 12:42:50 - DEBUG - Getting Stations
+01/06/2022, 12:43:01 - INFO - Req was made
+01/06/2022, 12:43:01 - DEBUG - Getting Stations
+01/06/2022, 12:45:42 - INFO - Req was made
+01/06/2022, 12:45:42 - DEBUG - Getting Stations
+01/06/2022, 12:45:48 - INFO - Req was made
+01/06/2022, 12:45:48 - DEBUG - Getting Stations
+01/06/2022, 12:45:53 - INFO - Req was made
+01/06/2022, 12:45:53 - DEBUG - Getting Stations
+01/06/2022, 12:45:59 - INFO - Req was made
+01/06/2022, 12:45:59 - DEBUG - Getting Stations
+01/06/2022, 12:46:04 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 12:46:05 - INFO - New connected socket [id: u6Ie1z1rjo0kAAUbAACl]
+01/06/2022, 12:46:05 - INFO - Req was made
+01/06/2022, 12:46:05 - DEBUG - Getting Stations
+01/06/2022, 12:46:05 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: u6Ie1z1rjo0kAAUbAACl]

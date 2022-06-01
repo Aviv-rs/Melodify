@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
-import { StationDetailsPencil, StationDefaultIcon, PlayIcon, PauseIcon, Clock } from '../../services/img.import.service'
+import { StationDetailsPencil, StationDefaultIcon, PlayIcon, PauseIcon, Clock, BtnMoreIcon } from '../../services/img.import.service'
 import { StationModal } from './station-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { setCurrSong } from '../../store/actions/current-song.action'
-export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit }) => {
+import { stationService } from '../../services/station.service'
+import { useNavigate } from 'react-router-dom'
 
 
+
+export const StationHero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit }) => {
+
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
@@ -40,7 +45,18 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
         dispatch(setCurrSong(station.songs[station.currSongIdx]))
         setIsPlayShow(true)
     }
-    //TODO : consult with the head team about pause song from here. This move might change alot..
+
+
+    const onRemoveStation = async () => {
+        try {
+            await stationService.remove(station._id)
+            navigate('/music/library')
+            
+        } catch (error) {
+            console.log('Can not delete', error);
+        }
+    }
+
 
 
     return (
@@ -64,9 +80,15 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
             </div>
             <div className='hero-footer'>
                 {station.songs.length > 0 ?
-                    <button onClick={onTogglePlayer}>
-                        {isPlayShow ? <PauseIcon /> : <PlayIcon />}
-                    </button>
+                    <div className='buttons'>
+
+                        <button onClick={onTogglePlayer}>
+                            {isPlayShow ? <PauseIcon /> : <PlayIcon />}
+                        </button>
+                        <span onClick={onRemoveStation} className='button-more-hero-footer'>
+                            <BtnMoreIcon />
+                        </span>
+                    </div>
                     :
                     <span></span>
                 }
