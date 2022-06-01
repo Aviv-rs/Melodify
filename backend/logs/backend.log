@@ -1,0 +1,32 @@
+01/06/2022, 11:13:29 - INFO - New connected socket [id: FDUSifPUVSgHZHjrAACR]
+01/06/2022, 11:13:30 - INFO - Req was made
+01/06/2022, 11:13:30 - DEBUG - Getting Stations
+01/06/2022, 11:13:30 - INFO - Setting socket.userId = 62952c4d648b3154bb204b74 for socket [id: FDUSifPUVSgHZHjrAACR]
+01/06/2022, 11:14:19 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 11:14:20 - INFO - New connected socket [id: pPBk2EXQbqKjPZSaAACT]
+01/06/2022, 11:14:20 - INFO - Req was made
+01/06/2022, 11:14:20 - DEBUG - Getting Stations
+01/06/2022, 11:14:20 - INFO - Setting socket.userId = 62952c4d648b3154bb204b74 for socket [id: pPBk2EXQbqKjPZSaAACT]
+01/06/2022, 11:15:09 - INFO - Req was made
+01/06/2022, 11:15:09 - DEBUG - Getting Stations
+01/06/2022, 11:15:17 - INFO - Req was made
+01/06/2022, 11:15:17 - DEBUG - Getting Stations
+01/06/2022, 11:16:00 - DEBUG - auth.service - signup with username: yael, fullname: Yael Geller
+01/06/2022, 11:16:00 - DEBUG - auth.route - new account created: {"username":"yael","password":"$2b$10$JQEMbMTAKiyCZHOGRjy8nOXwteRF13SArElzlI0N6mdZjKXUt7RM2","fullname":"Yael Geller","score":100,"_id":"629720404a820ddb8c1ca400"}
+01/06/2022, 11:16:00 - DEBUG - auth.service - login with username: yael
+01/06/2022, 11:16:01 - INFO - User login:  | {"_id":"629720404a820ddb8c1ca400","username":"yael","fullname":"Yael Geller","score":100}
+01/06/2022, 11:16:01 - INFO - Req was made
+01/06/2022, 11:16:01 - DEBUG - Getting Stations
+01/06/2022, 11:16:07 - INFO - Req was made
+01/06/2022, 11:16:07 - DEBUG - Getting Stations
+01/06/2022, 11:17:13 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 11:17:14 - INFO - New connected socket [id: ch_1QrangandId3HAACV]
+01/06/2022, 11:17:14 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: ch_1QrangandId3HAACV]
+01/06/2022, 11:17:17 - INFO - Req was made
+01/06/2022, 11:17:17 - DEBUG - Getting Stations
+01/06/2022, 11:17:24 - INFO - Req was made
+01/06/2022, 11:17:24 - DEBUG - Getting Stations
+01/06/2022, 11:17:48 - INFO - Req was made
+01/06/2022, 11:17:48 - DEBUG - Getting Stations
+01/06/2022, 11:18:32 - INFO - Req was made
+01/06/2022, 11:18:32 - DEBUG - Getting Stations

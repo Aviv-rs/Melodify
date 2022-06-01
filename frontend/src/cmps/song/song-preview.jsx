@@ -5,6 +5,7 @@ import { getActionSetStation } from '../../store/actions/station.action'
 import { useEffect, useState } from 'react'
 import ReactTimeAgo from 'react-time-ago'
 import { Draggable } from 'react-beautiful-dnd'
+import { MoreButton } from '../../services/img.import.service'
 
 
 export const SongPreview = ({ song, songIdx, station }) => {
@@ -57,6 +58,7 @@ export const SongPreview = ({ song, songIdx, station }) => {
                     {!song?.createdAt && <span></span>}
                 </span>
                 <span>{duration}</span>
+                <span><MoreButton/></span>
 
             </div>
         }
