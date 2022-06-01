@@ -1,12 +1,12 @@
 .station-modal {
-       left: 0;
-       top: 0;
-       bottom: 0;
-       width: 100wh;
-       right: 0;
-       position: fixed;
-       background-color: rgb(0 0 0 / 70%);
-       z-index: 3;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100wh;
+    right: 0;
+    position: fixed;
+    background-color: rgb(0 0 0 / 70%);
+    z-index: 3;
 
     .station-modal-content {
         width: 500px;
@@ -112,6 +112,30 @@
             letter-spacing: normal;
             padding: 21px;
         }
+
+        .multiSelectContainer{
+            width: 198px;
+            border: none;
+        }
+        
+        .multiSelectContainer ul{
+            border: none;
+            
+        }
+
+        .searchWrapper {
+            background: rgba(255, 255, 255, 0.1);
+            color: $clr6;
+            border: none;
+        }
+
+        .optionListContainer {
+            background-color: #3E3E3E;
+            border: none;
+        }
+
+        
+
     }
 
 }
