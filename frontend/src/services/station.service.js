@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import { socketService, SOCKET_EMIT_UPDATE_STATION } from './socket.service'
 
 export const stationService = {
     query,
@@ -33,7 +33,8 @@ async function remove(stationId) {
 async function save(station) {
     if (station._id) {
         const { data } = await axios.put(BASE_URL + station._id, station)
-        console.log('updated station', data);
+        socketService.emit(SOCKET_EMIT_UPDATE_STATION, station)
+        console.log('updated station', data)
         return data
     } else {
         const { data } = await axios.post(BASE_URL, station)
@@ -47,9 +48,9 @@ async function save(station) {
 
 function getEmptyStation() {
     return {
-        name: "New playlist",
-        coverUrl: "",
-        description: "",
+        name: 'New playlist',
+        coverUrl: '',
+        description: '',
         tags: [
 
         ],

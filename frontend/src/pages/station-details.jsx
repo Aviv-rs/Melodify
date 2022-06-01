@@ -14,6 +14,7 @@ import { youtubeService } from '../services/youtube.service'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { SearchResultList } from '../cmps/search/search-result-list'
+import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_UPDATE_STATION } from '../services/socket.service'
 
 
 export const StationDetails = () => {
@@ -33,10 +34,25 @@ export const StationDetails = () => {
 
     const isStationEmpty = !station?.songs.length
 
+
+
     useEffect(() => {
-        if (station) return
+        socketService.off(SOCKET_EMIT_STATION_UPDATED, setStation)
+        socketService.on(SOCKET_EMIT_STATION_UPDATED, setStation)
+        if (stationId) {
+            socketService.emit(SOCKET_EMIT_ENTERED_STATION, stationId)
+        }
+
         loadStation()
+
+        return () => {
+            socketService.off(SOCKET_EMIT_STATION_UPDATED, setStation)
+        }
     }, [])
+
+    // useEffect(() => {
+    //     if (!station) return
+    // }, [station])
 
 
     useEffectUpdate(() => {
