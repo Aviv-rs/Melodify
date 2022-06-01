@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 29.5.2022, 19:36:44 - INFO - Server is running on port: 3030
 29.5.2022, 19:36:51 - INFO - Server is running on port: 3030
 29.5.2022, 19:37:05 - INFO - Server is running on port: 3030
@@ -1087,3 +1088,5 @@
 6/1/2022, 9:57:20 AM - INFO - Req was made
 6/1/2022, 9:57:20 AM - DEBUG - Getting Stations
 6/1/2022, 9:57:24 AM - INFO - Socket disconnected [id: undefined]
+=======
+>>>>>>> 57cb47bc74d6ad09844d30e1a68340964d42c8f6

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StationDetailsPencil, StationDetMusic, StationDefaultIcon, PlayIcon, PauseIcon, Clock } from '../../services/img.import.service'
+import { StationDetailsPencil, StationDefaultIcon, PlayIcon, PauseIcon, Clock } from '../../services/img.import.service'
 import { StationModal } from './station-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { getActionSetStation } from '../../store/actions/station.action'
@@ -14,6 +14,7 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
     const { player } = useSelector((storeState) => storeState.playerModule)
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
+
     useEffect(() => {
         if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
     }, [station, isPlaying])

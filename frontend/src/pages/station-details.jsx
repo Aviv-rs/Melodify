@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router-dom"
-import { Search } from "../cmps/search/search"
-import { SongList } from "../cmps/song/song-list"
-import { Hero } from "../cmps/station/station-hero"
-import { stationService } from "../services/station.service"
-import { getActionSetStation } from "../store/actions/station.action"
-import { setHeaderColor } from "../store/actions/header.action"
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Search } from '../cmps/search/search'
+import { SongList } from '../cmps/song/song-list'
+import { Hero } from '../cmps/station/station-hero'
+import { stationService } from '../services/station.service'
+import { getActionSetStation } from '../store/actions/station.action'
+import { setHeaderColor } from '../store/actions/header.action'
 import { cloudinaryService } from '../services/cloudinary.service'
 import { BtnExit } from '../services/img.import.service'
 import getAverageColor from 'get-average-color'
-import { youtubeService } from "../services/youtube.service"
+import { youtubeService } from '../services/youtube.service'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
-import { SearchResultList } from "../cmps/search/search-result-list"
+import { SearchResultList } from '../cmps/search/search-result-list'
 
 
 export const StationDetails = () => {
@@ -69,19 +69,16 @@ export const StationDetails = () => {
         song.duration = await youtubeService.getSongDuration(song.id)
         song.createdAt = Date.now()
         const newStation = { ...station, songs: [...station.songs, song] }
-        if (station?._id) {
+        if (newStation?._id) {
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
 
-            if (station?._id === stationModule?.station._id) {
+            if (station?._id === stationModule?.station?._id) {
                 dispatch(getActionSetStation(savedStation))
-
             }
         } else {
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
-            dispatch(getActionSetStation(savedStation))
-
         }
     }
 

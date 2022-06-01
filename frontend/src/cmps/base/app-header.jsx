@@ -13,23 +13,41 @@ export const AppHeader = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const params = useParams()
-    const scrollPosition = useScrollPosition()
+    // const scrollPosition = useScrollPosition()
+    const scrollPosition = window.pageYOffset
 
     const { color } = useSelector(storeState => storeState.headerModule)
     const [colorToShow, setColorToShow] = useState('')
-    const match1 = useMatch('music/station/:stationId')
-    const match2 = useMatch('music/station')
+    const matchStation = useMatch('music/station/:stationId')
+    const matchNewStation = useMatch('music/station')
     const { user } = useSelector(storeState => storeState.userModule)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     useEffect(() => {
-        if (match1 || match2) {
-            setColorToShow(color)
-        } else setColorToShow('')
-
+        if (matchStation) setColorToShow(color) 
+        else if (matchNewStation) setColorToShow('rgb(83,83,83)')
+        else setColorToShow('')
     }, [color, params])
 
+
+    // const [offset, setOffset] = useState(0);
+
+    // useEffect(() => {
+    //     const onScroll = () => setOffset(window.pageYOffset);
+    //     // clean up code
+    //     window.removeEventListener('scroll', onScroll);
+    //     window.addEventListener('scroll', onScroll, { passive: true });
+    //     console.log(offset); 
+    //     return () => window.removeEventListener('scroll', onScroll);
+    // }, [offset]);
+    // setInterval(() => {
+    //     console.log('window.pageYOffset', window);
+    //     console.log("🚀 ~ file: app-header.jsx ~ line 44 ~ AppHeader ~ offset", offset)
+    // }, 1000);
+
+   
+    
     const onNavigate = (route) => {
         navigate(route)
     }
