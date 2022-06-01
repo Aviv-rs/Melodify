@@ -23,7 +23,6 @@ export const StationDetails = () => {
     const navigate = useNavigate()
     const stationModule = useSelector(storeState => storeState.stationModule)
 
-
     const [isSearchOpen, setIsSearchOpen] = useState(true)
 
     const [songResults, setSongResults] = useState(null)
@@ -32,17 +31,13 @@ export const StationDetails = () => {
     const [title, setTitle] = useState('')
     const [tags, setTags] = useState([])
 
-
-
+    const isStationEmpty = !station?.songs.length
 
     useEffect(() => {
         if (station) return
         loadStation()
     }, [])
 
-    // useEffect(() => {
-    //     console.log('station from local state', station);
-    // }, [station])
 
     useEffectUpdate(() => {
         window.location.reload()
@@ -65,8 +60,9 @@ export const StationDetails = () => {
         }
         // TODO: show user an indication that playlist wasnt found
         setStation(station)
+        // If it's an existing playlist, the search bar should be closed
         setIsSearchOpen(false)
-        if (station.coverUrl.length === 0) dispatch(setHeaderColor('rgb(83,83,83)'))
+        if (!station.coverUrl) dispatch(setHeaderColor('rgb(83,83,83)'))
         else getAvgColor(station.coverUrl)
         setTitle(station.name)
         setDescription(station.description)
@@ -74,9 +70,11 @@ export const StationDetails = () => {
 
 
     const onAddSong = async (song) => {
-        const isSongInStation = station.songs.some(currSong => currSong.id === song.id)
-        console.log('Song is already in playlist, TODO: render a user message for that')
-        if (isSongInStation) return
+        if (!isStationEmpty) {
+            const isSongInStation = station.songs.some(currSong => currSong.id === song.id)
+            console.log('Song is already in playlist, TODO: render a user message for that')
+            if (isSongInStation) return
+        }
         song.duration = await youtubeService.getSongDuration(song.id)
         song.createdAt = Date.now()
         const newStation = { ...station, songs: [...station.songs, song] }
@@ -90,14 +88,17 @@ export const StationDetails = () => {
         } else {
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
+            navigate(`/music/station/${savedStation._id}`)
         }
     }
 
     const onRemoveSong = async (songId) => {
         const newStation = { ...station, songs: [...station.songs.filter(currSong => currSong.id !== songId)] }
         await stationService.save(newStation)
-
-
+        setStation(newStation)
+        if (station?._id === stationModule?.station?._id) {
+            dispatch(getActionSetStation(newStation))
+        }
     }
 
     const displaySongResults = (songs) => {
@@ -122,13 +123,12 @@ export const StationDetails = () => {
         })
     }
 
-    const onSubmit = async () => {
+    const onSaveDetails = async (details) => {
+
         try {
-            const newStation = { ...station, name: title, description, tags }
+            const newStation = { ...station, ...details }
             const savedStation = await stationService.save(newStation)
-            console.log("🚀 ~ file: station-details.jsx ~ line 122 ~ onSubmit ~ savedStation", savedStation)
             setStation(savedStation)
-            loadStation()
         } catch {
             console.log('could not save title and description')
         }
@@ -137,7 +137,6 @@ export const StationDetails = () => {
     // After dropping a song with drag and drop
     const onDragEnd = async (result) => {
         const { source, destination } = result
-        // console.log(source, destination)
         // If dropped out of container bounds or dropped uppon the same song, return
         if (!destination || (destination.droppableId === source.droppableId &&
             destination.index === source.index)) return
@@ -148,18 +147,14 @@ export const StationDetails = () => {
         newStation.songs = newSongs
         setStation((prevStation) => ({ ...prevStation, songs: [...newSongs] }))
         const savedStation = await stationService.save(newStation)
-        // console.log('saved station from backend', savedStation)
         if (station?._id === stationModule?.station?._id) dispatch(getActionSetStation(savedStation))
     }
 
-
-
-    const isStationEmpty = !station?.songs.length
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
 
         <StationHero
-            onSubmit={onSubmit}
+            onSaveDetails={onSaveDetails}
             station={station}
             handleImgUpload={handleImgUpload}
             setDescription={setDescription}
@@ -170,7 +165,7 @@ export const StationDetails = () => {
             setTags={setTags}
         />
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
-            <SongList songs={station.songs} station={station} />
+            <SongList onRemoveSong={onRemoveSong} songs={station.songs} station={station} />
         </DragDropContext>}
 
         <div className="search-station-details-main" >
@@ -183,7 +178,7 @@ export const StationDetails = () => {
                     <BtnExit />
                 </div>
             </div> :
-                <span className="flex flex-end" onClick={() => { setIsSearchOpen(true) }}>FIND MORE</span>
+                <span className="flex flex-end find-more" onClick={() => { setIsSearchOpen(true) }}>FIND MORE</span>
             }
 
         </div>

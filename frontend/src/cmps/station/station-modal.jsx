@@ -4,15 +4,21 @@ import { tags as allTags } from '../../data/station'
 import Multiselect from 'multiselect-react-dropdown'
 
 
-export const StationModal = ({ setIsModalOpen, handleImgUpload, station, setTitle, setDescription, onSubmit, title, description, tags, setTags }) => {
 
+export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveDetails }) => {
+    //TODO: add close modal option by pressing outside the modal
     const options = allTags.map(tag => { return { name: tag } })
+    const [name, setName] = useState(station.name)
+    const [description, setDescription] = useState(station.description)
+    const [tags, setTags] = useState([])
     const onSelect = (values) => {
         setTags(values.map(value => value.name))
     }
-
     return <div className="station-modal">
-        <div className='station-modal-content'>
+        <form onSubmit={() => {
+            onSaveDetails({ name, description, tags })
+            setIsModalOpen(false)
+        }} className='station-modal-content'>
             <div className='edit-details-title'>
                 <h1>Edit details</h1>
                 <span></span>
@@ -29,27 +35,22 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, setTitl
                 </label>
                 <input className='img-input' id='inputImg' onChange={handleImgUpload} type="file"></input>
                 <div className='bttns-input'>
-                    <input onChange={({ target }) => setTitle(target.value)} value={title} className='title-input' type="text" placeholder='Add a name' />
-                    <textarea onChange={({ target }) => setDescription(target.value)} value={description} className='album-image-description' placeholder='Add an optional description' name="" id="" cols="30" rows="10"></textarea>
 
+
+
+                    <input onChange={({ target }) => setName(target.value)} value={name} className='title-input' type="text" placeholder='Add a name' />
+                    <textarea onChange={({ target }) => setDescription(target.value)} value={description} className='album-image-description' placeholder='Add an optional description' name="description" id="" cols="30" rows="10"></textarea>
                     <Multiselect
                         options={options} // Options to display in the dropdown
                         onSelect={onSelect} // Function will trigger on select event
                         selectionLimit={3}
                         displayValue="name" // Property name to display in the dropdown options
                     />
-                    <button className='save-button' onClick={() => {
-                        onSubmit()
-                        setIsModalOpen(false)
-                    }
-                    }>Save</button>
+                    <button className='save-button'>Save</button>
                 </div>
-
-
             </div>
+        </form>
 
-        </div>
-
-    </div>
+    </div >
 
 }
