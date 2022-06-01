@@ -1,0 +1,48 @@
+31/05/2022, 18:18:25 - INFO - Socket disconnected [id: undefined]
+31/05/2022, 18:18:27 - INFO - New connected socket [id: BeM-gt1Fk3eqxpFQAACD]
+31/05/2022, 18:18:43 - INFO - Req was made
+31/05/2022, 18:18:43 - DEBUG - Getting Stations
+31/05/2022, 18:18:47 - INFO - Req was made
+31/05/2022, 18:18:47 - DEBUG - Getting Stations
+31/05/2022, 18:18:48 - INFO - Req was made
+31/05/2022, 18:18:48 - DEBUG - Getting Stations
+31/05/2022, 18:18:49 - INFO - Req was made
+31/05/2022, 18:18:49 - DEBUG - Getting Stations
+31/05/2022, 18:19:21 - INFO - Req was made
+31/05/2022, 18:19:21 - DEBUG - Getting Stations
+31/05/2022, 18:19:30 - INFO - Socket disconnected [id: undefined]
+31/05/2022, 18:19:32 - INFO - New connected socket [id: mKpe6BSwgvWY7QcZAACF]
+31/05/2022, 18:22:14 - INFO - Socket disconnected [id: undefined]
+31/05/2022, 18:22:16 - INFO - New connected socket [id: 1dj8VKccmreZuhp1AACH]
+31/05/2022, 18:22:26 - INFO - Req was made
+31/05/2022, 18:22:26 - DEBUG - Getting Stations
+31/05/2022, 18:54:26 - INFO - Socket disconnected [id: undefined]
+31/05/2022, 18:54:27 - INFO - Req was made
+31/05/2022, 18:54:27 - DEBUG - Getting Stations
+31/05/2022, 19:21:17 - INFO - New connected socket [id: HKBBWFySU4aLynhaAACJ]
+31/05/2022, 19:21:17 - INFO - Req was made
+31/05/2022, 19:21:17 - DEBUG - Getting Stations
+31/05/2022, 19:23:03 - DEBUG - auth.service - login with username: yoni
+31/05/2022, 19:23:03 - DEBUG - auth.service - login with username: yoni
+31/05/2022, 19:23:04 - INFO - User login:  | {"_id":"62952c4d648b3154bb204b74","username":"yoni","fullname":"Yehonatan Geller"}
+31/05/2022, 19:23:04 - INFO - Setting socket.userId = 62952c4d648b3154bb204b74 for socket [id: HKBBWFySU4aLynhaAACJ]
+31/05/2022, 19:23:04 - INFO - Req was made
+31/05/2022, 19:23:04 - DEBUG - Getting Stations
+31/05/2022, 19:23:04 - INFO - User login:  | {"_id":"62952c4d648b3154bb204b74","username":"yoni","fullname":"Yehonatan Geller"}
+31/05/2022, 19:23:04 - INFO - Setting socket.userId = 62952c4d648b3154bb204b74 for socket [id: HKBBWFySU4aLynhaAACJ]
+31/05/2022, 19:28:39 - INFO - Req was made
+31/05/2022, 19:28:39 - DEBUG - Getting Stations
+31/05/2022, 19:32:21 - INFO - Req was made
+31/05/2022, 19:32:21 - DEBUG - Getting Stations
+31/05/2022, 19:33:51 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 9:09:54 - INFO - New connected socket [id: kmc_gdBYNsxIAiVkAACL]
+01/06/2022, 10:01:47 - INFO - Req was made
+01/06/2022, 10:01:47 - DEBUG - Getting Stations
+01/06/2022, 10:04:06 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 10:04:10 - INFO - New connected socket [id: 1GkVqDJvWj6MGPNLAACN]
+01/06/2022, 10:04:11 - INFO - Setting socket.userId = 62952c4d648b3154bb204b74 for socket [id: 1GkVqDJvWj6MGPNLAACN]
+01/06/2022, 10:04:13 - INFO - Req was made
+01/06/2022, 10:04:13 - DEBUG - Getting Stations
+01/06/2022, 11:01:18 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 11:11:26 - INFO - New connected socket [id: _LVNDYC6YQIsolwFAACP]
+01/06/2022, 11:12:11 - INFO - Socket disconnected [id: undefined]
