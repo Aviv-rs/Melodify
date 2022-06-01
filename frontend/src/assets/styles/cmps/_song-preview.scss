@@ -1,6 +1,6 @@
 .song-preview {
     display: grid;
-    grid-template-columns: 60px 60px 2fr 1fr 80px 50px;
+    grid-template-columns: 60px 60px 2fr 1fr 28px 50px;
     gap: 5px;
     padding: 6px;
     cursor: default !important;
@@ -21,6 +21,10 @@
 
         .song-number {
             opacity: 0;
+        }
+
+        .btn-more-options {
+            opacity: 1;
         }
 
         background-color: rgba(255, 255, 255, .1);
@@ -53,6 +57,7 @@
     .btn-more-options {
         background-color: transparent;
         border: none;
+        opacity: 0;
 
         svg {
             fill: $clr8;
@@ -103,6 +108,8 @@
             }
         }
     }
+
+   
 
     .button-add {
         width: 59px;
