@@ -85,6 +85,13 @@ export const StationDetails = () => {
         }
     }
 
+    const onRemoveSong = async (songId) => {
+        const newStation = { ...station, songs: [...station.songs.filter(currSong => currSong.id !== songId)] }
+        await stationService.save(newStation)
+
+
+    }
+
     const displaySongResults = (songs) => {
         setSongResults(songs)
     }

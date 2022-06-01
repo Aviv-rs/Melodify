@@ -1783,3 +1783,28 @@
 1.6.2022, 12:05:04 - INFO - Server is running on port: 3030
 1.6.2022, 12:05:06 - INFO - New connected socket [id: E7CTQTqvqV42TCcEAAAC]
 1.6.2022, 12:05:07 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: E7CTQTqvqV42TCcEAAAC]
+1.6.2022, 12:26:07 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 12:26:10 - INFO - New connected socket [id: hSDv4RTjKVUgoaJsAAAE]
+1.6.2022, 12:26:10 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: hSDv4RTjKVUgoaJsAAAE]
+1.6.2022, 12:26:20 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 12:26:22 - INFO - New connected socket [id: v5bERsnbZyDh3cq2AAAG]
+1.6.2022, 12:26:22 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: v5bERsnbZyDh3cq2AAAG]
+1.6.2022, 12:26:37 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 12:26:38 - INFO - New connected socket [id: -wDViMRi8XpkmHUoAAAI]
+1.6.2022, 12:26:38 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: -wDViMRi8XpkmHUoAAAI]
+1.6.2022, 12:28:18 - DEBUG - auth.service - login with username: melodifyDYA
+1.6.2022, 12:28:19 - INFO - User login:  | {"_id":"6294fef3e2c44b9d48fd052f","likedSongs":[],"likedStations":[],"username":"melodifyDYA","isAdmin":true,"fullname":"Melodify","avatar":"https://res.cloudinary.com/dfhp1qewd/image/upload/v1653940785/mdkzzajlvfpqmd2sfaut.jpg"}
+1.6.2022, 12:28:19 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: -wDViMRi8XpkmHUoAAAI]
+1.6.2022, 12:28:19 - INFO - Req was made
+1.6.2022, 12:28:19 - DEBUG - Getting Stations
+1.6.2022, 12:28:23 - INFO - Req was made
+1.6.2022, 12:28:23 - DEBUG - Getting Stations
+1.6.2022, 12:28:25 - INFO - Req was made
+1.6.2022, 12:28:25 - DEBUG - Getting Stations
+1.6.2022, 12:42:50 - INFO - Req was made
+1.6.2022, 12:42:50 - DEBUG - Getting Stations
+1.6.2022, 12:43:07 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 12:43:08 - INFO - New connected socket [id: AJAtlFXUBWMo6oIRAAAK]
+1.6.2022, 12:43:08 - INFO - Req was made
+1.6.2022, 12:43:08 - DEBUG - Getting Stations
+1.6.2022, 12:43:08 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: AJAtlFXUBWMo6oIRAAAK]

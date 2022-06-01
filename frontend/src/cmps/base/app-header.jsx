@@ -5,6 +5,7 @@ import { ArrowDownIcon } from "../../services/img.import.service"
 import { ArrowUpIcon } from "../../services/img.import.service"
 import { onLogout } from "../../store/actions/user.action"
 import { DefaultAvatarIcon } from "../../services/img.import.service"
+import { OptionsMenu } from "../util/options-menu"
 import { useScrollPosition } from "../../hooks/useScrollPosition"
 
 
@@ -25,7 +26,7 @@ export const AppHeader = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     useEffect(() => {
-        if (matchStation) setColorToShow(color) 
+        if (matchStation) setColorToShow(color)
         else if (matchNewStation) setColorToShow('rgb(83,83,83)')
         else setColorToShow('')
     }, [color, params])
@@ -46,8 +47,8 @@ export const AppHeader = () => {
     //     console.log("🚀 ~ file: app-header.jsx ~ line 44 ~ AppHeader ~ offset", offset)
     // }, 1000);
 
-   
-    
+
+
     const onNavigate = (route) => {
         navigate(route)
     }
@@ -87,10 +88,8 @@ export const AppHeader = () => {
                 <button onClick={() => onNavigate('/signup')} className="btn-signup">Sign up</button>
                 <button onClick={() => onNavigate('/login')} className="btn-login">Log in</button>
             </div>}
-        {user && isMenuOpen && <div className="user-menu">
-            <ul className="option-list clean-list">
-                <li className="option" onMouseDown={onUserLogout}>Logout</li>
-            </ul>
-        </div>}
+
+        <OptionsMenu options={[{ name: 'Logout', action: onUserLogout }]} isOpen={user && isMenuOpen} className={'user-menu'} />
+
     </header>
 }
