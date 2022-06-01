@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrSong } from '../../store/actions/current-song.action'
-import { PlayIcon, PauseIcon } from '../../services/img.import.service'
+import { PlayIcon, PauseIcon, BtnMoreIcon } from '../../services/img.import.service'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { useEffect, useState } from 'react'
 import ReactTimeAgo from 'react-time-ago'
@@ -57,6 +57,12 @@ export const SongPreview = ({ song, songIdx, station }) => {
                     {!song?.createdAt && <span></span>}
                 </span>
                 <span>{duration}</span>
+                <button className='btn-more-options'><BtnMoreIcon /></button>
+                {/* {<div className="options-menu">
+            <ul className="option-list clean-list">
+                <li className="option" onMouseDown={onUserLogout}>Logout</li>
+            </ul>
+        </div>} */}
 
             </div>
         }

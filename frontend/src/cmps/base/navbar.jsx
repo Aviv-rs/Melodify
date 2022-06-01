@@ -18,11 +18,12 @@ export const Navbar = () => {
 
     return (
         <nav className="nav-container">
-            <div className="logo-container">
-                <NavLink to="/music">
+            <NavLink to="/music">
+                <div className="logo-container">
                     <Logo className="logo-svg" />
-                </NavLink>
-            </div>
+                    <span className='brand-txt'>Melodify</span>
+                </div>
+            </NavLink>
             <ul className="nav-list">
                 <li>
                     <nav>

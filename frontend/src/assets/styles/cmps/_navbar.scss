@@ -12,10 +12,17 @@
         height: 40px;
         margin-bottom: 18px;
         padding: 0 24px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
 
         .logo-svg {
             height: 40px;
             max-width: 131px;
+        }
+
+        .brand-txt {
+            font-size: 1.4rem;
         }
 
     }
