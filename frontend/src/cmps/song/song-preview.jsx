@@ -5,10 +5,10 @@ import { getActionSetStation } from '../../store/actions/station.action'
 import { useEffect, useState } from 'react'
 import ReactTimeAgo from 'react-time-ago'
 import { Draggable } from 'react-beautiful-dnd'
+import { OptionsMenu } from '../util/options-menu'
 
 
-
-export const SongPreview = ({ song, songIdx, station }) => {
+export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
 
 
 
@@ -19,6 +19,9 @@ export const SongPreview = ({ song, songIdx, station }) => {
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const [isPlayShow, setIsPlayShow] = useState(false)
     const [duration, setDuration] = useState('')
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const isAdminStation = station.createdBy.isAdmin
 
     useEffect(() => {
         if (song.duration) setDuration(song.duration)
@@ -58,12 +61,11 @@ export const SongPreview = ({ song, songIdx, station }) => {
                     {!song?.createdAt && <span></span>}
                 </span>
                 <span>{duration}</span>
-                <button className='btn-more-options'><BtnMoreIcon /></button>
-                {/* {<div className="options-menu">
-            <ul className="option-list clean-list">
-                <li className="option" onMouseDown={onUserLogout}>Logout</li>
-            </ul>
-        </div>} */}
+                {!isAdminStation && <>
+                    <button className='btn-more-options'><BtnMoreIcon /></button>
+                    <OptionsMenu isOpen={isMenuOpen} options={[{ name: 'Remove song from playlist', action: () => onRemoveSong(song.id) }]} />
+                </>}
+
 
             </div>
         }
