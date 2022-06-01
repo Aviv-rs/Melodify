@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 29.5.2022, 19:36:44 - INFO - Server is running on port: 3030
 29.5.2022, 19:36:51 - INFO - Server is running on port: 3030
 29.5.2022, 19:37:05 - INFO - Server is running on port: 3030
@@ -1777,3 +1778,7 @@
 1.6.2022, 12:00:47 - DEBUG - Getting Stations
 1.6.2022, 12:01:01 - INFO - Req was made
 1.6.2022, 12:01:01 - DEBUG - Getting Stations
+=======
+>>>>>>> ac67a2f3b44f35885c456253c42568004dfcf7b7
+1.6.2022, 12:05:04 - INFO - Server is running on port: 3030
+1.6.2022, 12:05:06 - INFO - New connected socket [id: E7CTQTqvqV42TCcEAAAC]
