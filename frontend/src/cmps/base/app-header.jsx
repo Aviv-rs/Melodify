@@ -6,7 +6,7 @@ import { ArrowUpIcon } from "../../services/img.import.service"
 import { onLogout } from "../../store/actions/user.action"
 import { DefaultAvatarIcon } from "../../services/img.import.service"
 import { OptionsMenu } from "../util/options-menu"
-import { useScrollPosition } from "../../hooks/useScrollPosition"
+
 
 
 export const AppHeader = () => {
@@ -14,8 +14,6 @@ export const AppHeader = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const params = useParams()
-    // const scrollPosition = useScrollPosition()
-    const scrollPosition = window.pageYOffset
 
     const { color } = useSelector(storeState => storeState.headerModule)
     const [colorToShow, setColorToShow] = useState('')
@@ -31,21 +29,6 @@ export const AppHeader = () => {
         else setColorToShow('')
     }, [color, params])
 
-
-    // const [offset, setOffset] = useState(0);
-
-    // useEffect(() => {
-    //     const onScroll = () => setOffset(window.pageYOffset);
-    //     // clean up code
-    //     window.removeEventListener('scroll', onScroll);
-    //     window.addEventListener('scroll', onScroll, { passive: true });
-    //     console.log(offset); 
-    //     return () => window.removeEventListener('scroll', onScroll);
-    // }, [offset]);
-    // setInterval(() => {
-    //     console.log('window.pageYOffset', window);
-    //     console.log("🚀 ~ file: app-header.jsx ~ line 44 ~ AppHeader ~ offset", offset)
-    // }, 1000);
 
 
 

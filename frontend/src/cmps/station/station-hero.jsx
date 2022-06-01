@@ -6,15 +6,19 @@ import { getActionSetStation } from '../../store/actions/station.action'
 import { setCurrSong } from '../../store/actions/current-song.action'
 import { stationService } from '../../services/station.service'
 import { useNavigate } from 'react-router-dom'
+import { OptionsMenu } from '../util/options-menu'
 
 
 
-export const StationHero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit }) => {
+export const StationHero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit, title, description, tags, setTags }) => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
+    const [isOpenMenu, setIsOpenMenue] = useState(false)
+
+
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
@@ -51,7 +55,7 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
         try {
             await stationService.remove(station._id)
             navigate('/music/library')
-            
+
         } catch (error) {
             console.log('Can not delete', error);
         }
@@ -59,8 +63,11 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
 
 
 
+
+
+
+
     return (
-        // <article className='hero-container' style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%), ${colorAvg}` }}>
         <article className='hero-container'>
             <div className='hero-content' >
 
@@ -72,11 +79,21 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                 </div>
                 <div className='hero-details'>
                     <span>PLAYLIST</span>
-                    <h1>{station.name}</h1>
+                    <h1 onClick={() => setIsModalOpen(true)}>{station.name}</h1>
                     <span>{station.description}</span>
-                    {/* <span>{station.description}</span> */}
                 </div>
-                {isModalOpen && <StationModal onSubmit={onSubmit} setDescription={setDescription} setTitle={setTitle} setIsModalOpen={setIsModalOpen} handleImgUpload={handleImgUpload} station={station} />}
+                {isModalOpen && <StationModal
+                    onSubmit={onSubmit}
+                    setDescription={setDescription}
+                    description={description}
+                    setTitle={setTitle}
+                    title={title}
+                    setIsModalOpen={setIsModalOpen}
+                    handleImgUpload={handleImgUpload}
+                    station={station}
+                    tags={tags}
+                    setTags={setTags}
+                />}
             </div>
             <div className='hero-footer'>
                 {station.songs.length > 0 ?
@@ -85,9 +102,21 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                         <button onClick={onTogglePlayer}>
                             {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                         </button>
-                        <span onClick={onRemoveStation} className='button-more-hero-footer'>
-                            <BtnMoreIcon />
-                        </span>
+                        {!station.createdBy?.isAdmin &&
+                            <span className='button-more-hero-footer' onClick={() => setIsOpenMenue(!isOpenMenu)}>
+                                <BtnMoreIcon />
+                            </span>
+                        }
+
+                        <OptionsMenu
+                            options={[
+                                { name: 'Delete', action: onRemoveStation },
+                                { name: 'Edit', action: () => setIsModalOpen(true) },
+                            ]}
+                            isOpen={isOpenMenu && !station.createdBy?.isAdmin}
+                            className={'station-menu'}
+                        />
+
                     </div>
                     :
                     <span></span>

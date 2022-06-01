@@ -28,8 +28,9 @@ export const StationDetails = () => {
 
     const [songResults, setSongResults] = useState(null)
     const [station, setStation] = useState(null)
-    const [description, setDescription] = useState(null)
-    const [title, setTitle] = useState(null)
+    const [description, setDescription] = useState('')
+    const [title, setTitle] = useState('')
+    const [tags, setTags] = useState([])
 
 
 
@@ -61,7 +62,10 @@ export const StationDetails = () => {
         // TODO: show user an indication that playlist wasnt found
         setStation(station)
         setIsSearchOpen(false)
-        getAvgColor(station.coverUrl)
+        if (station.coverUrl.length === 0) dispatch(setHeaderColor('rgb(83,83,83)'))
+        else getAvgColor(station.coverUrl)
+        setTitle(station.name)
+        setDescription(station.description)
     }
 
 
@@ -116,9 +120,11 @@ export const StationDetails = () => {
 
     const onSubmit = async () => {
         try {
-            const newStation = { ...station, name: title, description }
-            setStation(newStation)
-
+            const newStation = { ...station, name: title, description, tags }
+            const savedStation = await stationService.save(newStation)
+            console.log("🚀 ~ file: station-details.jsx ~ line 122 ~ onSubmit ~ savedStation", savedStation)
+            setStation(savedStation)
+            loadStation()
         } catch {
             console.log('could not save title and description')
         }
@@ -148,7 +154,17 @@ export const StationDetails = () => {
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
 
-        <StationHero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle} />
+        <StationHero
+            onSubmit={onSubmit}
+            station={station}
+            handleImgUpload={handleImgUpload}
+            setDescription={setDescription}
+            description={description}
+            setTitle={setTitle}
+            title={title}
+            tags={tags}
+            setTags={setTags}
+        />
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
             <SongList songs={station.songs} station={station} />
         </DragDropContext>}
