@@ -1,6 +1,7 @@
 .station-details {
     background-color: $clr12;
     min-height: 100vh;
+    padding-bottom: 20px;
 }
 
 .search-station-details-main {
@@ -10,5 +11,8 @@
 
 .search-page {
     padding: 0 32px;
+}
 
+.find-more {
+    margin-top: 20px;
 }

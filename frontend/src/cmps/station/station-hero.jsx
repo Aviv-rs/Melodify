@@ -10,7 +10,7 @@ import { OptionsMenu } from '../util/options-menu'
 
 
 
-export const StationHero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit, title, description, tags, setTags }) => {
+export const StationHero = ({ station, handleImgUpload, setDescription, setTitle, onSaveDetails, title, description, tags, setTags }) => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -83,7 +83,7 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                     <span>{station.description}</span>
                 </div>
                 {isModalOpen && <StationModal
-                    onSubmit={onSubmit}
+                    onSaveDetails={onSaveDetails}
                     setDescription={setDescription}
                     description={description}
                     setTitle={setTitle}

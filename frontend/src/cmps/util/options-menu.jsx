@@ -1,8 +1,8 @@
 
-export const OptionsMenu = ({ options, isOpen = false, className = 'options-menu' }) => {
+export const OptionsMenu = ({ options, isOpen = false, className = 'options-menu', setIsOpen }) => {
 
     if (!isOpen) return <></>
-    return <div className={className}>
+    return <div tabIndex={0} onBlur={() => setIsOpen(false)} className={className}>
         <ul className="option-list clean-list">
             {options.map((option, idx) => {
                 return <li key={idx} onMouseDown={option.action} className="option">{option.name}</li>

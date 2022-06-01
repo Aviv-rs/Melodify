@@ -2289,3 +2289,125 @@
 01/06/2022, 17:42:55 - INFO - Req was made
 01/06/2022, 17:42:55 - DEBUG - Getting Stations
 >>>>>>> 36428d1cb4f12f429c510865c057b4054d33fcc0
+1.6.2022, 17:47:50 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 17:47:50 - INFO - New connected socket [id: rpXeEqPqwNz-ltwjAABe]
+1.6.2022, 17:47:52 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: rpXeEqPqwNz-ltwjAABe]
+1.6.2022, 17:49:24 - INFO - Req was made
+1.6.2022, 17:49:24 - DEBUG - Getting Stations
+1.6.2022, 17:49:35 - INFO - Req was made
+1.6.2022, 17:49:35 - DEBUG - Getting Stations
+1.6.2022, 17:49:42 - INFO - Req was made
+1.6.2022, 17:49:42 - DEBUG - Getting Stations
+1.6.2022, 17:49:48 - INFO - Req was made
+1.6.2022, 17:49:48 - DEBUG - Getting Stations
+1.6.2022, 17:49:54 - INFO - Req was made
+1.6.2022, 17:49:54 - DEBUG - Getting Stations
+1.6.2022, 17:50:06 - INFO - Req was made
+1.6.2022, 17:50:06 - DEBUG - Getting Stations
+1.6.2022, 17:50:15 - INFO - Req was made
+1.6.2022, 17:50:15 - DEBUG - Getting Stations
+1.6.2022, 17:50:21 - INFO - Req was made
+1.6.2022, 17:50:21 - DEBUG - Getting Stations
+1.6.2022, 17:52:37 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 17:52:38 - INFO - New connected socket [id: IFTtzeZp0YbPEItzAABg]
+1.6.2022, 17:52:38 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: IFTtzeZp0YbPEItzAABg]
+1.6.2022, 17:53:02 - INFO - Req was made
+1.6.2022, 17:53:02 - DEBUG - Getting Stations
+1.6.2022, 17:53:37 - INFO - Req was made
+1.6.2022, 17:53:37 - DEBUG - Getting Stations
+1.6.2022, 17:54:19 - INFO - Req was made
+1.6.2022, 17:54:19 - DEBUG - Getting Stations
+1.6.2022, 17:57:59 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 17:58:12 - INFO - New connected socket [id: Y9WArnUYFUevN9sWAABi]
+1.6.2022, 17:58:12 - INFO - Req was made
+1.6.2022, 17:58:12 - DEBUG - Getting Stations
+1.6.2022, 17:58:12 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: Y9WArnUYFUevN9sWAABi]
+1.6.2022, 18:04:21 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 18:04:21 - INFO - New connected socket [id: 6swGZ4wsCzAAo8s8AABk]
+1.6.2022, 18:04:22 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: 6swGZ4wsCzAAo8s8AABk]
+1.6.2022, 18:11:32 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 18:11:32 - INFO - New connected socket [id: kBX5YUcysXVHdyPoAABm]
+1.6.2022, 18:11:33 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: kBX5YUcysXVHdyPoAABm]
+1.6.2022, 18:14:20 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 18:14:20 - INFO - New connected socket [id: kR_PI4F_9-QL7BCuAABo]
+1.6.2022, 18:14:21 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: kR_PI4F_9-QL7BCuAABo]
+1.6.2022, 18:14:44 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 18:14:44 - INFO - New connected socket [id: p0jKzVZUtM_gLVWTAABq]
+1.6.2022, 18:14:45 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: p0jKzVZUtM_gLVWTAABq]
+1.6.2022, 18:15:24 - INFO - Req was made
+1.6.2022, 18:15:24 - DEBUG - Getting Stations
+1.6.2022, 18:16:43 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 18:16:43 - INFO - New connected socket [id: BqVC2r-1GUnxoTejAABs]
+1.6.2022, 18:16:43 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: BqVC2r-1GUnxoTejAABs]
+1.6.2022, 18:16:47 - INFO - Req was made
+1.6.2022, 18:16:47 - DEBUG - Getting Stations
+1.6.2022, 18:16:52 - INFO - Req was made
+1.6.2022, 18:16:52 - DEBUG - Getting Stations
+1.6.2022, 18:17:23 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 18:17:24 - INFO - New connected socket [id: g8vsfEjhJafk0eabAABu]
+1.6.2022, 18:17:24 - INFO - Req was made
+1.6.2022, 18:17:24 - DEBUG - Getting Stations
+1.6.2022, 18:17:29 - INFO - Req was made
+1.6.2022, 18:17:29 - DEBUG - Getting Stations
+1.6.2022, 18:17:33 - INFO - Req was made
+1.6.2022, 18:17:33 - DEBUG - Getting Stations
+1.6.2022, 18:17:36 - INFO - Req was made
+1.6.2022, 18:17:36 - DEBUG - Getting Stations
+1.6.2022, 18:17:39 - INFO - Req was made
+1.6.2022, 18:17:39 - DEBUG - Getting Stations
+1.6.2022, 18:17:46 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 18:17:47 - INFO - New connected socket [id: YjS3qOCduke_-He4AABw]
+1.6.2022, 19:04:30 - INFO - Req was made
+1.6.2022, 19:04:30 - DEBUG - Getting Stations
+1.6.2022, 19:08:37 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:08:37 - INFO - New connected socket [id: PwaIp7Lls9GW4sK4AABy]
+1.6.2022, 19:08:42 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:08:42 - INFO - New connected socket [id: 73EYvw0Uw3kxOG14AAB0]
+1.6.2022, 19:08:46 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:08:46 - INFO - New connected socket [id: dZEL616pEkV03mfgAAB2]
+1.6.2022, 19:10:54 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:10:55 - INFO - New connected socket [id: x3Fo5Kk1rlthSTC5AAB4]
+1.6.2022, 19:10:56 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:10:56 - INFO - New connected socket [id: EiAgwWfV1AUxR9d6AAB6]
+1.6.2022, 19:11:01 - INFO - Req was made
+1.6.2022, 19:11:01 - DEBUG - Getting Stations
+1.6.2022, 19:11:37 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:11:37 - INFO - New connected socket [id: 9a_nZcF3x7ABbYU-AAB8]
+1.6.2022, 19:12:02 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:12:02 - INFO - New connected socket [id: YICnHDWeq4a1Xh88AAB-]
+1.6.2022, 19:16:42 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:16:42 - INFO - New connected socket [id: hIdlt6XxaTBFBeMKAACA]
+1.6.2022, 19:23:47 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:23:47 - INFO - New connected socket [id: CYeTkXfXsyLcItVwAACC]
+1.6.2022, 19:23:49 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:23:49 - INFO - New connected socket [id: x_dpPy8qquwvTEitAACE]
+1.6.2022, 19:34:45 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:34:45 - INFO - New connected socket [id: -HKPy7_HKgMrNjTBAACG]
+1.6.2022, 19:35:12 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:35:12 - INFO - New connected socket [id: eRSmj57c31CQxCgiAACI]
+1.6.2022, 19:41:51 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:41:51 - INFO - New connected socket [id: dmSI0hghaDdBWJGcAACK]
+1.6.2022, 19:44:19 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:44:19 - INFO - New connected socket [id: VwhWHvrW8Wcl2gVPAACM]
+1.6.2022, 19:47:04 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:47:05 - INFO - New connected socket [id: kk8DIwoVcgWpLFGdAACO]
+1.6.2022, 19:49:43 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:49:43 - INFO - New connected socket [id: aMakTxYL6f-4KEPqAACQ]
+1.6.2022, 19:51:45 - INFO - Req was made
+1.6.2022, 19:51:45 - DEBUG - Getting Stations
+1.6.2022, 19:52:41 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:52:41 - INFO - New connected socket [id: c5y87Yqz3DkueXyhAACS]
+1.6.2022, 19:54:46 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 19:54:46 - INFO - New connected socket [id: WUpzGEdOhz6fk_H4AACU]
+1.6.2022, 20:05:26 - INFO - Req was made
+1.6.2022, 20:05:26 - DEBUG - Getting Stations
+1.6.2022, 20:19:26 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 20:19:27 - INFO - New connected socket [id: uVgIA4_xZJnFn8Q6AACW]
+1.6.2022, 20:20:28 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 20:20:29 - INFO - New connected socket [id: jg8JbECJ8j6DenkbAACY]
+1.6.2022, 20:20:29 - INFO - Req was made
+1.6.2022, 20:20:29 - DEBUG - Getting Stations
+1.6.2022, 20:20:36 - INFO - Req was made
+1.6.2022, 20:20:36 - DEBUG - Getting Stations
+1.6.2022, 20:33:57 - INFO - Socket disconnected [id: undefined]
+1.6.2022, 20:33:57 - INFO - New connected socket [id: x4oVqpF_IDIKTzlwAACa]
