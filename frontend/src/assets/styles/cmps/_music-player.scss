@@ -87,8 +87,8 @@
         min-width: 32px;
         width: 32px;
 
-        &:hover {
-            fill: #fff;
+        &:hover svg {
+            stroke: #fff;
         }
 
         svg {

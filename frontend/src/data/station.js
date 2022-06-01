@@ -795,3 +795,26 @@ const activities = {
 
 
 
+
+
+//LIKED STATIONS
+// const likedDemo =
+// {
+//   "_id" : ObjectId("liked"), 
+//   "name": "Liked Songs",
+//   "coverUrl": "https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png",
+//   "createdAt": new Date(),
+//   "createdBy": {
+   
+//   },
+//   "likedByUsers": [
+
+//   ],
+//   "songs": [
+//     {
+     
+//     },
+//   ]
+// }
+
+
