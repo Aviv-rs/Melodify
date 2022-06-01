@@ -24,6 +24,8 @@ export { ReactComponent as ArrowUpIcon } from '../assets/imgs/arrow-up.svg'
 export { ReactComponent as DefaultAvatarIcon } from '../assets/imgs/default-avatar.svg'
 export { ReactComponent as BtnMoreIcon } from '../assets/imgs/more-btn.svg'
 
+
+
 // TODO: render the navbar with an array of icons, keep our code DRY
 // TODO: render the matching active icons
 

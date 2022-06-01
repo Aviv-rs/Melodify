@@ -1,4 +1,38 @@
 <<<<<<< HEAD
+01/06/2022, 11:13:29 - INFO - New connected socket [id: FDUSifPUVSgHZHjrAACR]
+01/06/2022, 11:13:30 - INFO - Req was made
+01/06/2022, 11:13:30 - DEBUG - Getting Stations
+01/06/2022, 11:13:30 - INFO - Setting socket.userId = 62952c4d648b3154bb204b74 for socket [id: FDUSifPUVSgHZHjrAACR]
+01/06/2022, 11:14:19 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 11:14:20 - INFO - New connected socket [id: pPBk2EXQbqKjPZSaAACT]
+01/06/2022, 11:14:20 - INFO - Req was made
+01/06/2022, 11:14:20 - DEBUG - Getting Stations
+01/06/2022, 11:14:20 - INFO - Setting socket.userId = 62952c4d648b3154bb204b74 for socket [id: pPBk2EXQbqKjPZSaAACT]
+01/06/2022, 11:15:09 - INFO - Req was made
+01/06/2022, 11:15:09 - DEBUG - Getting Stations
+01/06/2022, 11:15:17 - INFO - Req was made
+01/06/2022, 11:15:17 - DEBUG - Getting Stations
+01/06/2022, 11:16:00 - DEBUG - auth.service - signup with username: yael, fullname: Yael Geller
+01/06/2022, 11:16:00 - DEBUG - auth.route - new account created: {"username":"yael","password":"$2b$10$JQEMbMTAKiyCZHOGRjy8nOXwteRF13SArElzlI0N6mdZjKXUt7RM2","fullname":"Yael Geller","score":100,"_id":"629720404a820ddb8c1ca400"}
+01/06/2022, 11:16:00 - DEBUG - auth.service - login with username: yael
+01/06/2022, 11:16:01 - INFO - User login:  | {"_id":"629720404a820ddb8c1ca400","username":"yael","fullname":"Yael Geller","score":100}
+01/06/2022, 11:16:01 - INFO - Req was made
+01/06/2022, 11:16:01 - DEBUG - Getting Stations
+01/06/2022, 11:16:07 - INFO - Req was made
+01/06/2022, 11:16:07 - DEBUG - Getting Stations
+01/06/2022, 11:17:13 - INFO - Socket disconnected [id: undefined]
+01/06/2022, 11:17:14 - INFO - New connected socket [id: ch_1QrangandId3HAACV]
+01/06/2022, 11:17:14 - INFO - Setting socket.userId = 629720404a820ddb8c1ca400 for socket [id: ch_1QrangandId3HAACV]
+01/06/2022, 11:17:17 - INFO - Req was made
+01/06/2022, 11:17:17 - DEBUG - Getting Stations
+01/06/2022, 11:17:24 - INFO - Req was made
+01/06/2022, 11:17:24 - DEBUG - Getting Stations
+01/06/2022, 11:17:48 - INFO - Req was made
+01/06/2022, 11:17:48 - DEBUG - Getting Stations
+01/06/2022, 11:18:32 - INFO - Req was made
+01/06/2022, 11:18:32 - DEBUG - Getting Stations
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1783,6 +1817,7 @@
 1.6.2022, 12:05:04 - INFO - Server is running on port: 3030
 1.6.2022, 12:05:06 - INFO - New connected socket [id: E7CTQTqvqV42TCcEAAAC]
 1.6.2022, 12:05:07 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: E7CTQTqvqV42TCcEAAAC]
+<<<<<<< HEAD
 1.6.2022, 12:26:07 - INFO - Socket disconnected [id: undefined]
 1.6.2022, 12:26:10 - INFO - New connected socket [id: hSDv4RTjKVUgoaJsAAAE]
 1.6.2022, 12:26:10 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: hSDv4RTjKVUgoaJsAAAE]
@@ -1808,3 +1843,6 @@
 1.6.2022, 12:43:08 - INFO - Req was made
 1.6.2022, 12:43:08 - DEBUG - Getting Stations
 1.6.2022, 12:43:08 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: AJAtlFXUBWMo6oIRAAAK]
+=======
+>>>>>>> cabd8bd563d88958c5b9aca7908d1ef97a4dd0d9
+>>>>>>> e4463d29ccf1c21a79a8eb64e0dba0e11c7195d2
