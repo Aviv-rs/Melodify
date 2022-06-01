@@ -40,6 +40,10 @@ export const StationDetails = () => {
         loadStation()
     }, [])
 
+    // useEffect(() => {
+    //     console.log('station from local state', station);
+    // }, [station])
+
     useEffectUpdate(() => {
         window.location.reload()
     }, [stationId])
@@ -132,19 +136,19 @@ export const StationDetails = () => {
 
     // After dropping a song with drag and drop
     const onDragEnd = async (result) => {
-        const { source, destination, draggableId } = result
-        console.log(source, destination)
+        const { source, destination } = result
+        // console.log(source, destination)
         // If dropped out of container bounds or dropped uppon the same song, return
         if (!destination || (destination.droppableId === source.droppableId &&
             destination.index === source.index)) return
-        const newStation = { ...station }
-        const newSongs = [...station.songs]
+        const newStation = JSON.parse(JSON.stringify(station))
+        const newSongs = [...newStation.songs]
         const [song] = newSongs.splice(source.index, 1)
         newSongs.splice(destination.index, 0, song)
         newStation.songs = newSongs
         setStation((prevStation) => ({ ...prevStation, songs: [...newSongs] }))
         const savedStation = await stationService.save(newStation)
-        console.log(savedStation)
+        // console.log('saved station from backend', savedStation)
         if (station?._id === stationModule?.station?._id) dispatch(getActionSetStation(savedStation))
     }
 
