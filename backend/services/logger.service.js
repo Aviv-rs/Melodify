@@ -17,7 +17,7 @@ function doLog(level, ...args) {
     var line = strs.join(' | ')
     line = `${getTime()} - ${level} - ${line}\n`
     console.log(line)
-    fs.appendFileSync('./logs/backend.log', line)
+    // fs.appendFileSync('./logs/backend.log', line)
 }
 
 module.exports = {
