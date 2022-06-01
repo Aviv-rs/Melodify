@@ -32,17 +32,20 @@ export const StationDetails = () => {
     const [title, setTitle] = useState(null)
 
 
+    // useEffect(() => {
+    //     console.log('new station in state', station)
+    // }, [station])
+
     useEffect(() => {
         if (station) return
         loadStation()
     }, [])
 
     useEffectUpdate(() => {
-        if (!stationId) window.location.reload()
+        window.location.reload()
     }, [stationId])
 
     useEffect(() => {
-
         station?.coverUrl && getAvgColor(station?.coverUrl)
     }, [station?.coverUrl])
 
@@ -65,7 +68,9 @@ export const StationDetails = () => {
 
 
     const onAddSong = async (song) => {
-
+        const isSongInStation = station.songs.some(currSong => currSong.id === song.id)
+        console.log('Song is already in playlist, TODO: render a user message for that')
+        if (isSongInStation) return
         song.duration = await youtubeService.getSongDuration(song.id)
         song.createdAt = Date.now()
         const newStation = { ...station, songs: [...station.songs, song] }
@@ -114,8 +119,22 @@ export const StationDetails = () => {
         }
     }
 
-    const onDragEnd = () => {
-        // TODO: reorder columns
+    // After dropping a song with drag and drop
+    const onDragEnd = async (result) => {
+        const { source, destination, draggableId } = result
+        console.log(source, destination)
+        // If dropped out of container bounds or dropped uppon the same song, return
+        if (!destination || (destination.droppableId === source.droppableId &&
+            destination.index === source.index)) return
+        const newStation = { ...station }
+        const newSongs = [...station.songs]
+        const [song] = newSongs.splice(source.index, 1)
+        newSongs.splice(destination.index, 0, song)
+        newStation.songs = newSongs
+        setStation((prevStation) => ({ ...prevStation, songs: [...newSongs] }))
+        const savedStation = await stationService.save(newStation)
+        console.log(savedStation)
+        if (station?._id === stationModule?.station?._id) dispatch(getActionSetStation(savedStation))
     }
 
 
