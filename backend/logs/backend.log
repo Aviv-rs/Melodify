@@ -1782,3 +1782,4 @@
 >>>>>>> ac67a2f3b44f35885c456253c42568004dfcf7b7
 1.6.2022, 12:05:04 - INFO - Server is running on port: 3030
 1.6.2022, 12:05:06 - INFO - New connected socket [id: E7CTQTqvqV42TCcEAAAC]
+1.6.2022, 12:05:07 - INFO - Setting socket.userId = 6294fef3e2c44b9d48fd052f for socket [id: E7CTQTqvqV42TCcEAAAC]
