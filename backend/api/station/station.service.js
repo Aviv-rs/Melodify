@@ -24,6 +24,8 @@ async function query(queryParams) {
       // .skip(startIdx)
       // .limit(pageSize)
       .toArray()
+
+
     return stations
   } catch (err) {
     logger.error('cannot find stations', err)
@@ -31,11 +33,15 @@ async function query(queryParams) {
   }
 }
 
-async function getById(stationId) {
+async function getById(stationId,) {
   try {
+    const isLikedSongs = stationId === 'liked'
     const collection = await dbService.getCollection('station')
-
-    const station = collection.findOne({ _id: ObjectId(stationId) })
+    const station = collection.findOne({
+      _id: isLikedSongs ?
+        'liked'
+        : ObjectId(stationId)
+    })
     return station
   } catch (err) {
     logger.error(`while finding station ${stationId}`, err)
@@ -74,7 +80,6 @@ async function update(station) {
       coverUrl: station.coverUrl,
       songs: station.songs
     }
-
 
     const collection = await dbService.getCollection('station')
     await collection.updateOne({ _id: stationToSave._id }, { $set: { ...stationToSave } })

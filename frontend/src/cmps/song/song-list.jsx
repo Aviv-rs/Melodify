@@ -1,6 +1,11 @@
 import { SongPreview } from './song-preview'
 import { Droppable } from 'react-beautiful-dnd'
+import { useEffect } from 'react'
 export const SongList = ({ songs, station = null }) => {
+
+    // useEffect(() => {
+    //     console.log(songs)
+    // }, [songs])
 
     return <Droppable droppableId={station._id}>
         {(provided) =>
@@ -9,14 +14,15 @@ export const SongList = ({ songs, station = null }) => {
                 {...provided.droppableProps}
             >
 
-                {songs.map((song, idx) =>
-                    <SongPreview
+                {songs.map((song, idx) => {
+                    // console.log(idx, song.id, song.title)
+                    return <SongPreview
                         key={idx}
                         song={song}
                         station={station}
-                        currSongIdx={idx}
                         songIdx={idx}
                     />
+                }
                 )
                 }
                 {provided.placeholder}

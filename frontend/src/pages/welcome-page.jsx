@@ -11,7 +11,6 @@ export const WelcomePage = () => {
             </div>
             <div className="main-welcome">
                 <div className="text-container">MUSIC. ANYWHERE.</div>
-
                 <Link to="/music">
                     <button>Try it for free</button>
                 </Link>
