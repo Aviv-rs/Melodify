@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 01/06/2022, 11:13:29 - INFO - New connected socket [id: FDUSifPUVSgHZHjrAACR]
 01/06/2022, 11:13:30 - INFO - Req was made
 01/06/2022, 11:13:30 - DEBUG - Getting Stations
@@ -2411,3 +2412,6 @@
 1.6.2022, 20:20:36 - DEBUG - Getting Stations
 1.6.2022, 20:33:57 - INFO - Socket disconnected [id: undefined]
 1.6.2022, 20:33:57 - INFO - New connected socket [id: x4oVqpF_IDIKTzlwAACa]
+=======
+01/06/2022, 17:52:05 - INFO - New connected socket [id: cpLtRNYGXoA1NxGZAAEn]
+>>>>>>> 535ec002d0496c151e16f8e53a0270d8f6e0f885
