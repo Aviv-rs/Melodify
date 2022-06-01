@@ -3,7 +3,7 @@ import { Droppable } from 'react-beautiful-dnd'
 export const SongList = ({ songs, station = null }) => {
 
     return <Droppable droppableId={station._id}>
-        {(provided) =>
+        {(provided) => (
             <section className='song-list'
                 ref={provided.innerRef}
                 {...provided.droppableProps}
@@ -21,7 +21,7 @@ export const SongList = ({ songs, station = null }) => {
                 }
                 {provided.placeholder}
             </section>
-        }
+        )}
     </Droppable>
 }
 

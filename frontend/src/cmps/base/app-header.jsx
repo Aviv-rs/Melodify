@@ -62,34 +62,36 @@ export const AppHeader = () => {
     }
 
     return <header className="app-header" style={{ background: `${colorToShow}` }}>
-        {user ? <button onClick={
-            toggleMenuOpen}
-            onBlur={toggleMenuOpen}
-            className={`btn-user-menu ${isMenuOpen ? 'open' : ''}`}>
-            {user.avatar ?
-                <div className="avatar-container">
-                    <img src={user.avatar} alt="" />
+        {user ? <>
+            <button onClick={
+                toggleMenuOpen}
+                onBlur={toggleMenuOpen}
+                className={`btn-user-menu ${isMenuOpen ? 'open' : ''}`}>
+                {user.avatar ?
+                    <div className="avatar-container">
+                        <img src={user.avatar} alt="" />
 
-                </div>
-                :
-                <div className="default-avatar-container">
-                    <DefaultAvatarIcon />
-                </div>
-            }
-            <span>{user.fullname}</span>
-            {isMenuOpen ?
-                <ArrowUpIcon />
-                :
-                <ArrowDownIcon />
-            }
-        </button>
+                    </div>
+                    :
+                    <div className="default-avatar-container">
+                        <DefaultAvatarIcon />
+                    </div>
+                }
+                <span>{user.fullname}</span>
+                {isMenuOpen ?
+                    <ArrowUpIcon />
+                    :
+                    <ArrowDownIcon />
+                }
+            </button>
+            <OptionsMenu options={[{ name: 'Logout', action: onUserLogout }]} isOpen={isMenuOpen} className={'user-menu'} />
+        </>
 
             : <div className="btns-container">
                 <button onClick={() => onNavigate('/signup')} className="btn-signup">Sign up</button>
                 <button onClick={() => onNavigate('/login')} className="btn-login">Log in</button>
             </div>}
 
-        <OptionsMenu options={[{ name: 'Logout', action: onUserLogout }]} isOpen={user && isMenuOpen} className={'user-menu'} />
 
     </header>
 }

@@ -10,8 +10,6 @@ import { OptionsMenu } from '../util/options-menu'
 
 export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
 
-
-
     const dispatch = useDispatch()
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
@@ -22,6 +20,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const isAdminStation = station.createdBy.isAdmin
+    // const menuRef = 
 
     useEffect(() => {
         if (song.duration) setDuration(song.duration)
@@ -41,9 +40,12 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
 
     }
 
-    return (<Draggable draggableId={song.id} index={songIdx}>
-        {(provided) =>
+    const toggleMenuOpen = () => {
+        setIsMenuOpen((prevIsMenuOpen => !prevIsMenuOpen))
+    }
 
+    return (<Draggable draggableId={song.id} key={song.id} index={songIdx}>
+        {(provided) => (
             <div ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
@@ -61,14 +63,14 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                     {!song?.createdAt && <span></span>}
                 </span>
                 <span>{duration}</span>
+
                 {!isAdminStation && <>
-                    <button className='btn-more-options'><BtnMoreIcon /></button>
+                    <button onClick={toggleMenuOpen} className='btn-more-options'><BtnMoreIcon /></button>
                     <OptionsMenu isOpen={isMenuOpen} options={[{ name: 'Remove song from playlist', action: () => onRemoveSong(song.id) }]} />
                 </>}
 
-
             </div>
-        }
+        )}
     </Draggable>
     )
 }

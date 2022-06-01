@@ -10,3 +10,9 @@ export const OptionsMenu = ({ options, isOpen = false, className = 'options-menu
         </ul>
     </div>
 }
+
+// An external state hook to control the open state of the cmp is required
+// const [isMenuOpen, setIsMenuOpen] = useState(false)
+// const toggleMenuOpen = () => {
+//     setIsMenuOpen((prevIsMenuOpen => !prevIsMenuOpen))
+// }
