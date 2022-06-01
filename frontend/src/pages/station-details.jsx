@@ -32,9 +32,7 @@ export const StationDetails = () => {
     const [title, setTitle] = useState(null)
 
 
-    // useEffect(() => {
-    //     console.log('new station in state', station)
-    // }, [station])
+
 
     useEffect(() => {
         if (station) return

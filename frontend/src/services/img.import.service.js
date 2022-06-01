@@ -22,6 +22,7 @@ export { ReactComponent as Clock } from '../assets/imgs/clock.svg'
 export { ReactComponent as ArrowDownIcon } from '../assets/imgs/arrow-down.svg'
 export { ReactComponent as ArrowUpIcon } from '../assets/imgs/arrow-up.svg'
 export { ReactComponent as DefaultAvatarIcon } from '../assets/imgs/default-avatar.svg'
+export { ReactComponent as BtnMoreIcon } from '../assets/imgs/more-btn.svg'
 
 
 
