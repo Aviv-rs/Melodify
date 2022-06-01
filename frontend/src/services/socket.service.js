@@ -1,14 +1,9 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
-export const SOCKET_EMIT_SEND_MSG = 'chat addMsg'
-export const SOCKET_EMIT_USER_TYPING = 'user-typing'
-export const SOCKET_EMIT_GET_CHAT_HISTORY = 'get-chat-history'
-export const SOCKET_EMIT_USER_WATCH = 'user-watch'
-export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
-export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
-export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
-
+export const SOCKET_EMIT_ENTERED_STATION = 'enter-station'
+export const SOCKET_EMIT_UPDATE_STATION = 'update-station'
+export const SOCKET_EMIT_STATION_UPDATED = 'station-updated'
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
@@ -22,7 +17,7 @@ export const socketService = createSocketService()
 socketService.setup()
 
 function createSocketService() {
-  var socket = null
+  let socket = null
   const socketService = {
     setup() {
       socket = io(baseUrl)
@@ -58,39 +53,39 @@ function createSocketService() {
 }
 
 // eslint-disable-next-line
-function createDummySocketService() {
-  var listenersMap = {}
-  const socketService = {
-    listenersMap,
-    setup() {
-      listenersMap = {}
-    },
-    terminate() {
-      this.setup()
-    },
-    login() { },
-    logout() { },
-    on(eventName, cb) {
-      listenersMap[eventName] = [...(listenersMap[eventName] || []), cb]
-    },
-    off(eventName, cb) {
-      if (!listenersMap[eventName]) return
-      if (!cb) delete listenersMap[eventName]
-      else
-        listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
-    },
-    emit(eventName, data) {
-      if (!listenersMap[eventName]) return
-      listenersMap[eventName].forEach(listener => {
-        listener(data)
-      })
-    },
-    debugMsg() {
-      this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
-    },
-  }
-  window.listenersMap = listenersMap
-  return socketService
-}
+// function createDummySocketService() {
+//   let listenersMap = {}
+//   const socketService = {
+//     listenersMap,
+//     setup() {
+//       listenersMap = {}
+//     },
+//     terminate() {
+//       this.setup()
+//     },
+//     login() { },
+//     logout() { },
+//     on(eventName, cb) {
+//       listenersMap[eventName] = [...(listenersMap[eventName] || []), cb]
+//     },
+//     off(eventName, cb) {
+//       if (!listenersMap[eventName]) return
+//       if (!cb) delete listenersMap[eventName]
+//       else
+//         listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
+//     },
+//     emit(eventName, data) {
+//       if (!listenersMap[eventName]) return
+//       listenersMap[eventName].forEach(listener => {
+//         listener(data)
+//       })
+//     },
+//     debugMsg() {
+//       this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
+//     },
+//   }
+//   window.listenersMap = listenersMap
+//   return socketService
+// }
 
 

@@ -13,8 +13,18 @@ function setupSocketAPI(http) {
         socket.on('disconnect', socket => {
             logger.info(`Socket disconnected [id: ${socket.id}]`)
         })
-        socket.on('enter-station', station => {
-            console.log('user entered station!', station)
+        socket.on('enter-station', stationId => {
+            if (socket.stationId === stationId) return
+            if (socket.stationId) {
+                socket.leave(socket.stationId)
+                logger.info(`Socket is leaving topic ${socket.stationId} [id: ${socket.stationId}]`)
+            }
+            socket.stationId = stationId
+            socket.join(stationId)
+            console.log('user entered station!', stationId)
+        })
+        socket.on('update-station', station => {
+            socket.broadcast.emit('station-updated', station)
         })
         socket.on('chat-set-topic', topic => {
             if (socket.myTopic === topic) return
@@ -22,6 +32,7 @@ function setupSocketAPI(http) {
                 socket.leave(socket.myTopic)
                 logger.info(`Socket is leaving topic ${socket.myTopic} [id: ${socket.id}]`)
             }
+
             socket.join(topic)
             socket.myTopic = topic
         })

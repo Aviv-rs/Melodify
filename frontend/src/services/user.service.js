@@ -1,5 +1,5 @@
 // import { storageService } from './async-storage.service'
-import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
+import { socketService } from './socket.service'
 import { httpService } from './http.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
