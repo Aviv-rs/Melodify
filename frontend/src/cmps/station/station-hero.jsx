@@ -20,7 +20,7 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
     const [isOpenMenu, setIsOpenMenue] = useState(false)
     const BtnRef = useRef()
     const isMatchStation = useMatch('music/station/:stationId')
-    const isMatchNewStation = useMatch('music/station')
+    
 
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const { player } = useSelector((storeState) => storeState.playerModule)

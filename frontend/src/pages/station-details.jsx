@@ -6,7 +6,7 @@ import { SongList } from '../cmps/song/song-list'
 import { StationHero } from '../cmps/station/station-hero'
 import { stationService } from '../services/station.service'
 import { getActionSetStation } from '../store/actions/station.action'
-import { setHeaderColor } from '../store/actions/header.action'
+import { setHeaderColor, setCurrPageStation } from '../store/actions/header.action'
 import { cloudinaryService } from '../services/cloudinary.service'
 import { BtnExit } from '../services/img.import.service'
 import getAverageColor from 'get-average-color'
@@ -82,6 +82,7 @@ export const StationDetails = () => {
         else getAvgColor(station.coverUrl)
         setTitle(station.name)
         setDescription(station.description)
+        dispatch(setCurrPageStation(station))
     }
 
 
