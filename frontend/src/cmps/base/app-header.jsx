@@ -1,11 +1,17 @@
-import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useMatch, useParams } from "react-router-dom"
-import { ArrowDownIcon } from "../../services/img.import.service"
-import { ArrowUpIcon } from "../../services/img.import.service"
-import { onLogout } from "../../store/actions/user.action"
-import { DefaultAvatarIcon } from "../../services/img.import.service"
-import { OptionsMenu } from "../util/options-menu"
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useMatch, useParams } from 'react-router-dom'
+import { ArrowDownIcon } from '../../services/img.import.service'
+import { ArrowUpIcon } from '../../services/img.import.service'
+import { onLogout } from '../../store/actions/user.action'
+import { DefaultAvatarIcon } from '../../services/img.import.service'
+import { OptionsMenu } from '../util/options-menu'
+import { Search } from '../search/search'
+import { setHeaderSongResults } from '../../store/actions/header.action'
+import { PlayIcon, PauseIcon } from '../../services/img.import.service'
+import { setIsPlayPauseBtn } from '../../store/actions/header.action'
+
+
 
 
 
@@ -16,9 +22,17 @@ export const AppHeader = () => {
     const params = useParams()
 
     const { color } = useSelector(storeState => storeState.headerModule)
+    const { isPlayPauseBtn } = useSelector(storeState => storeState.headerModule)
+    const stationModule = useSelector((storeState) => storeState.stationModule)
+    const { isPlaying, currSong} = useSelector(storeState => storeState.currSongModule)
+    const { player } = useSelector((storeState) => storeState.playerModule)
+    const [isPlayShow, setIsPlayShow] = useState(false)
     const [colorToShow, setColorToShow] = useState('')
     const matchStation = useMatch('music/station/:stationId')
     const matchNewStation = useMatch('music/station')
+
+    const isSearchPage = useMatch('music/search')
+
     const { user } = useSelector(storeState => storeState.userModule)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,9 +41,37 @@ export const AppHeader = () => {
         if (matchStation) setColorToShow(color)
         else if (matchNewStation) setColorToShow('rgb(83,83,83)')
         else setColorToShow('')
+
+        if (stationModule?.station?._id === matchStation?.params?.stationId) return
+        dispatch(setIsPlayPauseBtn(false))
     }, [color, params])
 
 
+    useEffect(() => {
+        if (stationModule?.station?._id === matchStation?.params?.stationId) setIsPlayShow(isPlaying)
+    }, [isPlaying])
+
+
+
+    const onTogglePlayer = () => {
+        if (!currSong) {
+            return
+            // onPlayStation()
+        }
+        else if (stationModule.station._id !== matchStation?.params?.stationId) return
+        else if (isPlaying) {
+            player.pauseVideo()
+        }
+        else if (!isPlaying) {
+            player.playVideo()
+        }
+    }
+
+    //TODO: 
+    // const onPlayStation = () => {
+    //     dispatch(getActionSetStation(station))
+    //     dispatch(setCurrSong(station.songs[station.currSongIdx]))
+    // }
 
 
     const onNavigate = (route) => {
@@ -44,7 +86,30 @@ export const AppHeader = () => {
         setIsMenuOpen((prevIsMenuOpen => !prevIsMenuOpen))
     }
 
+    const conveySongsToStore = (songResults) => {
+        dispatch(setHeaderSongResults(songResults))
+    }
+
     return <header className="app-header" style={{ background: `${colorToShow}` }}>
+
+        {isSearchPage &&
+            <Search onSearchSongs={conveySongsToStore} />
+        }
+        {!isSearchPage &&
+            //TODO: Player button needs to be here 
+            <div >
+
+                {isPlayPauseBtn ?
+
+                    <div className='header-play-pause' onClick={onTogglePlayer}>
+                        {isPlayShow ? <PauseIcon /> : <PlayIcon />}
+                    </div>
+                    :
+                    <div></div>
+                }
+            </div>
+        }
+
         {user ? <>
             <button onClick={
                 toggleMenuOpen}
@@ -68,12 +133,16 @@ export const AppHeader = () => {
                 }
             </button>
             <OptionsMenu options={[{ name: 'Logout', action: onUserLogout }]} isOpen={isMenuOpen} className={'user-menu'} />
+
         </>
+
 
             : <div className="btns-container">
                 <button onClick={() => onNavigate('/signup')} className="btn-signup">Sign up</button>
                 <button onClick={() => onNavigate('/login')} className="btn-login">Log in</button>
             </div>}
+
+
 
 
     </header>
