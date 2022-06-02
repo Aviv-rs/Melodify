@@ -1,5 +1,9 @@
-.song-list{
-    padding-top: 25px;
-    padding-bottom: 20px;
+.song-table-spacing {
+    padding: 0 32px;
     background: rgba(40, 39, 39, 0.189);
+
+    .song-list {
+        padding-top: 25px;
+        padding-bottom: 20px;
+    }
 }

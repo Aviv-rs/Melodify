@@ -25,13 +25,16 @@
     height: 40px;
     margin-bottom: 18px;
     padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .brand-txt {
+        font-size: 1.4rem;
+    }
 
     @media (max-width: $break-sm) {
         display: none;
-
-        .brand-txt {
-            font-size: 1.4rem;
-        }
 
     }
 

@@ -1,6 +1,6 @@
 .app-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   height: 60px;
   position: sticky;
   top: 0;
@@ -25,6 +25,10 @@
     color: var(--text-subdued, #6a6a6a);
     padding-block: 14px;
     padding-inline: 32px;
+  }
+
+  .header-play-pause {
+    @include btn-toggle-play()
   }
 
 

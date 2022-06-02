@@ -33,7 +33,6 @@ export const Navbar = () => {
                     <nav>
                         <NavLink end to="/music">
                             {isHomeActive ? <HomeActiveIcon /> : <HomeIcon fill="#b3b3b3" />}
-
                             <span>Home</span>
                         </NavLink>
                     </nav>
