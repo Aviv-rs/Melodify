@@ -47,7 +47,6 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
     const onPlayStation = () => {
         dispatch(getActionSetStation(station))
         dispatch(setCurrSong(station.songs[station.currSongIdx]))
-        setIsPlayShow(true)
     }
 
 
