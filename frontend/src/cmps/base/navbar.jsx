@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useMatch } from 'react-router-dom'
 
 // nav links svg icons
 import {
@@ -16,6 +16,10 @@ import {
 // memo (?)
 export const Navbar = () => {
 
+    const isHomeActive = useMatch('/music')
+    const isSearchActive = useMatch('/music/search')
+    const isLibraryActive = useMatch('/music/library')
+
     return (
         <nav className="nav-container">
             <NavLink to="/music">
@@ -28,7 +32,8 @@ export const Navbar = () => {
                 <li>
                     <nav>
                         <NavLink end to="/music">
-                            <HomeIcon fill="#b3b3b3" />
+                            {isHomeActive ? <HomeActiveIcon /> : <HomeIcon fill="#b3b3b3" />}
+
                             <span>Home</span>
                         </NavLink>
                     </nav>
@@ -36,7 +41,7 @@ export const Navbar = () => {
                 <li>
                     <nav>
                         <NavLink to="search">
-                            <SearchIcon fill="#b3b3b3" />
+                            {isSearchActive ? <SearchActiveIcon /> : <SearchIcon fill="#b3b3b3" />}
                             <span>Search</span>
                         </NavLink>
                     </nav>
@@ -45,7 +50,8 @@ export const Navbar = () => {
                     <nav>
                         <NavLink to="library"
                         >
-                            <LibraryIcon fill="#b3b3b3" />
+                            {isLibraryActive ? <LibraryActiveIcon /> :
+                                <LibraryIcon fill="#b3b3b3" />}
                             <span>Your Library</span>
                         </NavLink>
                     </nav>
