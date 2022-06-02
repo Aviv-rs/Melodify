@@ -17,6 +17,7 @@
     "get-average-color": "^0.0.6",
     "javascript-time-ago": "^2.5.4",
     "lottie-react": "^2.2.1",
+    "multiselect-react-dropdown": "^2.0.22",
     "react": "^18.1.0",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^18.1.0",

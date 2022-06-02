@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrSong } from '../../store/actions/current-song.action'
-import { PlayIcon, PauseIcon } from '../../services/img.import.service'
+import { PlayIcon, PauseIcon, BtnMoreIcon } from '../../services/img.import.service'
 import { getActionSetStation } from '../../store/actions/station.action'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReactTimeAgo from 'react-time-ago'
 import { Draggable } from 'react-beautiful-dnd'
+import { OptionsMenu } from '../util/options-menu'
 
 
-export const SongPreview = ({ song, songIdx, station }) => {
-
-
+export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
 
     const dispatch = useDispatch()
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
@@ -18,6 +17,24 @@ export const SongPreview = ({ song, songIdx, station }) => {
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const [isPlayShow, setIsPlayShow] = useState(false)
     const [duration, setDuration] = useState('')
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const isAdminStation = station.createdBy.isAdmin
+    const optionsMenuRef = useRef()
+
+    useEffect(() => {
+        const handleClickOutsideMenu = (ev) => {
+            if (optionsMenuRef.current && !optionsMenuRef.current.contains(ev.target)) {
+                setIsMenuOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutsideMenu)
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideMenu)
+        }
+    }, [optionsMenuRef])
+
 
     useEffect(() => {
         if (song.duration) setDuration(song.duration)
@@ -37,10 +54,15 @@ export const SongPreview = ({ song, songIdx, station }) => {
 
     }
 
-    return (<Draggable draggableId={song.id} index={songIdx}>
-        {(provided) =>
+    const toggleMenuOpen = () => {
+        setIsMenuOpen((prevIsMenuOpen => !prevIsMenuOpen))
+    }
 
-            <div ref={provided.innerRef}
+
+    return (<Draggable draggableId={song.id} key={song.id} index={songIdx}>
+        {(provided) => (
+            <div
+                ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
                 className="song-preview" onDoubleClick={onTogglePlayer}>
@@ -58,8 +80,24 @@ export const SongPreview = ({ song, songIdx, station }) => {
                 </span>
                 <span>{duration}</span>
 
+
+                {!isAdminStation && <div ref={optionsMenuRef}>
+                    <button onClick={toggleMenuOpen} className='btn-more-options'><BtnMoreIcon /></button>
+                    <OptionsMenu
+                        setIsOpen={setIsMenuOpen}
+                        isOpen={isMenuOpen}
+                        options={[{
+                            name: 'Remove song from playlist',
+                            action: () => {
+                                onRemoveSong(song.id)
+                                setIsMenuOpen(false)
+                            }
+                        }
+                        ]} />
+                </div>}
+
             </div>
-        }
+        )}
     </Draggable>
     )
 }

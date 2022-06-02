@@ -26,6 +26,10 @@
 
     @media (max-width: $break-sm) {
         display: none;
+        .brand-txt {
+            font-size: 1.4rem;
+        }
+
     }
 
     .logo-svg {

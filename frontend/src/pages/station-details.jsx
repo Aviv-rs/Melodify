@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Search } from '../cmps/search/search'
 import { SongList } from '../cmps/song/song-list'
-import { Hero } from '../cmps/station/station-hero'
+import { StationHero } from '../cmps/station/station-hero'
 import { stationService } from '../services/station.service'
 import { getActionSetStation } from '../store/actions/station.action'
 import { setHeaderColor } from '../store/actions/header.action'
@@ -14,6 +14,7 @@ import { youtubeService } from '../services/youtube.service'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { SearchResultList } from '../cmps/search/search-result-list'
+import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_UPDATE_STATION } from '../services/socket.service'
 
 
 export const StationDetails = () => {
@@ -23,23 +24,36 @@ export const StationDetails = () => {
     const navigate = useNavigate()
     const stationModule = useSelector(storeState => storeState.stationModule)
 
-
     const [isSearchOpen, setIsSearchOpen] = useState(true)
 
     const [songResults, setSongResults] = useState(null)
     const [station, setStation] = useState(null)
-    const [description, setDescription] = useState(null)
-    const [title, setTitle] = useState(null)
+    const [description, setDescription] = useState('')
+    const [title, setTitle] = useState('')
+    const [tags, setTags] = useState([])
+
+    const isStationEmpty = !station?.songs.length
 
 
-    // useEffect(() => {
-    //     console.log('new station in state', station)
-    // }, [station])
 
     useEffect(() => {
-        if (station) return
+        socketService.off(SOCKET_EMIT_STATION_UPDATED, setStation)
+        socketService.on(SOCKET_EMIT_STATION_UPDATED, setStation)
+        if (stationId) {
+            socketService.emit(SOCKET_EMIT_ENTERED_STATION, stationId)
+        }
+
         loadStation()
+
+        return () => {
+            socketService.off(SOCKET_EMIT_STATION_UPDATED, setStation)
+        }
     }, [])
+
+    // useEffect(() => {
+    //     if (!station) return
+    // }, [station])
+
 
     useEffectUpdate(() => {
         window.location.reload()
@@ -62,15 +76,21 @@ export const StationDetails = () => {
         }
         // TODO: show user an indication that playlist wasnt found
         setStation(station)
+        // If it's an existing playlist, the search bar should be closed
         setIsSearchOpen(false)
-        getAvgColor(station.coverUrl)
+        if (!station.coverUrl) dispatch(setHeaderColor('rgb(83,83,83)'))
+        else getAvgColor(station.coverUrl)
+        setTitle(station.name)
+        setDescription(station.description)
     }
 
 
     const onAddSong = async (song) => {
-        const isSongInStation = station.songs.some(currSong => currSong.id === song.id)
-        console.log('Song is already in playlist, TODO: render a user message for that')
-        if (isSongInStation) return
+        if (!isStationEmpty) {
+            const isSongInStation = station.songs.some(currSong => currSong.id === song.id)
+            console.log('Song is already in playlist, TODO: render a user message for that')
+            if (isSongInStation) return
+        }
         song.duration = await youtubeService.getSongDuration(song.id)
         song.createdAt = Date.now()
         const newStation = { ...station, songs: [...station.songs, song] }
@@ -84,6 +104,16 @@ export const StationDetails = () => {
         } else {
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
+            navigate(`/music/station/${savedStation._id}`)
+        }
+    }
+
+    const onRemoveSong = async (songId) => {
+        const newStation = { ...station, songs: [...station.songs.filter(currSong => currSong.id !== songId)] }
+        await stationService.save(newStation)
+        setStation(newStation)
+        if (station?._id === stationModule?.station?._id) {
+            dispatch(getActionSetStation(newStation))
         }
     }
 
@@ -109,11 +139,12 @@ export const StationDetails = () => {
         })
     }
 
-    const onSubmit = async () => {
-        try {
-            const newStation = { ...station, name: title, description }
-            setStation(newStation)
+    const onSaveDetails = async (details) => {
 
+        try {
+            const newStation = { ...station, ...details }
+            const savedStation = await stationService.save(newStation)
+            setStation(savedStation)
         } catch {
             console.log('could not save title and description')
         }
@@ -121,31 +152,36 @@ export const StationDetails = () => {
 
     // After dropping a song with drag and drop
     const onDragEnd = async (result) => {
-        const { source, destination, draggableId } = result
-        console.log(source, destination)
+        const { source, destination } = result
         // If dropped out of container bounds or dropped uppon the same song, return
         if (!destination || (destination.droppableId === source.droppableId &&
             destination.index === source.index)) return
-        const newStation = { ...station }
-        const newSongs = [...station.songs]
+        const newStation = JSON.parse(JSON.stringify(station))
+        const newSongs = [...newStation.songs]
         const [song] = newSongs.splice(source.index, 1)
         newSongs.splice(destination.index, 0, song)
         newStation.songs = newSongs
         setStation((prevStation) => ({ ...prevStation, songs: [...newSongs] }))
         const savedStation = await stationService.save(newStation)
-        console.log(savedStation)
         if (station?._id === stationModule?.station?._id) dispatch(getActionSetStation(savedStation))
     }
 
-
-
-    const isStationEmpty = !station?.songs.length
     if (!station) return <div>Loading...</div> //TODO: add loader
     return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
 
-        <Hero onSubmit={onSubmit} station={station} handleImgUpload={handleImgUpload} setDescription={setDescription} setTitle={setTitle} />
+        <StationHero
+            onSaveDetails={onSaveDetails}
+            station={station}
+            handleImgUpload={handleImgUpload}
+            setDescription={setDescription}
+            description={description}
+            setTitle={setTitle}
+            title={title}
+            tags={tags}
+            setTags={setTags}
+        />
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
-            <SongList songs={station.songs} station={station} />
+            <SongList onRemoveSong={onRemoveSong} songs={station.songs} station={station} />
         </DragDropContext>}
 
         <div className="search-station-details-main" >
@@ -158,7 +194,7 @@ export const StationDetails = () => {
                     <BtnExit />
                 </div>
             </div> :
-                <span className="flex flex-end" onClick={() => { setIsSearchOpen(true) }}>FIND MORE</span>
+                <span className="flex flex-end find-more" onClick={() => { setIsSearchOpen(true) }}>FIND MORE</span>
             }
 
         </div>

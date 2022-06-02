@@ -44,7 +44,6 @@ export const StationPreview = ({ station }) => {
     const onPlayStation = () => {
         dispatch(getActionSetStation(station))
         dispatch(setCurrSong(station.songs[0]))
-        setIsPlayShow(true)
     }
 
     // TODO: rename class names

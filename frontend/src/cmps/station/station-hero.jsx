@@ -1,15 +1,24 @@
 import { useEffect, useState } from 'react';
-import { StationDetailsPencil, StationDefaultIcon, PlayIcon, PauseIcon, Clock } from '../../services/img.import.service'
+import { StationDetailsPencil, StationDefaultIcon, PlayIcon, PauseIcon, Clock, BtnMoreIcon } from '../../services/img.import.service'
 import { StationModal } from './station-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { setCurrSong } from '../../store/actions/current-song.action'
-export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSubmit }) => {
+import { stationService } from '../../services/station.service'
+import { useNavigate } from 'react-router-dom'
+import { OptionsMenu } from '../util/options-menu'
 
 
+
+export const StationHero = ({ station, handleImgUpload, setDescription, setTitle, onSaveDetails, title, description, tags, setTags }) => {
+
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
+    const [isOpenMenu, setIsOpenMenue] = useState(false)
+
+
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
@@ -40,11 +49,25 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
         dispatch(setCurrSong(station.songs[station.currSongIdx]))
         setIsPlayShow(true)
     }
-    //TODO : consult with the head team about pause song from here. This move might change alot..
+
+
+    const onRemoveStation = async () => {
+        try {
+            await stationService.remove(station._id)
+            navigate('/music/library')
+
+        } catch (error) {
+            console.log('Can not delete', error);
+        }
+    }
+
+
+
+
+
 
 
     return (
-        // <article className='hero-container' style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%), ${colorAvg}` }}>
         <article className='hero-container'>
             <div className='hero-content' >
 
@@ -56,17 +79,45 @@ export const Hero = ({ station, handleImgUpload, setDescription, setTitle, onSub
                 </div>
                 <div className='hero-details'>
                     <span>PLAYLIST</span>
-                    <h1>{station.name}</h1>
+                    <h1 onClick={() => setIsModalOpen(true)}>{station.name}</h1>
                     <span>{station.description}</span>
-                    {/* <span>{station.description}</span> */}
                 </div>
-                {isModalOpen && <StationModal onSubmit={onSubmit} setDescription={setDescription} setTitle={setTitle} setIsModalOpen={setIsModalOpen} handleImgUpload={handleImgUpload} station={station} />}
+                {isModalOpen && <StationModal
+                    onSaveDetails={onSaveDetails}
+                    setDescription={setDescription}
+                    description={description}
+                    setTitle={setTitle}
+                    title={title}
+                    setIsModalOpen={setIsModalOpen}
+                    handleImgUpload={handleImgUpload}
+                    station={station}
+                    tags={tags}
+                    setTags={setTags}
+                />}
             </div>
             <div className='hero-footer'>
                 {station.songs.length > 0 ?
-                    <button onClick={onTogglePlayer}>
-                        {isPlayShow ? <PauseIcon /> : <PlayIcon />}
-                    </button>
+                    <div className='buttons'>
+
+                        <button onClick={onTogglePlayer}>
+                            {isPlayShow ? <PauseIcon /> : <PlayIcon />}
+                        </button>
+                        {!station.createdBy?.isAdmin &&
+                            <span className='button-more-hero-footer' onClick={() => setIsOpenMenue(!isOpenMenu)}>
+                                <BtnMoreIcon />
+                            </span>
+                        }
+
+                        <OptionsMenu
+                            options={[
+                                { name: 'Delete', action: onRemoveStation },
+                                { name: 'Edit', action: () => setIsModalOpen(true) },
+                            ]}
+                            isOpen={isOpenMenu && !station.createdBy?.isAdmin}
+                            className={'station-menu'}
+                        />
+
+                    </div>
                     :
                     <span></span>
                 }

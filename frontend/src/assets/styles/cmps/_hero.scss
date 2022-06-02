@@ -83,6 +83,15 @@
         align-items: center;
         padding: 12px 12px 15px 32px;
 
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .button-more-hero-footer svg {
+            fill: #b3b3b3;
+        }
+
         button {
             @include btn-toggle-play()
         }
@@ -90,7 +99,7 @@
 
     .table-header {
         display: grid;
-        grid-template-columns: 60px 60px 2fr 1fr 80px;
+        grid-template-columns: 60px 60px 2fr 1fr 80px 50px;
         gap: 5px;
         padding: 6px;
         cursor: default;
@@ -98,6 +107,7 @@
         align-items: center;
         border-bottom: 1px solid rgba(255, 255, 255, .1);
         color: $clr7;
+        background: rgba(40, 39, 39, 0.181);
 
         .ashtag {
             display: flex;
