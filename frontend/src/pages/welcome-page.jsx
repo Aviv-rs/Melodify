@@ -7,7 +7,8 @@ export const WelcomePage = () => {
     return (
         <div className="welcome-page">
             <div className="logo-container">
-                <Logo />
+                <Logo/>
+                <span className='brand-txt'>Melodify</span>
             </div>
             <div className="main-welcome">
                 <div className="text-container">MUSIC. ANYWHERE.</div>
