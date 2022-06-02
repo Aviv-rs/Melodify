@@ -9,7 +9,7 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
     //TODO: add close modal option by pressing outside the modal
     const options = allTags.map(tag => { return { name: tag } })
     const [name, setName] = useState(station.name)
-    const [description, setDescription] = useState(station.description)
+    const [description, setDescription] = useState(station.description || '')
     const [tags, setTags] = useState([])
     const onSelect = (values) => {
         setTags(values.map(value => value.name))

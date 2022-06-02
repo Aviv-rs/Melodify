@@ -8,6 +8,11 @@
         position: relative;
         width: 100%;
 
+        @media (max-width: $break-sm) {
+        height: 100px;
+        }
+
+
         &::after {
             content: "";
             display: block;
@@ -36,6 +41,10 @@
             height: 100px;
             object-fit: cover;
             object-position: center center;
+
+            @media (max-width: $break-sm) {
+                display: none;
+            }
         }
 
         &:hover {
