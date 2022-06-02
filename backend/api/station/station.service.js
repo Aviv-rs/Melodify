@@ -78,6 +78,7 @@ async function update(station) {
       name: station.name,
       description: station.description,
       coverUrl: station.coverUrl,
+      tags:station.tags,
       songs: station.songs
     }
 

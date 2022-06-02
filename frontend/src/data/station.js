@@ -76,21 +76,23 @@
 // TODO :LIKED SONGS USER TO CHANGE FOLLOWING NEW USERS CREATED
 
 export const tags = [
-  "Hits",
-  "Workout",
-  "Summer",
-  "Hip Hop",
-  "Meditation",
-  "Chill",
-  "Throwback",
-  "Sunny",
-  "Relax",
-  "French",
-  "Motivating",
-  "Tropical",
-  "Studying",
-  "Love",
-  "Focus"
+  'Hits',
+  'Workout',
+  'Summer',
+  'Hip Hop',
+  'Meditation',
+  'Chill',
+  'Throwback',
+  'Sunny',
+  'Relax',
+  'French',
+  'Motivating',
+  'Tropical',
+  'Studying',
+  'Love',
+  'Focus',
+  'Rock',
+  'Pop'
 ]
 
 export const demoDataStations = [

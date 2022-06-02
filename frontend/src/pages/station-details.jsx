@@ -14,7 +14,7 @@ import { youtubeService } from '../services/youtube.service'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { SearchResultList } from '../cmps/search/search-result-list'
-import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_UPDATE_STATION } from '../services/socket.service'
+import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED } from '../services/socket.service'
 
 
 export const StationDetails = () => {
@@ -185,7 +185,7 @@ export const StationDetails = () => {
         </DragDropContext>}
 
         <div className="search-station-details-main" >
-            {isSearchOpen ? <div className="flex space-between">
+            {isSearchOpen ? <div className="flex space-between search-container">
                 <div className="search-container">
                     <h1>Let's find something for your playlist</h1>
                     <Search isInStationDetails={true} onSearchSongs={displaySongResults} />
