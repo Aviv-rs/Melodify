@@ -1,20 +1,22 @@
 .nav-container {
     display: flex;
     flex-direction: column;
-    background-color: $clr6;
+    background: $clr6;
     width: 241px;
     padding-top: 24px;
     grid-area: nav-container;
 
     @media (max-width: $break-sm) {
-        background: linear-gradient(180deg, rgba(18, 18, 18, 0) 3%, rgba(18, 18, 18, .1) 6%, rgba(18, 18, 18, .4) 11%, rgba(18, 18, 18, .6) 16%, rgba(18, 18, 18, .8) 25%, rgba(18, 18, 18, .9) 40%, #121212 81%);
         width: 100%;
         padding-top: 0px;
         margin: 0px;
         display: grid;
         grid-template-columns: 1fr;
+        background: linear-gradient(180deg, rgba(18, 18, 18, 0) 3%, rgba(18, 18, 18, .1) 6%, rgba(18, 18, 18, .4) 11%, rgba(18, 18, 18, .6) 16%, rgba(18, 18, 18, .8) 25%, rgba(18, 18, 18, .9) 40%, #121212 81%);
     }
+
 }
+
 
 
 
@@ -53,8 +55,9 @@
     @media (max-width: $break-sm) {
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-        gap: 12%;
+        justify-content: space-between;
+        gap: 5%;
+        padding: 3px 9px 3px 9px;
     }
 
 
@@ -103,7 +106,7 @@
             margin-top: 5px;
             text-align: center;
             font-size: 11px;
-
+            white-space: nowrap;
         }
 
     }
