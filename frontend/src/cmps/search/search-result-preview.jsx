@@ -29,14 +29,18 @@ export const SearchResultPreview = ({ result, onAddSong, station }) => {
 
     }
 
-    return <div className="song-preview" onDoubleClick={onTogglePlayer}>
-        <div className='play-song-container' onClick={onTogglePlayer}>
-            {!isPlayShow && <button className="btn-play"> <PlayIcon /> </button>}
-            {isPlayShow && <button className="btn-play"> <PauseIcon /> </button>}
+    return <div className="search-result-preview" onDoubleClick={onTogglePlayer}>
+        <div className='play-song-and-title-container flex align-center' onClick={onTogglePlayer}>
+            <div className="play-song-container flex align-center">
+                <img src={result.imgUrl} alt="" />
+                {!isPlayShow && <button className="btn-play"> <PlayIcon /> </button>}
+                {isPlayShow && <button className="btn-play"> <PauseIcon /> </button>}
+            </div>
+            <div className="title">{result.title}</div>
         </div>
-        <img src={result.imgUrl} alt="" />
-        <div className="title">{result.title}</div>
-        {onAddSong && <button className='button-add' onClick={() => onAddSong(result)}>Add</button>}
+        <div className="add-song-container flex align-center">
+            {onAddSong && <button className='btn-add' onClick={() => onAddSong(result)}>Add</button>}
+        </div>
     </div>
 
 }

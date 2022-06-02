@@ -88,6 +88,7 @@
             align-items: center;
             gap: 15px;
         }
+
         .button-more-hero-footer svg {
             fill: #b3b3b3;
         }
@@ -99,20 +100,25 @@
 
     .table-header {
         display: grid;
-        grid-template-columns: 60px 60px 2fr 1fr 80px 50px;
-        gap: 5px;
-        padding: 6px;
+        grid-template-columns: 16px 4fr 2fr minmax(120px, 1fr);
+        gap: 16px;
+        padding: 0 16px;
         cursor: default;
         height: 56px;
         align-items: center;
         border-bottom: 1px solid rgba(255, 255, 255, .1);
         color: $clr7;
-        background: rgba(40, 39, 39, 0.181);
 
-        .ashtag {
+        .hashtag {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
+        .duration-container{
+        justify-self: end;
+
+        }
+        
     }
 }

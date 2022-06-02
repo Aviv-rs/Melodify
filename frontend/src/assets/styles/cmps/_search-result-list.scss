@@ -1,0 +1,75 @@
+.search-result-list {
+    padding-top: 25px;
+    padding-bottom: 20px;
+
+    .search-result-preview {
+        font-family: circular-medium;
+        grid-template-columns: 4fr minmax(120px, 1fr);
+        border: 1px solid transparent;
+        border-radius: 4px;
+        height: 56px;
+        position: relative;
+        display: grid;
+        gap: 16px;
+        padding: 0 16px;
+
+        .btn-play {
+            opacity: 0;
+        }
+
+        &:hover {
+            .btn-play {
+                opacity: 1;
+            }
+        }
+
+        .play-song-and-title-container {
+            .play-song-container {
+                margin-inline-end: 16px;
+                position: relative;
+
+                .btn-play {
+                    background: rgba(0, 0, 0, .5);
+                    border: none;
+                    position: absolute;
+                    align-items: center;
+                    display: flex;
+                    height: 100%;
+                    justify-content: center;
+                    width: 100%;
+
+                    &>* {
+                        fill: $clr8;
+                        height: 16px;
+                        width: 16px;
+                    }
+                }
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+
+        .add-song-container {
+            justify-self: flex-end;
+
+            .btn-add {
+                width: 59px;
+                padding-block: 6.5px;
+                border-radius: 500px;
+                font-size: inherit;
+                padding-inline: 15px;
+                -webkit-tap-highlight-color: transparent;
+                background-color: transparent;
+                color: $clr2;
+                border: 1px solid var(--essential-subdued, #878787);
+            }
+
+            .btn-add:focus-visible {
+                outline: -webkit-focus-ring-color auto 1px;
+            }
+        }
+    }
+}

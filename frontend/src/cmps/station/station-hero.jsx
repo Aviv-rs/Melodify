@@ -60,12 +60,6 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
         }
     }
 
-
-
-
-
-
-
     return (
         <article className='hero-container'>
             <div className='hero-content' >
@@ -121,13 +115,24 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                     <span></span>
                 }
             </div>
-            {station._id && <div className='table-header'>
-                <span className='ashtag'>#</span>
-                <span>TITLE</span>
-                <span></span>
-                <span>DATE ADDED</span>
-                <Clock />
-            </div>}
+            {station._id &&
+                <div className="song-table-spacing">
+                    <div className='table-header'>
+                        <div className="song-index-container">
+                            <span className='song-index'>#</span>
+                        </div>
+                        <div className="song-title-container">
+                            <span>TITLE</span>
+                        </div>
+                        <div className="date-added-container">
+                            <span>DATE ADDED</span>
+                        </div>
+                        <div className="duration-container">
+
+                        <Clock />
+                        </div>
+                    </div>
+                </div>}
         </article>
     )
 }
