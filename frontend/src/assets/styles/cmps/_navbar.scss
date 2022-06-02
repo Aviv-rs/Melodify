@@ -6,96 +6,136 @@
     padding-top: 24px;
     grid-area: nav-container;
 
+    @media (max-width: $break-sm) {
+        background: linear-gradient(180deg, rgba(18, 18, 18, 0) 3%, rgba(18, 18, 18, .1) 6%, rgba(18, 18, 18, .4) 11%, rgba(18, 18, 18, .6) 16%, rgba(18, 18, 18, .8) 25%, rgba(18, 18, 18, .9) 40%, #121212 81%);
+        width: 100%;
+        padding-top: 0px;
+        margin: 0px;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
 
-    .logo-container {
-        width: 253px;
+
+
+.logo-container {
+    width: 253px;
+    height: 40px;
+    margin-bottom: 18px;
+    padding: 0 24px;
+
+    @media (max-width: $break-sm) {
+        display: none;
+    }
+
+    .logo-svg {
         height: 40px;
-        margin-bottom: 18px;
-        padding: 0 24px;
+        max-width: 131px;
+    }
 
-        .logo-svg {
-            height: 40px;
-            max-width: 131px;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (max-width: $break-sm) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 12%;
+    }
+
+
+    a {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+
+        @media (max-width: $break-sm) {
+            align-items: center;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        &>* {
+            transition: .4s;
+        }
+
+        &.active>*,
+        &:hover svg,
+        &:hover span {
+            color: $clr8;
+            fill: $clr8;
+            transition: 0.4s;
+        }
+
+        &:hover,
+        &.active {
+            .create-playlist {
+                background-color: $clr8;
+
+                svg {
+
+                    fill: $clr3;
+                }
+            }
+        }
+
+
+    }
+
+    span {
+        color: $clr7;
+
+        @media (max-width: $break-sm) {
+            margin-top: 5px;
+            text-align: center;
+            font-size: 11px;
+
         }
 
     }
 
-    .nav-list {
-        list-style: none;
-        padding: 0px 24px;
+    .create-playlist-nav {
+        margin-top: 24px;
+
+        @media (max-width: $break-sm) {
+            margin: 0;
+        }
+    }
+
+    .create-playlist {
+        background-color: $clr7;
+        height: 24px;
+        justify-content: center;
+        width: 24px;
+        border-radius: 2px;
         display: flex;
-        flex-direction: column;
-        gap: 16px;
+        align-items: center;
 
-        a {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-
-            &>* {
-                transition: .4s;
-            }
-
-            &.active>*,
-            &:hover svg,
-            &:hover span {
-                color: $clr8;
-                fill: $clr8;
-                transition: 0.4s;
-            }
-
-            &:hover,
-            &.active {
-                .create-playlist {
-                    background-color: $clr8;
-
-                    svg {
-
-                        fill: $clr3;
-                    }
-                }
-            }
-
-
+        svg {
+            fill: #000
         }
 
-        span {
-            color: $clr7;
-        }
-
-        .create-playlist-nav {
-            margin-top: 24px;
-        }
-
-        .create-playlist {
-            background-color: $clr7;
-            height: 24px;
-            justify-content: center;
-            width: 24px;
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-
-            svg {
-                fill: #000
-            }
 
 
+    }
 
-        }
+    .liked-songs {
+        background: linear-gradient(135deg, #450af5, #c4efd9);
+        height: 24px;
+        width: 24px;
+        border-radius: 2px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
 
-        .liked-songs {
-            background: linear-gradient(135deg, #450af5, #c4efd9);
-            height: 24px;
-            width: 24px;
-            border-radius: 2px;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-        }
-
-        .separation-line {
-            margin: 8px
-        }
+    .separation-line {
+        margin: 8px
     }
 }
