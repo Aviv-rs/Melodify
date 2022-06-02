@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react'
 import { StationDetailsPencil, StationDefaultIcon, PlayIcon, PauseIcon, Clock, BtnMoreIcon } from '../../services/img.import.service'
 import { StationModal } from './station-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { setCurrSong } from '../../store/actions/current-song.action'
 import { stationService } from '../../services/station.service'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useMatch } from 'react-router-dom'
 import { OptionsMenu } from '../util/options-menu'
+import { setIsPlayPauseBtn } from '../../store/actions/header.action'
 
 
 
@@ -17,16 +18,36 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
     const [isOpenMenu, setIsOpenMenue] = useState(false)
-
+    const BtnRef = useRef()
+    const isMatchStation = useMatch('music/station/:stationId')
+    const isMatchNewStation = useMatch('music/station')
 
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
 
+
     useEffect(() => {
         if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
     }, [station, isPlaying])
+
+    useEffect(() => {
+        if (!BtnRef.current) return
+        const observer = new IntersectionObserver((entries) => {
+            const entry = entries[0]
+            if (BtnRef.current && !entry.isIntersecting && isMatchStation) dispatch(setIsPlayPauseBtn(true))
+            else dispatch(setIsPlayPauseBtn(false))
+
+            return (() => dispatch(setIsPlayPauseBtn(false)))
+
+
+        })
+        observer.observe(BtnRef.current)
+
+    }, [])
+
+
 
 
     const onTogglePlayer = () => {
@@ -56,7 +77,7 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
             navigate('/music/library')
 
         } catch (error) {
-            console.log('Can not delete', error);
+            console.log('Can not delete', error)
         }
     }
 
@@ -92,7 +113,7 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                 {station.songs.length > 0 ?
                     <div className='buttons'>
 
-                        <button onClick={onTogglePlayer}>
+                        <button ref={BtnRef} onClick={onTogglePlayer}>
                             {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                         </button>
                         {!station.createdBy?.isAdmin &&
