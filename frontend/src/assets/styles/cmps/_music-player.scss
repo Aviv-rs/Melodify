@@ -7,9 +7,14 @@
     border-top: 1px solid #282828;
     background-color: $clr3;
     overflow: hidden;
-
     position: sticky;
     bottom: 0;
+
+    @media (max-width: $break-sm) {
+    width: 95%;
+    left: 2%;
+    border-radius: 10px;
+    }
 
     .left-side-controls {
         width: 30%;
@@ -263,6 +268,4 @@
             fill: $clr8;
         }
     }
-
-
 }

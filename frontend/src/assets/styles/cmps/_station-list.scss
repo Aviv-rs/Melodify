@@ -2,6 +2,14 @@
 
   display: grid;
 
+  @media (max-width: $break-sm) {
+  height: 260px;
+  grid-gap: 15px;
+  grid-template-rows: 30px 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(135px, 145px));
+  overflow-x: scroll;
+  }
+
   @include for-medium-layout {
     @include layoutGTC(3, 18px);
   }
@@ -23,6 +31,11 @@
     position: relative;
     transition: background-color .3s ease;
     width: 100%;
+
+    @media (max-width: $break-sm) {
+    background-color: inherit;
+    }
+
 
     .inner-container {
       height: 100%;

@@ -12,6 +12,18 @@
   background-color: $clr1;
   color: $clr8;
 
+
+  @media (max-width: $break-sm) {
+    grid-template-rows: 80px 1fr 80px 80px;
+    grid-template-columns: 100%;
+    grid-template-areas:
+     "main-view"
+     "main-view"
+    "music-player"
+    "nav-container";
+    overflow-y: hidden;
+  }
+
   .main-view-container {
     grid-area: main-view;
     position: absolute;
