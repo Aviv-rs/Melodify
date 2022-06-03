@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { socketService, SOCKET_EMIT_UPDATE_STATION } from './socket.service'
+import { userService } from './user.service'
 
 export const stationService = {
     query,
@@ -37,6 +38,9 @@ async function save(station) {
         console.log('updated station', data)
         return data
     } else {
+        const loggedinUser = userService.getLoggedinUser() 
+        if (loggedinUser) station.createdBy = loggedinUser
+        
         const { data } = await axios.post(BASE_URL, station)
         console.log('added station', data);
         return data
@@ -61,4 +65,8 @@ function getEmptyStation() {
         currSongIdx: 0,
         songs: []
     }
+}
+
+function getStationDuration(){
+    
 }

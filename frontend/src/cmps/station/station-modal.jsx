@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { BtnExit, StationDetailsPencil, StationDefaultIcon } from '../../services/img.import.service'
 import { tags as allTags } from '../../data/station'
 import Multiselect from 'multiselect-react-dropdown'
@@ -11,17 +11,36 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
     const [name, setName] = useState(station.name)
     const [description, setDescription] = useState(station.description || '')
     const [tags, setTags] = useState([])
+
+    const modalRef = useRef()
+
+
     const onSelect = (values) => {
         setTags(values.map(value => value.name))
     }
+
+    useEffect(() => {
+        const handleClickOutsideMenu = (ev) => {
+            if (modalRef.current && !modalRef.current.contains(ev.target)) {
+                setIsModalOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutsideMenu)
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideMenu)
+        }
+    }, [modalRef])
+
+
     return <div className="station-modal">
         <form onSubmit={() => {
             onSaveDetails({ name, description, tags })
             setIsModalOpen(false)
-        }} className='station-modal-content'>
+        }} className='station-modal-content' ref={modalRef}>
             <div className='edit-details-title'>
                 <h1>Edit details</h1>
-                <span></span>
+                <span></span> 
                 <BtnExit className='exit-button' onClick={() => setIsModalOpen(false)} />
             </div>
             <div className='edit-details-inputs'>

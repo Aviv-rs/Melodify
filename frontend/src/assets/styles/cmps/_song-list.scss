@@ -1,5 +1,8 @@
 .song-table-spacing {
-    padding: 0 32px;
+    padding: 0 16px;
+    @include for-large-layout {
+        padding: 0 32px;
+    }
     background: rgba(40, 39, 39, 0.189);
 
     .song-list {

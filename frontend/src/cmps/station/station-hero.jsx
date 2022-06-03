@@ -20,7 +20,6 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
     const [isOpenMenu, setIsOpenMenue] = useState(false)
     const BtnRef = useRef()
     const isMatchStation = useMatch('music/station/:stationId')
-    const isMatchNewStation = useMatch('music/station')
 
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
@@ -92,9 +91,18 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                         : <StationDefaultIcon className='station-def-icon' />}
                 </div>
                 <div className='hero-details'>
-                    <span>PLAYLIST</span>
-                    <h1 onClick={() => setIsModalOpen(true)}>{station.name}</h1>
-                    <span>{station.description}</span>
+                    <h2 className='playlist-txt flex align-center' >PLAYLIST</h2>
+                    <span className='station-name-container'>
+                        
+                    <h1 className='station-name' onClick={() => setIsModalOpen(true)}>{station.name}</h1>
+                    </span>
+                    {station.description && <h2>{station.description}</h2>}
+                    <div className="station-info flex align-center">
+                        <div className="created-by">{station.createdBy.fullname || 'Guest'}</div>
+                        <div className="like-count">1 like</div>
+                        <div className="song-count">{station.songs.length + 'songs'}</div>
+                        <div className="station-duration">{}</div>
+                    </div>
                 </div>
                 {isModalOpen && <StationModal
                     onSaveDetails={onSaveDetails}
@@ -109,15 +117,15 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                     setTags={setTags}
                 />}
             </div>
-            <div className='hero-footer'>
+            <div className='hero-footer content-spacing'>
                 {station.songs.length > 0 ?
                     <div className='buttons'>
 
-                        <button ref={BtnRef} onClick={onTogglePlayer}>
+                        <button className='btn-play' ref={BtnRef} onClick={onTogglePlayer}>
                             {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                         </button>
                         {!station.createdBy?.isAdmin &&
-                            <span className='button-more-hero-footer' onClick={() => setIsOpenMenue(!isOpenMenu)}>
+                            <span className='btn-more-hero-footer' onClick={() => setIsOpenMenue(!isOpenMenu)}>
                                 <BtnMoreIcon />
                             </span>
                         }

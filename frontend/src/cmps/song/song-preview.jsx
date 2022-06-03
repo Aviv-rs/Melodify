@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from 'react'
 import ReactTimeAgo from 'react-time-ago'
 import { Draggable } from 'react-beautiful-dnd'
 import { OptionsMenu } from '../util/options-menu'
-import { userService } from '../../services/user.service'
+import songPlayingAnimation from '../../assets/imgs/song-playing-animation.gif'
+import songPlayingIcon from '../../assets/imgs/song-playing-icon.svg'
 
 
 export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
@@ -15,16 +16,21 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
+    const { user } = useSelector((storeState) => storeState.userModule)
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const [isPlayShow, setIsPlayShow] = useState(false)
     const [duration, setDuration] = useState('')
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [isAdminStation, setIsAdminStation] = useState(station.createdBy?.isAdmin)
-    const [isUserAdmin, setIsUserAdmin] = useState(userService.getLoggedinUser()?.isAdmin)
+    const [isAdminStation, setIsAdminStation] = useState(false)
 
     const optionsMenuRef = useRef()
 
-
+    useEffect(()=>{
+        (station.createdBy.isAdmin) ? 
+        setIsAdminStation(true)
+        :
+        setIsAdminStation(false)
+    },[station])
 
     useEffect(() => {
         const handleClickOutsideMenu = (ev) => {
@@ -69,20 +75,24 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                className="song-preview" onDoubleClick={onTogglePlayer}>
+                className={`song-preview ${currSong?.id === song.id ? 'playing':''}`} onDoubleClick={onTogglePlayer}>
 
                 <div className='play-song-container flex align-center' onClick={onTogglePlayer}>
                     <div className="inner-container">
 
+                    {currSong?.id === song.id && isPlaying ? 
+                    <img className='song-playing-img' src={songPlayingAnimation} 
+                    alt='equaliser animation'/> 
+                    :
+                    <span className='song-number'>{songIdx + 1}</span>
+                }
                         {!isPlayShow && <button className="btn-play"> <PlayIcon /> </button>}
                         {isPlayShow && <button className="btn-play"> <PauseIcon /> </button>}
-                        <span className='song-number'>{songIdx + 1}</span>
                     </div>
                 </div>
                 <div className="img-and-title-container flex align-center">
                     <img src={song.imgUrl} alt="" />
                     <div className="title-container">
-
                         <div className="title">{song.title}</div>
                     </div>
                 </div>
@@ -96,9 +106,9 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 <div className="duration-and-actions-container flex align-center">
                     <div className="btn-like"><LikeIconHollow fill="#fff" /></div>
                     <div className='duration'>{duration}</div>
-                    {!isAdminStation || (isAdminStation && isUserAdmin) &&
+                    <button onClick={toggleMenuOpen} className='btn-more-options'><BtnMoreIcon /></button>
+                    {isAdminStation  &&
                         <div ref={optionsMenuRef}>
-                            <button onClick={toggleMenuOpen} className='btn-more-options'><BtnMoreIcon /></button>
                             <OptionsMenu
                                 setIsOpen={setIsMenuOpen}
                                 isOpen={isMenuOpen}
