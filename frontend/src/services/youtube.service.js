@@ -25,6 +25,23 @@ async function getSongs(value) {
     }
 }
 
+function proccessSpecialChars(str){
+    const specialChars = [
+        {char:'&amp;', render: '&'},
+        {char:'&quot;', render: '"'},
+        {char:'&#39;', render: `'`},
+        {char:'&lt;', render: `<`},
+        {char:'&gt;', render: `>`}]
+    str = str.split(' ')
+    str = str.map((word) => {
+        for (let i = 0; i < specialChars.length; i++){
+            if(word.includes(specialChars[i].char)) word = word.replaceAll(specialChars[i].char, specialChars[i].render)
+        }
+        return word
+    })
+    return str.join(' ')
+}
+
 async function getSongDuration(songId) {
     try {
         const { data } = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${songId}&key=${YT_KEY}&part=snippet,contentDetails,statistics,status`)

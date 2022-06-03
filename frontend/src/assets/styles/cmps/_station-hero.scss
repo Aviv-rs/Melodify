@@ -14,7 +14,7 @@
             .station-name{
                 line-height: 48px;
                 font-size: 48px;
-                letter-spacing: -0.04em;
+                letter-spacing: -0.05em;
 
             }
 
@@ -26,15 +26,19 @@
 
         }
 
-        @include for-large-layout{
-            padding-left: 32px;
-            padding-right: 32px;
+        @include for-medium-layout {
             .station-name{
                 line-height: 72px;
                 font-size: 72px;
                 letter-spacing: -0.05em;
 
             }
+        }
+
+        @include for-large-layout{
+            padding-left: 32px;
+            padding-right: 32px;
+            
         }
         @include for-extra-large-layout{
             

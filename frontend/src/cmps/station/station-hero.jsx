@@ -105,7 +105,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                             {station.songs.length + ' songs, '}
 
                             <span className="station-duration">{
-                                `${(stationDuration.hr) ?
+                               stationDuration && `${(stationDuration.hr) ?
                                     stationDuration.hr + ' hr ' + stationDuration.min + ' min '
                                     :
                                     stationDuration.min + ' min ' + stationDuration.sec + ' sec '}`

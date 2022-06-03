@@ -69,9 +69,10 @@ function getEmptyStation() {
 }
 
 function getStationDuration(stationSongs) {
-    if (!stationSongs) return
+    if (!stationSongs || !stationSongs.length) return
 
     const totalDuration = stationSongs.reduce((totalDuration, song) => {
+        if (!song.duration) return
         const timeUnits = song.duration.split(':')
         if (timeUnits.length >= 3) {
             totalDuration.hr += +timeUnits[0]
@@ -80,6 +81,9 @@ function getStationDuration(stationSongs) {
         totalDuration.sec += +timeUnits.at(-1)
         return totalDuration
     }, { hr: 0, min: 0, sec: 0 })
+
+    if (!totalDuration) return
+    
 
     const { min, sec } = totalDuration
     if (sec > 60) {
