@@ -135,6 +135,17 @@
             .station-info {
                 flex-wrap: wrap;
                 margin-top: 8px;
+                font-family: circular-medium;
+
+                .created-by::after, .like-count::after{
+                    content: "•";
+                    margin: 0px 4px;
+                }
+
+                .station-duration{
+                    color: rgba(255,255,255,.7);
+                    white-space: nowrap;
+                }
             }
         }
     }
@@ -162,16 +173,38 @@
                     height: 22px;
                 }
             }
-        }
+            
+            .btn-like {
+                margin-inline-end: 24px;
 
-        .btn-more-hero-footer  {
+                svg {
+                    width: 32px;
+                    height: 32px;
+                }
 
-            svg {
-                width: 24px;
-                height: 24px;
-                fill: #b3b3b3;
+                &:hover {
+                    svg {
+                        fill: $clr8;
+                    }
+                }
+            }
+            
+            .btn-more-hero-footer  {
+                width: 32px;
+                height: 32px;
+                svg {
+                    width: 24px;
+                    height: 24px;
+                    fill: $clr7;
+                    
+                    &:hover {
+                        fill: $clr8;
+                    }
+                }
+                
             }
         }
+
 
     }
 

@@ -7,7 +7,6 @@ import ReactTimeAgo from 'react-time-ago'
 import { Draggable } from 'react-beautiful-dnd'
 import { OptionsMenu } from '../util/options-menu'
 import songPlayingAnimation from '../../assets/imgs/song-playing-animation.gif'
-import songPlayingIcon from '../../assets/imgs/song-playing-icon.svg'
 
 
 export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
@@ -77,14 +76,14 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 {...provided.dragHandleProps}
                 className={`song-preview ${currSong?.id === song.id ? 'playing':''}`} onDoubleClick={onTogglePlayer}>
 
-                <div className='play-song-container flex align-center' onClick={onTogglePlayer}>
+                <div className="play-song-container flex align-center" onClick={onTogglePlayer}>
                     <div className="inner-container">
 
                     {currSong?.id === song.id && isPlaying ? 
-                    <img className='song-playing-img' src={songPlayingAnimation} 
-                    alt='equaliser animation'/> 
+                    <img className="song-playing-img" src={songPlayingAnimation} 
+                    alt="equaliser animation"/> 
                     :
-                    <span className='song-number'>{songIdx + 1}</span>
+                    <span className="song-number">{songIdx + 1}</span>
                 }
                         {!isPlayShow && <button className="btn-play"> <PlayIcon /> </button>}
                         {isPlayShow && <button className="btn-play"> <PauseIcon /> </button>}
@@ -104,16 +103,16 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 </div>
 
                 <div className="duration-and-actions-container flex align-center">
-                    <div className="btn-like"><LikeIconHollow fill="#fff" /></div>
-                    <div className='duration'>{duration}</div>
-                    <button onClick={toggleMenuOpen} className='btn-more-options'><BtnMoreIcon /></button>
-                    {isAdminStation  &&
+                    <div className="btn-like"><LikeIconHollow fill="#b3b3b3" /></div>
+                    <div className="duration">{duration}</div>
+                    <button onClick={toggleMenuOpen} className="btn-more-options"><BtnMoreIcon /></button>
+                    {!isAdminStation  &&
                         <div ref={optionsMenuRef}>
                             <OptionsMenu
                                 setIsOpen={setIsMenuOpen}
                                 isOpen={isMenuOpen}
                                 options={[{
-                                    name: 'Remove song from playlist',
+                                    name: "Remove song from playlist",
                                     action: () => {
                                         onRemoveSong(song.id)
                                         setIsMenuOpen(false)

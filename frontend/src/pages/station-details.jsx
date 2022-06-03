@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Search } from '../cmps/search/search'
@@ -28,10 +28,8 @@ export const StationDetails = () => {
 
     const [songResults, setSongResults] = useState(null)
     const [station, setStation] = useState(null)
-    const [description, setDescription] = useState('')
-    const [title, setTitle] = useState('')
-    const [tags, setTags] = useState([])
 
+    const searchContainerRef = useRef()
     const isStationEmpty = !station?.songs.length
 
 
@@ -50,14 +48,15 @@ export const StationDetails = () => {
         }
     }, [])
 
-    // useEffect(() => {
-    //     if (!station) return
-    // }, [station])
-
 
     useEffectUpdate(() => {
         window.location.reload()
     }, [stationId])
+
+    useEffect(()=>{
+        if (isSearchOpen && searchContainerRef.current) 
+        searchContainerRef.current.scrollIntoView(true, {behavior: 'smooth'})
+    },[isSearchOpen])
 
     useEffect(() => {
         station?.coverUrl && getAvgColor(station?.coverUrl)
@@ -80,8 +79,6 @@ export const StationDetails = () => {
         setIsSearchOpen(false)
         if (!station.coverUrl) dispatch(setHeaderColor('rgb(83,83,83)'))
         else getAvgColor(station.coverUrl)
-        setTitle(station.name)
-        setDescription(station.description)
         dispatch(setCurrPageStation(station))
     }
 
@@ -118,9 +115,14 @@ export const StationDetails = () => {
         }
     }
 
+    const onOpenSearch = () => {
+        setIsSearchOpen(true)
+    }
+
     const displaySongResults = (songs) => {
         setSongResults(songs)
     }
+
     //TODO: addd img first to local state and then when save button clicked save it to data base!!!
     const handleImgUpload = async (ev) => {
         try {
@@ -174,33 +176,35 @@ export const StationDetails = () => {
             onSaveDetails={onSaveDetails}
             station={station}
             handleImgUpload={handleImgUpload}
-            setDescription={setDescription}
-            description={description}
-            setTitle={setTitle}
-            title={title}
-            tags={tags}
-            setTags={setTags}
         />
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
             <SongList onRemoveSong={onRemoveSong} songs={station.songs} station={station} />
         </DragDropContext>}
 
-        <div className="search-station-details-main" >
-            {isSearchOpen ? <div className="flex space-between search-container">
-                <div className="search-container">
-                    <h1>Let's find something for your playlist</h1>
-                    <Search isInStationDetails={true} onSearchSongs={displaySongResults} />
+        <div className="content-spacing">
+            {isSearchOpen ?
+                <div  className="search-songs" >
+                    <div className="flex space-between ">
+                        <div ref={searchContainerRef} className="search-container">
+                            <h1>Let's find something for your playlist</h1>
+                            <Search isInStationDetails={true} onSearchSongs={displaySongResults} />
+                        </div>
+                        <div onClick={() => setIsSearchOpen(false)}>
+                            <BtnExit />
+                        </div>
+                    </div>
                 </div>
-                <div onClick={() => setIsSearchOpen(false)}>
-                    <BtnExit />
-                </div>
-            </div> :
-                <span className="flex flex-end find-more" onClick={() => { setIsSearchOpen(true) }}>FIND MORE</span>
+                :
+                <button className="btn-find-more" onClick={onOpenSearch}>
+                    <div className="find-more-txt">
+                        FIND MORE
+                    </div>
+                </button>
             }
-
         </div>
-        <div>{songResults &&
+
+        {isSearchOpen && <div className='search-results-placeholder'>{songResults && isSearchOpen &&
             <SearchResultList searchResults={songResults} onAddSong={onAddSong} />
-        }</div>
+        }</div>}
     </section>
 }

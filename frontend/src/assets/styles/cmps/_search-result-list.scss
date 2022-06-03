@@ -1,5 +1,9 @@
+.search-results-placeholder {
+    height: calc(60vh - 122px);
+}
+
 .search-result-list {
-    padding-top: 25px;
+    padding-top: 24px;
     padding-bottom: 20px;
 
     .search-result-preview {
@@ -11,7 +15,6 @@
         position: relative;
         display: grid;
         gap: 16px;
-        padding: 0 16px;
 
         .btn-play {
             opacity: 0;

@@ -118,7 +118,7 @@ export const AppHeader = () => {
         {user ? <>
             <button onClick={
                 toggleMenuOpen}
-                onBlur={toggleMenuOpen}
+                onBlur={()=>setIsMenuOpen(false)}
                 className={`btn-user-menu ${isMenuOpen ? 'open' : ''}`}>
                 {user.avatar ?
                     <div className="avatar-container">

@@ -4,9 +4,21 @@
     padding-bottom: 20px;
 }
 
-.search-station-details-main {
-    padding: 0 32px;
+.search-songs {
+    padding: 24px 0;
     cursor: pointer;
+    border-top: 1px solid rgba(255,255,255,.1);
+
+}
+
+.btn-find-more {
+    font-family: circular-medium;
+    background: none;
+    border: none;
+    color: $clr8;
+    display: block;
+    margin-top: 32px;
+    margin-left: auto;
 }
 
 .search-page {

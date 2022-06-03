@@ -41,6 +41,12 @@
   
   @include for-large-layout {
     padding: 0 32px;
-
   }
+}
+
+// Buttons
+.clean-btn {
+  background-color: transparent;
+  padding: 0;
+  border: none;
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { StationDetailsPencil, StationDefaultIcon, PlayIcon, PauseIcon, Clock, BtnMoreIcon } from '../../services/img.import.service'
+import { StationDetailsPencil, StationDefaultIcon, LikeIconHollow, PlayIcon, PauseIcon, Clock, BtnMoreIcon } from '../../services/img.import.service'
 import { StationModal } from './station-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { getActionSetStation } from '../../store/actions/station.action'
@@ -11,7 +11,7 @@ import { setIsPlayPauseBtn } from '../../store/actions/header.action'
 
 
 
-export const StationHero = ({ station, handleImgUpload, setDescription, setTitle, onSaveDetails, title, description, tags, setTags }) => {
+export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -25,7 +25,7 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
     const { player } = useSelector((storeState) => storeState.playerModule)
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
-
+    const stationDuration = stationService.getStationDuration(station.songs)
 
     useEffect(() => {
         if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
@@ -81,40 +81,44 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
     }
 
     return (
-        <article className='hero-container'>
-            <div className='hero-content' >
+        <article className="hero-container">
+            <div className="hero-content" >
 
-                <div className='hero-img hero-img-main' onClick={() => setIsModalOpen(true)}>
-                    <StationDetailsPencil className='pencil' />
+                <div className="hero-img hero-img-main" onClick={() => setIsModalOpen(true)}>
+                    <StationDetailsPencil className="pencil" />
                     {(station.coverUrl) ?
-                        <img src={station.coverUrl} alt="" />
-                        : <StationDefaultIcon className='station-def-icon' />}
+                        <img src={station.coverUrl} alt="Station's cover image" />
+                        : <StationDefaultIcon className="station-def-icon" />}
                 </div>
-                <div className='hero-details'>
-                    <h2 className='playlist-txt flex align-center' >PLAYLIST</h2>
-                    <span className='station-name-container'>
-                        
-                    <h1 className='station-name' onClick={() => setIsModalOpen(true)}>{station.name}</h1>
+                <div className="hero-details">
+                    <h2 className="playlist-txt flex align-center" >PLAYLIST</h2>
+                    <span className="station-name-container">
+
+                        <h1 className="station-name" onClick={() => setIsModalOpen(true)}>{station.name}</h1>
                     </span>
                     {station.description && <h2>{station.description}</h2>}
                     <div className="station-info flex align-center">
-                        <div className="created-by">{station.createdBy.fullname || 'Guest'}</div>
-                        <div className="like-count">1 like</div>
-                        <div className="song-count">{station.songs.length + 'songs'}</div>
-                        <div className="station-duration">{}</div>
+                        <div className="created-by">{station.createdBy.fullname || 'Guest'} </div>
+                        <span className="like-count">1 like </span>
+                        <span className="duration-and-song-count-container">
+
+                            {station.songs.length + ' songs, '}
+
+                            <span className="station-duration">{
+                                `${(stationDuration.hr) ?
+                                    stationDuration.hr + ' hr ' + stationDuration.min + ' min '
+                                    :
+                                    stationDuration.min + ' min ' + stationDuration.sec + ' sec '}`
+                            }
+                            </span>
+                        </span>
                     </div>
                 </div>
                 {isModalOpen && <StationModal
                     onSaveDetails={onSaveDetails}
-                    setDescription={setDescription}
-                    description={description}
-                    setTitle={setTitle}
-                    title={title}
                     setIsModalOpen={setIsModalOpen}
                     handleImgUpload={handleImgUpload}
                     station={station}
-                    tags={tags}
-                    setTags={setTags}
                 />}
             </div>
             <div className='hero-footer content-spacing'>
@@ -124,10 +128,13 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                         <button className='btn-play' ref={BtnRef} onClick={onTogglePlayer}>
                             {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                         </button>
+                        <button className="btn-like clean-btn">
+                        <LikeIconHollow fill="#b3b3b3" />
+                        </button>
                         {!station.createdBy?.isAdmin &&
-                            <span className='btn-more-hero-footer' onClick={() => setIsOpenMenue(!isOpenMenu)}>
+                            <button className='btn-more-hero-footer clean-btn' onClick={() => setIsOpenMenue(!isOpenMenu)}>
                                 <BtnMoreIcon />
-                            </span>
+                            </button>
                         }
 
                         <OptionsMenu
@@ -158,7 +165,7 @@ export const StationHero = ({ station, handleImgUpload, setDescription, setTitle
                         </div>
                         <div className="duration-container">
 
-                        <Clock />
+                            <Clock />
                         </div>
                     </div>
                 </div>}
