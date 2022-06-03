@@ -6,16 +6,21 @@ export const youtubeService = {
     getSongs,
     getSongDuration
 }
+
+
 async function getSongs(value) {
     try {
         const { data } = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YT_KEY}&q=${value}`)
-        const songs = data.items.map(item => {
+        const songs = data.items.map(({snippet, id}) => {
+            let {title, publishTime, description,thumbnails} = snippet
+            const {videoId} = id
+            title = proccessSpecialChars(title)
             return {
-                title: item.snippet.title,
-                id: item.id.videoId,
-                description: item.snippet.description,
-                imgUrl: item.snippet.thumbnails.high.url,
-                publishedAt: item.snippet.publishTime
+                title,
+                id: videoId,
+                description,
+                imgUrl: thumbnails.high.url,
+                publishedAt: publishTime
             }
         })
         return songs
