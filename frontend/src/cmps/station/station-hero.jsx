@@ -8,6 +8,8 @@ import { stationService } from '../../services/station.service'
 import { useNavigate, useMatch } from 'react-router-dom'
 import { OptionsMenu } from '../util/options-menu'
 import { setIsPlayPauseBtn } from '../../store/actions/header.action'
+import { userService } from '../../services/user.service'
+
 
 
 
@@ -18,7 +20,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
     const [isOpenMenu, setIsOpenMenue] = useState(false)
-    const BtnRef = useRef()
+    const btnRef = useRef()
     const isMatchStation = useMatch('music/station/:stationId')
 
     const stationModule = useSelector((storeState) => storeState.stationModule)
@@ -32,17 +34,17 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
     }, [station, isPlaying])
 
     useEffect(() => {
-        if (!BtnRef.current) return
+        if (!btnRef.current) return
         const observer = new IntersectionObserver((entries) => {
             const entry = entries[0]
-            if (BtnRef.current && !entry.isIntersecting && isMatchStation) dispatch(setIsPlayPauseBtn(true))
+            if (btnRef.current && !entry.isIntersecting && isMatchStation) dispatch(setIsPlayPauseBtn(true))
             else dispatch(setIsPlayPauseBtn(false))
 
             return (() => dispatch(setIsPlayPauseBtn(false)))
 
 
         })
-        observer.observe(BtnRef.current)
+        observer.observe(btnRef.current)
 
     }, [])
 
@@ -77,6 +79,25 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
 
         } catch (error) {
             console.log('Can not delete', error)
+        }
+    }
+
+
+    const onLikeStation = async () => {
+        try {
+            console.log('hiii');
+            const loggedInUser = userService.getLoggedinUser()
+            console.log("🚀 ~ file: station-hero.jsx ~ line 90 ~ onLikeStation ~ loggedInUser", loggedInUser)
+            if (!loggedInUser) {
+                //TODO : add message to user that he cant like station if he is not logged in 
+                console.log('TODO : add message to user that he cant like station if he is not logged in ');
+                return
+            }
+            const newStation = { ...station, likedByUsers: [...station.likedByUsers, userService.getLoggedinUser()] }
+            await stationService.save(newStation)
+        } catch (error) {
+            console.log('can not save a like') 
+            //TODO : add message to user that he cant like station if he is not logged in 
         }
     }
 
@@ -125,11 +146,11 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                 {station.songs.length > 0 ?
                     <div className='buttons'>
 
-                        <button className='btn-play' ref={BtnRef} onClick={onTogglePlayer}>
+                        <button className='btn-play' ref={btnRef} onClick={onTogglePlayer}>
                             {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                         </button>
-                        <button className="btn-like clean-btn">
-                        <LikeIconHollow fill="#b3b3b3" />
+                        <button className="btn-like clean-btn" onClick={onLikeStation}>
+                            <LikeIconHollow fill="#b3b3b3" />
                         </button>
                         {!station.createdBy?.isAdmin &&
                             <button className='btn-more-hero-footer clean-btn' onClick={() => setIsOpenMenue(!isOpenMenu)}>
