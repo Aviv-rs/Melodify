@@ -79,7 +79,8 @@ async function update(station) {
       description: station.description,
       coverUrl: station.coverUrl,
       tags:station.tags,
-      songs: station.songs
+      songs: station.songs,
+      likedByUsers: station.likedByUsers
     }
 
     const collection = await dbService.getCollection('station')

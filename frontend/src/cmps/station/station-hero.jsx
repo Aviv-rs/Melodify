@@ -83,7 +83,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
     }
 
 
-    const onLikeStation = async () => {
+    const onToggleLikeStation = async () => {
         try {
             console.log('hiii');
             const loggedInUser = userService.getLoggedinUser()
@@ -93,10 +93,16 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                 console.log('TODO : add message to user that he cant like station if he is not logged in ');
                 return
             }
-            const newStation = { ...station, likedByUsers: [...station.likedByUsers, userService.getLoggedinUser()] }
-            await stationService.save(newStation)
+            const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser._id)
+            const newStation = { ...station }
+            if (isUserLikedStationBefore) {
+                console.log('TODO: Unlike!!!!!!!!!!')
+                newStation.likedByUsers.filter(user => user._id === loggedInUser._id)
+            } else newStation.likedByUsers.push(loggedInUser)
+            const savedStation = await stationService.save(newStation)
+            console.log("🚀 ~ file: station-hero.jsx ~ line 98 ~ onLikeStation ~ savedStation", savedStation)
         } catch (error) {
-            console.log('can not save a like') 
+            console.log('can not save a like')
             //TODO : add message to user that he cant like station if he is not logged in 
         }
     }
@@ -120,13 +126,13 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                     {station.description && <h2>{station.description}</h2>}
                     <div className="station-info flex align-center">
                         <div className="created-by">{station.createdBy.fullname || 'Guest'} </div>
-                        <span className="like-count">1 like </span>
+                        <span className="like-count">{station.likedByUsers.length} like </span>
                         <span className="duration-and-song-count-container">
 
                             {station.songs.length + ' songs, '}
 
                             <span className="station-duration">{
-                               stationDuration && `${(stationDuration.hr) ?
+                                stationDuration && `${(stationDuration.hr) ?
                                     stationDuration.hr + ' hr ' + stationDuration.min + ' min '
                                     :
                                     stationDuration.min + ' min ' + stationDuration.sec + ' sec '}`
@@ -149,7 +155,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                         <button className='btn-play' ref={btnRef} onClick={onTogglePlayer}>
                             {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                         </button>
-                        <button className="btn-like clean-btn" onClick={onLikeStation}>
+                        <button className="btn-like clean-btn" onClick={onToggleLikeStation}>
                             <LikeIconHollow fill="#b3b3b3" />
                         </button>
                         {!station.createdBy?.isAdmin &&
