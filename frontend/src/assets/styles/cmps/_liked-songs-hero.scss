@@ -1,0 +1,59 @@
+.liked-songs-hero {
+
+    @include for-small-layout {
+        // .station-name{
+        //     font-size: min(max(4.5vw,48px));
+        //     line-height: min(max(4.5vw,48px));
+        //     letter-spacing: -0.05em;
+
+        // }
+
+        .hero-img {
+            height: 192px;
+            min-width: 192px;
+            width: 192px;
+        }
+
+    }
+
+    @include for-extra-large-layout {
+            
+        // .station-name{
+        //     font-size: min(max(5vw,96px));
+        //     line-height: min(max(5vw,96px));
+        //     letter-spacing: -0.06em;
+        // }
+        // .hero-details{
+        //     align-self: center;
+        // }
+
+        .hero-img{
+            height: 232px;
+            min-width: 232px;
+            min-height: 232px;
+            width: 232px;
+        }
+    }
+
+    .hero-img {
+        margin-inline-end: 24px;
+        margin-right: 20px;
+        justify-content: center;
+        background-color: $clr11;
+        box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+        display: flex;
+        align-items: center;
+        object-fit: cover;
+
+    }
+
+    .avatar-container {
+        height: 28px;
+        width: 28px;
+  
+        img {
+          border-radius: 50%;
+        }
+        
+    }
+}
