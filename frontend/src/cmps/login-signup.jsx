@@ -29,6 +29,7 @@ export const LoginSignup = props => {
       password: data.get('password'),
 
       fullname: data.get('fullname'),
+      
     }
     if (isSignup) {
       try {
