@@ -1,5 +1,5 @@
 import { userService } from '../services/user.service'
-import {LikedSongList} from '../cmps/liked/liked-song-list'
+import {LikedSongsList} from '../cmps/liked/liked-songs-list'
 
 
 export const LikedSongsDetails = () => {
@@ -8,7 +8,7 @@ export const LikedSongsDetails = () => {
 
     if(loggedUser?.likedSongs) return (
         <div className='liked-songs-details'>
-           <LikedSongList songs={loggedUser.likedSongs}/>
+           <LikedSongsList songs={loggedUser.likedSongs}/>
             
 
         </div>
