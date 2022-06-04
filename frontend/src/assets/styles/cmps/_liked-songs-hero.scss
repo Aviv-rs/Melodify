@@ -1,4 +1,34 @@
 .liked-songs-hero {
+    height: 30vh;
+    max-height: 500px;
+    min-height: 280px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+
+    .background-color,
+    .background-shadow {
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .background-color {
+        background-color: rgb(80, 56, 160);
+    }
+
+    .background-shadow {
+        background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%)
+    }
 
     @include for-small-layout {
         // .station-name{
@@ -17,7 +47,7 @@
     }
 
     @include for-extra-large-layout {
-            
+
         // .station-name{
         //     font-size: min(max(5vw,96px));
         //     line-height: min(max(5vw,96px));
@@ -27,13 +57,14 @@
         //     align-self: center;
         // }
 
-        .hero-img{
+        .hero-img {
             height: 232px;
             min-width: 232px;
             min-height: 232px;
             width: 232px;
         }
     }
+
 
     .hero-img {
         margin-inline-end: 24px;
@@ -44,16 +75,83 @@
         display: flex;
         align-items: center;
         object-fit: cover;
+        z-index: 0;
 
     }
 
-    .avatar-container {
-        height: 28px;
-        width: 28px;
-  
-        img {
-          border-radius: 50%;
+    .hero-details {
+        z-index: 0;
+
+
+        .playlist-txt {
+            font-weight: 700;
+            font-size: 12px;
+            margin-top: 4px;
+            line-height: 16px;
+            margin-bottom: 0;
         }
-        
+
+        .station-name-container {
+            overflow: hidden;
+            word-break: break-word;
+            text-align: left;
+            width: 100%;
+            display: -webkit-box;
+
+            .station-name {
+                font-size: min(max(4.5vw, 48px));
+                line-height: min(max(4.5vw, 48px));
+                width: 100%;
+                padding: 0.08em 0px;
+                margin-bottom: 0;
+                font-weight: 900;
+
+            }
+        }
+
+        .station-info {
+            flex-wrap: wrap;
+            margin-top: 8px;
+            font-family: circular-medium;
+            white-space: nowrap;
+
+            .avatar-container {
+                height: 28px;
+                width: 28px;
+
+                img {
+                    border-radius: 50%;
+                }
+
+            }
+
+            .default-avatar-container {
+                height: 28px;
+                width: 28px;
+                background-color: #535353;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    fill: $clr8;
+                    margin-inline-end: 0;
+                }
+            }
+
+            .created-by {
+                grid-gap: 4px;
+                display: grid;
+                grid-auto-flow: column;
+                align-items: center;
+            }
+
+            .created-by::after {
+                content: "•";
+                margin: 0px 4px;
+            }
+
+        }
     }
 }

@@ -6,10 +6,14 @@ export const LikedSongsHero = () => {
     const user = userService.getLoggedinUser()
 
     return <div className="liked-songs-hero">
+
+        <div className="background-color"></div>
+        <div className="background-shadow"></div>
+
         <div className="hero-img">
-                <img src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png" alt="Station's cover image" />
+            <img src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png" alt="Station's cover image" />
         </div>
-        <div className="hero-details">
+        <div className="hero-details flex column">
             <h2 className="playlist-txt flex align-center" >PLAYLIST</h2>
 
             <span className="station-name-container">
@@ -18,17 +22,17 @@ export const LikedSongsHero = () => {
 
             <div className="station-info flex align-center">
                 <div className="created-by">
-                {user.avatar ?
-                    <div className="avatar-container">
-                        <img src={user.avatar} alt="" />
-                    </div>
-                    :
-                    <div className="default-avatar-container">
-                        <DefaultAvatarIcon />
-                    </div>
-                }
-                    {user.fullname || 'Guest'} 
-                    </div>
+                    {user.avatar ?
+                        <div className="avatar-container">
+                            <img src={user.avatar} alt="" />
+                        </div>
+                        :
+                        <div className="default-avatar-container">
+                            <DefaultAvatarIcon />
+                        </div>
+                    }
+                    {user.fullname || 'Guest'}
+                </div>
                 <span className="song-count">
                     {user.likedSongs.length + ' songs'}
                 </span>
