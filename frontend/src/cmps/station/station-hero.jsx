@@ -20,6 +20,8 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
     const [isOpenMenu, setIsOpenMenue] = useState(false)
+    const [likeCount, setLikeCount] = useState(station.likedByUsers.length)
+
     const btnRef = useRef()
     const isMatchStation = useMatch('music/station/:stationId')
 
@@ -47,6 +49,11 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
         observer.observe(btnRef.current)
 
     }, [])
+
+    useEffect(() => {
+        setLikeCount(station.likedByUsers.length)
+
+    }, [station, likeCount])
 
 
 
@@ -85,22 +92,21 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
 
     const onToggleLikeStation = async () => {
         try {
-            console.log('hiii');
             const loggedInUser = userService.getLoggedinUser()
-            console.log("🚀 ~ file: station-hero.jsx ~ line 90 ~ onLikeStation ~ loggedInUser", loggedInUser)
             if (!loggedInUser) {
                 //TODO : add message to user that he cant like station if he is not logged in 
                 console.log('TODO : add message to user that he cant like station if he is not logged in ');
                 return
             }
             const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser._id)
-            const newStation = { ...station }
+            let newStation = { ...station }
             if (isUserLikedStationBefore) {
-                console.log('TODO: Unlike!!!!!!!!!!')
-                newStation.likedByUsers.filter(user => user._id === loggedInUser._id)
+                console.log('unlike!!')
+                newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser._id)
+                console.log("🚀 ~ file: station-hero.jsx ~ line 108 ~ onToggleLikeStation ~ newStation", newStation)
             } else newStation.likedByUsers.push(loggedInUser)
             const savedStation = await stationService.save(newStation)
-            console.log("🚀 ~ file: station-hero.jsx ~ line 98 ~ onLikeStation ~ savedStation", savedStation)
+            setLikeCount(newStation.likedByUsers.length)
         } catch (error) {
             console.log('can not save a like')
             //TODO : add message to user that he cant like station if he is not logged in 
@@ -126,7 +132,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                     {station.description && <h2>{station.description}</h2>}
                     <div className="station-info flex align-center">
                         <div className="created-by">{station.createdBy.fullname || 'Guest'} </div>
-                        <span className="like-count">{station.likedByUsers.length} like </span>
+                        <span className="like-count">{likeCount} likes </span>
                         <span className="duration-and-song-count-container">
 
                             {station.songs.length + ' songs, '}
