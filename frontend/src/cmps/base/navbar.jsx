@@ -67,7 +67,7 @@ export const Navbar = () => {
                 </li>
                 <li>
                     <nav>
-                        <NavLink to="station/liked">
+                        <NavLink to="liked">
                             <div className="liked-songs">
                                 <LikedSongsIcon fill="#b3b3b3" />
                             </div>
