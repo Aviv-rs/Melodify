@@ -1,11 +1,15 @@
 import { userService } from "../../services/user.service"
 import { DefaultAvatarIcon } from "../../services/img.import.service"
 
+
 export const LikedSongsHero = () => {
 
     const user = userService.getLoggedinUser()
 
-    return <div className="liked-songs-hero">
+    const songAmountTxt = user.likedSongs.length > 1 ? user.likedSongs.length + ' songs ' : user.likedSongs.length + ' song '
+    const isStationEmpty = user.likedSongs.length === 0
+
+    return <div className="liked-songs-hero content-spacing">
 
         <div className="background-color"></div>
         <div className="background-shadow"></div>
@@ -33,9 +37,9 @@ export const LikedSongsHero = () => {
                     }
                     {user.fullname || 'Guest'}
                 </div>
-                <span className="song-count">
-                    {user.likedSongs.length + ' songs'}
-                </span>
+                {!isStationEmpty && <span className="song-count">
+                    {songAmountTxt}
+                </span>}
             </div>
         </div>
     </div>

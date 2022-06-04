@@ -42,6 +42,7 @@ export const AppHeader = () => {
 
     useEffect(() => {
         if (matchStation) setColorToShow(color)
+        if (isLikedSongsPage) setColorToShow('rgb(80, 56, 160)')
         else if (matchNewStation) setColorToShow('rgb(83,83,83)')
         else setColorToShow('')
 

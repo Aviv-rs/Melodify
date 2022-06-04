@@ -46,6 +46,19 @@
 
     }
 
+    @include for-large-layout {
+        padding-left: 32px;
+        padding-right: 32px;
+
+        // .station-name{
+        //     font-size: min(max(4.5vw,72px));
+        //     line-height: min(max(4.5vw,72px));
+        //     letter-spacing: -0.05em;
+            
+        // }
+        
+    }
+
     @include for-extra-large-layout {
 
         // .station-name{
@@ -154,4 +167,6 @@
 
         }
     }
+
+    
 }
