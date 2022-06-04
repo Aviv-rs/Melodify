@@ -34,6 +34,7 @@ export const AppHeader = () => {
     const matchNewStation = useMatch('music/station')
 
     const isSearchPage = useMatch('music/search')
+    const isLikedSongsPage = useMatch('music/liked')
 
     const { user } = useSelector(storeState => storeState.userModule)
 
