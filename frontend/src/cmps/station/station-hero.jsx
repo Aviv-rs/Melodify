@@ -126,7 +126,10 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
             dispatch(setUserMsg({ type: 'danger', txt: 'Something went wrong, please try again later' }))
         }
     }
-    
+
+    const stationLikesTxt = station.likedByUsers.length > 1 ?  station.likedByUsers.length + ' likes' : station.likedByUsers.length + ' like'
+    const stationSongsTxt = station.songs.length > 1 ?  station.songs.length + ' songs, ' : station.songs.length + ' song, '
+    const isStationEmpty = station.songs.length > 0
 
     return (
         <article className="hero-container">
@@ -147,10 +150,10 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
                     {station.description && <h2 className='station-description'>{station.description}</h2>}
                     <div className="station-info flex align-center">
                         <div className="created-by">{station.createdBy.fullname || 'Guest'} </div>
-                        <span className="like-count">{station.likedByUsers.length} likes </span>
+                        {station.likedByUsers.length > 0 && <span className="like-count">{stationLikesTxt} </span>}
                         <span className="duration-and-song-count-container">
 
-                            {station.songs.length + ' songs, '}
+                            {stationSongsTxt}
 
                             <span className="station-duration">{
                                 stationDuration && `${(stationDuration.hr) ?
