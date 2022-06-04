@@ -78,7 +78,9 @@ async function update(user) {
             _id: ObjectId(user._id), // needed for the returnd obj
             username: user.username,
             fullname: user.fullname,
+            likedSongs: user.likedSongs
         }
+        console.log('userToSave', userToSave);
         const collection = await dbService.getCollection('user')
         await collection.updateOne({ _id: userToSave._id }, { $set: userToSave })
         return userToSave
@@ -95,7 +97,8 @@ async function add(user) {
             username: user.username,
             password: user.password,
             fullname: user.fullname,
-            score: 100
+            score: 100,
+            likedSongs: []
         }
         const collection = await dbService.getCollection('user')
         await collection.insertOne(userToAdd)

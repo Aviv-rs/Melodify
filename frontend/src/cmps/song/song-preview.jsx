@@ -7,6 +7,8 @@ import ReactTimeAgo from 'react-time-ago'
 import { Draggable } from 'react-beautiful-dnd'
 import { OptionsMenu } from '../util/options-menu'
 import songPlayingAnimation from '../../assets/imgs/song-playing-animation.gif'
+import { userService } from '../../services/user.service'
+import { setUserMsg } from '../../store/actions/user.action'
 
 
 export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
@@ -21,15 +23,17 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
     const [duration, setDuration] = useState('')
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isAdminStation, setIsAdminStation] = useState(false)
+    const loggedInUser = userService.getLoggedinUser()
+    const [isLikeByLoggedUser, setIsLikeByLoggedUser] = useState(false)
 
     const optionsMenuRef = useRef()
 
-    useEffect(()=>{
-        (station.createdBy.isAdmin) ? 
-        setIsAdminStation(true)
-        :
-        setIsAdminStation(false)
-    },[station])
+    useEffect(() => {
+        (station.createdBy.isAdmin) ?
+            setIsAdminStation(true)
+            :
+            setIsAdminStation(false)
+    }, [station])
 
     useEffect(() => {
         const handleClickOutsideMenu = (ev) => {
@@ -52,6 +56,12 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
         else setIsPlayShow(false)
     }, [station, isPlaying, currSong, stationModule])
 
+    useEffect(() => {
+        const isUserLikedSongBefore = loggedInUser?.likedSongs?.find(likedSong => likedSong.id === song.id)
+        if(isUserLikedSongBefore) setIsLikeByLoggedUser(true)
+    }, [])
+
+
     const onTogglePlayer = () => {
         if (currSong?.id !== song.id) dispatch(setCurrSong(song))
         else if (isPlaying) {
@@ -67,6 +77,33 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
         setIsMenuOpen((prevIsMenuOpen => !prevIsMenuOpen))
     }
 
+    const onTogggleLikeSong = async () => {
+        try {
+            if (!loggedInUser) {
+                dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like song' }))
+                return
+            }
+            const isUserLikedSongBefore = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
+            let newUser = { ...loggedInUser }
+            if(isUserLikedSongBefore){
+                newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
+                console.log("🚀 ~ file: song-preview.jsx ~ line 90 ~ onTogggleLikeSong ~ newUser", newUser)
+                setIsLikeByLoggedUser(false)
+                dispatch(setUserMsg({ type: 'success', txt: 'Removed to your liked songs' }))
+            }else{
+                newUser.likedSongs.push(song)
+                dispatch(setUserMsg({ type: 'success', txt: 'Added from your liked songs' }))
+                setIsLikeByLoggedUser(true)
+            }
+            userService.update(newUser)
+
+        } catch (error) {
+            console.log('can not like song', error);
+            if (loggedInUser) dispatch(setUserMsg({ type: 'danger', txt: 'Oops, something went wrong' }))
+        }
+
+    }
+
 
     return (<Draggable draggableId={song.id} key={song.id} index={songIdx}>
         {(provided) => (
@@ -74,17 +111,17 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 ref={provided.innerRef}
                 {...provided.draggableProps}
                 {...provided.dragHandleProps}
-                className={`song-preview ${currSong?.id === song.id ? 'playing':''}`} onDoubleClick={onTogglePlayer}>
+                className={`song-preview ${currSong?.id === song.id ? 'playing' : ''}`} onDoubleClick={onTogglePlayer}>
 
                 <div className="play-song-container flex align-center" onClick={onTogglePlayer}>
                     <div className="inner-container">
 
-                    {currSong?.id === song.id && isPlaying ? 
-                    <img className="song-playing-img" src={songPlayingAnimation} 
-                    alt="equaliser animation"/> 
-                    :
-                    <span className="song-number">{songIdx + 1}</span>
-                }
+                        {currSong?.id === song.id && isPlaying ?
+                            <img className="song-playing-img" src={songPlayingAnimation}
+                                alt="equaliser animation" />
+                            :
+                            <span className="song-number">{songIdx + 1}</span>
+                        }
                         {!isPlayShow && <button className="btn-play"> <PlayIcon /> </button>}
                         {isPlayShow && <button className="btn-play"> <PauseIcon /> </button>}
                     </div>
@@ -103,13 +140,13 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 </div>
 
                 <div className="duration-and-actions-container flex align-center">
-                    <div className="btn-like">
-                        <LikeIconHollow fill="#b3b3b3" />
-                        <LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />
+                    <div className="btn-like" onClick={onTogggleLikeSong}>
+                        {!isLikeByLoggedUser &&<LikeIconHollow fill="#b3b3b3" />}
+                        {isLikeByLoggedUser &&<LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />}
                     </div>
                     <div className="duration">{duration}</div>
                     <button onClick={toggleMenuOpen} className="btn-more-options"><BtnMoreIcon /></button>
-                    {true  &&
+                    {true &&
                         <div ref={optionsMenuRef}>
                             <OptionsMenu
                                 setIsOpen={setIsMenuOpen}

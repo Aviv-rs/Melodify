@@ -102,11 +102,9 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
             const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
             let newStation = { ...station }
             if (isUserLikedStationBefore) {
-                console.log('unlike!!')
                 newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser?._id)
                 setIsLikeByLoggedUser(false)
             } else {
-                console.log('like!!')
                 newStation.likedByUsers.push(loggedInUser)
                 setIsLikeByLoggedUser(true)
             }
