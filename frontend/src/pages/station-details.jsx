@@ -181,6 +181,7 @@ export const StationDetails = () => {
         <StationHero
             onSaveDetails={onSaveDetails}
             station={station}
+            setStation={setStation}
             handleImgUpload={handleImgUpload}
         />
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>

@@ -9,6 +9,7 @@ html {
 
 body {
   margin: 0;
+  
 }
 
 button {
@@ -36,6 +37,7 @@ h5,
 h6 {
   font-weight: 500;
   margin: 0 0 1rem;
+  letter-spacing: -0.04em;
 }
 
 p {
@@ -45,3 +47,30 @@ p {
 .grid {
   display: grid;
 }
+
+
+
+//SCROLLBAR 
+
+/* width */
+::-webkit-scrollbar {
+  width: -8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $clr5;
+
+}
+

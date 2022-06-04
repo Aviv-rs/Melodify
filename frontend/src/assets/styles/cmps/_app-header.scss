@@ -8,14 +8,21 @@
   z-index: 10;
   padding: 16px 32px;
 
-  .btn-login {
+  .btns-container {
+    display: flex;
+  }
+
+    .btn-login {
     border-radius: 500px;
     font-size: inherit;
     padding-block: 12px;
     padding-inline: 32px;
-  }
+    &:hover{
+      cursor: pointer;
+    }
+    }
 
-  .btn-signup {
+    .btn-signup {
     font-weight: 700;
     background-color: transparent;
     border: none;
@@ -25,7 +32,10 @@
     color: var(--text-subdued, #6a6a6a);
     padding-block: 14px;
     padding-inline: 32px;
-  }
+    &:hover{
+      cursor: pointer;
+    }
+    }
 
   .header-play-pause {
     @include btn-toggle-play()

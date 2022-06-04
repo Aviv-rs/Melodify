@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { StationDetailsPencil, StationDefaultIcon, LikeIconHollow, PlayIcon, PauseIcon, Clock, BtnMoreIcon } from '../../services/img.import.service'
+import { StationDetailsPencil, StationDefaultIcon, LikeIconHollow, PlayIcon, PauseIcon, Clock, BtnMoreIcon, LikedSongsIcon } from '../../services/img.import.service'
 import { StationModal } from './station-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { getActionSetStation } from '../../store/actions/station.action'
@@ -11,7 +11,9 @@ import { setIsPlayPauseBtn } from '../../store/actions/header.action'
 import { userService } from '../../services/user.service'
 
 
-export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
+
+
+export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStation }) => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -28,6 +30,8 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
     const stationDuration = stationService.getStationDuration(station.songs)
+    const [isLikeByLoggedUser, setIsLikeByLoggedUser] = useState(false)
+    const loggedInUser = userService.getLoggedinUser()
 
     useEffect(() => {
         if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
@@ -49,9 +53,10 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
     }, [])
 
     useEffect(() => {
-        setLikeCount(station.likedByUsers.length)
-
-    }, [station, likeCount])
+        // setLikeCount(station.likedByUsers.length)
+        const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
+        if(isUserLikedStationBefore) setIsLikeByLoggedUser(true)
+    }, [])
 
 
 
@@ -90,21 +95,27 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
 
     const onToggleLikeStation = async () => {
         try {
-            const loggedInUser = userService.getLoggedinUser()
             if (!loggedInUser) {
                 //TODO : add message to user that he cant like station if he is not logged in 
                 console.log('TODO : add message to user that he cant like station if he is not logged in ');
                 return
             }
-            const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser._id)
+            const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
+            console.log("🚀 ~ file: station-hero.jsx ~ line 104 ~ onToggleLikeStation ~ station", station)
             let newStation = { ...station }
             if (isUserLikedStationBefore) {
                 console.log('unlike!!')
-                newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser._id)
-                console.log("🚀 ~ file: station-hero.jsx ~ line 108 ~ onToggleLikeStation ~ newStation", newStation)
-            } else newStation.likedByUsers.push(loggedInUser)
+                newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser?._id)
+                setIsLikeByLoggedUser(false)
+            } else {
+                console.log('like!!')
+                newStation.likedByUsers.push(loggedInUser)
+                setIsLikeByLoggedUser(true)
+            }
             const savedStation = await stationService.save(newStation)
-            setLikeCount(newStation.likedByUsers.length)
+            
+            setLikeCount(savedStation.likedByUsers.length)
+            setStation(savedStation)
         } catch (error) {
             console.log('can not save a like')
             //TODO : add message to user that he cant like station if he is not logged in 
@@ -130,7 +141,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                     {station.description && <h2 className='station-description'>{station.description}</h2>}
                     <div className="station-info flex align-center">
                         <div className="created-by">{station.createdBy.fullname || 'Guest'} </div>
-                        <span className="like-count">{likeCount} likes </span>
+                        <span className="like-count">{station.likedByUsers.length} likes </span>
                         <span className="duration-and-song-count-container">
 
                             {station.songs.length + ' songs, '}
@@ -160,7 +171,9 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                             {isPlayShow ? <PauseIcon /> : <PlayIcon />}
                         </button>
                         <button className="btn-like clean-btn" onClick={onToggleLikeStation}>
-                            <LikeIconHollow fill="#b3b3b3" />
+                            {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
+                            {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" />}
+
                         </button>
                         {!station.createdBy?.isAdmin &&
                             <button className='btn-more-hero-footer clean-btn' onClick={() => setIsOpenMenue(!isOpenMenu)}>
