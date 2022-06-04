@@ -51,12 +51,14 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding: 5px 30px 5px 30px;
+
 
     @media (max-width: $break-sm) {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        gap: 5%;
+        gap: 7%;
         padding: 3px 15px 3px 15px;
     }
 
