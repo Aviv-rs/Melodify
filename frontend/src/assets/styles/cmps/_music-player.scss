@@ -11,9 +11,9 @@
     bottom: 0;
 
     @media (max-width: $break-sm) {
-    width: 95%;
-    left: 2%;
-    border-radius: 5px;
+        width: 95%;
+        left: 2%;
+        border-radius: 5px;
     }
 
     .left-side-controls {
@@ -121,8 +121,8 @@
         }
 
         .MuiSlider-track {
-            background-color: #1db954;
-            border-color: #1db954;
+            background-color: $clr13;
+            border-color: $clr13;
         }
     }
 
@@ -149,8 +149,8 @@
         &:hover {
 
             .MuiSlider-track {
-                background-color: #1db954;
-                border-color: #1db954;
+                background-color: $clr13;
+                border-color: $clr13;
 
             }
 
@@ -230,6 +230,34 @@
         text-align: right;
     }
 
+    .btn-shuffle,
+    .btn-repeat {
+        position: relative;
+
+        &:hover svg {
+            fill: $clr8;
+        }
+
+        &.active {
+            svg {
+                fill: $clr13;
+            }
+
+            &::after {
+                background-color: $clr13;
+                border-radius: 50%;
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 4px;
+                left: 50%;
+                position: absolute;
+                transform: translateX(-50%);
+                width: 4px;
+            }
+        }
+    }
+
     .btn-toggle-play {
         display: flex;
         align-items: center;
@@ -258,7 +286,7 @@
         background: transparent;
         color: rgba(255, 255, 255, .7);
 
-        &:hover>* {
+        &:hover svg {
             fill: $clr8;
         }
     }

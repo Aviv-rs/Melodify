@@ -47,6 +47,10 @@ export const StationDetails = () => {
         }
     }, [])
 
+    useEffect(()=>{
+        console.log(station);
+    },[station])
+
 
     useEffectUpdate(() => {
         window.location.reload()

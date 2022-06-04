@@ -1,6 +1,5 @@
 import { SongPreview } from './song-preview'
 import { Droppable } from 'react-beautiful-dnd'
-import { useEffect } from 'react'
 export const SongList = ({ onRemoveSong, songs, station = null }) => {
 
     return <Droppable droppableId={station._id}>
