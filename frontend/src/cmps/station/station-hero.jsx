@@ -9,6 +9,7 @@ import { useNavigate, useMatch } from 'react-router-dom'
 import { OptionsMenu } from '../util/options-menu'
 import { setIsPlayPauseBtn } from '../../store/actions/header.action'
 import { userService } from '../../services/user.service'
+import { setUserMsg } from '../../store/actions/user.action'
 
 
 
@@ -20,7 +21,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
     const [isOpenMenu, setIsOpenMenue] = useState(false)
-    const [likeCount, setLikeCount] = useState(station.likedByUsers.length)
+    
 
     const btnRef = useRef()
     const isMatchStation = useMatch('music/station/:stationId')
@@ -53,7 +54,6 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
     }, [])
 
     useEffect(() => {
-        // setLikeCount(station.likedByUsers.length)
         const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
         if(isUserLikedStationBefore) setIsLikeByLoggedUser(true)
     }, [])
@@ -96,12 +96,10 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
     const onToggleLikeStation = async () => {
         try {
             if (!loggedInUser) {
-                //TODO : add message to user that he cant like station if he is not logged in 
-                console.log('TODO : add message to user that he cant like station if he is not logged in ');
+                dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like playlist' }))
                 return
             }
             const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
-            console.log("🚀 ~ file: station-hero.jsx ~ line 104 ~ onToggleLikeStation ~ station", station)
             let newStation = { ...station }
             if (isUserLikedStationBefore) {
                 console.log('unlike!!')
@@ -113,12 +111,9 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
                 setIsLikeByLoggedUser(true)
             }
             const savedStation = await stationService.save(newStation)
-            
-            setLikeCount(savedStation.likedByUsers.length)
             setStation(savedStation)
         } catch (error) {
             console.log('can not save a like')
-            //TODO : add message to user that he cant like station if he is not logged in 
         }
     }
 

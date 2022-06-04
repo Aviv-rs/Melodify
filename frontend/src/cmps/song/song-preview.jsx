@@ -103,7 +103,10 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 </div>
 
                 <div className="duration-and-actions-container flex align-center">
-                    <div className="btn-like"><LikeIconHollow fill="#b3b3b3" /></div>
+                    <div className="btn-like">
+                        <LikeIconHollow fill="#b3b3b3" />
+                        <LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />
+                    </div>
                     <div className="duration">{duration}</div>
                     <button onClick={toggleMenuOpen} className="btn-more-options"><BtnMoreIcon /></button>
                     {true  &&
