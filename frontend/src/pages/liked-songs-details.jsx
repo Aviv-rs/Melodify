@@ -1,5 +1,5 @@
 import { userService } from '../services/user.service'
-import {LikedSongList} from '../cmps/song/liked-song-list'
+import {LikedSongList} from '../cmps/liked/liked-song-list'
 
 
 export const LikedSongsDetails = () => {

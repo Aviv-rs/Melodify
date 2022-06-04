@@ -19,7 +19,7 @@ export const Library = () => {
     }
 
     return <section className="library">
-        <div className="library-title"> <h1>Library</h1> </div>
+        <div className="library-title"><h1>Library</h1></div>
         <div className="library-list">{stations && <StationList stations={stations} />}</div>
     </section>
 }
