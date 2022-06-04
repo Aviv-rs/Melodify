@@ -4,12 +4,11 @@ import { setCurrSong } from '../../store/actions/current-song.action'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { useEffect, useRef, useState } from 'react'
 import ReactTimeAgo from 'react-time-ago'
-import { Draggable } from 'react-beautiful-dnd'
 import { OptionsMenu } from '../util/options-menu'
 import songPlayingAnimation from '../../assets/imgs/song-playing-animation.gif'
 import { userService } from '../../services/user.service'
 import { setUserMsg } from '../../store/actions/user.action'
-export const LikedSongPreview = ({ song, songIdx, userStation }) => {
+export const LikedSongPreview = ({ song, songIdx, userStation, setLoggedUser, setSongs }) => {
 
 
     const dispatch = useDispatch()
@@ -58,11 +57,6 @@ export const LikedSongPreview = ({ song, songIdx, userStation }) => {
     }
 
 
-    // useEffect(() => {
-    //     const isUserLikedSongBefore = loggedInUser?.likedSongs?.find(likedSong => likedSong.id === song.id)
-    //     if(isUserLikedSongBefore) setIsLikeByLoggedUser(true)
-    // }, [])
-
     const onTogggleLikeSong = async () => {
         try {
             if (!loggedInUser) {
@@ -76,6 +70,8 @@ export const LikedSongPreview = ({ song, songIdx, userStation }) => {
                 console.log("🚀 ~ file: song-preview.jsx ~ line 90 ~ onTogggleLikeSong ~ newUser", newUser)
                 setIsLikeByLoggedUser(false)
                 dispatch(setUserMsg({ type: 'success', txt: 'Removed to your liked songs' }))
+                setLoggedUser(userService.getLoggedinUser())
+                setSongs(newUser.likedSongs)
             }else{
                 newUser.likedSongs.push(song)
                 dispatch(setUserMsg({ type: 'success', txt: 'Added from your liked songs' }))

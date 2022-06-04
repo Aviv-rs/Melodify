@@ -10,8 +10,17 @@ import { useDispatch } from "react-redux"
 import { PlayIcon,PauseIcon } from '../services/img.import.service'
 
 export const LikedSongsDetails = () => {
-    const loggedUser = userService.getLoggedinUser()
-    const userStation = stationService.getEmptyStation()
+    const [loggedUser, setLoggedUser] = useState({})
+    const [songs, setSongs] = useState([])
+    let userStation = stationService.getEmptyStation()
+    useEffect(()=>{
+        setLoggedUser(userService.getLoggedinUser())
+        setSongs(userService.getLoggedinUser().likedSongs)
+    },[])
+    useEffect(()=>{
+        
+    },[loggedUser, songs])
+
     userStation.songs = { ...loggedUser.likedSongs }
 
     const dispatch = useDispatch()
@@ -56,7 +65,7 @@ export const LikedSongsDetails = () => {
                     </button>
                 </div>
             </div>
-            <LikedSongsList songs={loggedUser.likedSongs} userStation={userStation} />
+            <LikedSongsList setLoggedUser={setLoggedUser} setSongs={setSongs} songs={songs} userStation={userStation} />
         </div>
     )
 }
