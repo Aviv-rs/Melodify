@@ -1,6 +1,5 @@
 import { LikedSongPreview } from './liked-song-preview'
-export const LikedSongsList = ({ songs }) => {
-    console.log("🚀 ~ file: liked-song-list.jsx ~ line 3 ~ LikedSongList ~ songs", songs)
+export const LikedSongsList = ({ songs, userStation }) => {
     return (
         <div className='content-spacing'>
 
@@ -11,6 +10,7 @@ export const LikedSongsList = ({ songs }) => {
                         key={idx}
                         song={song}
                         songIdx={idx}
+                        userStation={userStation}
                     />
                 })}
             </div>
