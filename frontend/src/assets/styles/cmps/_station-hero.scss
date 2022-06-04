@@ -10,13 +10,13 @@
         padding-right: 16px;
         width: 100%;
 
-        @include for-small-layout{
-            .station-name{
-                line-height: 48px;
-                font-size: 48px;
-                letter-spacing: -0.05em;
+        @include for-small-layout {
+            // .station-name{
+            //     line-height: 48px;
+            //     font-size: 48px;
+            //     letter-spacing: -0.05em;
 
-            }
+            // }
 
             .hero-img {
                 height: 192px;
@@ -26,35 +26,43 @@
 
         }
 
-        @include for-medium-layout {
-            .station-name{
-                line-height: 72px;
-                font-size: 72px;
-                letter-spacing: -0.05em;
+        // @include for-medium-layout {
+        //     .station-name{
+        //         line-height: 64px;
+        //         font-size: 64px;
+        //         letter-spacing: -0.05em;
 
-            }
-        }
+        //     }
+        // }
 
-        @include for-large-layout{
+        @include for-large-layout {
             padding-left: 32px;
             padding-right: 32px;
-            
+
+            // .station-name{
+            //     line-height: 72px;
+            //     font-size: 72px;
+            //     letter-spacing: -0.05em;
+
+            // }
+
         }
-        @include for-extra-large-layout{
-            
-            .station-name{
-                line-height: 96px;
-                font-size: 96px;
-                letter-spacing: -0.06em;
-            }
+
+        @include for-extra-large-layout {
+
+            // .station-name{
+            //     line-height: 96px;
+            //     font-size: 96px;
+            //     letter-spacing: -0.06em;
+            // }
 
             .hero-img {
-                height: 232px;
-                min-width: 232px;
-                width: 232px;
+                height: 192px;
+                min-width: 192px;
+                width: 192px;
             }
         }
-        
+
         .hero-img-main {
             max-height: 232px;
             max-width: 232px;
@@ -141,13 +149,14 @@
                 margin-top: 8px;
                 font-family: circular-medium;
 
-                .created-by::after, .like-count::after{
+                .created-by::after,
+                .like-count::after {
                     content: "•";
                     margin: 0px 4px;
                 }
 
-                .station-duration{
-                    color: rgba(255,255,255,.7);
+                .station-duration {
+                    color: rgba(255, 255, 255, .7);
                     white-space: nowrap;
                 }
             }
@@ -168,7 +177,7 @@
 
             .btn-play {
                 @include btn-toggle-play();
-                margin-inline-end:32px;
+                margin-inline-end: 32px;
                 width: 56px;
                 height: 56px;
 
@@ -177,7 +186,7 @@
                     height: 22px;
                 }
             }
-            
+
             .btn-like {
                 margin-inline-end: 24px;
 
@@ -192,20 +201,21 @@
                     }
                 }
             }
-            
-            .btn-more-hero-footer  {
+
+            .btn-more-hero-footer {
                 width: 32px;
                 height: 32px;
+
                 svg {
                     width: 24px;
                     height: 24px;
                     fill: $clr7;
-                    
+
                     &:hover {
                         fill: $clr8;
                     }
                 }
-                
+
             }
         }
 

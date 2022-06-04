@@ -106,7 +106,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                     <div className="btn-like"><LikeIconHollow fill="#b3b3b3" /></div>
                     <div className="duration">{duration}</div>
                     <button onClick={toggleMenuOpen} className="btn-more-options"><BtnMoreIcon /></button>
-                    {!isAdminStation  &&
+                    {true  &&
                         <div ref={optionsMenuRef}>
                             <OptionsMenu
                                 setIsOpen={setIsMenuOpen}
