@@ -5,6 +5,12 @@
     padding-left: 32px;
     padding-right: 32px;
 
+    @media (max-width: $break-sm) {
+        padding-right: 0px;
+        padding-left: 15px;
+        grid-gap: 0px;
+      }
+
     .station-collection {
         display: flex;
         flex-direction: column;

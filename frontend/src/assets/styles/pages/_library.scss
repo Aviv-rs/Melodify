@@ -9,5 +9,11 @@
         display: flex;
         margin: 16px 0px;
     }
+    .library-list{
+        @media (max-width: $break-sm) {
+            grid-gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+    }
 
 }

@@ -12,8 +12,8 @@
 
         @include for-small-layout {
             // .station-name{
-            //     line-height: 48px;
-            //     font-size: 48px;
+            //     font-size: min(max(4.5vw,48px));
+            //     line-height: min(max(4.5vw,48px));
             //     letter-spacing: -0.05em;
 
             // }
@@ -26,53 +26,51 @@
 
         }
 
-        // @include for-medium-layout {
-        //     .station-name{
-        //         line-height: 64px;
-        //         font-size: 64px;
-        //         letter-spacing: -0.05em;
+        @include for-medium-layout {
+            // .station-name{
+            //     font-size: min(max(4.5vw,64px));
+            //     line-height: min(max(4.5vw,64px));
+            //     letter-spacing: -0.05em;
 
-        //     }
-        // }
+            // }
+        }
 
         @include for-large-layout {
             padding-left: 32px;
             padding-right: 32px;
 
             // .station-name{
-            //     line-height: 72px;
-            //     font-size: 72px;
+            //     font-size: min(max(4.5vw,72px));
+            //     line-height: min(max(4.5vw,72px));
             //     letter-spacing: -0.05em;
-
+                
             // }
-
+            
         }
-
+        
         @include for-extra-large-layout {
-
+            
             // .station-name{
-            //     line-height: 96px;
-            //     font-size: 96px;
+            //     font-size: min(max(5vw,96px));
+            //     line-height: min(max(5vw,96px));
             //     letter-spacing: -0.06em;
             // }
+            // .hero-details{
+            //     align-self: center;
+            // }
 
-            .hero-img {
-                height: 192px;
-                min-width: 192px;
-                width: 192px;
+            .hero-img{
+                height: 232px;
+                min-width: 232px;
+                min-height: 232px;
+                width: 232px;
             }
         }
 
-        .hero-img-main {
-            max-height: 232px;
-            max-width: 232px;
-            margin-top: 24px;
-        }
+        
 
         .hero-img {
             margin-inline-end: 24px;
-            min-width: 192px;
-            min-height: 192px;
             margin-right: 20px;
             justify-content: center;
             background-color: $clr11;
@@ -135,6 +133,8 @@
                 display: -webkit-box;
 
                 .station-name {
+                    font-size: min(max(4.5vw, 48px));
+                    line-height: min(max(4.5vw, 48px));
                     width: 100%;
                     padding: 0.08em 0px;
                     margin-bottom: 0;
@@ -144,6 +144,16 @@
                 }
             }
 
+            .station-description {
+                color: rgba(255, 255, 255, .7);
+                align-items: center;
+                display: flex;
+                font-size: 14px;
+                line-height: 16px;
+                margin-top: 8px;
+                margin-bottom: 0;
+                font-family: circular-medium;
+            }
             .station-info {
                 flex-wrap: wrap;
                 margin-top: 8px;
