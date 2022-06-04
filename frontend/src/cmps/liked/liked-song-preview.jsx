@@ -57,26 +57,19 @@ export const LikedSongPreview = ({ song, songIdx, userStation, setLoggedUser, se
     }
 
 
-    const onTogggleLikeSong = async () => {
+    const onUnlikeSong = async () => {
         try {
-            if (!loggedInUser) {
-                dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like song' }))
-                return
-            }
-            const isUserLikedSongBefore = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
-            let newUser = { ...loggedInUser }
-            if(isUserLikedSongBefore){
+            
+            // const isUserLikedSongBefore = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
+            let newUser = { ...userService.getLoggedinUser() }
+            // if(isUserLikedSongBefore){
                 newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
-                console.log("🚀 ~ file: song-preview.jsx ~ line 90 ~ onTogggleLikeSong ~ newUser", newUser)
-                setIsLikeByLoggedUser(false)
-                dispatch(setUserMsg({ type: 'success', txt: 'Removed to your liked songs' }))
-                setLoggedUser(userService.getLoggedinUser())
+                // setIsLikeByLoggedUser(false)
+                dispatch(setUserMsg({ type: 'success', txt: 'Removed from your liked songs' }))
+                setLoggedUser(newUser)
                 setSongs(newUser.likedSongs)
-            }else{
-                newUser.likedSongs.push(song)
-                dispatch(setUserMsg({ type: 'success', txt: 'Added from your liked songs' }))
-                setIsLikeByLoggedUser(true)
-            }
+            // }
+            
             userService.update(newUser)
 
         } catch (error) {
@@ -123,7 +116,7 @@ export const LikedSongPreview = ({ song, songIdx, userStation, setLoggedUser, se
                 </div>
 
                 <div className="duration-and-actions-container flex align-center">
-                    <div className="btn-like" onClick={onTogggleLikeSong}>
+                    <div className="btn-like" onClick={onUnlikeSong}>
                         {!isLikeByLoggedUser &&<LikeIconHollow fill="#b3b3b3" />}
                         {isLikeByLoggedUser &&<LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />}
                     </div>
