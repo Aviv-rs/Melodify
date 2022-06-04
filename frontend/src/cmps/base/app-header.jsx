@@ -30,21 +30,24 @@ export const AppHeader = () => {
     const { player } = useSelector((storeState) => storeState.playerModule)
     const [isPlayShow, setIsPlayShow] = useState(true)
     const [colorToShow, setColorToShow] = useState('')
+
     const matchStation = useMatch('music/station/:stationId')
     const matchNewStation = useMatch('music/station')
-
     const isSearchPage = useMatch('music/search')
     const isLikedSongsPage = useMatch('music/liked')
+
 
     const { user } = useSelector(storeState => storeState.userModule)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     useEffect(() => {
+        
         if (isLikedSongsPage) setColorToShow('rgb(80, 56, 160)')
-        if (matchStation) setColorToShow(color)
+        else if (matchStation) setColorToShow(color)
         else if (matchNewStation) setColorToShow('rgb(83,83,83)')
         else setColorToShow('')
+        
 
         if (stationModule?.station?._id === matchStation?.params?.stationId) return
         dispatch(setIsPlayPauseBtn(false))

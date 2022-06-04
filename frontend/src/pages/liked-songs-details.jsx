@@ -13,10 +13,14 @@ export const LikedSongsDetails = () => {
     const [loggedUser, setLoggedUser] = useState({})
     const [songs, setSongs] = useState([])
     let userStation = stationService.getEmptyStation()
+    
     useEffect(()=>{
-        setLoggedUser(userService.getLoggedinUser())
+        const loggedInUser = userService.getLoggedinUser()
+        if (!loggedInUser) return
+        setLoggedUser(loggedInUser)
         setSongs(userService.getLoggedinUser().likedSongs)
     },[])
+
     useEffect(()=>{
         
     },[loggedUser, songs])
