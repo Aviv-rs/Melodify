@@ -9,11 +9,15 @@
         display: flex;
         margin: 16px 0px;
     }
-    .library-list{
-        @media (max-width: $break-sm) {
-            grid-gap: 24px;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+    .library-list {
+        .station-list {
+            @media (max-width: $break-sm) {
+                grid-auto-flow: unset;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                overflow-x: unset;
+                padding-right: 0px;
+            }
         }
     }
-
 }

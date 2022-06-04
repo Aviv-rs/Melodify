@@ -2,6 +2,9 @@
     background-color: $clr12;
     min-height: 100vh;
     padding-bottom: 20px;
+    // @media (max-width: $break-sm) {
+    //     overflow-x: hidden;
+    // }
 }
 
 .search-songs {
@@ -23,6 +26,9 @@
 
 .search-page {
     padding: 0 32px;
+    @media (max-width: $break-sm) {
+        overflow-x:hidden;
+    }
 }
 
 .find-more {

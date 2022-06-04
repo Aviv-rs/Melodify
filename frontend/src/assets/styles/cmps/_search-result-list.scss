@@ -27,9 +27,18 @@
         }
 
         .play-song-and-title-container {
+
+            @media (max-width: $break-sm) {
+                .title {
+                    white-space: nowrap;
+                    font-size: 10px;
+                }
+            }
+
             .play-song-container {
                 margin-inline-end: 16px;
                 position: relative;
+
 
                 .btn-play {
                     background: rgba(0, 0, 0, .5);
