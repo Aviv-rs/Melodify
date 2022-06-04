@@ -67,9 +67,10 @@ export const StationPreview = ({ station }) => {
             </div>
             <div className="station-details">
                 <div className="station-name"> {station.name} </div>
-                <div className="station-preview-info"> 
-                 {/* {'By ' + station.createdBy.fullname || 'Guest'}   */}
-                {!isStationEmpty && stationSongsTxt} 
+                <div className="station-preview-info">
+                {station.createdBy.fullname ? `By ${station.createdBy.fullname}` 
+                : 
+                isStationEmpty ? 'By Guest' : stationSongsTxt} 
                 </div>
             </div>
         </div>
