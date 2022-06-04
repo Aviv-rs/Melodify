@@ -1,17 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import YouTube from 'react-youtube'
 import { useDispatch, useSelector } from 'react-redux'
-import { PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon, VolumeIcon, VolumeMuteIcon, LikedSongsIcon } from '../../services/img.import.service'
+import {
+    PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon,
+    VolumeIcon, VolumeMuteIcon, LikedSongsIcon, ShuffleIcon, RepeatIcon
+}
+    from '../../services/img.import.service'
 import { utilService } from '../../services/util.service'
 import { SliderBar } from '../util/slider'
 import { setCurrSong, setIsPlaying } from '../../store/actions/current-song.action'
 import { setPlayer } from '../../store/actions/player.action'
-import { getActionSetStation } from '../../store/actions/station.action'
+import { getActionSetStation, setIsShuffle } from '../../store/actions/station.action'
 import { Link } from 'react-router-dom'
+import { stationService } from '../../services/station.service'
 
 export const MusicPlayer = () => {
 
-    const { station } = useSelector((storeState) => storeState.stationModule)
+    const { station, isShuffle } = useSelector((storeState) => storeState.stationModule)
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
     const { isPlaying } = useSelector((storeState) => storeState.currSongModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
@@ -44,7 +49,6 @@ export const MusicPlayer = () => {
         target.playVideo()
         setSongTime(0)
         dispatch(setPlayer(target))
-        // setPlayer(target)
         setTotalTime(+target.getDuration())
     }
 
@@ -102,6 +106,20 @@ export const MusicPlayer = () => {
         dispatch(setIsPlaying(true))
     }
 
+    const onShuffleStation = async () => {
+        const shuffledSongs = utilService.shuffle(station.songs)
+        const shuffledStation = { ...station, songs: [...shuffledSongs] }
+        await dispatch(getActionSetStation(shuffledStation))
+
+        dispatch(setIsShuffle(true))
+    }
+
+    const onUnshuffleStation = async () => {
+        const unshuffledStation = await stationService.getById(station._id)
+        await dispatch(getActionSetStation(unshuffledStation))
+        dispatch(setIsShuffle(false))
+    }
+
     return (
         <div className='music-player'>
             <div className="left-side-controls">
@@ -117,23 +135,24 @@ export const MusicPlayer = () => {
                         </Link>
                     </div>
                     <button className="like-btn">
-                       {currSong && <LikedSongsIcon  fill="#181818" stroke="#b3b3b3" /> }
+                        {currSong && <LikedSongsIcon fill="#181818" stroke="#b3b3b3" />}
                     </button>
                 </div>
             </div>
             <div className="player-controls">
                 <div className="player-controls-buttons">
-                    <button disabled={!station} className='btn-play-prev' onClick={() => onChangeSong(-1)} ><PlayPrevIcon fill='#b3b3b3' /></button>
+                    <button disabled={isDisabled} className={`btn-shuffle flex align-center clean-btn ${isShuffle ? 'active' : ''}`} onClick={isShuffle ? onUnshuffleStation : onShuffleStation} ><ShuffleIcon fill="#b3b3b3" /></button>
+                    <button disabled={!station} className="btn-play-prev" onClick={() => onChangeSong(-1)} ><PlayPrevIcon fill="#b3b3b3" /></button>
                     <button disabled={isDisabled} onClick={toggleSongPlay} className="btn-toggle-play" >
                         {isPlaying ? <PauseIcon /> : <PlayIcon />}
                     </button>
-                    {/* <button disabled={isDisabled} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button> */}
-                    <button disabled={!station} className='btn-play-next' onClick={() => onChangeSong(1)}><PlayNextIcon fill='#b3b3b3' /></button>
+                    <button disabled={!station} className="btn-play-next" onClick={() => onChangeSong(1)}><PlayNextIcon fill="#b3b3b3" /></button>
+                    <button className="btn-repeat flex align-center clean-btn"><RepeatIcon fill="#b3b3b3" /></button>
                 </div >
-                <div className='playBackSlide'>
-                    <div className='time-elapsed'> {utilService.convertSecToMin(songTime)}</div>
+                <div className="playBackSlide">
+                    <div className="time-elapsed"> {utilService.convertSecToMin(songTime)}</div>
                     <SliderBar maxValue={songTotalTime} disabled={isDisabled} handleChange={handleTimeChange} value={songTime} width={500} />
-                    <div className='total-time'> {utilService.convertSecToMin(songTotalTime)}</div>
+                    <div className="total-time"> {utilService.convertSecToMin(songTotalTime)}</div>
                 </div>
             </div >
 

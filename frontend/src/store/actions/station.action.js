@@ -19,6 +19,12 @@ export function saveStation(station) {
     }
 }
 
+export function setIsShuffle(isShuffle) {
+    return async (dispatch) =>{
+      await dispatch({ type: 'SET_SHUFFLE', isShuffle })
+    }
+}
+
 
 
 

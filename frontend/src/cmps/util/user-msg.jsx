@@ -24,7 +24,10 @@ export const UserMsg = () => {
       onCloseMsg()
     }, 3000)
 
-    return () => clearTimeout(timeoutIdRef.current)
+    return () => {
+      clearTimeout(timeoutIdRef.current)
+      dispatch(setUserMsg(null))
+    }
   }, [msg])
 
   const msgClass = msg?.type || ''
