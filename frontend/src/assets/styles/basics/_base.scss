@@ -55,6 +55,13 @@ p {
 /* width */
 ::-webkit-scrollbar {
   width: -8px;
+  // display: none;
+}
+@media (max-width: $break-sm) {
+  ::-webkit-scrollbar {
+    width: -8px;
+    display: none;
+  }
 }
 
 
