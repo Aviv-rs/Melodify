@@ -5,24 +5,76 @@
         min-height: 280px;
         display: flex;
         align-items: flex-end;
+        padding-bottom: 24px;
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 100%;
 
-        .hero-img-main {
-            max-height: 232px;
-            max-width: 232px;
-            margin-top: 24px;
+        @include for-small-layout {
+            // .station-name{
+            //     font-size: min(max(4.5vw,48px));
+            //     line-height: min(max(4.5vw,48px));
+            //     letter-spacing: -0.05em;
+
+            // }
+
+            .hero-img {
+                height: 192px;
+                min-width: 192px;
+                width: 192px;
+            }
+
         }
 
+        @include for-medium-layout {
+            // .station-name{
+            //     font-size: min(max(4.5vw,64px));
+            //     line-height: min(max(4.5vw,64px));
+            //     letter-spacing: -0.05em;
+
+            // }
+        }
+
+        @include for-large-layout {
+            padding-left: 32px;
+            padding-right: 32px;
+
+            // .station-name{
+            //     font-size: min(max(4.5vw,72px));
+            //     line-height: min(max(4.5vw,72px));
+            //     letter-spacing: -0.05em;
+                
+            // }
+            
+        }
+        
+        @include for-extra-large-layout {
+            
+            // .station-name{
+            //     font-size: min(max(5vw,96px));
+            //     line-height: min(max(5vw,96px));
+            //     letter-spacing: -0.06em;
+            // }
+            // .hero-details{
+            //     align-self: center;
+            // }
+
+            .hero-img{
+                height: 232px;
+                min-width: 232px;
+                min-height: 232px;
+                width: 232px;
+            }
+        }
+
+        
+
         .hero-img {
-            width: 22vw;
-            height: 20vw;
-            min-width: 192px;
-            min-height: 192px;
-            margin-left: 32px;
-            margin-bottom: 20px;
+            margin-inline-end: 24px;
             margin-right: 20px;
             justify-content: center;
             background-color: $clr11;
-            box-shadow: 0 0 10px 0 rgb(0 0 0 / 46%);
+            box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
             display: flex;
             align-items: center;
 
@@ -48,7 +100,7 @@
         .hero-img:hover {
             .pencil {
                 display: block;
-                
+
             }
 
             .station-def-icon {
@@ -62,16 +114,61 @@
         }
 
         .hero-details {
-            margin-top: 150px;
+            display: flex;
+            flex-direction: column;
 
-            span {
+            .playlist-txt {
+                font-weight: 700;
                 font-size: 12px;
+                margin-top: 4px;
+                line-height: 16px;
+                margin-bottom: 0;
             }
 
-            h1 {
-                padding: 0.08em 0px;
-                font-size: 6.2vw;
-                // line-height: 96px;
+            .station-name-container {
+                overflow: hidden;
+                word-break: break-word;
+                text-align: left;
+                width: 100%;
+                display: -webkit-box;
+
+                .station-name {
+                    font-size: min(max(4.5vw, 48px));
+                    line-height: min(max(4.5vw, 48px));
+                    width: 100%;
+                    padding: 0.08em 0px;
+                    margin-bottom: 0;
+                    font-weight: 900;
+                    cursor: pointer;
+
+                }
+            }
+
+            .station-description {
+                color: rgba(255, 255, 255, .7);
+                align-items: center;
+                display: flex;
+                font-size: 14px;
+                line-height: 16px;
+                margin-top: 8px;
+                margin-bottom: 0;
+                font-family: circular-medium;
+            }
+            .station-info {
+                flex-wrap: wrap;
+                margin-top: 8px;
+                font-family: circular-medium;
+
+                .created-by::after,
+                .like-count::after {
+                    content: "•";
+                    margin: 0px 4px;
+                }
+
+                .station-duration {
+                    color: rgba(255, 255, 255, .7);
+                    white-space: nowrap;
+                }
             }
         }
     }
@@ -81,24 +178,62 @@
         background: rgba(40, 39, 39, 0.181);
         display: flex;
         align-items: center;
-        padding: 12px 12px 15px 32px;
+        padding-top: 24px;
+        padding-bottom: 24px;
 
         .buttons {
             display: flex;
             align-items: center;
-            gap: 15px;
+
+            .btn-play {
+                @include btn-toggle-play();
+                margin-inline-end: 32px;
+                width: 56px;
+                height: 56px;
+
+                svg {
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+
+            .btn-like {
+                margin-inline-end: 24px;
+
+                svg {
+                    width: 32px;
+                    height: 32px;
+                }
+
+                &:hover {
+                    svg {
+                        fill: $clr8;
+                    }
+                }
+            }
+
+            .btn-more-hero-footer {
+                width: 32px;
+                height: 32px;
+
+                svg {
+                    width: 24px;
+                    height: 24px;
+                    fill: $clr7;
+
+                    &:hover {
+                        fill: $clr8;
+                    }
+                }
+
+            }
         }
 
-        .button-more-hero-footer svg {
-            fill: #b3b3b3;
-        }
 
-        button {
-            @include btn-toggle-play()
-        }
     }
 
     .table-header {
+        font-family: circular-medium;
         display: grid;
         grid-template-columns: 16px 4fr 2fr minmax(120px, 1fr);
         gap: 16px;
@@ -115,10 +250,10 @@
             align-items: center;
         }
 
-        .duration-container{
-        justify-self: end;
-
+        .duration-container {
+            justify-self: end;
+            margin-inline-end: 40px;
         }
-        
+
     }
 }

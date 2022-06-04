@@ -11,11 +11,16 @@
     color: $clr7;
     position: relative;
 
+    &.playing {
+        .song-number, .title-container .title {
+            color:$clr4
+        }
+    }
+
     .play-song-container {
 
         .inner-container {
             color: #b3b3b3;
-            display: inline-block;
             height: 16px;
             min-height: 16px;
             min-width: 16px;
@@ -23,6 +28,7 @@
             width: 16px;
             display: flex;
             justify-content: center;
+            align-items: center;
 
             .song-number {
                 font-size: 16px;
@@ -30,11 +36,11 @@
                 position: absolute;
                 margin-block: 0px;
                 font-weight: 400;
-                color: inherit;
             }
 
         }
     }
+
 
     .btn-play {
         background-color: transparent;
@@ -60,17 +66,23 @@
     }
 
     &:hover {
+        
         .btn-play {
             opacity: 1;
-        }
-
-        .song-number {
-            opacity: 0;
         }
 
         .btn-more-options {
             opacity: 1;
         }
+
+        .song-playing-img{
+            opacity: 0;
+        }
+        
+        .song-number {
+            opacity: 0;
+        }
+
 
         background-color: rgba(255, 255, 255, .1);
     }
@@ -105,11 +117,12 @@
             color: rgba(255, 255, 255, .7);
             display: flex;
             padding: 0;
+            margin-inline-end: 16px;
 
-            &.liked svg {
-                fill: $clr4;
-            }
+        }
 
+        .duration {
+            width: 5ch;
         }
 
         .btn-more-options {

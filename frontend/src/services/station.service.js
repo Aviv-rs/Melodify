@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { socketService, SOCKET_EMIT_UPDATE_STATION } from './socket.service'
+import { userService } from './user.service'
 
 export const stationService = {
     query,
@@ -7,6 +8,7 @@ export const stationService = {
     remove,
     save,
     getEmptyStation,
+    getStationDuration
 }
 const BASE_URL =
     process.env.NODE_ENV == 'production'
@@ -37,6 +39,9 @@ async function save(station) {
         console.log('updated station', data)
         return data
     } else {
+        const loggedinUser = userService.getLoggedinUser()
+        if (loggedinUser) station.createdBy = loggedinUser
+
         const { data } = await axios.post(BASE_URL, station)
         console.log('added station', data);
         return data
@@ -61,4 +66,33 @@ function getEmptyStation() {
         currSongIdx: 0,
         songs: []
     }
+}
+
+function getStationDuration(stationSongs) {
+    if (!stationSongs || !stationSongs.length) return
+
+    const totalDuration = stationSongs.reduce((totalDuration, song) => {
+        if (!song.duration) return
+        const timeUnits = song.duration.split(':')
+        if (timeUnits.length >= 3) {
+            totalDuration.hr += +timeUnits[0]
+            totalDuration.min += +timeUnits[1]
+        } else totalDuration.min += +timeUnits[0]
+        totalDuration.sec += +timeUnits.at(-1)
+        return totalDuration
+    }, { hr: 0, min: 0, sec: 0 })
+
+    if (!totalDuration) return
+    
+
+    const { min, sec } = totalDuration
+    if (sec > 60) {
+        totalDuration.min += sec / 60 | 0
+        totalDuration.sec %= 60
+    }
+    if (min > 60) {
+        totalDuration.hr += min / 60 | 0
+        totalDuration.min %= 60
+    }
+    return totalDuration
 }

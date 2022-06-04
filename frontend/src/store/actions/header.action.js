@@ -25,3 +25,12 @@ export function setIsPlayPauseBtn(isPlayPauseBtn) {
         }
     }
 }
+export function setCurrPageStation(currPageStation) {
+    return async (dispatch) => {
+        try {
+            dispatch({ type: 'SET_HEADER_CURRENT_PAGE_STATION', currPageStation })
+        } catch (err) {
+            console.log('err:', err)
+        }
+    }
+}

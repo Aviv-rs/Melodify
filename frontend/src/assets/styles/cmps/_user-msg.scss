@@ -1,0 +1,49 @@
+.user-msg-container {
+    bottom: 108px;
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    .user-msg {
+        color: $clr8;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px 4px rgb(0 0 0 / 50%);
+        display: inline-block;
+        font-size: 16px;
+        line-height: 20px;
+        max-width: 450px;
+        padding: 12px 36px;
+        text-align: center;
+        animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+
+
+        &.danger {
+            background-color: lightcoral;
+        }
+
+        &.success {
+            background-color: #2e77d0;
+        }
+    }
+
+    .fade-in {
+        animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+    .fade-out {
+        animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000)  reverse both;
+    }
+
+}
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+  

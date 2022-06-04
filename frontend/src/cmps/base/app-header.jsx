@@ -10,6 +10,8 @@ import { Search } from '../search/search'
 import { setHeaderSongResults } from '../../store/actions/header.action'
 import { PlayIcon, PauseIcon } from '../../services/img.import.service'
 import { setIsPlayPauseBtn } from '../../store/actions/header.action'
+import { getActionSetStation } from '../../store/actions/station.action'
+import { setCurrSong } from '../../store/actions/current-song.action'
 
 
 
@@ -21,12 +23,12 @@ export const AppHeader = () => {
     const dispatch = useDispatch()
     const params = useParams()
 
-    const { color } = useSelector(storeState => storeState.headerModule)
-    const { isPlayPauseBtn } = useSelector(storeState => storeState.headerModule)
+    // const { color } = useSelector(storeState => storeState.headerModule)
+    const { isPlayPauseBtn, currPageStation, color } = useSelector(storeState => storeState.headerModule)
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const { isPlaying, currSong} = useSelector(storeState => storeState.currSongModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
-    const [isPlayShow, setIsPlayShow] = useState(false)
+    const [isPlayShow, setIsPlayShow] = useState(true)
     const [colorToShow, setColorToShow] = useState('')
     const matchStation = useMatch('music/station/:stationId')
     const matchNewStation = useMatch('music/station')
@@ -48,17 +50,20 @@ export const AppHeader = () => {
 
 
     useEffect(() => {
-        if (stationModule?.station?._id === matchStation?.params?.stationId) setIsPlayShow(isPlaying)
-    }, [isPlaying])
+        if (stationModule?.station?._id === matchStation?.params?.stationId){
+            setIsPlayShow(isPlaying)
+        } 
+        else setIsPlayShow(false)
+    }, [isPlaying, currPageStation])
 
 
 
     const onTogglePlayer = () => {
         if (!currSong) {
-            return
-            // onPlayStation()
+            onPlayStation()
+            setIsPlayShow(isPlaying)
         }
-        else if (stationModule.station._id !== matchStation?.params?.stationId) return
+        else if (stationModule.station._id !== currPageStation?._id) onPlayStation()
         else if (isPlaying) {
             player.pauseVideo()
         }
@@ -67,11 +72,11 @@ export const AppHeader = () => {
         }
     }
 
-    //TODO: 
-    // const onPlayStation = () => {
-    //     dispatch(getActionSetStation(station))
-    //     dispatch(setCurrSong(station.songs[station.currSongIdx]))
-    // }
+    
+    const onPlayStation = () => {
+        dispatch(getActionSetStation(currPageStation))
+        dispatch(setCurrSong(currPageStation.songs[currPageStation.currSongIdx]))
+    }
 
 
     const onNavigate = (route) => {
@@ -113,7 +118,7 @@ export const AppHeader = () => {
         {user ? <>
             <button onClick={
                 toggleMenuOpen}
-                onBlur={toggleMenuOpen}
+                onBlur={()=>setIsMenuOpen(false)}
                 className={`btn-user-menu ${isMenuOpen ? 'open' : ''}`}>
                 {user.avatar ?
                     <div className="avatar-container">

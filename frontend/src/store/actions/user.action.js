@@ -64,6 +64,7 @@ export function onLogout() {
 }
 
 export function setUserMsg(msg) {
+    
     return dispatch => {
         dispatch({
             type: 'SET_MSG',
