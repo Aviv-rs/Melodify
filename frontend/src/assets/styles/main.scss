@@ -22,6 +22,9 @@
 @import './cmps/genre-list';
 @import './cmps/genre-preview';
 @import './cmps/user-msg';
+@import './cmps/liked-songs-list';
+@import './cmps/liked-song-preview';
+@import './cmps/liked-songs-hero';
 
 
 /* pages */
@@ -31,3 +34,4 @@
 @import './pages/home';
 @import './pages/welcome-page';
 @import './pages/user-login';
+@import './pages/liked-songs-details';

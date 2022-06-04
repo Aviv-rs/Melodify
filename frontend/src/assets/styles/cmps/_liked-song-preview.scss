@@ -1,0 +1,4 @@
+.liked-song-preview{
+    display: grid;
+    grid-template-columns: 16px 4fr 2fr minmax(120px, 1fr);
+}

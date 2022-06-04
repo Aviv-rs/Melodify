@@ -87,12 +87,11 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
             let newUser = { ...loggedInUser }
             if(isUserLikedSongBefore){
                 newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
-                console.log("🚀 ~ file: song-preview.jsx ~ line 90 ~ onTogggleLikeSong ~ newUser", newUser)
                 setIsLikeByLoggedUser(false)
                 dispatch(setUserMsg({ type: 'success', txt: 'Removed to your liked songs' }))
             }else{
                 newUser.likedSongs.push(song)
-                dispatch(setUserMsg({ type: 'success', txt: 'Added from your liked songs' }))
+                dispatch(setUserMsg({ type: 'success', txt: 'Added to your liked songs' }))
                 setIsLikeByLoggedUser(true)
             }
             userService.update(newUser)

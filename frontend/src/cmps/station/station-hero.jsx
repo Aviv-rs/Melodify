@@ -129,7 +129,6 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
 
     const stationLikesTxt = station.likedByUsers.length > 1 ?  station.likedByUsers.length + ' likes' : station.likedByUsers.length + ' like'
     const stationSongsTxt = station.songs.length > 1 ?  station.songs.length + ' songs, ' : station.songs.length + ' song, '
-    const isStationEmpty = station.songs.length > 0
 
     return (
         <article className="hero-container">

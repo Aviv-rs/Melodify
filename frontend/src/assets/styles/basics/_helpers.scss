@@ -3,6 +3,10 @@
   display: flex;
 }
 
+.flex.column {
+  flex-direction: column;
+}
+
 .flex-end {
   justify-content: flex-end;
 }

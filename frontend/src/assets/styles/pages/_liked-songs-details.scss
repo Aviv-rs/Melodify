@@ -1,0 +1,38 @@
+.liked-songs-details {
+    min-height: 100vh;
+
+    .background-fade {
+        background-color: rgb(80, 56, 160);
+        background-image: linear-gradient(rgba(0,0,0,.6) 0,#121212 100%);
+        height: 232px;
+        position: absolute;
+        width: 100%;
+    }
+
+    .hero-footer {
+        height: 104px;
+        background: rgba(40, 39, 39, 0.181);
+        display: flex;
+        align-items: center;
+        padding-top: 24px;
+        padding-bottom: 24px;
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            .btn-play {
+                @include btn-toggle-play();
+                margin-inline-end: 32px;
+                width: 56px;
+                height: 56px;
+
+                svg {
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+        }
+    }
+}

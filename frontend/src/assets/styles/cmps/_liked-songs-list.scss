@@ -1,0 +1,32 @@
+.liked-song-list{
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: 0;
+    width: 100%;
+
+    .table-header {
+        font-family: circular-medium;
+        display: grid;
+        grid-template-columns: 16px 4fr 2fr minmax(120px, 1fr);
+        gap: 16px;
+        padding: 0 16px;
+        cursor: default;
+        height: 56px;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, .1);
+        color: $clr7;
+        position: relative;
+
+        .hashtag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .duration-container {
+            justify-self: end;
+            margin-inline-end: 40px;
+        }
+
+    }
+}
