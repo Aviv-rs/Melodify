@@ -21,6 +21,10 @@
         margin: 13px;
         margin-left: 0px;
         font-size: 0.875rem;
+
+        @media (max-width: $break-sm) {
+            font-size: 9px;
+        }
     }
 
     button {
@@ -30,17 +34,18 @@
 
 }
 
-.search-station-details{
-    input{
-        background-color: rgba(255,255,255,.1);
+.search-station-details {
+    input {
+        background-color: rgba(255, 255, 255, .1);
         border: 0;
-        color: rgba(255,255,255,.7);
+        color: rgba(255, 255, 255, .7);
         height: 40px;
         opacity: 1;
         text-overflow: ellipsis;
         width: 100%;
-        
+
     }
+
     input:focus-visible {
         border-radius: 0px;
         outline: none;
@@ -59,6 +64,10 @@
         display: flex;
         width: 368px;
         border-radius: 4px;
-        background-color: rgba(255,255,255,.1);
+        background-color: rgba(255, 255, 255, .1);
+
+        @media (max-width: $break-sm) {
+            width: 200px;
+        }
     }
 }
