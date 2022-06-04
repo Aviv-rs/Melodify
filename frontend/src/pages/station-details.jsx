@@ -51,10 +51,10 @@ export const StationDetails = () => {
         window.location.reload()
     }, [stationId])
 
-    useEffect(()=>{
-        if (isSearchOpen && searchContainerRef.current) 
-        searchContainerRef.current.scrollIntoView(true, {behavior: 'smooth'})
-    },[isSearchOpen])
+    useEffect(() => {
+        if (isSearchOpen && searchContainerRef.current)
+            searchContainerRef.current.scrollIntoView(true, { behavior: 'smooth' })
+    }, [isSearchOpen])
 
     useEffect(() => {
         station?.coverUrl && getAvgColor(station?.coverUrl)
@@ -173,6 +173,7 @@ export const StationDetails = () => {
         <StationHero
             onSaveDetails={onSaveDetails}
             station={station}
+            setStation={setStation}
             handleImgUpload={handleImgUpload}
         />
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
@@ -181,7 +182,7 @@ export const StationDetails = () => {
 
         <div className="content-spacing">
             {isSearchOpen ?
-                <div  className="search-songs" >
+                <div className="search-songs" >
                     <div className="flex space-between ">
                         <div ref={searchContainerRef} className="search-container">
                             <h1>Let's find something for your playlist</h1>
