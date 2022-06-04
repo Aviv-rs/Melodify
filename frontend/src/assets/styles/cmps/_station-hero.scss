@@ -184,6 +184,7 @@
         .buttons {
             display: flex;
             align-items: center;
+            position: relative;
 
             .btn-play {
                 @include btn-toggle-play();
@@ -226,6 +227,54 @@
                     }
                 }
 
+            }
+
+            .station-options-menu {
+                    z-index: 100;
+                    position: absolute;
+                    margin: 0px;
+                    top: 40px;
+                    left: 150px;
+                    min-width: 196px;
+                
+                    .option-list {
+                      background-color: #282828;
+                      border-radius: 4px;
+                      box-shadow: 0 16px 24px rgb(0 0 0 / 30%), 0 6px 8px rgb(0 0 0 / 20%);
+                      max-height: calc(100vh - 24px);
+                      max-width: 350px;
+                      min-width: 160px;
+                      overflow-y: auto;
+                      padding: 4px;
+                
+                      .option {
+                
+                        background: transparent;
+                        border: 0;
+                        border-radius: 2px;
+                        color: rgba(255, 255, 255, .9);
+                        text-decoration: none;
+                        align-items: center;
+                        display: flex;
+                        gap: 8px;
+                        height: 40px;
+                        justify-content: space-between;
+                        padding: 12px;
+                        padding-inline-end: 8px;
+                        position: relative;
+                        text-align: start;
+                        user-select: none;
+                        width: 100%;
+                
+                        &:hover {
+                          background-color: lighten($clr11, 12%);
+                
+                        }
+                      }
+                
+                    }
+                
+                  
             }
         }
 
