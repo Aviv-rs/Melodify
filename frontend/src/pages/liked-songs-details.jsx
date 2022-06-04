@@ -13,6 +13,8 @@ export const LikedSongsDetails = () => {
     const [loggedUser, setLoggedUser] = useState({})
     const [songs, setSongs] = useState([])
     let userStation = stationService.getEmptyStation()
+    userStation.songs = { ...loggedUser.likedSongs }
+    userStation._id = 'liked'
     
     useEffect(()=>{
         const loggedInUser = userService.getLoggedinUser()
@@ -25,7 +27,6 @@ export const LikedSongsDetails = () => {
         
     },[loggedUser, songs])
 
-    userStation.songs = { ...loggedUser.likedSongs }
 
     const dispatch = useDispatch()
     const btnPlayRef = useRef()
