@@ -10,6 +10,7 @@ export const LikedSongsDetails = () => {
         <div className='liked-songs-details'>
            {/* <LikedSongList songs={loggedUser.likedSongs}/> */}
            <LikedSongsHero/>
+            
 
         </div>
     )
