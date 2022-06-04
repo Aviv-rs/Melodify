@@ -46,6 +46,8 @@ export const StationPreview = ({ station }) => {
         dispatch(setCurrSong(station.songs[0]))
     }
 
+    const stationSongsTxt = station.songs.length > 1 ? station.songs.length + ' Songs' : station.songs.length + ' Song'
+    const isStationEmpty = station.songs.length <= 0 
     // TODO: rename class names
     return <div className="station-preview" onClick={onGoToStation}>
         <div className="inner-container">
@@ -65,7 +67,10 @@ export const StationPreview = ({ station }) => {
             </div>
             <div className="station-details">
                 <div className="station-name"> {station.name} </div>
-                <div className="station-creator">  {station.createdBy.fullname && 'By ' + station.createdBy.fullname}</div>
+                <div className="station-preview-info"> 
+                 {/* {'By ' + station.createdBy.fullname || 'Guest'}   */}
+                {!isStationEmpty && stationSongsTxt} 
+                </div>
             </div>
         </div>
     </div>
