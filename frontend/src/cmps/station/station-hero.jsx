@@ -11,16 +11,13 @@ import { setIsPlayPauseBtn } from '../../store/actions/header.action'
 import { userService } from '../../services/user.service'
 import { setUserMsg } from '../../store/actions/user.action'
 
-
-
-
 export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStation }) => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
-    const [isOpenMenu, setIsOpenMenue] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     
 
     const btnRef = useRef()
@@ -33,6 +30,8 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
     const stationDuration = stationService.getStationDuration(station.songs)
     const [isLikeByLoggedUser, setIsLikeByLoggedUser] = useState(false)
     const loggedInUser = userService.getLoggedinUser()
+
+    const stationMenuRef = useRef()
 
     useEffect(() => {
         if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
@@ -57,6 +56,19 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
         const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
         if(isUserLikedStationBefore) setIsLikeByLoggedUser(true)
     }, [])
+
+    useEffect(() => {
+        const handleClickOutsideMenu = (ev) => {
+            if (stationMenuRef.current && !stationMenuRef.current.contains(ev.target)) {
+                setIsMenuOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutsideMenu)
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideMenu)
+        }
+    }, [stationMenuRef])
 
 
 
@@ -102,20 +114,19 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
             const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
             let newStation = { ...station }
             if (isUserLikedStationBefore) {
-                console.log('unlike!!')
                 newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser?._id)
                 setIsLikeByLoggedUser(false)
             } else {
-                console.log('like!!')
                 newStation.likedByUsers.push(loggedInUser)
                 setIsLikeByLoggedUser(true)
             }
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
         } catch (error) {
-            console.log('can not save a like')
+            dispatch(setUserMsg({ type: 'danger', txt: 'Something went wrong, please try again later' }))
         }
     }
+    
 
     return (
         <article className="hero-container">
@@ -171,19 +182,27 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
 
                         </button>
                         {!station.createdBy?.isAdmin &&
-                            <button className='btn-more-hero-footer clean-btn' onClick={() => setIsOpenMenue(!isOpenMenu)}>
+                            <button className='btn-more-hero-footer clean-btn' onClick={() => setIsMenuOpen(!isMenuOpen)}>
                                 <BtnMoreIcon />
                             </button>
                         }
 
+                        <div className="station-menu-container" ref={stationMenuRef}>
+
                         <OptionsMenu
                             options={[
-                                { name: 'Delete', action: onRemoveStation },
-                                { name: 'Edit', action: () => setIsModalOpen(true) },
+                                { name: 'Delete playlist', action: onRemoveStation },
+                                { name: 'Edit details', action: (ev) => {
+                                    ev.stopPropagation()
+                                    setIsModalOpen(true)
+                                    setIsMenuOpen(false)
+                                } 
+                                },
                             ]}
-                            isOpen={isOpenMenu && !station.createdBy?.isAdmin}
-                            className={'station-menu'}
-                        />
+                            isOpen={isMenuOpen && !station.createdBy?.isAdmin}
+                            className={'station-options-menu'}
+                            />
+                            </div>
 
                     </div>
                     :
