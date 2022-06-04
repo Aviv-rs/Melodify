@@ -6,10 +6,10 @@ export const LikedSongsDetails = () => {
     const loggedUser = userService.getLoggedinUser()
     console.log("🚀 ~ file: liked-songs.jsx ~ line 7 ~ LikedSongsDetails ~ loggedUser", loggedUser)
 
-    if(loggedUser?.likedSongs)return (
-        <div>
+    if(loggedUser?.likedSongs) return (
+        <div className='liked-songs-details'>
            <LikedSongList songs={loggedUser.likedSongs}/>
-            liked songs 
+            
 
         </div>
     )
