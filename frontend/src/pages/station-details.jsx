@@ -15,6 +15,7 @@ import { DragDropContext } from 'react-beautiful-dnd'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { SearchResultList } from '../cmps/search/search-result-list'
 import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED } from '../services/socket.service'
+import { setUserMsg } from '../store/actions/user.action'
 
 
 export const StationDetails = () => {
@@ -51,10 +52,10 @@ export const StationDetails = () => {
         window.location.reload()
     }, [stationId])
 
-    useEffect(()=>{
-        if (isSearchOpen && searchContainerRef.current) 
-        searchContainerRef.current.scrollIntoView(true, {behavior: 'smooth'})
-    },[isSearchOpen])
+    useEffect(() => {
+        if (isSearchOpen && searchContainerRef.current)
+            searchContainerRef.current.scrollIntoView(true, { behavior: 'smooth' })
+    }, [isSearchOpen])
 
     useEffect(() => {
         station?.coverUrl && getAvgColor(station?.coverUrl)
@@ -83,9 +84,13 @@ export const StationDetails = () => {
 
     const onAddSong = async (song) => {
         if (!isStationEmpty) {
-            const isSongInStation = station.songs.some(currSong => currSong.id === song.id)
-            console.log('Song is already in playlist, TODO: render a user message for that')
-            if (isSongInStation) return
+            const isSongInStation = station.songs.some(currSong =>
+                currSong.id === song.id
+            )
+            if (isSongInStation) {
+                dispatch(setUserMsg({ type: 'danger', txt: 'Oops, Song is already in playlist' }))
+                return
+            }
         }
         song.duration = await youtubeService.getSongDuration(song.id)
         song.createdAt = Date.now()
@@ -102,6 +107,8 @@ export const StationDetails = () => {
             setStation(savedStation)
             navigate(`/music/station/${savedStation._id}`)
         }
+        dispatch(setUserMsg({ type: 'success', txt: 'Added song to playlist' }))
+
     }
 
     const onRemoveSong = async (songId) => {
@@ -111,6 +118,7 @@ export const StationDetails = () => {
         if (station?._id === stationModule?.station?._id) {
             dispatch(getActionSetStation(newStation))
         }
+        dispatch(setUserMsg({ type: 'success', txt: 'Removed song from playlist' }))
     }
 
     const onOpenSearch = () => {
@@ -181,7 +189,7 @@ export const StationDetails = () => {
 
         <div className="content-spacing">
             {isSearchOpen ?
-                <div  className="search-songs" >
+                <div className="search-songs" >
                     <div className="flex space-between ">
                         <div ref={searchContainerRef} className="search-container">
                             <h1>Let's find something for your playlist</h1>

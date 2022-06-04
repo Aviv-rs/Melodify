@@ -9,6 +9,6 @@ export const useEffectUpdate = (cb, dependencies) => {
             isMounted.current = true;
             return
         }
-        cb()
+       return cb()
     }, dependencies)
 }

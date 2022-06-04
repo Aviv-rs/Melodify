@@ -3,6 +3,7 @@ import { AppHeader } from '../cmps/base/app-header'
 import { Navbar } from '../cmps/base/navbar'
 import { MusicPlayer } from '../cmps/base/music-player'
 import { routes } from "../routes";
+import { UserMsg } from "../cmps/util/user-msg";
 
 
 export function MusicApp() {
@@ -13,6 +14,7 @@ export function MusicApp() {
                 {routes.map(route => <Route key={route.path} element={route.element} path={route.path} />)}
             </Routes>
         </div>
+        <UserMsg/>
         <Navbar />  
         <MusicPlayer />
     </div>

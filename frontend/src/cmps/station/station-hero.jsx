@@ -11,8 +11,6 @@ import { setIsPlayPauseBtn } from '../../store/actions/header.action'
 import { userService } from '../../services/user.service'
 
 
-
-
 export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
 
     const navigate = useNavigate()
@@ -111,7 +109,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
         <article className="hero-container">
             <div className="hero-content" >
 
-                <div className="hero-img hero-img-main" onClick={() => setIsModalOpen(true)}>
+                <div className="hero-img" onClick={() => setIsModalOpen(true)}>
                     <StationDetailsPencil className="pencil" />
                     {(station.coverUrl) ?
                         <img src={station.coverUrl} alt="Station's cover image" />
@@ -123,7 +121,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
 
                         <h1 className="station-name" onClick={() => setIsModalOpen(true)}>{station.name}</h1>
                     </span>
-                    {station.description && <h2>{station.description}</h2>}
+                    {station.description && <h2 className='station-description'>{station.description}</h2>}
                     <div className="station-info flex align-center">
                         <div className="created-by">{station.createdBy.fullname || 'Guest'} </div>
                         <span className="like-count">{station.likedByUsers.length} like </span>
@@ -178,7 +176,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                     <span></span>
                 }
             </div>
-            {station._id &&
+            {station?.songs.length ? 
                 <div className="song-table-spacing">
                     <div className='table-header'>
                         <div className="song-index-container">
@@ -195,7 +193,9 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails }) => {
                             <Clock />
                         </div>
                     </div>
-                </div>}
+                </div>
+                : <></>
+            }
         </article>
     )
 }
