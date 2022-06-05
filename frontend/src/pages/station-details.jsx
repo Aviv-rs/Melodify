@@ -18,7 +18,7 @@ import { SearchResultList } from '../cmps/search/search-result-list'
 import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED } from '../services/socket.service'
 import { setUserMsg } from '../store/actions/user.action'
 import { StationModal } from '../cmps/station/station-modal'
-import { Loader } from "../util/loader"
+import { Loader } from "../cmps/util/loader"
 
 
 export const StationDetails = () => {
