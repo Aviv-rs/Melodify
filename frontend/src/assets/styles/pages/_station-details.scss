@@ -2,7 +2,7 @@
     background-color: $clr12;
     min-height: 100vh;
     padding-bottom: 20px;
-    // @media (max-width: $break-sm) {
+    // @include for-mobile-layout {
     //     overflow-x: hidden;
     // }
 }
@@ -26,7 +26,7 @@
 
 .search-page {
     padding: 0 32px;
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         overflow-x:hidden;
     }
 }

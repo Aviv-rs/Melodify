@@ -5,7 +5,7 @@
     padding-left: 32px;
     padding-right: 32px;
 
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         padding-right: 0px;
         padding-left: 15px;
         grid-gap: 0px;
@@ -19,7 +19,7 @@
         min-width: 100%;
         position: relative;
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             margin-bottom: 0px;
           }
     }

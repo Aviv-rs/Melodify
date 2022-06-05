@@ -12,7 +12,7 @@
 
     .library-list {
         .station-list {
-            @media (max-width: $break-sm) {
+            @include for-mobile-layout {
                 grid-auto-flow: unset;
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
                 overflow-x: unset;

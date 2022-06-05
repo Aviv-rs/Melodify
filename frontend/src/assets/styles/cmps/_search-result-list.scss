@@ -28,7 +28,7 @@
 
         .play-song-and-title-container {
 
-            @media (max-width: $break-sm) {
+            @include for-mobile-layout {
                 .title {
                     white-space: nowrap;
                     font-size: 10px;

@@ -2,7 +2,7 @@
 
   display: grid;
 
-  @media (max-width: $break-sm) {
+  @include for-mobile-layout {
     height: 260px;
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fill, minmax(135px, 145px));
@@ -63,7 +63,7 @@
     transition: background-color .3s ease;
     width: 100%;
 
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
       background-color: inherit;
       padding: 0px;
     }

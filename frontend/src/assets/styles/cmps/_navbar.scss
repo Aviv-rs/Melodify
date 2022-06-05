@@ -6,7 +6,7 @@
     padding-top: 24px;
     grid-area: nav-container;
 
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         width: 100%;
         padding-top: 0px;
         margin: 0px;
@@ -33,7 +33,7 @@
         font-size: 1.4rem;
     }
 
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         display: none;
 
     }
@@ -54,7 +54,7 @@
     padding: 5px 30px 5px 30px;
 
 
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
@@ -68,7 +68,7 @@
         gap: 16px;
         align-items: center;
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             align-items: center;
             flex-direction: column;
             gap: 3px;
@@ -104,7 +104,7 @@
     span {
         color: $clr7;
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             margin-top: 5px;
             text-align: center;
             font-size: 11px;
@@ -116,7 +116,7 @@
     .create-playlist-nav {
         margin-top: 24px;
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             margin: 0;
         }
     }

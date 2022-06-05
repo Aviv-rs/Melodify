@@ -57,7 +57,7 @@ p {
   width: -8px;
   // display: none;
 }
-@media (max-width: $break-sm) {
+@include for-mobile-layout {
   ::-webkit-scrollbar {
     width: -8px;
     display: none;
