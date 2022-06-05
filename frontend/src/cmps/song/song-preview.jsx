@@ -9,6 +9,9 @@ import { OptionsMenu } from '../util/options-menu'
 import songPlayingAnimation from '../../assets/imgs/song-playing-animation.gif'
 import { userService } from '../../services/user.service'
 import { setUserMsg } from '../../store/actions/user.action'
+import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
+
+
 
 
 export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
@@ -79,6 +82,11 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
 
     const onTogggleLikeSong = async () => {
         try {
+            const activity = {
+                entity: song,
+                user: userService.getLoggedinUser() || 'Guest',
+                type: ''
+            }
             if (!loggedInUser) {
                 dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like song' }))
                 return
@@ -89,12 +97,15 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
                 setIsLikeByLoggedUser(false)
                 dispatch(setUserMsg({ type: 'success', txt: 'Removed to your liked songs' }))
+                activity.type = 'unlike'
             }else{
                 newUser.likedSongs.push(song)
                 dispatch(setUserMsg({ type: 'success', txt: 'Added to your liked songs' }))
                 setIsLikeByLoggedUser(true)
+                activity.type = 'like'
             }
             userService.update(newUser)
+            socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
 
         } catch (error) {
             console.log('can not like song', error);

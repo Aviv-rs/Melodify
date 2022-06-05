@@ -10,6 +10,8 @@ import { OptionsMenu } from '../util/options-menu'
 import { setIsPlayPauseBtn } from '../../store/actions/header.action'
 import { userService } from '../../services/user.service'
 import { setUserMsg } from '../../store/actions/user.action'
+import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
+
 
 export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStation }) => {
 
@@ -18,7 +20,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isPlayShow, setIsPlayShow] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    
+
 
     const btnRef = useRef()
     const isMatchStation = useMatch('music/station/:stationId')
@@ -54,7 +56,7 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
 
     useEffect(() => {
         const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
-        if(isUserLikedStationBefore) setIsLikeByLoggedUser(true)
+        if (isUserLikedStationBefore) setIsLikeByLoggedUser(true)
     }, [])
 
     useEffect(() => {
@@ -98,7 +100,12 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
         try {
             await stationService.remove(station._id)
             navigate('/music/library')
-
+            const activity = {
+                entity: station,
+                user: userService.getLoggedinUser() || 'Guest',
+                type: 'Remove'
+            }
+            socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
         } catch (error) {
             console.log('Can not delete', error)
         }
@@ -107,6 +114,12 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
 
     const onToggleLikeStation = async () => {
         try {
+            const activity = {
+                entity: station,
+                user: userService.getLoggedinUser() || 'Guest',
+                type: ''
+            }
+
             if (!loggedInUser) {
                 dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like playlist' }))
                 return
@@ -116,19 +129,22 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
             if (isUserLikedStationBefore) {
                 newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser?._id)
                 setIsLikeByLoggedUser(false)
+                activity.type = 'unlike'
             } else {
                 newStation.likedByUsers.push(loggedInUser)
                 setIsLikeByLoggedUser(true)
+                activity.type = 'like'
             }
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
+            socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
         } catch (error) {
             dispatch(setUserMsg({ type: 'danger', txt: 'Something went wrong, please try again later' }))
         }
     }
 
-    const stationLikesTxt = station.likedByUsers.length > 1 ?  station.likedByUsers.length + ' likes' : station.likedByUsers.length + ' like'
-    const stationSongsTxt = station.songs.length > 1 ?  station.songs.length + ' songs, ' : station.songs.length + ' song, '
+    const stationLikesTxt = station.likedByUsers.length > 1 ? station.likedByUsers.length + ' likes' : station.likedByUsers.length + ' like'
+    const stationSongsTxt = station.songs.length > 1 ? station.songs.length + ' songs, ' : station.songs.length + ' song, '
 
     return (
         <article className="hero-container">
@@ -191,27 +207,28 @@ export const StationHero = ({ station, handleImgUpload, onSaveDetails, setStatio
 
                         <div className="station-menu-container" ref={stationMenuRef}>
 
-                        <OptionsMenu
-                            options={[
-                                { name: 'Delete playlist', action: onRemoveStation },
-                                { name: 'Edit details', action: (ev) => {
-                                    ev.stopPropagation()
-                                    setIsModalOpen(true)
-                                    setIsMenuOpen(false)
-                                } 
-                                },
-                            ]}
-                            isOpen={isMenuOpen && !station.createdBy?.isAdmin}
-                            className={'station-options-menu'}
+                            <OptionsMenu
+                                options={[
+                                    { name: 'Delete playlist', action: onRemoveStation },
+                                    {
+                                        name: 'Edit details', action: (ev) => {
+                                            ev.stopPropagation()
+                                            setIsModalOpen(true)
+                                            setIsMenuOpen(false)
+                                        }
+                                    },
+                                ]}
+                                isOpen={isMenuOpen && !station.createdBy?.isAdmin}
+                                className={'station-options-menu'}
                             />
-                            </div>
+                        </div>
 
                     </div>
                     :
                     <span></span>
                 }
             </div>
-            {station?.songs.length ? 
+            {station?.songs.length ?
                 <div className="song-table-spacing">
                     <div className='table-header'>
                         <div className="song-index-container">

@@ -4,6 +4,7 @@ import { userService } from './user.service'
 export const SOCKET_EMIT_ENTERED_STATION = 'enter-station'
 export const SOCKET_EMIT_UPDATE_STATION = 'update-station'
 export const SOCKET_EMIT_STATION_UPDATED = 'station-updated'
+export const SOCKET_EMIT_ACTIVITY_LOG = 'activity-log-made'
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 

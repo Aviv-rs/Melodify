@@ -1,4 +1,5 @@
 import { NavLink, useMatch } from 'react-router-dom'
+import { ActivityLog } from './activity-log'
 
 // nav links svg icons
 import {
@@ -77,6 +78,8 @@ export const Navbar = () => {
                 </li>
             </ul>
             <br className="separation-line"></br>
+            <ActivityLog/>
+
         </nav>
 
     )
