@@ -19,14 +19,12 @@
         height: calc(100vh - 495px);
         overflow: auto;
         padding: 5px 30px 5px 30px;
+        display: flex;
+        flex-direction: column-reverse;
 
         @include for-mobile-layout {
             display: none;
         }
-
-        .message-preview{
-        display: flex;
-        flex-direction: column-reverse;
 
         .activity-preview {
             display: flex;
