@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { socketService, SOCKET_EMIT_UPDATE_STATION } from './socket.service'
+import { socketService, SOCKET_EMIT_UPDATE_STATION, SOCKET_EMIT_ACTIVITY_LOG } from './socket.service'
 import { userService } from './user.service'
 
 export const stationService = {
@@ -36,6 +36,12 @@ async function save(station) {
     if (station._id) {
         const { data } = await axios.put(BASE_URL + station._id, station)
         socketService.emit(SOCKET_EMIT_UPDATE_STATION, station)
+        const activity = {
+            entity: station,
+            user: userService.getLoggedinUser() || 'Guest',
+            type: 'update'
+        }
+        // socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
         console.log('updated station', data)
         return data
     } else {
@@ -83,7 +89,7 @@ function getStationDuration(stationSongs) {
     }, { hr: 0, min: 0, sec: 0 })
 
     if (!totalDuration) return
-    
+
 
     const { min, sec } = totalDuration
     if (sec > 60) {
