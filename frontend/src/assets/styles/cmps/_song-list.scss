@@ -1,10 +1,13 @@
 .song-table-spacing {
     padding: 0 16px;
+    position: relative;
+    z-index: 0;
     @include for-large-layout {
         padding: 0 32px;
     }
-
+    
     .song-list {
+        z-index: 0;
         padding-top: 25px;
         padding-bottom: 20px;
     }

@@ -2,9 +2,13 @@
     background-color: $clr12;
     min-height: 100vh;
     padding-bottom: 20px;
-    // @media (max-width: $break-sm) {
-    //     overflow-x: hidden;
-    // }
+}
+
+.background-fade {
+    background-image: linear-gradient(rgba(0,0,0,.6) 0,#121212 100%);
+    height: 232px;
+    position: absolute;
+    width: 100%;
 }
 
 .search-songs {

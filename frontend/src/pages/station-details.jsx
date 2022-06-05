@@ -1,3 +1,4 @@
+import { StationActions } from '../cmps/station/station-actions'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -16,21 +17,25 @@ import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { SearchResultList } from '../cmps/search/search-result-list'
 import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED } from '../services/socket.service'
 import { setUserMsg } from '../store/actions/user.action'
-
+import { StationModal } from '../cmps/station/station-modal'
 
 export const StationDetails = () => {
+
     const dispatch = useDispatch()
-    const { stationId } = useParams()
-    const [colorAvg, setColorAvg] = useState('rgb(83,83,83)')
     const navigate = useNavigate()
-    const stationModule = useSelector(storeState => storeState.stationModule)
 
+    const [colorAvg, setColorAvg] = useState('rgb(83,83,83)')
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [isSearchOpen, setIsSearchOpen] = useState(true)
-
     const [songResults, setSongResults] = useState(null)
     const [station, setStation] = useState(null)
 
+    const stationModule = useSelector(storeState => storeState.stationModule)
+
     const searchContainerRef = useRef()
+    const { stationId } = useParams()
+
     const isStationEmpty = !station?.songs.length
 
     useEffect(() => {
@@ -128,7 +133,7 @@ export const StationDetails = () => {
         setSongResults(songs)
     }
 
-    //TODO: addd img first to local state and then when save button clicked save it to data base!!!
+    //TODO: add img first to local state and then when save button clicked save it to data base!!!
     const handleImgUpload = async (ev) => {
         try {
             const src = await cloudinaryService.uploadImg(ev)
@@ -148,7 +153,6 @@ export const StationDetails = () => {
     }
 
     const onSaveDetails = async (details) => {
-
         try {
             const newStation = { ...station, ...details }
             const savedStation = await stationService.save(newStation)
@@ -175,14 +179,23 @@ export const StationDetails = () => {
     }
 
     if (!station) return <div>Loading...</div> //TODO: add loader
-    return <section className="station-details" style={{ background: `linear-gradient(transparent 0, rgba(0, 0, 0, .9) 70%), ${colorAvg}` }}>
+    return <section className="station-details">
 
         <StationHero
-            onSaveDetails={onSaveDetails}
+            setIsModalOpen={setIsModalOpen}
             station={station}
-            setStation={setStation}
-            handleImgUpload={handleImgUpload}
+            bgColor={colorAvg}
         />
+        {isModalOpen && <StationModal
+            onSaveDetails={onSaveDetails}
+            setIsModalOpen={setIsModalOpen}
+            handleImgUpload={handleImgUpload}
+            station={station}
+        />}
+        <div style={{ backgroundColor: colorAvg }} className="background-fade"></div>
+
+        <StationActions station={station} setStation={setStation} setIsModalOpen={setIsModalOpen} />
+
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
             <SongList onRemoveSong={onRemoveSong} songs={station.songs} station={station} />
         </DragDropContext>}

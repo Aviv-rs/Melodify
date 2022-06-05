@@ -55,8 +55,6 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
                 <input className='img-input' id='inputImg' onChange={handleImgUpload} type="file"></input>
                 <div className='bttns-input'>
 
-
-
                     <input onChange={({ target }) => setName(target.value)} value={name} className='title-input' type="text" placeholder='Add a name' />
                     <textarea onChange={({ target }) => setDescription(target.value)} value={description} className='album-image-description' placeholder='Add an optional description' name="description" id="" cols="30" rows="10"></textarea>
                     <Multiselect
@@ -64,6 +62,11 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
                         onSelect={onSelect} // Function will trigger on select event
                         selectionLimit={3}
                         displayValue="name" // Property name to display in the dropdown options
+                        style={
+                            {multiselectContainer: {
+                                width:'100%'
+                              }}
+                        }
                     />
                     <button className='save-button'>Save</button>
                 </div>
