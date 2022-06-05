@@ -8,6 +8,7 @@ import Multiselect from 'multiselect-react-dropdown'
 export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveDetails }) => {
     //TODO: add close modal option by pressing outside the modal
     const options = allTags
+    console.log(options)
     const [name, setName] = useState(station.name)
     const [description, setDescription] = useState(station.description || '')
     const [tags, setTags] = useState([])
@@ -16,7 +17,7 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
 
 
     const onSelect = (values) => {
-        setTags(values.map(value => value.name))
+        setTags(values)
     }
 
     useEffect(() => {

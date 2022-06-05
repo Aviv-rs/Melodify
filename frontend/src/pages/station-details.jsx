@@ -19,6 +19,7 @@ import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED
 import { setUserMsg } from '../store/actions/user.action'
 import { StationModal } from '../cmps/station/station-modal'
 import { Loader } from "../cmps/util/loader"
+import { userService } from '../services/user.service'
 
 
 export const StationDetails = () => {
@@ -55,7 +56,7 @@ export const StationDetails = () => {
     }, [])
 
     useEffectUpdate(() => {
-        window.location.reload()
+        loadStation()
     }, [stationId])
 
     useEffect(() => {
@@ -69,7 +70,11 @@ export const StationDetails = () => {
 
     const loadStation = async () => {
         if (!stationId) {
-            setStation(stationService.getEmptyStation())
+            const station = stationService.getEmptyStation()
+            station.createdBy = userService.getLoggedinUser() || {}
+            setStation(station)
+           
+            setColorAvg('rgb(83,83,83)')
             return
         }
 
@@ -159,6 +164,7 @@ export const StationDetails = () => {
             const newStation = { ...station, ...details }
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
+            // dispatch(setHeaderColor())
         } catch {
             console.log('could not save title and description')
         }
@@ -180,7 +186,7 @@ export const StationDetails = () => {
         if (station?._id === stationModule?.station?._id) dispatch(getActionSetStation(savedStation))
     }
 
-    if (!station) return <div className="loader-logo"><Loader /></div> 
+    if (!station) return <div className="loader-logo"><Loader /></div>
     return <section className="station-details">
 
         <StationHero
