@@ -34,6 +34,12 @@
 
   }
 
+  
+  @include for-small-layout {
+    
+    @include layoutGTC(2, 18px);
+  }
+
   @include for-medium-layout {
     @include layoutGTC(3, 18px);
 
