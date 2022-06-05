@@ -200,7 +200,7 @@ export const StationDetails = () => {
             <SongList onRemoveSong={onRemoveSong} songs={station.songs} station={station} />
         </DragDropContext>}
 
-        <div className="content-spacing">
+        <div className="content-spacing relative">
             {isSearchOpen ?
                 <div className="search-songs" >
                     <div className="flex space-between ">
