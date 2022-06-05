@@ -26,22 +26,11 @@ async function getById(activityId) {
 
 async function add(activity) {
     try {
-        // const activityToAdd = {
-        //     type: activity.type,
-        //     stationInfo: activity.stationInfo,
-        //     isRead: false,
-        //     createdBy: {
-        //         _id: activity.createdBy._id,
-        //         fullname: activity.createdBy.fullname,
-        //         imgUrl: activity.createdBy.imgUrl
-        //     },
-        //     createdAt: Date.now(),
-        //     trackName: activity.trackName
-        // }
         const activityToAdd = {
             entityName: activity.entityName,
             createdBy: activity.createdBy ,
-            type: activity.type
+            type: activity.type,
+            isStation: activity.isStation
         }
         const collection = await dbService.getCollection('activity')
         await collection.insertOne(activityToAdd)

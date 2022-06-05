@@ -36,8 +36,7 @@ async function save(activity) {
         console.log('updated activity', data)
         return data
     } else {
-        // const loggedinUser = userService.getLoggedinUser()
-        // if (loggedinUser) activity.createdBy = loggedinUser
+        activity.createdBy = userService.getLoggedinUser() || 'Guest'
         const { data } = await axios.post(BASE_URL, activity)
         console.log('added activity', data);
         return data
