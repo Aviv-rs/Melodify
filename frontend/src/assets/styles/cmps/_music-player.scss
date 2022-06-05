@@ -154,7 +154,7 @@
     align-items: center;
 
     @include for-mobile-layout {
-        width: 0%;
+        display: none;
     }
 
     .volume-controls {
@@ -224,7 +224,8 @@
     font-family: circular-light;
 
     @include for-mobile-layout {
-        width: 50%;
+        width: 65%;
+        margin-left: 3em;
     }
 
     .player-controls-buttons {
@@ -234,7 +235,7 @@
         gap: 16px;
 
         @include for-mobile-layout {
-            gap:2px;
+            gap:20px;
         }
     }
 

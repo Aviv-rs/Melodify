@@ -19,6 +19,11 @@
         min-width: 100%;
         position: relative;
 
+        .tag-title {
+          font-family: bold circular, gotham-bold, helvetica, arial, sans-serif;
+          margin: 0 0 2rem;
+        }
+
         @include for-mobile-layout {
             margin-bottom: 0px;
           }

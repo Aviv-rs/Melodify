@@ -5,21 +5,29 @@
   position: sticky;
   top: 0;
   align-items: center;
-  z-index: 10;
+  z-index: 20;
   padding: 16px 32px;
 
   @include for-mobile-layout {
-    padding-left: 0px;
+    padding: 16px 0px;
   }
 
   .btns-container {
     display: flex;
+    white-space: nowrap;
+
     .btn-login {
       border-radius: 500px;
       font-size: inherit;
       padding-block: 12px;
       padding-inline: 32px;
       border: none;
+
+      @include for-mobile-layout {
+        padding-block: 10px;
+        padding-inline: 20px;
+        margin-right: 2em;
+      }
 
       &:hover {
         cursor: pointer;
@@ -43,113 +51,113 @@
     }
   }
 
-    .header-play-pause {
-      @include btn-toggle-play()
-    }
+  .header-play-pause {
+    @include btn-toggle-play()
+  }
 
 
-    .user-menu {
-      z-index: 100;
-      position: absolute;
-      inset: 0px 0px auto auto;
-      margin: 0px;
-      transform: translate3d(-32px, 56px, 0px);
-      min-width: 196px;
+  .user-menu {
+    z-index: 100;
+    position: absolute;
+    inset: 0px 0px auto auto;
+    margin: 0px;
+    transform: translate3d(-32px, 56px, 0px);
+    min-width: 196px;
 
 
 
-      .option-list {
-        background-color: #282828;
-        border-radius: 4px;
-        box-shadow: 0 16px 24px rgb(0 0 0 / 30%), 0 6px 8px rgb(0 0 0 / 20%);
-        max-height: calc(100vh - 24px);
-        max-width: 350px;
-        min-width: 160px;
-        overflow-y: auto;
-        padding: 4px;
+    .option-list {
+      background-color: #282828;
+      border-radius: 4px;
+      box-shadow: 0 16px 24px rgb(0 0 0 / 30%), 0 6px 8px rgb(0 0 0 / 20%);
+      max-height: calc(100vh - 24px);
+      max-width: 350px;
+      min-width: 160px;
+      overflow-y: auto;
+      padding: 4px;
 
-        .option {
+      .option {
 
-          background: transparent;
-          border: 0;
-          border-radius: 2px;
-          color: rgba(255, 255, 255, .9);
-          text-decoration: none;
-          align-items: center;
-          display: flex;
-          gap: 8px;
-          height: 40px;
-          justify-content: space-between;
-          padding: 12px;
-          padding-inline-end: 8px;
-          position: relative;
-          text-align: start;
-          user-select: none;
-          width: 100%;
-
-          &:hover {
-            background-color: lighten($clr11, 12%);
-
-          }
-        }
-
-      }
-
-    }
-
-    .btn-user-menu {
-      align-items: center;
-      background-color: rgba(0, 0, 0, .7);
-      border: 0;
-      border-radius: 23px;
-      color: #fff;
-      cursor: pointer;
-      display: flex;
-      gap: 8px;
-      height: 32px;
-      justify-content: center;
-      margin-inline-start: 16px;
-      padding: 2px;
-      position: relative;
-
-      .avatar-container {
-        height: 28px;
-        width: 28px;
-
-        img {
-          border-radius: 50%;
-        }
-
-      }
-
-      .default-avatar-container {
-        height: 28px;
-        width: 28px;
-        background-color: #535353;
-        border-radius: 50%;
-        display: flex;
+        background: transparent;
+        border: 0;
+        border-radius: 2px;
+        color: rgba(255, 255, 255, .9);
+        text-decoration: none;
         align-items: center;
-        justify-content: center;
+        display: flex;
+        gap: 8px;
+        height: 40px;
+        justify-content: space-between;
+        padding: 12px;
+        padding-inline-end: 8px;
+        position: relative;
+        text-align: start;
+        user-select: none;
+        width: 100%;
 
-        svg {
-          fill: $clr8;
-          margin-inline-end: 0;
+        &:hover {
+          background-color: lighten($clr11, 12%);
+
         }
       }
 
-      &.open {
-        background-color: $clr11;
+    }
 
+  }
+
+  .btn-user-menu {
+    align-items: center;
+    background-color: rgba(0, 0, 0, .7);
+    border: 0;
+    border-radius: 23px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    gap: 8px;
+    height: 32px;
+    justify-content: center;
+    margin-inline-start: 16px;
+    padding: 2px;
+    position: relative;
+
+    .avatar-container {
+      height: 28px;
+      width: 28px;
+
+      img {
+        border-radius: 50%;
       }
+
+    }
+
+    .default-avatar-container {
+      height: 28px;
+      width: 28px;
+      background-color: #535353;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       svg {
-        margin-inline-end: 6px;
-
+        fill: $clr8;
+        margin-inline-end: 0;
       }
+    }
 
-      &:hover {
-        background-color: $clr11;
-      }
+    &.open {
+      background-color: $clr11;
 
     }
+
+    svg {
+      margin-inline-end: 6px;
+
+    }
+
+    &:hover {
+      background-color: $clr11;
+    }
+
   }
+}

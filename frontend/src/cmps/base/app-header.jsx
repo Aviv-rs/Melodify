@@ -106,7 +106,7 @@ export const AppHeader = () => {
         {isSearchPage &&
             <Search onSearchSongs={conveySongsToStore} />
         }
-        {!isSearchPage &&
+        {!isSearchPage  &&
             //TODO: Player button needs to be here 
             <div >
 
@@ -121,7 +121,7 @@ export const AppHeader = () => {
             </div>
         }
 
-        {user ? <>
+        {user && <>
             <button onClick={
                 toggleMenuOpen}
                 onBlur={()=>setIsMenuOpen(false)}
@@ -145,10 +145,10 @@ export const AppHeader = () => {
             </button>
             <OptionsMenu options={[{ name: 'Logout', action: onUserLogout }]} isOpen={isMenuOpen} className={'user-menu'} />
 
-        </>
+        </>}
 
 
-            : <div className="btns-container">
+            {!user && !isSearchPage &&  <div className="btns-container">
                 <button onClick={() => onNavigate('/signup')} className="btn-signup">Sign up</button>
                 <button onClick={() => onNavigate('/login')} className="btn-login">Log in</button>
             </div>}
