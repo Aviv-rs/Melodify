@@ -7,7 +7,7 @@ import Multiselect from 'multiselect-react-dropdown'
 
 export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveDetails }) => {
     //TODO: add close modal option by pressing outside the modal
-    const options = allTags.map(tag => { return { name: tag } })
+    const options = allTags
     const [name, setName] = useState(station.name)
     const [description, setDescription] = useState(station.description || '')
     const [tags, setTags] = useState([])
@@ -40,7 +40,7 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
         }} className='station-modal-content' ref={modalRef}>
             <div className='edit-details-title'>
                 <h1>Edit details</h1>
-                <span></span> 
+                <span></span>
                 <BtnExit className='exit-button' onClick={() => setIsModalOpen(false)} />
             </div>
             <div className='edit-details-inputs'>
@@ -58,14 +58,18 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
                     <input onChange={({ target }) => setName(target.value)} value={name} className='title-input' type="text" placeholder='Add a name' />
                     <textarea onChange={({ target }) => setDescription(target.value)} value={description} className='album-image-description' placeholder='Add an optional description' name="description" id="" cols="30" rows="10"></textarea>
                     <Multiselect
+                        isObject={false}
+                        selectedValues={station.tags || ''}
                         options={options} // Options to display in the dropdown
                         onSelect={onSelect} // Function will trigger on select event
                         selectionLimit={3}
                         displayValue="name" // Property name to display in the dropdown options
                         style={
-                            {multiselectContainer: {
-                                width:'100%'
-                              }}
+                            {
+                                multiselectContainer: {
+                                    width: '100%'
+                                }
+                            }
                         }
                     />
                     <button className='save-button'>Save</button>
