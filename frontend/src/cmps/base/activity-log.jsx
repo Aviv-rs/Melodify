@@ -18,7 +18,6 @@ export const ActivityLog = () => {
     }
 
     useEffect(() => {
-        console.log('activities', activities);
     }, [activities])
 
     useEffect(() => {
@@ -32,7 +31,6 @@ export const ActivityLog = () => {
 
     const onAddActivity = (data) => {
         const activity = getActivity(data)
-        console.log("🚀 ~ file: activity-log.jsx ~ line 38 ~ onAddActivity ~ activity", activity)
         activityService.save(activity)
         setActivities(prevActivities => [...prevActivities, activity])
         // activityRef.current.scrollIntoView()

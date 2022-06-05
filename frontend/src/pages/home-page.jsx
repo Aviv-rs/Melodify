@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { stationService } from '../services/station.service'
 import { tags } from '../data/station'
 import { StationList } from '../cmps/station/station-list'
+import { Loader } from '../cmps/util/loader'
 
 
 export const HomePage = () => {
@@ -17,6 +18,7 @@ export const HomePage = () => {
         setStations(stations)
     }
 
+    if (!stations) return <div className="loader-logo"><Loader /></div>
     return (
         <main>
             <section className="home-page">

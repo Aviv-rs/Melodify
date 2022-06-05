@@ -1,11 +1,9 @@
 .loader-logo {
     display: flex;
-    height: 100vh;
     justify-content: center;
-    align-items: baseline;
-
+    height: 60%;
+    align-items: center;
     &>* {
-        width: 200px;
-        height: 400px;
+        height: 60%;
     }
 }
