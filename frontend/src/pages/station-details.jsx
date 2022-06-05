@@ -203,14 +203,12 @@ export const StationDetails = () => {
         <div className="content-spacing relative">
             {isSearchOpen ?
                 <div className="search-songs" >
-                    <div className="flex space-between ">
-                        <div ref={searchContainerRef} className="search-container">
-                            <h1>Let's find something for your playlist</h1>
-                            <Search isInStationDetails={true} onSearchSongs={displaySongResults} />
-                        </div>
-                        <div onClick={() => setIsSearchOpen(false)}>
-                            <BtnExit />
-                        </div>
+                    <h1 className="search-title">Let's find something for your playlist</h1>
+                    <div className="btn-close-search" onClick={() => setIsSearchOpen(false)}>
+                        <BtnExit />
+                    </div>
+                    <div ref={searchContainerRef} className="search-container">
+                        <Search isInStationDetails={true} onSearchSongs={displaySongResults} />
                     </div>
                 </div>
                 :

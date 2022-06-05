@@ -30,6 +30,11 @@
         background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%)
     }
 
+    @include for-mobile-layout{
+        padding-top: 20px;
+
+    }
+
     @include for-small-layout {
         // .station-name{
         //     font-size: min(max(4.5vw,48px));

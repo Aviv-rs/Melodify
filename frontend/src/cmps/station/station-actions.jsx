@@ -134,7 +134,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
       <button className='btn-play' ref={btnRef} onClick={onTogglePlayer}>
         {isPlayShow ? <PauseIcon /> : <PlayIcon />}
       </button>
-      <button className="btn-like clean-btn" onClick={onToggleLikeStation}>
+      <button className={`btn-like ${isLikeByLoggedUser ? 'liked' : 'unliked'} clean-btn`} onClick={onToggleLikeStation}>
         {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
         {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" />}
 

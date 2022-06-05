@@ -24,7 +24,24 @@
         background: linear-gradient(transparent 0, rgba(0, 0, 0, .5) 100%)
     }
 
+    @include for-mobile-layout {
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        gap: 16px;
+        padding-top: 20px;
+        padding-left: 0;
+        padding-right: 0;
+
+        .hero-img {
+            margin: 0;
+            height: 50vw;
+            width: 50vw;
+        }
+    }
+
     @include for-small-layout {
+
         // .station-name{
         //     font-size: min(max(4.5vw,48px));
         //     line-height: min(max(4.5vw,48px));
@@ -223,11 +240,12 @@
                 height: 32px;
             }
 
-            &:hover {
+            &.unliked:hover {
                 svg {
                     fill: $clr8;
                 }
             }
+
         }
 
         .btn-more-hero-footer {

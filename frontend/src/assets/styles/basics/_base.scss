@@ -9,7 +9,7 @@ html {
 
 body {
   margin: 0;
-  animation: fadeInAnimation ease 2s;
+  // animation: fadeInAnimation ease 2s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -64,33 +64,33 @@ p {
 
 //SCROLLBAR 
 
-/* width */
-::-webkit-scrollbar {
-  width: -8px;
-  // display: none;
-}
 @include for-mobile-layout {
   ::-webkit-scrollbar {
-    width: -8px;
     display: none;
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  background-color: inherit;
+  transition: background-color, .4s;
+
 }
 
 
 /* Track */
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
+  background-color: transparent;
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: black; 
-  border-radius: 10px;
+  background-color: rgba(255,255,255,.3); 
+  transition: background-color .2s;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $clr5;
-
+  background-color: rgba(255,255,255,.4); 
 }
 

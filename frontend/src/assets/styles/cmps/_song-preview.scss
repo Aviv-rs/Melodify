@@ -1,6 +1,6 @@
 .song-preview {
     display: grid;
-    grid-template-columns: 16px 4fr 2fr minmax(120px, 1fr);
+    grid-template-columns: 16px 6fr 2fr minmax(120px, 1fr);
     font-family: circular-medium;
     gap: 16px;
     padding: 0 16px;
@@ -11,9 +11,51 @@
     color: $clr7;
     position: relative;
 
+    @include for-mobile-layout {
+
+        padding: 0;
+        grid-template-columns: 16px 6fr minmax(50px, 1fr);
+
+        .created-at-container {
+            display: none;
+        }
+
+        .btn-more-options {
+            opacity: 1 !important;
+        }
+
+        .duration {
+            display: none;
+        }
+
+        .play-song-container {
+
+            .btn-play {
+                opacity: 1;
+            }
+
+            .song-number {
+                opacity: 0;
+            }
+        }
+
+        &.playing {
+            .song-playing-img {
+                opacity: 0;
+            }
+
+            .btn-play svg {
+                fill: $clr4
+            }
+        }
+
+    }
+
     &.playing {
-        .song-number, .title-container .title {
-            color:$clr4
+
+        .song-number,
+        .title-container .title {
+            color: $clr4
         }
     }
 
@@ -66,7 +108,7 @@
     }
 
     &:hover {
-        
+
         .btn-play {
             opacity: 1;
         }
@@ -75,10 +117,10 @@
             opacity: 1;
         }
 
-        .song-playing-img{
+        .song-playing-img {
             opacity: 0;
         }
-        
+
         .song-number {
             opacity: 0;
         }
@@ -115,6 +157,7 @@
 
     .duration-and-actions-container {
         justify-self: end;
+
         .btn-like {
             background: transparent;
             border: 0;

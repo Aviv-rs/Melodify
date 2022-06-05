@@ -5,10 +5,9 @@
   overscroll-behavior-x: contain;
   overflow-y: hidden;
   grid-auto-flow: column;
-  height: 260px;
   width: 100%;
   grid-gap: 15px;
-  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
   padding-right: 20px;
 
   // @include for-mobile-layout {
@@ -162,25 +161,4 @@
   }
 
 
-}
-
-::-webkit-scrollbar {
-  // width: -8px;
-
-}
-
-::-webkit-scrollbar {
-  width: -8px;
-  display: none !important;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: black;
-  border-radius: 10px;
 }

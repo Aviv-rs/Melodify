@@ -9,7 +9,7 @@ import { OptionsMenu } from '../util/options-menu'
 import songPlayingAnimation from '../../assets/imgs/song-playing-animation.gif'
 import { userService } from '../../services/user.service'
 import { setUserMsg } from '../../store/actions/user.action'
-import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
+import { socketService, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
 
 
 
@@ -96,7 +96,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
             if(isUserLikedSongBefore){
                 newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
                 setIsLikeByLoggedUser(false)
-                dispatch(setUserMsg({ type: 'success', txt: 'Removed to your liked songs' }))
+                dispatch(setUserMsg({ type: 'success', txt: 'Removed from your liked songs' }))
                 activity.type = 'unlike'
             }else{
                 newUser.likedSongs.push(song)
