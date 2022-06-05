@@ -96,7 +96,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
     try {
       const activity = {
         entity: station,
-        user: userService.getLoggedinUser() || 'Guest',
+        createdBy: userService.getLoggedinUser() || 'Guest',
         type: ''
       }
 

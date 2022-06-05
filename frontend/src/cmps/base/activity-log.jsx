@@ -1,38 +1,52 @@
 import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { activityService } from '../../services/activity.service'
 export const ActivityLog = () => {
     const { stationId } = useParams()
-    const [messages, setMessages] = useState([])
+    const [activities, setActivities] = useState([])
 
-    const onAddMsg = (data) => {
-    console.log("🚀 ~ file: activity-log.jsx ~ line 9 ~ onAddMsg ~ data", data)
-        const msg = {
-            username: data.user.username,
-            entityName: data.entity.name || data.entity.title,
-            type: data.type,
-        }
-        setMessages(prevMsgs => [...prevMsgs, msg])
+    useEffect(() => {
+        loadActivities()
+    }, [])
+
+    const loadActivities = async () => {
+        const activities = await activityService.query()
+        if (activities) setActivities(activities)
     }
 
+
+    
     useEffect(() => {
-        console.log('messages', messages);
-    }, [messages])
+        console.log('activities', activities);
+    }, [activities])
 
     useEffect(() => {
-        socketService.on(SOCKET_EMIT_ACTIVITY_LOG, onAddMsg)
+        socketService.on(SOCKET_EMIT_ACTIVITY_LOG, onAddActivity)
         return () => {
             socketService.off(SOCKET_EMIT_ACTIVITY_LOG, (station) => { console.log('station', station) })
         }
     }, [])
 
+
+    const onAddActivity = (data) => {
+        console.log("🚀 ~ file: activity-log.jsx ~ line 9 ~ onAddActivity ~ data", data)
+        const activity = {
+            createdBy: data.createdBy,
+            entityName: data.entity.name || data.entity.title,
+            type: data.type,
+        }
+        activityService.save(activity)
+        setActivities(prevActivities => [...prevActivities, activity])
+    }
+
     return (
         <div className='activity-log'>
-            {messages.map((msg, idx) => {
-                return <section key={idx} className="message-preview">
-                    <div>{msg.username} </div>
-                    <div>{msg.type} </div>
-                    <div>{msg.entityName}</div>
+            {activities.map((activity, idx) => {
+                return <section key={idx} className="activity-preview">
+                    <div>{activity.createdBy?.fullname} </div>
+                    <div>{activity.type} </div>
+                    <div>{activity.entityName}</div>
                 </section>
             }
             )

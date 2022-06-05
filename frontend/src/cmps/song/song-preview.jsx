@@ -84,7 +84,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
         try {
             const activity = {
                 entity: song,
-                user: userService.getLoggedinUser() || 'Guest',
+                createdBy: userService.getLoggedinUser() || 'Guest',
                 type: ''
             }
             if (!loggedInUser) {

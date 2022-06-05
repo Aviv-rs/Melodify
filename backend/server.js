@@ -31,6 +31,7 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const stationRoutes = require('./api/station/station.routes')
 const reviewRoutes = require('./api/review/review.routes')
+const activityRoutes = require('./api/activity/activity.routes')
 const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
 const { setupSocketAPI } = require('./services/socket.service')
 
@@ -40,6 +41,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/station', stationRoutes)
 app.use('/api/review', reviewRoutes)
+app.use('/api/activity', activityRoutes)
 setupSocketAPI(http)
 
 app.get('/**', (req, res) => {
