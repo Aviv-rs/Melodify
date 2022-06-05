@@ -65,7 +65,7 @@ export const StationDetails = () => {
     }, [isSearchOpen])
 
     useEffect(() => {
-        station?.coverUrl && getAvgColor(station?.coverUrl)
+        if (station?.coverUrl) getAvgColor(station?.coverUrl)
     }, [station?.coverUrl])
 
     const loadStation = async () => {
@@ -73,7 +73,7 @@ export const StationDetails = () => {
             const station = stationService.getEmptyStation()
             station.createdBy = userService.getLoggedinUser() || {}
             setStation(station)
-           
+
             setColorAvg('rgb(83,83,83)')
             return
         }
@@ -117,6 +117,8 @@ export const StationDetails = () => {
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
             navigate(`/music/station/${savedStation._id}`)
+            dispatch(setUserMsg({ type: 'success', txt: 'Added playlist to your library' }))
+            return
         }
         dispatch(setUserMsg({ type: 'success', txt: 'Added song to playlist' }))
 
@@ -151,20 +153,26 @@ export const StationDetails = () => {
         }
     }
 
-    const getAvgColor = (url) => {
-        getAverageColor(url).then(rgb => {
-            const color = `rgb(${rgb.r},${rgb.g}, ${rgb.b})`
-            setColorAvg(color)
-            dispatch(setHeaderColor(color))
-        })
+    const getAvgColor = async (url) => {
+        let color = await getAverageColor(url)
+        color = `rgb(${color.r},${color.g}, ${color.b})`
+        setColorAvg(color)
+        dispatch(setHeaderColor(color))
+        dispatch(setCurrPageStation(station))
+
+        return color
     }
 
     const onSaveDetails = async (details) => {
         try {
             const newStation = { ...station, ...details }
             const savedStation = await stationService.save(newStation)
+            if (!station._id) {
+                navigate(`/music/station/${savedStation._id}`) 
+                dispatch(setUserMsg({ type: 'success', txt: 'Added playlist to your library' }))
+            }
             setStation(savedStation)
-            // dispatch(setHeaderColor())
+            dispatch(setUserMsg({ type: 'success', txt: 'Playlist details saved' }))
         } catch {
             console.log('could not save title and description')
         }
@@ -202,7 +210,7 @@ export const StationDetails = () => {
         />}
         <div style={{ backgroundColor: colorAvg }} className="background-fade"></div>
 
-        <StationActions station={station} setStation={setStation} setIsModalOpen={setIsModalOpen} />
+        {station._id && <StationActions station={station} setStation={setStation} setIsModalOpen={setIsModalOpen} />}
 
         {!isStationEmpty && station?._id && <DragDropContext onDragEnd={onDragEnd}>
             <SongList onRemoveSong={onRemoveSong} songs={station.songs} station={station} />

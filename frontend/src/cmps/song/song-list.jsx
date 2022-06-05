@@ -10,7 +10,6 @@ export const SongList = ({ onRemoveSong, songs, station = null }) => {
             
         {(provided) => (
             <div className="song-table-spacing">
-                <div className="song-table-spacing">
                     <div className='table-header'>
                         <div className="song-index-container">
                             <span className='song-index'>#</span>
@@ -26,7 +25,6 @@ export const SongList = ({ onRemoveSong, songs, station = null }) => {
                             <Clock />
                         </div>
                     </div>
-                </div>
                 <section className='song-list'
                     ref={provided.innerRef}
                     {...provided.droppableProps}

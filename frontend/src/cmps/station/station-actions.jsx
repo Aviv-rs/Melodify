@@ -86,7 +86,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
     try {
       await stationService.remove(station._id)
       navigate('/music/library')
-
+      setUserMsg({type:'success', txt:'Playlist deleted'})
     } catch (error) {
       console.log('Can not delete', error)
     }
@@ -129,11 +129,11 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
   }
 
   return <div className='hero-footer content-spacing'>
-    {station.songs.length > 0 ? <div className='buttons'>
+    <div className='buttons'>
 
-      <button className='btn-play' ref={btnRef} onClick={onTogglePlayer}>
+      {station.songs.length > 0 && <button className='btn-play' ref={btnRef} onClick={onTogglePlayer}>
         {isPlayShow ? <PauseIcon /> : <PlayIcon />}
-      </button>
+      </button>}
       <button className={`btn-like ${isLikeByLoggedUser ? 'liked' : 'unliked'} clean-btn`} onClick={onToggleLikeStation}>
         {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
         {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" />}
@@ -158,6 +158,6 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
         }]} isOpen={isMenuOpen && !station.createdBy?.isAdmin} className={'station-options-menu'} />
       </div>
 
-    </div> : <span></span>}
+    </div> 
   </div>;
 }

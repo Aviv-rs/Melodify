@@ -49,7 +49,6 @@ export const AppHeader = () => {
         else if(isSearchPage) setColorToShow('rgb(7,7,7)')
         else setColorToShow('')
         
-
         if (stationModule?.station?._id === matchStation?.params?.stationId) return
         dispatch(setIsPlayPauseBtn(false))
     }, [color, params])
