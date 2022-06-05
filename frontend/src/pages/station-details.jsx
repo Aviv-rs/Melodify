@@ -18,6 +18,8 @@ import { SearchResultList } from '../cmps/search/search-result-list'
 import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED } from '../services/socket.service'
 import { setUserMsg } from '../store/actions/user.action'
 import { StationModal } from '../cmps/station/station-modal'
+import { Loader } from "../util/loader"
+
 
 export const StationDetails = () => {
 
@@ -178,7 +180,7 @@ export const StationDetails = () => {
         if (station?._id === stationModule?.station?._id) dispatch(getActionSetStation(savedStation))
     }
 
-    if (!station) return <div>Loading...</div> //TODO: add loader
+    if (!station) return <div className="loader-logo"><Loader /></div> 
     return <section className="station-details">
 
         <StationHero
