@@ -10,6 +10,8 @@ import { useMatch, useNavigate } from 'react-router-dom'
 import { setUserMsg } from '../../store/actions/user.action'
 import { getActionSetStation } from '../../store/actions/station.action'
 import { setIsPlayPauseBtn } from '../../store/actions/header.action'
+import { socketService, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
+
 
 export const StationActions = ({ setIsModalOpen, station, setStation }) => {
 
@@ -43,16 +45,16 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
   useEffect(() => {
     if (!btnRef.current) return
     const observer = new IntersectionObserver((entries) => {
-        const entry = entries[0]
-        if (btnRef.current && !entry.isIntersecting && isMatchStation) dispatch(setIsPlayPauseBtn(true))
-        else dispatch(setIsPlayPauseBtn(false))
+      const entry = entries[0]
+      if (btnRef.current && !entry.isIntersecting && isMatchStation) dispatch(setIsPlayPauseBtn(true))
+      else dispatch(setIsPlayPauseBtn(false))
 
-        return (() => dispatch(setIsPlayPauseBtn(false)))
+      return (() => dispatch(setIsPlayPauseBtn(false)))
 
     })
     observer.observe(btnRef.current)
 
-}, [])
+  }, [])
 
   useEffect(() => {
     const handleClickOutsideMenu = (ev) => {
@@ -92,6 +94,12 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
 
   const onToggleLikeStation = async () => {
     try {
+      const activity = {
+        entity: station,
+        user: userService.getLoggedinUser() || 'Guest',
+        type: ''
+      }
+
       if (!loggedInUser) {
         dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like playlist' }))
         return
@@ -101,12 +109,15 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
       if (isUserLikedStationBefore) {
         newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser?._id)
         setIsLikeByLoggedUser(false)
+        activity.type = 'unlike'
       } else {
         newStation.likedByUsers.push(loggedInUser)
         setIsLikeByLoggedUser(true)
+        activity.type = 'like'
       }
       const savedStation = await stationService.save(newStation)
       setStation(savedStation)
+      socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
     } catch (error) {
       dispatch(setUserMsg({ type: 'danger', txt: 'Something went wrong, please try again later' }))
     }
