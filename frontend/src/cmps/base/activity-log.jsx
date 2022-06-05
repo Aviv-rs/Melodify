@@ -17,10 +17,6 @@ export const ActivityLog = () => {
         if (activities) setActivities(activities)
     }
 
-
-
-
-
     useEffect(() => {
         console.log('activities', activities);
     }, [activities])
@@ -60,7 +56,7 @@ export const ActivityLog = () => {
 
     const getFormattedActivity = (activity) => {
         const entityValue = (activity.isStation) ? 'playlist' : 'song'
-        const txts = [activity.type, activity.entityName, entityValue]
+        const txts = [activity.type,entityValue, activity.entityName]
         return txts.join(' ')
     }
 
