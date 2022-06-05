@@ -30,3 +30,9 @@
 
     }
 }
+
+.table-header {
+    @include for-mobile-layout {
+        display: none;
+    }
+}

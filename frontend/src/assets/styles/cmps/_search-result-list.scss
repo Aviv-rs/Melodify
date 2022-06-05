@@ -29,9 +29,11 @@
         .play-song-and-title-container {
 
             @include for-mobile-layout {
+                overflow: hidden;
                 .title {
                     white-space: nowrap;
-                    font-size: 10px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
 

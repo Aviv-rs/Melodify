@@ -9,7 +9,7 @@ import { OptionsMenu } from '../util/options-menu'
 import songPlayingAnimation from '../../assets/imgs/song-playing-animation.gif'
 import { userService } from '../../services/user.service'
 import { setUserMsg } from '../../store/actions/user.action'
-import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
+import { socketService, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
 
 
 
@@ -84,9 +84,10 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
         try {
             const activity = {
                 entity: song,
-                user: userService.getLoggedinUser() || 'Guest',
-                type: ''
+                type: '',
+                isStation: false
             }
+        
             if (!loggedInUser) {
                 dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like song' }))
                 return
@@ -96,13 +97,13 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
             if(isUserLikedSongBefore){
                 newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
                 setIsLikeByLoggedUser(false)
-                dispatch(setUserMsg({ type: 'success', txt: 'Removed to your liked songs' }))
-                activity.type = 'unlike'
+                dispatch(setUserMsg({ type: 'success', txt: 'Removed from your liked songs' }))
+                activity.type = 'unlikes'
             }else{
                 newUser.likedSongs.push(song)
                 dispatch(setUserMsg({ type: 'success', txt: 'Added to your liked songs' }))
                 setIsLikeByLoggedUser(true)
-                activity.type = 'like'
+                activity.type = 'likes'
             }
             userService.update(newUser)
             socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)

@@ -96,8 +96,8 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
     try {
       const activity = {
         entity: station,
-        user: userService.getLoggedinUser() || 'Guest',
-        type: ''
+        type: '',
+        isStation: true
       }
 
       if (!loggedInUser) {
@@ -109,11 +109,11 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
       if (isUserLikedStationBefore) {
         newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser?._id)
         setIsLikeByLoggedUser(false)
-        activity.type = 'unlike'
+        activity.type = 'unlikes'
       } else {
         newStation.likedByUsers.push(loggedInUser)
         setIsLikeByLoggedUser(true)
-        activity.type = 'like'
+        activity.type = 'likes'
       }
       const savedStation = await stationService.save(newStation)
       setStation(savedStation)
@@ -134,7 +134,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
       <button className='btn-play' ref={btnRef} onClick={onTogglePlayer}>
         {isPlayShow ? <PauseIcon /> : <PlayIcon />}
       </button>
-      <button className="btn-like clean-btn" onClick={onToggleLikeStation}>
+      <button className={`btn-like ${isLikeByLoggedUser ? 'liked' : 'unliked'} clean-btn`} onClick={onToggleLikeStation}>
         {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
         {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" />}
 

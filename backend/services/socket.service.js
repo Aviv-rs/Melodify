@@ -28,7 +28,7 @@ function setupSocketAPI(http) {
         })
         socket.on('activity-log-made', data => {
             socket.emit('activity-log-made', data)
-            socket.broadcast.emit('activity-log-made', data)
+            socket.broadcast.emit('activity-log-made-brodcast', data)
         })
         socket.on('chat-set-topic', topic => {
             if (socket.myTopic === topic) return
