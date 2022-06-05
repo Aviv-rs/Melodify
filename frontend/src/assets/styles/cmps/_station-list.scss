@@ -12,7 +12,7 @@
   padding-right: 20px;
 
   // @include for-mobile-layout {
-   
+
   //   ::-webkit-scrollbar {
   //     // width: -8px;
 
@@ -36,9 +36,9 @@
 
   // }
 
-  
+
   // @include for-small-layout {
-    
+
   //   @include layoutGTC(2, 18px);
   // }
 
@@ -151,15 +151,18 @@
       }
     }
 
-    &:hover {
-      .station-cover button {
-        opacity: 1 !important;
-        bottom: 8px !important;
-      }
+    @include for-medium-layout {
+      &:hover {
+        .station-cover button {
+          opacity: 1 !important;
+          bottom: 8px !important;
+        }
 
-      background-color: $clr11
+        background-color: $clr11
+      }
     }
   }
+
 
 
 }
