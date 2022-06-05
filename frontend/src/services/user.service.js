@@ -58,6 +58,7 @@ async function login(userCred) {
 }
 async function signup(userCred) {
   // const user = await storageService.post('user', userCred)
+  userCred.likedStations = []
   const user = await httpService.post('auth/signup', userCred)
   // socketService.emit('set-user-socket', user._id);
   return saveLocalUser(user)

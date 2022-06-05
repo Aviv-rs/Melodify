@@ -2,11 +2,13 @@ import { useEffect, useState } from "react"
 import { stationService } from "../services/station.service"
 import { StationList } from "../cmps/station/station-list"
 import { Loader } from "../cmps/util/loader"
+import { useSelector } from "react-redux"
 
 export const Library = () => {
 
     // TO BE CHANGED 
     const [stations, setStations] = useState(null)
+    const {user} = useSelector(storeState=> storeState.userModule)
 
     useEffect(() => {
         loadStations()
