@@ -1,5 +1,5 @@
 .genre-preview-container {
-   
+
 
     .genre-card {
 
@@ -7,11 +7,6 @@
         overflow: hidden;
         position: relative;
         width: 100%;
-
-        @include for-mobile-layout {
-        height: 100px;
-        }
-
 
         &::after {
             content: "";
@@ -28,6 +23,7 @@
             overflow-wrap: break-word;
             padding: 16px;
             position: absolute;
+            z-index: 10;
         }
 
 
@@ -43,7 +39,8 @@
             object-position: center center;
 
             @include for-mobile-layout {
-                display: none;
+                width: 90px;
+                height: 90px;
             }
         }
 

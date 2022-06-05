@@ -1,57 +1,59 @@
 .station-list {
 
   display: grid;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
+  overflow-y: hidden;
+  grid-auto-flow: column;
+  height: 260px;
+  width: 100%;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+  padding-right: 20px;
 
-  @include for-mobile-layout {
-    height: 260px;
-    grid-gap: 15px;
-    grid-template-columns: repeat(auto-fill, minmax(135px, 145px));
-    overflow-x: scroll;
-    grid-auto-flow: column;
-    padding-right: 20px;
+  // @include for-mobile-layout {
+   
+  //   ::-webkit-scrollbar {
+  //     // width: -8px;
 
+  //   }
 
-    ::-webkit-scrollbar {
-      // width: -8px;
+  //   ::-webkit-scrollbar {
+  //     width: -8px;
+  //     display: none !important;
+  //   }
 
-    }
+  //   /* Track */
+  //   ::-webkit-scrollbar-track {
+  //     border-radius: 10px;
+  //   }
 
-    ::-webkit-scrollbar {
-      width: -8px;
-      display: none !important;
-    }
+  //   /* Handle */
+  //   ::-webkit-scrollbar-thumb {
+  //     background: black;
+  //     border-radius: 10px;
+  //   }
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-      border-radius: 10px;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: black;
-      border-radius: 10px;
-    }
-
-  }
+  // }
 
   
-  @include for-small-layout {
+  // @include for-small-layout {
     
-    @include layoutGTC(2, 18px);
-  }
+  //   @include layoutGTC(2, 18px);
+  // }
 
-  @include for-medium-layout {
-    @include layoutGTC(3, 18px);
+  // @include for-medium-layout {
+  //   @include layoutGTC(3, 18px);
 
-  }
+  // }
 
-  @include for-large-layout {
-    @include layoutGTC(4, 24px);
-  }
+  // @include for-large-layout {
+  //   @include layoutGTC(4, 24px);
+  // }
 
-  @include for-extra-large-layout {
-    @include layoutGTC(6, 24px);
-  }
+  // @include for-extra-large-layout {
+  //   @include layoutGTC(6, 24px);
+  // }
 
   .station-preview {
     cursor: pointer;
@@ -160,4 +162,25 @@
   }
 
 
+}
+
+::-webkit-scrollbar {
+  // width: -8px;
+
+}
+
+::-webkit-scrollbar {
+  width: -8px;
+  display: none !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
 }

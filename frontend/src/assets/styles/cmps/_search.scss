@@ -5,26 +5,32 @@
     border-radius: 2rem;
     margin-left: 25px;
 
+    @include for-mobile-layout {
+        margin: 0em 1em ;
+        border-radius: 0.5rem;
+        width: 96%;
+    }
+
     form {
         align-items: center;
         gap: 5px;
         display: flex;
         justify-content: center;
+
+        @include for-mobile-layout {
+        justify-content: left;
+        }
     }
 
 
     input {
-        width: 80%;
+        width: 100%;
         height: 100%;
         border: none;
         outline: none;
         margin: 13px;
         margin-left: 0px;
         font-size: 0.875rem;
-
-        @include for-mobile-layout {
-            font-size: 9px;
-        }
     }
 
     button {
