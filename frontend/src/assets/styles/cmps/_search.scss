@@ -22,7 +22,7 @@
         margin-left: 0px;
         font-size: 0.875rem;
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             font-size: 9px;
         }
     }
@@ -66,7 +66,7 @@
         border-radius: 4px;
         background-color: rgba(255, 255, 255, .1);
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             width: 200px;
         }
     }

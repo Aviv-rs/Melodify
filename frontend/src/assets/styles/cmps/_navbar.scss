@@ -6,13 +6,23 @@
     padding-top: 24px;
     grid-area: nav-container;
 
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         width: 100%;
         padding-top: 0px;
         margin: 0px;
         display: grid;
         grid-template-columns: 1fr;
         background: linear-gradient(180deg, rgba(18, 18, 18, 0) 3%, rgba(18, 18, 18, .1) 6%, rgba(18, 18, 18, .4) 11%, rgba(18, 18, 18, .6) 16%, rgba(18, 18, 18, .8) 25%, rgba(18, 18, 18, .9) 40%, #121212 81%);
+    }
+
+    .activity-log{
+        height: calc(100vh - 495px);
+        overflow: auto;
+        padding: 5px 30px 5px 30px;
+        .message-preview{
+            display: flex;
+            gap: 5px;
+        }
     }
 
 }
@@ -33,7 +43,7 @@
         font-size: 1.4rem;
     }
 
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         display: none;
 
     }
@@ -54,7 +64,7 @@
     padding: 5px 30px 5px 30px;
 
 
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
@@ -68,7 +78,7 @@
         gap: 16px;
         align-items: center;
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             align-items: center;
             flex-direction: column;
             gap: 3px;
@@ -104,7 +114,7 @@
     span {
         color: $clr7;
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             margin-top: 5px;
             text-align: center;
             font-size: 11px;
@@ -116,7 +126,7 @@
     .create-playlist-nav {
         margin-top: 24px;
 
-        @media (max-width: $break-sm) {
+        @include for-mobile-layout {
             margin: 0;
         }
     }
@@ -151,4 +161,7 @@
     .separation-line {
         margin: 8px
     }
+
+
+   
 }

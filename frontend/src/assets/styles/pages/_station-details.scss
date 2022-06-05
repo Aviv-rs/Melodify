@@ -30,7 +30,7 @@
 
 .search-page {
     padding: 0 32px;
-    @media (max-width: $break-sm) {
+    @include for-mobile-layout {
         overflow-x:hidden;
     }
 }
