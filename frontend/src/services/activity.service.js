@@ -38,7 +38,6 @@ async function save(activity) {
     } else {
         activity.createdBy = userService.getLoggedinUser() || 'Guest'
         const { data } = await axios.post(BASE_URL, activity)
-        console.log('added activity', data);
         return data
     }
 }

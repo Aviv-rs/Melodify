@@ -12,6 +12,8 @@
 
     .library-list {
         .station-list {
+            overflow-y: visible;
+            grid-auto-flow: row;
             @include for-mobile-layout {
                 grid-auto-flow: unset;
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));

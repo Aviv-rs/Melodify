@@ -152,7 +152,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
         {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" />}
 
       </button>
-      {!station.createdBy?.isAdmin && <button className='btn-more-hero-footer clean-btn' onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      {(station.createdBy?.isAdmin && loggedInUser.isAdmin) || (!station.createdBy?.isAdmin) && <button className='btn-more-hero-footer clean-btn' onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <BtnMoreIcon />
       </button>}
 
