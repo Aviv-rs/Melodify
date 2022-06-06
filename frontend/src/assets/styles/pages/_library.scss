@@ -14,10 +14,14 @@
         .station-list {
             overflow-y: visible;
             grid-auto-flow: row;
+            grid-gap: 0;
+            gap: 2em;
+            grid-template-columns: repeat(auto-fill, minmax(170px,190px));
+            .station-preview {
+                width: 100%;
+            }
             @include for-mobile-layout {
-                grid-auto-flow: unset;
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                overflow-x: unset;
                 padding-right: 0px;
             }
         }
