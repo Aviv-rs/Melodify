@@ -22,6 +22,10 @@
         overflow-y: hidden;
         overscroll-behavior-x: contain;
 
+        .station-list {
+          padding-bottom: 10px;
+        }
+
         .tag-title {
           font-family: bold circular, gotham-bold, helvetica, arial, sans-serif;
           margin: 1rem 0 2rem;

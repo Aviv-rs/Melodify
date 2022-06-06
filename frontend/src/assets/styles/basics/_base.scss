@@ -67,6 +67,7 @@ p {
 @include for-mobile-layout {
   ::-webkit-scrollbar {
     display: none;
+    width: 8px;
   }
 }
 
@@ -74,7 +75,8 @@ p {
 ::-webkit-scrollbar {
   background-color: inherit;
   transition: background-color, .4s;
-
+  width: 11px;
+  height: 11px;
 }
 
 

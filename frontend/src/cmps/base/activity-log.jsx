@@ -70,7 +70,7 @@ export const ActivityLog = () => {
                             <div className='default-avatar-container'>
                                 {(activity.createdBy?.avatar) ?
 
-                                    <img src={activity.createdBy.avatar} alt="" />
+                                    <img src={activity.createdBy?.avatar} alt="" />
 
                                     :
 
@@ -78,7 +78,7 @@ export const ActivityLog = () => {
 
                                 }
                             </div>
-                            <div className='username'>{activity.createdBy.fullname}</div>
+                            <div className='username'>{activity.createdBy?.fullname}</div>
                         </div>
                         {getFormattedActivity(activity)}
 

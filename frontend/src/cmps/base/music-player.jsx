@@ -120,6 +120,7 @@ export const MusicPlayer = () => {
         dispatch(setIsShuffle(false))
     }
 
+
     return (
         <div className="music-player">
             <div className="left-side-controls">
