@@ -19,6 +19,8 @@
         padding: 5px 30px 5px 30px;
         overflow: auto;
         height: calc(100vh - 495px);
+        border-top: 0.7px solid #424242;
+        border-bottom: 0.7px solid #424242;
         
         .activity-log-container{
             display: flex;
