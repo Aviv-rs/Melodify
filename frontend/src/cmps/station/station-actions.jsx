@@ -86,7 +86,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
     try {
       await stationService.remove(station._id)
       navigate('/music/library')
-      setUserMsg({type:'success', txt:'Playlist deleted'})
+      setUserMsg({ type: 'success', txt: 'Playlist deleted' })
     } catch (error) {
       console.log('Can not delete', error)
     }
@@ -94,6 +94,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
 
   const onToggleLikeStation = async () => {
     try {
+
       const activity = {
         entity: station,
         type: '',
@@ -104,21 +105,33 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
         dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like playlist' }))
         return
       }
-      const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
+
+      let likedStations = []
+      if (!loggedInUser.likedStations) loggedInUser.likedStations = likedStations
+      const isUserLikedStationBefore = loggedInUser.likedStations.includes(station._id)
       let newStation = { ...station }
+      let newUser = { ...loggedInUser }
       if (isUserLikedStationBefore) {
         newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser?._id)
+        newUser.likedStations = newUser.likedStations.filter(stationId => stationId !== station._id)
         setIsLikeByLoggedUser(false)
         activity.type = 'unlikes'
+        dispatch(setUserMsg({ type: 'success', txt: 'Playlist removed from your library' }))
       } else {
         newStation.likedByUsers.push(loggedInUser)
+        newUser.likedStations.push(newStation._id)
         setIsLikeByLoggedUser(true)
         activity.type = 'likes'
+        dispatch(setUserMsg({ type: 'success', txt: 'Playlist added to your library' }))
+
       }
+
       const savedStation = await stationService.save(newStation)
+      await userService.update(newUser)
       setStation(savedStation)
       socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
     } catch (error) {
+      console.log(error);
       dispatch(setUserMsg({ type: 'danger', txt: 'Something went wrong, please try again later' }))
     }
   }
@@ -158,6 +171,6 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
         }]} isOpen={isMenuOpen && !station.createdBy?.isAdmin} className={'station-options-menu'} />
       </div>
 
-    </div> 
+    </div>
   </div>;
 }
