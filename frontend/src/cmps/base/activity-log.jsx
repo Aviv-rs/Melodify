@@ -80,10 +80,10 @@ export const ActivityLog = () => {
                             </div>
                             <div className='username'>{activity.createdBy.fullname}</div>
                         </div>
-                        {getFormattedActivity(activity)}
+                        <span className="activity-msg">{getFormattedActivity(activity)}</span>
 
 
-                        <div ref={activityRef}></div>
+                        <div  ref={activityRef}></div>
                     </section>
                 }
                 )
