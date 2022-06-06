@@ -7,23 +7,25 @@ import { userService } from "../services/user.service"
 export const Library = () => {
 
     // TO BE CHANGED 
-    const [stations, setStations] = useState(null)
+    const [stations, setStations] = useState([])
     const user = userService.getLoggedinUser()
 
     useEffect(() => {
-        loadStations()
+        if (user) loadStations()
     }, [])
 
     const loadStations = async () => {
         // try {
-        const stations = await stationService.query({createdBy:user})
         
+        const stations = await stationService.query({createdBy:user})
+
         for (const stationId of user.likedStations){
             const station = await stationService.getById(stationId)
             stations.push(station)
         }
             
         if (stations) setStations(stations)
+        
         // } catch (err) {        
     }
 

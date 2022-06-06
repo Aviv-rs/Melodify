@@ -42,7 +42,6 @@ async function save(station) {
             type: 'update'
         }
         // socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
-        console.log('updated station', data)
         return data
     } else {
         const loggedinUser = userService.getLoggedinUser()
