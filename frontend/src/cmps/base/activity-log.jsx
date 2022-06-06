@@ -53,7 +53,7 @@ export const ActivityLog = () => {
     }
 
     const getFormattedActivity = (activity) => {
-        const entityValue = (activity.isStation) ? 'playlist' : 'song'
+        const entityValue = (activity.isStation) ? 'playlist :' : 'song :'
         const txts = [activity.type, entityValue, activity.entityName]
         return txts.join(' ')
     }
