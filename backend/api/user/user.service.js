@@ -79,6 +79,7 @@ async function update(user) {
             username: user.username,
             fullname: user.fullname,
             avatar: user.avatar,
+            isAdmin: user.isAdmin,
             likedSongs: user.likedSongs,
             likedStations: user.likedStations
         }
