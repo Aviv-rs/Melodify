@@ -120,7 +120,7 @@ export const AppHeader = () => {
             </div>
         }
 
-        {user && <>
+        {user && !isSearchPage && <>
             <button onClick={
                 toggleMenuOpen}
                 onBlur={()=>setIsMenuOpen(false)}
