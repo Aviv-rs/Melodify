@@ -54,37 +54,41 @@ export const ActivityLog = () => {
 
     const getFormattedActivity = (activity) => {
         const entityValue = (activity.isStation) ? 'playlist' : 'song'
-        const txts = [activity.type,entityValue, activity.entityName]
+        const txts = [activity.type, entityValue, activity.entityName]
         return txts.join(' ')
     }
 
     return (
         <div className='activity-log'>
-            {activities.map((activity, idx) => {
-                return <section key={idx} className="activity-preview">
-                    <div className='user-container'>
+            <div>What's new ?</div>
+            <div className='activity-log-container'>
 
-                        <div className='default-avatar-container'>
-                            {(activity.createdBy?.avatar) ?
+                {activities.map((activity, idx) => {
+                    return <section key={idx} className="activity-preview">
+                        <div className='user-container'>
 
-                                <img src={activity.createdBy.avatar} alt="" />
+                            <div className='default-avatar-container'>
+                                {(activity.createdBy?.avatar) ?
 
-                                :
+                                    <img src={activity.createdBy.avatar} alt="" />
 
-                                <DefaultAvatarIcon />
+                                    :
 
-                            }
+                                    <DefaultAvatarIcon />
+
+                                }
+                            </div>
+                            <div className='username'>{activity.createdBy.fullname}</div>
                         </div>
-                        <div className='username'>{activity.createdBy.fullname}</div>
-                    </div>
-                    {getFormattedActivity(activity)}
+                        {getFormattedActivity(activity)}
 
 
-                    <div ref={activityRef}></div>
-                </section>
-            }
-            )
-            }
+                        <div ref={activityRef}></div>
+                    </section>
+                }
+                )
+                }
+            </div>
         </div>
     )
 }
