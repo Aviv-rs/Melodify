@@ -78,6 +78,7 @@ async function update(user) {
             _id: ObjectId(user._id), // needed for the returnd obj
             username: user.username,
             fullname: user.fullname,
+            avatar: user.avatar,
             likedSongs: user.likedSongs,
             likedStations: user.likedStations
         }
