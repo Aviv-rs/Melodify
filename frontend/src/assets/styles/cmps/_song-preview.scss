@@ -1,7 +1,7 @@
 .song-preview {
     display: grid;
     grid-template-columns: 16px 6fr 2fr minmax(120px, 1fr);
-    font-family: circular-medium;
+    font-family: circular-medium ,sans-serif;
     gap: 16px;
     padding: 0 16px;
 

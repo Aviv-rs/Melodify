@@ -185,7 +185,7 @@
             line-height: 16px;
             margin-top: 8px;
             margin-bottom: 0;
-            font-family: circular-medium;
+            font-family: circular-medium,sans-serif;
         }
 
         .station-info {
@@ -319,7 +319,7 @@
 .table-header {
     font-family: circular-medium;
     display: grid;
-    grid-template-columns: 16px 4fr 2fr minmax(120px, 1fr);
+    grid-template-columns: 16px 6fr 2fr minmax(120px, 1fr);
     gap: 16px;
     // padding: 0 16px;
     cursor: default;

@@ -16,7 +16,7 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
 
 
     const onSelect = (values) => {
-        setTags(values.map(value => value.name))
+        setTags(values)
     }
 
     useEffect(() => {

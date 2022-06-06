@@ -7,7 +7,7 @@
     .table-header {
         font-family: circular-medium;
         display: grid;
-        grid-template-columns: 16px 4fr 2fr minmax(120px, 1fr);
+        grid-template-columns: 16px 6fr 2fr minmax(120px, 1fr);
         gap: 16px;
         padding: 0 16px;
         cursor: default;
@@ -32,6 +32,7 @@
 }
 
 .table-header {
+    padding: 0 16px;
     @include for-mobile-layout {
         display: none;
     }
