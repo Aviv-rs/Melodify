@@ -54,6 +54,7 @@
     padding: 0 32px;
     @include for-mobile-layout {
         overflow-x:hidden;
+        padding: 0 10px;
     }
 }
 
