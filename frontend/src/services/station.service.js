@@ -18,7 +18,7 @@ const BASE_URL =
 
 
 
-async function query(filterBy, pageSize) {
+async function query(filterBy={}, pageSize) {
     const { data } = await axios.get(BASE_URL, {
         params: { filterBy, pageSize },
     })

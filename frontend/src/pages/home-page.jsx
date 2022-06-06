@@ -8,6 +8,7 @@ import { Loader } from '../cmps/util/loader'
 export const HomePage = () => {
 
     const [stations, setStations] = useState([])
+    const [isLoading,setIsLoading] = useState(false)
 
     useEffect(() => {
         loadStations()
@@ -24,13 +25,7 @@ export const HomePage = () => {
             <section className="home-page">
                 {
                     tags.map((tag, idx) => {
-                        const stationsByTag = stations.filter(station => {
-                            if (station._id === 'liked') return
-
-                            return station.tags.includes(tag)
-                        })
-                        if (!stations) return <div className="loader-logo"><Loader /></div>
-
+                        const stationsByTag = stations.filter(station => station.tags?.includes(tag))
                         return <section key={idx} className="station-collection">
                             <div className="tag-title-container">
                                 <h2 className="tag-title">{tag}</h2>

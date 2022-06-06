@@ -15,7 +15,7 @@ import { youtubeService } from '../services/youtube.service'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { SearchResultList } from '../cmps/search/search-result-list'
-import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED } from '../services/socket.service'
+import { socketService, SOCKET_EMIT_ENTERED_STATION, SOCKET_EMIT_STATION_UPDATED, SOCKET_EMIT_ACTIVITY_LOG } from '../services/socket.service'
 import { setUserMsg } from '../store/actions/user.action'
 import { StationModal } from '../cmps/station/station-modal'
 import { Loader } from "../cmps/util/loader"
@@ -94,6 +94,11 @@ export const StationDetails = () => {
 
 
     const onAddSong = async (song) => {
+        const activity = {
+            entity: song,
+            type: 'added',
+            isStation: false
+          }
         if (!isStationEmpty) {
             const isSongInStation = station.songs.some(currSong =>
                 currSong.id === song.id
@@ -109,7 +114,6 @@ export const StationDetails = () => {
         if (newStation?._id) {
             const savedStation = await stationService.save(newStation)
             setStation(savedStation)
-
             if (station?._id === stationModule?.station?._id) {
                 dispatch(getActionSetStation(savedStation))
             }
@@ -118,12 +122,14 @@ export const StationDetails = () => {
             setStation(savedStation)
             navigate(`/music/station/${savedStation._id}`)
             dispatch(setUserMsg({ type: 'success', txt: 'Added playlist to your library' }))
+            socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
             return
         }
+        socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
         dispatch(setUserMsg({ type: 'success', txt: 'Added song to playlist' }))
-
+        
     }
-
+    
     const onRemoveSong = async (songId) => {
         const newStation = { ...station, songs: [...station.songs.filter(currSong => currSong.id !== songId)] }
         await stationService.save(newStation)

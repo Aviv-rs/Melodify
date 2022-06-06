@@ -2,13 +2,13 @@ import { useEffect, useState } from "react"
 import { stationService } from "../services/station.service"
 import { StationList } from "../cmps/station/station-list"
 import { Loader } from "../cmps/util/loader"
-import { useSelector } from "react-redux"
+import { userService } from "../services/user.service"
 
 export const Library = () => {
 
     // TO BE CHANGED 
     const [stations, setStations] = useState(null)
-    const {user} = useSelector(storeState=> storeState.userModule)
+    const user = userService.getLoggedinUser()
 
     useEffect(() => {
         loadStations()
@@ -16,7 +16,13 @@ export const Library = () => {
 
     const loadStations = async () => {
         // try {
-        const stations = await stationService.query()
+        const stations = await stationService.query({createdBy:user})
+        
+        for (const stationId of user.likedStations){
+            const station = await stationService.getById(stationId)
+            stations.push(station)
+        }
+            
         if (stations) setStations(stations)
         // } catch (err) {        
     }
