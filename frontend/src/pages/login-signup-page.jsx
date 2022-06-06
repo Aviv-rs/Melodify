@@ -28,7 +28,7 @@ export const LoginSignupPage = () => {
     }
 
     const handleLogin = (googleData) => {
-        console.log(googleData)
+        console.log("hello")
     }
 
     const handleFailure = (result) => {
