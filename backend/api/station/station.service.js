@@ -4,26 +4,26 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(queryParams) {
   // const MAX_PAGE_SIZE = 15
-  const { filterBy, pageSize } = queryParams
+  const { filterBy = {}, pageSize } = queryParams
   const collection = await dbService.getCollection('station')
   const stationAmount = await collection.estimatedDocumentCount()
   try {
+    let filterCriteria
     if (filterBy) {
-      const { filterCriteria } = _buildCriteria(
+      filterCriteria  = _buildCriteria(
         JSON.parse(filterBy),
-        pageSize,
-        stationAmount,
         // MAX_PAGE_SIZE
-      )
-    }
+        )
+      }else filterCriteria = {}
 
-
+    console.log('@@@@@@', filterCriteria)
     const stations = await collection
-      .find()
+      .find(filterCriteria)
       // .sort(sortCriteria)
       // .skip(startIdx)
       // .limit(pageSize)
       .toArray()
+
 
 
     return stations
@@ -104,27 +104,29 @@ async function saveMsgToHistory(stationId, msg) {
 }
 
 function _buildCriteria(filterBy, pageSize) {
-  const { name, addedAt, tags, sortBy, addedBy, duration } = filterBy
+  const { name, createdAt, tags, sortBy, createdBy, duration } = filterBy
   const filterCriteria = {}
+  
   let sortCriteria, pageCriteria
+  
   if (name) filterCriteria.name = { $regex: name, $options: 'i' }
-  if (addedBy) filterCriteria.addedBy = { $regex: addedBy, $options: 'i' }
-  if (addedAt) filterCriteria.addedAt = JSON.parse(addedAt)
-  if (tags.length) filterCriteria.tags = { $in: [...tags] }
+  if (createdBy) filterCriteria['createdBy._id'] =  createdBy._id
+  if (createdAt) filterCriteria.createdAt = JSON.parse(createdAt)
+  if (tags?.length) filterCriteria.tags = { $in: [...tags] }
   // switch (sortBy) {
-  //   case 'priceAscending':
-  //     sortCriteria = { price: 1 }
-  //     break
-  //   case 'priceDescending':
-  //     sortCriteria = { price: -1 }
-  //     break
-  //   default:
-  //     sortCriteria = { name: 1 }
-  // }
-
-
-
-  return { filterCriteria }
+    //   case 'priceAscending':
+    //     sortCriteria = { price: 1 }
+    //     break
+    //   case 'priceDescending':
+    //     sortCriteria = { price: -1 }
+    //     break
+    //   default:
+    //     sortCriteria = { name: 1 }
+    // }
+    
+    
+    
+  return filterCriteria 
 }
 
 module.exports = {

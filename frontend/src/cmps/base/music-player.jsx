@@ -121,7 +121,7 @@ export const MusicPlayer = () => {
     }
 
     return (
-        <div className='music-player'>
+        <div className="music-player">
             <div className="left-side-controls">
                 <div className="song-details">
                     <div className="song-img-container">
@@ -156,7 +156,7 @@ export const MusicPlayer = () => {
                 </div>
             </div >
 
-            <div className='right-side-controls'>
+            <div className="right-side-controls">
                 <div className="volume-controls">
                     <button disabled={isDisabled} onClick={handleMute} className="btn-volume">
                         {volume > 0 ? <VolumeIcon />
