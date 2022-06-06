@@ -1,12 +1,11 @@
 .station-list {
 
   display: grid;
-  overflow-x: scroll;
   overscroll-behavior-x: contain;
   overflow-y: hidden;
   grid-auto-flow: column;
   width: 100%;
-  grid-gap: 15px;
+  grid-gap: 3rem;
   grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
   padding-right: 20px;
   margin-bottom: 3em;
@@ -64,7 +63,8 @@
     padding: 16px;
     position: relative;
     transition: background-color .3s ease;
-    width: 100%;
+    // width: 100%;
+    width: 200px;
 
     @include for-mobile-layout {
       background-color: inherit;
