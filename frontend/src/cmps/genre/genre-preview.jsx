@@ -6,8 +6,9 @@ export function GenrePreview({ genre }) {
     const navigate = useNavigate()
 
     const onGoToGenre = () => {
-        navigate(`/genre/${genre.name.toLowerCase()}`)
+        navigate(`/music/genre/${genre.name.toLowerCase()}`)
     }
+    
     return (
         <a className="genre-preview-container">
         <div onClick={onGoToGenre} style={{ backgroundColor: genre.color }} className="genre-card" >

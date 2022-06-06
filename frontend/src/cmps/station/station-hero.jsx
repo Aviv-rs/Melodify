@@ -21,7 +21,7 @@ export const StationHero = ({ station, setIsModalOpen, bgColor }) => {
                     <img src={station.coverUrl} alt="Station's cover image" />
                     : <StationDefaultIcon className="station-def-icon" />}
             </div>
-            <div className="hero-details">
+            <div className="hero-details content-spacing">
                 <h2 className="playlist-txt flex align-center" >PLAYLIST</h2>
                 <span className="station-name-container">
 

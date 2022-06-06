@@ -30,7 +30,8 @@ async function add(activity) {
             entityName: activity.entityName,
             createdBy: activity.createdBy ,
             type: activity.type,
-            isStation: activity.isStation
+            isStation: activity.isStation,
+            createdAt: activity.createdAt || new Date()
         }
         const collection = await dbService.getCollection('activity')
         await collection.insertOne(activityToAdd)

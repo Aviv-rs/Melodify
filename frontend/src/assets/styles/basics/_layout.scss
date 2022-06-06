@@ -17,11 +17,28 @@
     grid-template-rows: 80px 1fr 80px 80px;
     grid-template-columns: 100%;
     grid-template-areas:
-     "main-view"
-     "main-view"
-    "music-player"
-    "nav-container";
+      "main-view"
+      "main-view"
+      "main-view"
+      "nav-container";
     overflow-y: hidden;
+
+    .music-player {
+      display: none;
+    }
+
+    &.playing-now {
+
+      grid-template-areas:
+        "main-view"
+        "main-view"
+        "music-player"
+        "nav-container";
+
+      .music-player {
+        display: flex;
+      }
+    }
   }
 
   .main-view-container {

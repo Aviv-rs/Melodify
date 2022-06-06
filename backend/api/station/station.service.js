@@ -112,6 +112,7 @@ function _buildCriteria(filterBy, pageSize) {
   if (name) filterCriteria.name = { $regex: name, $options: 'i' }
   if (createdBy) filterCriteria['createdBy._id'] =  createdBy._id
   if (createdAt) filterCriteria.createdAt = JSON.parse(createdAt)
+  console.log('@@@@@@@',tags)
   if (tags?.length) filterCriteria.tags = { $in: [...tags] }
   // switch (sortBy) {
     //   case 'priceAscending':

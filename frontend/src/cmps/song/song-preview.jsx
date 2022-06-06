@@ -98,12 +98,12 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
                 setIsLikeByLoggedUser(false)
                 dispatch(setUserMsg({ type: 'success', txt: 'Removed from your liked songs' }))
-                activity.type = 'unlikes'
+                activity.type = 'unliked'
             }else{
                 newUser.likedSongs.push(song)
                 dispatch(setUserMsg({ type: 'success', txt: 'Added to your liked songs' }))
                 setIsLikeByLoggedUser(true)
-                activity.type = 'likes'
+                activity.type = 'liked'
             }
             userService.update(newUser)
             socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)

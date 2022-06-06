@@ -18,7 +18,7 @@
     .activity-log {
         padding: 5px 30px 5px 30px;
         overflow: auto;
-        height: calc(100vh - 495px);
+        height: calc(100vh - 470px);
         border-top: 0.7px solid #424242;
         border-bottom: 0.7px solid #424242;
         
@@ -32,15 +32,29 @@
             display: none;
         }
 
+        .title{
+            text-decoration:underline;
+            margin-bottom: 8px;
+        }
+
         .activity-preview {
             display: flex;
             flex-direction: column;
             gap: 5px;
             border-bottom: 0.7px solid #424242;
+
             
 
             .username {
-                color: green;
+                color: $clr4;
+            }
+
+            .activity-timestamp {
+                color: $clr7;
+            }
+
+            .activity-type {
+                text-transform:capitalize;
             }
         }
 

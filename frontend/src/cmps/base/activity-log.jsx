@@ -1,10 +1,9 @@
 import { socketService, SOCKET_EMIT_ACTIVITY_LOG, SOCKET_EMIT_ACTIVITY_LOG_BRODCAST } from '../../services/socket.service'
-import { useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { activityService } from '../../services/activity.service'
 import { DefaultAvatarIcon } from '../../services/img.import.service'
+import ReactTimeAgo from 'react-time-ago'
 export const ActivityLog = () => {
-    const { stationId } = useParams()
     const [activities, setActivities] = useState([])
     const activityRef = useRef()
 
@@ -12,21 +11,20 @@ export const ActivityLog = () => {
         loadActivities()
     }, [])
 
+    useEffect(() => {
+        socketService.on(SOCKET_EMIT_ACTIVITY_LOG, onAddActivity)
+        socketService.on(SOCKET_EMIT_ACTIVITY_LOG_BRODCAST, onSetActivity)
+        return () => {
+            socketService.off(SOCKET_EMIT_ACTIVITY_LOG)
+            socketService.off(SOCKET_EMIT_ACTIVITY_LOG_BRODCAST)
+        }
+    }, [])
+
     const loadActivities = async () => {
         const activities = await activityService.query()
         if (activities) setActivities(activities)
     }
 
-    useEffect(() => {
-    }, [activities])
-
-    useEffect(() => {
-        socketService.on(SOCKET_EMIT_ACTIVITY_LOG, onAddActivity)
-        socketService.on(SOCKET_EMIT_ACTIVITY_LOG_BRODCAST, onSetActivity)
-        return () => {
-            socketService.off(SOCKET_EMIT_ACTIVITY_LOG, (station) => { console.log('station', station) })
-        }
-    }, [])
 
 
     const onAddActivity = (data) => {
@@ -44,44 +42,49 @@ export const ActivityLog = () => {
 
 
     const getActivity = (data) => {
+        console.log(data)
         return {
             createdBy: data.createdBy,
             entityName: data.entity.name || data.entity.title,
             type: data.type,
-            isStation: data.isStation
+            isStation: data.isStation,
         }
     }
 
     const getFormattedActivity = (activity) => {
-        const entityValue = (activity.isStation) ? 'playlist :' : 'song :'
-        const txts = [activity.type, entityValue, activity.entityName]
+        const entityValue = (activity.isStation) ? 'playlist:' : 'song:'
+        const txts = [entityValue, activity.entityName]
         return txts.join(' ')
     }
 
     return (
-        <div className='activity-log'>
-            <div>What's new ?</div>
-            <div className='activity-log-container'>
+        <div className="activity-log">
+            <div className="title">What's new ?</div>
+            <div className="activity-log-container">
 
-                {activities.map((activity, idx) => {
+                {activities && activities.map((activity, idx) => {
+                    const formattedActivity = getFormattedActivity(activity)
                     return <section key={idx} className="activity-preview">
-                        <div className='user-container'>
+                        <div className="user-container">
 
-                            <div className='default-avatar-container'>
+                            <div className="default-avatar-container">
                                 {(activity.createdBy?.avatar) ?
-
                                     <img src={activity.createdBy?.avatar} alt="" />
-
                                     :
-
                                     <DefaultAvatarIcon />
-
                                 }
                             </div>
-                            <div className='username'>{activity.createdBy?.fullname}</div>
+                            <div className="username">{activity.createdBy?.fullname || 'Guest'}</div>
                         </div>
-                        {getFormattedActivity(activity)}
+                        {<div className="activity-content">
+                            <span className="activity-type"
+                                style={activity.type === 'liked' ? { color: '#2e77d0' } : { color: 'lightcoral' }}>
+                                {activity.type + '  '}
+                            </span>
+                            {formattedActivity}
+                        </div>}
 
+                        <div className="activity-timestamp"> <ReactTimeAgo date={activity.createdAt || Date.now()} locale="en-US" /> </div>
 
                         <div ref={activityRef}></div>
                     </section>

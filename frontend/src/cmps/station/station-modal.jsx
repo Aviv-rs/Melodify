@@ -10,10 +10,9 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
     const options = allTags
     const [name, setName] = useState(station.name)
     const [description, setDescription] = useState(station.description || '')
-    const [tags, setTags] = useState([])
+    const [tags, setTags] = useState(station.tags || [])
 
     const modalRef = useRef()
-
 
     const onSelect = (values) => {
         setTags(values)

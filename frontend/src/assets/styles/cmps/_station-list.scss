@@ -13,10 +13,10 @@
 
   // @include for-mobile-layout {
 
-    // ::-webkit-scrollbar {
-    //   height: 11px;
+  // ::-webkit-scrollbar {
+  //   height: 11px;
 
-    // }
+  // }
 
   //   ::-webkit-scrollbar {
   //     width: -8px;
@@ -114,6 +114,10 @@
             &>* {
               width: 18px;
               height: 18px;
+            }
+
+            @include for-mobile-layout {
+              display: none;
             }
           }
 

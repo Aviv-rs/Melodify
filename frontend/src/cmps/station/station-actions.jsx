@@ -115,13 +115,13 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
         newStation.likedByUsers = newStation.likedByUsers.filter(user => user._id !== loggedInUser?._id)
         newUser.likedStations = newUser.likedStations.filter(stationId => stationId !== station._id)
         setIsLikeByLoggedUser(false)
-        activity.type = 'unlikes'
+        activity.type = 'unliked'
         dispatch(setUserMsg({ type: 'success', txt: 'Playlist removed from your library' }))
       } else {
         newStation.likedByUsers.push(loggedInUser)
         newUser.likedStations.push(newStation._id)
         setIsLikeByLoggedUser(true)
-        activity.type = 'likes'
+        activity.type = 'liked'
         dispatch(setUserMsg({ type: 'success', txt: 'Playlist added to your library' }))
 
       }
@@ -147,12 +147,13 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
       {station.songs.length > 0 && <button className='btn-play' ref={btnRef} onClick={onTogglePlayer}>
         {isPlayShow ? <PauseIcon /> : <PlayIcon />}
       </button>}
-      <button className={`btn-like ${isLikeByLoggedUser ? 'liked' : 'unliked'} clean-btn`} onClick={onToggleLikeStation}>
-        {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
-        {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" />}
-
-      </button>
-      {(station.createdBy?.isAdmin && loggedInUser.isAdmin) || (!station.createdBy?.isAdmin) && <button className='btn-more-hero-footer clean-btn' onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      {loggedInUser && station.createdBy._id !== loggedInUser._id &&
+        <button className={`btn-like ${isLikeByLoggedUser ? 'liked' : 'unliked'} clean-btn`}
+          onClick={onToggleLikeStation}>
+          {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
+          {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" />}
+        </button>}
+      {(loggedInUser && station.createdBy?.isAdmin && loggedInUser.isAdmin) || (!station.createdBy?.isAdmin) && <button className='btn-more-hero-footer clean-btn' onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <BtnMoreIcon />
       </button>}
 

@@ -15,18 +15,18 @@ export const Library = () => {
     }, [])
 
     const loadStations = async () => {
-        // try {
-        
-        const stations = await stationService.query({createdBy:user})
 
-        for (const stationId of user.likedStations){
-            const station = await stationService.getById(stationId)
-            stations.push(station)
+        const stations = await stationService.query({ createdBy: user })
+
+        if (user.likedStations) {
+            for (const stationId of user.likedStations) {
+                const station = await stationService.getById(stationId)
+                stations.push(station)
+            }
         }
-            
+
         if (stations) setStations(stations)
-        
-        // } catch (err) {        
+
     }
 
     if (!stations) return <div className="loader-logo"><Loader /></div>

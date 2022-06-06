@@ -4,10 +4,12 @@ import { Navbar } from '../cmps/base/navbar'
 import { MusicPlayer } from '../cmps/base/music-player'
 import { routes } from "../routes";
 import { UserMsg } from "../cmps/util/user-msg";
+import { useSelector } from "react-redux";
 
 
 export function MusicApp() {
-    return <div className="main-layout">
+    const {currSong} = useSelector(storeState=>storeState.currSongModule)
+    return <div className={`main-layout ${currSong ? 'playing-now' : ''}`}>
         <div className="main-view-container">
             <AppHeader />
             <Routes>

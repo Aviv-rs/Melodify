@@ -32,6 +32,9 @@
 
     @include for-mobile-layout{
         padding-top: 20px;
+        .station-info {
+            flex-wrap: nowrap;
+        }
 
     }
 
@@ -42,6 +45,9 @@
         //     letter-spacing: -0.05em;
 
         // }
+        .station-info {
+            flex-wrap: wrap;
+        }
 
         .hero-img {
             height: 192px;
@@ -128,7 +134,7 @@
         }
 
         .station-info {
-            flex-wrap: wrap;
+            
             margin-top: 8px;
             font-family: circular-medium;
             white-space: nowrap;

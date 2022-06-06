@@ -14,12 +14,8 @@ const BASE_URL =
         : 'http://localhost:3030/api/activity/'
 
 
-
-
-async function query(filterBy={}, pageSize) {
-    const { data } = await axios.get(BASE_URL, {
-        params: { filterBy, pageSize },
-    })
+async function query() {
+    const { data } = await axios.get(BASE_URL)
     return data
 }
 async function getById(activityId) {
@@ -37,6 +33,7 @@ async function save(activity) {
         return data
     } else {
         activity.createdBy = userService.getLoggedinUser() || 'Guest'
+        activity.createdAt = new Date()
         const { data } = await axios.post(BASE_URL, activity)
         return data
     }
