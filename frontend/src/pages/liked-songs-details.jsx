@@ -7,25 +7,11 @@ import { useSelector } from "react-redux"
 import { setCurrSong } from '../store/actions/current-song.action'
 import { getActionSetStation } from '../store/actions/station.action'
 import { useDispatch } from "react-redux"
-import { PlayIcon,PauseIcon } from '../services/img.import.service'
+import { PlayIcon, PauseIcon } from '../services/img.import.service'
+import { likedSongsService } from '../services/liked.songs.service'
+import { Loader } from '../cmps/util/loader'
 
 export const LikedSongsDetails = () => {
-    const [loggedUser, setLoggedUser] = useState({})
-    const [songs, setSongs] = useState([])
-    let userStation = stationService.getEmptyStation()
-    userStation.songs = { ...loggedUser.likedSongs }
-    userStation._id = 'liked'
-    
-    useEffect(()=>{
-        const loggedInUser = userService.getLoggedinUser()
-        if (!loggedInUser) return
-        setLoggedUser(loggedInUser)
-        setSongs(userService.getLoggedinUser().likedSongs)
-    },[])
-
-    useEffect(()=>{
-        
-    },[loggedUser, songs])
 
 
     const dispatch = useDispatch()
@@ -36,10 +22,35 @@ export const LikedSongsDetails = () => {
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
     const { player } = useSelector((storeState) => storeState.playerModule)
     const [isPlayShow, setIsPlayShow] = useState(false)
+    const [songs, setSongs] = useState([])
+    const [station, setStation] = useState([])
 
     useEffect(() => {
-        if (stationModule?.station?._id === userStation?._id) setIsPlayShow(isPlaying)
-    }, [userStation, isPlaying])
+        if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
+    }, [station, isPlaying])
+
+    useEffect(() => {
+        loadStation()
+    }, [])
+
+
+    const loadStation = async () => {
+        const station = stationService.getEmptyStation()
+        station._id = 'liked'
+        const loggedInUser = userService.getLoggedinUser()
+        if (!loggedInUser) {
+            const songs = await likedSongsService.query()
+            station.songs = songs
+            setStation(station)
+            setSongs(station.songs)
+            return
+        }
+        
+        station.songs = [ ...loggedInUser.likedSongs ]
+        setStation(station)
+        setSongs(station.songs)
+    }
+
 
     const onTogglePlayer = () => {
         if (!currSong) {
@@ -55,13 +66,15 @@ export const LikedSongsDetails = () => {
     }
 
     const onPlayStation = () => {
-        dispatch(getActionSetStation(userStation))
-        dispatch(setCurrSong(userStation.songs[userStation.currSongIdx]))
+        dispatch(getActionSetStation(station))
+        dispatch(setCurrSong(station.songs[station.currSongIdx]))
     }
 
-    if (loggedUser?.likedSongs) return (
+    !songs && <div className="loader-logo"><Loader /></div>
+
+    return (
         <div className='liked-songs-details'>
-            <LikedSongsHero/>
+            <LikedSongsHero songs={songs} />
             <div className="background-fade"></div>
             <div className="hero-footer content-spacing">
                 <div className='buttons'>
@@ -70,7 +83,7 @@ export const LikedSongsDetails = () => {
                     </button>
                 </div>
             </div>
-            <LikedSongsList setLoggedUser={setLoggedUser} setSongs={setSongs} songs={songs} userStation={userStation} />
+            <LikedSongsList setSongs={setSongs} songs={songs} userStation={station} />
         </div>
     )
 }

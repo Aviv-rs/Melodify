@@ -89,9 +89,7 @@
 
     }
 
-    .like-btn {
-        border: none;
-        background-color: inherit;
+    .btn-like {
         height: 32px;
         min-width: 32px;
         width: 32px;
@@ -100,8 +98,10 @@
             display: none;
         }
 
-        &:hover svg {
-            stroke: #fff;
+        &.unliked:hover {
+            svg {
+                fill: $clr8;
+            }
         }
 
         svg {

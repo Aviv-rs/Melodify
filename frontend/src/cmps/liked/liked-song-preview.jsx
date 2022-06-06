@@ -8,8 +8,7 @@ import { OptionsMenu } from '../util/options-menu'
 import songPlayingAnimation from '../../assets/imgs/song-playing-animation.gif'
 import { userService } from '../../services/user.service'
 import { setUserMsg } from '../../store/actions/user.action'
-export const LikedSongPreview = ({ song, songIdx, userStation, setLoggedUser, setSongs }) => {
-
+export const LikedSongPreview = ({ song, songIdx, userStation, setSongs }) => {
 
     const dispatch = useDispatch()
     const { isPlaying } = useSelector(storeState => storeState.currSongModule)
@@ -25,7 +24,7 @@ export const LikedSongPreview = ({ song, songIdx, userStation, setLoggedUser, se
 
     const { currSong } = useSelector((storeState) => storeState.currSongModule)
 
-    
+
     useEffect(() => {
         const handleClickOutsideMenu = (ev) => {
             if (optionsMenuRef.current && !optionsMenuRef.current.contains(ev.target)) {
@@ -59,17 +58,16 @@ export const LikedSongPreview = ({ song, songIdx, userStation, setLoggedUser, se
 
     const onUnlikeSong = async () => {
         try {
-            
+
             // const isUserLikedSongBefore = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
             let newUser = { ...userService.getLoggedinUser() }
             // if(isUserLikedSongBefore){
-                newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
-                // setIsLikeByLoggedUser(false)
-                dispatch(setUserMsg({ type: 'success', txt: 'Removed from your liked songs' }))
-                setLoggedUser(newUser)
-                setSongs(newUser.likedSongs)
+            newUser.likedSongs = newUser.likedSongs.filter(likedSong => likedSong.id !== song.id)
+            // setIsLikeByLoggedUser(false)
+            dispatch(setUserMsg({ type: 'success', txt: 'Removed from your liked songs' }))
+            setSongs(newUser.likedSongs)
             // }
-            
+
             userService.update(newUser)
 
         } catch (error) {
@@ -84,45 +82,45 @@ export const LikedSongPreview = ({ song, songIdx, userStation, setLoggedUser, se
     }
 
     return (
-        
-            <div
-               
-                className={`song-preview ${currSong?.id === song.id ? 'playing' : ''}`} onDoubleClick={onTogglePlayer}>
 
-                <div className="play-song-container flex align-center" onClick={onTogglePlayer}>
-                    <div className="inner-container">
+        <div
 
-                        {currSong?.id === song.id && isPlaying ?
-                            <img className="song-playing-img" src={songPlayingAnimation}
-                                alt="equaliser animation" />
-                            :
-                            <span className="song-number">{songIdx + 1}</span>
-                        }
-                        {!isPlayShow && <button className="btn-play"> <PlayIcon /> </button>}
-                        {isPlayShow && <button className="btn-play"> <PauseIcon /> </button>}
-                    </div>
-                </div>
-                <div className="img-and-title-container flex align-center">
-                    <img src={song.imgUrl} alt="" />
-                    <div className="title-container">
-                        <div className="title">{song.title}</div>
-                    </div>
-                </div>
-                <div className="created-at-container flex align-center">
-                    <span>
-                        {song?.createdAt && <ReactTimeAgo date={song.createdAt || Date.now()} locale="en-US" />}
-                        {!song?.createdAt && <span></span>}
-                    </span>
-                </div>
+            className={`song-preview ${currSong?.id === song.id ? 'playing' : ''}`} onDoubleClick={onTogglePlayer}>
 
-                <div className="duration-and-actions-container flex align-center">
-                    <div className="btn-like" onClick={onUnlikeSong}>
-                        {!isLikeByLoggedUser &&<LikeIconHollow fill="#b3b3b3" />}
-                        {isLikeByLoggedUser &&<LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />}
-                    </div>
-                    <div className="duration">{duration}</div>
-                    <button onClick={toggleMenuOpen} className="btn-more-options"><BtnMoreIcon /></button>
-                    {true &&
+            <div className="play-song-container flex align-center" onClick={onTogglePlayer}>
+                <div className="inner-container">
+
+                    {currSong?.id === song.id && isPlaying ?
+                        <img className="song-playing-img" src={songPlayingAnimation}
+                            alt="equaliser animation" />
+                        :
+                        <span className="song-number">{songIdx + 1}</span>
+                    }
+                    {!isPlayShow && <button className="btn-play"> <PlayIcon /> </button>}
+                    {isPlayShow && <button className="btn-play"> <PauseIcon /> </button>}
+                </div>
+            </div>
+            <div className="img-and-title-container flex align-center">
+                <img src={song.imgUrl} alt="" />
+                <div className="title-container">
+                    <div className="title">{song.title}</div>
+                </div>
+            </div>
+            <div className="created-at-container flex align-center">
+                <span>
+                    {song?.createdAt && <ReactTimeAgo date={song.createdAt || Date.now()} locale="en-US" />}
+                    {!song?.createdAt && <span></span>}
+                </span>
+            </div>
+
+            <div className="duration-and-actions-container flex align-center">
+                <div className="btn-like" onClick={onUnlikeSong}>
+                    {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
+                    {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />}
+                </div>
+                <div className="duration">{duration}</div>
+                <button onClick={toggleMenuOpen} className="btn-more-options"><BtnMoreIcon /></button>
+                {/* {true &&
                         <div ref={optionsMenuRef}>
                             <OptionsMenu
                                 setIsOpen={setIsMenuOpen}
@@ -136,14 +134,14 @@ export const LikedSongPreview = ({ song, songIdx, userStation, setLoggedUser, se
                                 }
                                 ]} />
                         </div>
-                    }
-                </div>
-
-
-
+                    } */}
             </div>
-        
-   
+
+
+
+        </div>
+
+
     )
 
     // return (

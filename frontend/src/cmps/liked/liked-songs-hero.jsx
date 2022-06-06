@@ -2,12 +2,12 @@ import { userService } from "../../services/user.service"
 import { DefaultAvatarIcon } from "../../services/img.import.service"
 
 
-export const LikedSongsHero = () => {
+export const LikedSongsHero = ({songs}) => {
 
     const user = userService.getLoggedinUser()
 
-    const songAmountTxt = user.likedSongs.length > 1 ? user.likedSongs.length + ' songs ' : user.likedSongs.length + ' song '
-    const isStationEmpty = user.likedSongs.length === 0
+    const songAmountTxt = songs.length > 1 ? songs.length + ' songs ' : songs.length + ' song '
+    const isStationEmpty = songs.length === 0
 
     return <div className="liked-songs-hero content-spacing">
 
@@ -26,16 +26,16 @@ export const LikedSongsHero = () => {
 
             <div className="station-info flex align-center">
                 <div className="created-by">
-                    {user.avatar ?
+                    {user?.avatar ?
                         <div className="avatar-container">
-                            <img src={user.avatar} alt="" />
+                            <img src={user?.avatar} alt="" />
                         </div>
                         :
                         <div className="default-avatar-container">
                             <DefaultAvatarIcon />
                         </div>
                     }
-                    {user.fullname || 'Guest'}
+                    {user?.fullname || 'Guest'}
                 </div>
                 {!isStationEmpty && <span className="song-count">
                     {songAmountTxt}

@@ -3,7 +3,7 @@ import YouTube from 'react-youtube'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     PlayIcon, PauseIcon, PlayNextIcon, PlayPrevIcon,
-    VolumeIcon, VolumeMuteIcon, LikedSongsIcon, ShuffleIcon, RepeatIcon
+    VolumeIcon, VolumeMuteIcon, LikedSongsIcon, ShuffleIcon, RepeatIcon, LikeIconHollow
 }
     from '../../services/img.import.service'
 import { utilService } from '../../services/util.service'
@@ -13,6 +13,9 @@ import { setPlayer } from '../../store/actions/player.action'
 import { getActionSetStation, setIsShuffle } from '../../store/actions/station.action'
 import { Link } from 'react-router-dom'
 import { stationService } from '../../services/station.service'
+import { userService } from '../../services/user.service'
+import { setUserMsg } from '../../store/actions/user.action'
+import { socketService, SOCKET_EMIT_ACTIVITY_LOG } from '../../services/socket.service'
 
 export const MusicPlayer = () => {
 
@@ -33,8 +36,12 @@ export const MusicPlayer = () => {
     const [songTotalTime, setTotalTime] = useState(0)
     const [isRepeat, setIsRepeat] = useState(false)
     const [volume, setVolume] = useState(100)
+    const [isLikeByLoggedUser, setIsLikeByLoggedUser] = useState(false)
 
     const isDisabled = !player || !currSong
+    const loggedInUser = userService.getLoggedinUser()
+
+
 
 
     useEffect(() => {
@@ -138,6 +145,41 @@ export const MusicPlayer = () => {
         dispatch(setIsShuffle(false))
     }
 
+    const onTogggleLikeSong = async () => {
+        try {
+            const activity = {
+                entity: currSong,
+                type: '',
+                isStation: false
+            }
+
+            if (!loggedInUser) {
+                dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like song' }))
+                return
+            }
+            const isUserLikedSongBefore = loggedInUser.likedSongs.find(likedSong => likedSong.id === currSong.id)
+            let newUser = { ...loggedInUser }
+            if (isUserLikedSongBefore) {
+                newUser.likedSongs = newUser.likedSongs.filter(likedSong => likedSong.id !== currSong.id)
+                setIsLikeByLoggedUser(false)
+                dispatch(setUserMsg({ type: 'success', txt: 'Removed from your liked songs' }))
+                activity.type = 'unliked'
+            } else {
+                newUser.likedSongs.push(currSong)
+                dispatch(setUserMsg({ type: 'success', txt: 'Added to your liked songs' }))
+                setIsLikeByLoggedUser(true)
+                activity.type = 'liked'
+            }
+            userService.update(newUser)
+            socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
+
+        } catch (error) {
+            console.log('can not like song', error);
+            if (loggedInUser) dispatch(setUserMsg({ type: 'danger', txt: 'Oops, something went wrong' }))
+        }
+
+    }
+
 
     return (
         <div className="music-player">
@@ -153,9 +195,9 @@ export const MusicPlayer = () => {
                             <div className="station-name">{station?._id === 'liked' ? 'Liked songs' : station?.name}</div>
                         </Link>
                     </div>
-                    <button className="like-btn">
-                        {currSong && <LikedSongsIcon fill="#181818" stroke="#b3b3b3" />}
-                    </button>
+                    {currSong && <button onClick={onTogggleLikeSong} className={`btn-like clean-btn ${isLikeByLoggedUser ? '' : 'unliked'}`}>
+                        {isLikeByLoggedUser ? <LikedSongsIcon fill="#1ed760"  /> : <LikeIconHollow fill="#b3b3b3" /> }
+                    </button>}
                 </div>
             </div>
             <div className="player-controls">

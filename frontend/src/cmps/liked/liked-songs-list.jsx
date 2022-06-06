@@ -1,6 +1,6 @@
 import { LikedSongPreview } from './liked-song-preview'
 import { Clock } from '../../services/img.import.service'
-export const LikedSongsList = ({ songs, userStation, setLoggedUser, setSongs }) => {
+export const LikedSongsList = ({ songs, userStation, setSongs }) => {
 
     return (
         <div className='content-spacing'>
@@ -31,7 +31,6 @@ export const LikedSongsList = ({ songs, userStation, setLoggedUser, setSongs }) 
                         song={song}
                         songIdx={idx}
                         userStation={userStation}
-                        setLoggedUser={setLoggedUser}
                         setSongs={setSongs}
                     />
                 })}
