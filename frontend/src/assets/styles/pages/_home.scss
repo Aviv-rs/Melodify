@@ -16,8 +16,11 @@
         flex-direction: column;
         margin-bottom: 16px;
         min-height: 300px;
-        min-width: 100%;
         position: relative;
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
 
         .tag-title {
           font-family: bold circular, gotham-bold, helvetica, arial, sans-serif;

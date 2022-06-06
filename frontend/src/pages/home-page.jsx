@@ -29,6 +29,8 @@ export const HomePage = () => {
 
                             return station.tags.includes(tag)
                         })
+                        if (!stations) return <div className="loader-logo"><Loader /></div>
+
                         return <section key={idx} className="station-collection">
                             <div className="tag-title-container">
                                 <h2 className="tag-title">{tag}</h2>
