@@ -15,7 +15,7 @@
 
     .genre-list {
         grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
-        grid-gap: 18px;
+        grid-gap: 15px;
 
         @media (min-width: $break-lg) {
             grid-gap: 24px;
@@ -29,13 +29,18 @@
 
     .genre-title {
         text-transform: capitalize;
-        margin: 2rem 0;
         padding: 0.08em 0px;
         visibility: visible;
         width: 100%;
-        font-size: 96px;
-        line-height: 96px;
-        font-weight: 600;
+        font-size: 46px;
+        font-weight: 500;
+
+        @include for-small-layout {
+            line-height: 96px;
+            font-weight: 600;
+            font-size: 96px;
+            margin: 2rem 0;
+        }
     }
 
     .station-list {
