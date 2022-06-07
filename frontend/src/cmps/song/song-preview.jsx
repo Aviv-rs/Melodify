@@ -31,6 +31,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
 
     const optionsMenuRef = useRef()
 
+
     useEffect(() => {
         (station.createdBy.isAdmin) ?
             setIsAdminStation(true)
@@ -61,9 +62,15 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
 
     useEffect(() => {
         const isUserLikedSongBefore = loggedInUser?.likedSongs?.find(likedSong => likedSong.id === song.id)
-        if(isUserLikedSongBefore) setIsLikeByLoggedUser(true)
+        if (isUserLikedSongBefore) setIsLikeByLoggedUser(true)
     }, [])
 
+
+    const getFormattedSongTitle = (songTitle) => {
+        // remove all words inside brackets e.g [official audio] etc..
+        const bracketsRegex = /[\(\[].+[\)\]]/g
+        return songTitle.replace(bracketsRegex, '')
+    }
 
     const onTogglePlayer = () => {
         if (currSong?.id !== song.id) dispatch(setCurrSong(song))
@@ -87,19 +94,19 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 type: '',
                 isStation: false
             }
-        
+
             if (!loggedInUser) {
                 dispatch(setUserMsg({ type: 'danger', txt: 'Oops, must be a user to like song' }))
                 return
             }
             const isUserLikedSongBefore = loggedInUser.likedSongs.find(likedSong => likedSong.id === song.id)
             let newUser = { ...loggedInUser }
-            if(isUserLikedSongBefore){
-                newUser.likedSongs =  newUser.likedSongs.filter(likedSong=> likedSong.id !== song.id)
+            if (isUserLikedSongBefore) {
+                newUser.likedSongs = newUser.likedSongs.filter(likedSong => likedSong.id !== song.id)
                 setIsLikeByLoggedUser(false)
                 dispatch(setUserMsg({ type: 'success', txt: 'Removed from your liked songs' }))
                 activity.type = 'unliked'
-            }else{
+            } else {
                 newUser.likedSongs.push(song)
                 dispatch(setUserMsg({ type: 'success', txt: 'Added to your liked songs' }))
                 setIsLikeByLoggedUser(true)
@@ -141,7 +148,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 <div className="img-and-title-container flex align-center">
                     <img src={song.imgUrl} alt="" />
                     <div className="title-container">
-                        <div className="title">{song.title}</div>
+                        <div className="title">{getFormattedSongTitle(song.title)}</div>
                     </div>
                 </div>
                 <div className="created-at-container flex align-center">
@@ -153,8 +160,8 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
 
                 <div className="duration-and-actions-container flex align-center">
                     <div className="btn-like" onClick={onTogggleLikeSong}>
-                        {!isLikeByLoggedUser &&<LikeIconHollow fill="#b3b3b3" />}
-                        {isLikeByLoggedUser &&<LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />}
+                        {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
+                        {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />}
                     </div>
                     <div className="duration">{duration}</div>
                     <button onClick={toggleMenuOpen} className="btn-more-options"><BtnMoreIcon /></button>

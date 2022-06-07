@@ -40,18 +40,19 @@ function proccessSpecialChars(str) {
         { char: '&#39;', render: `'` },
         { char: '&lt;', render: `<` },
         { char: '&gt;', render: `>` }]
+
     const bracketsRegex = /[\(\[].+[\)\]]/g
+
     str = str.split(' ')
     str = str.map((word) => {
         for (let i = 0; i < specialChars.length; i++) {
-            if (word.includes(specialChars[i].char)) 
-            word = word
-            .replaceAll(specialChars[i].char, specialChars[i].render)
-            .replace(bracketsRegex,'')
+            if (word.includes(specialChars[i].char))
+                word = word
+                    .replaceAll(specialChars[i].char, specialChars[i].render)
         }
         return word
     })
-    return str.join(' ')
+    return str.join(' ').replace(bracketsRegex, '')
 }
 
 async function getSongDuration(songId) {
