@@ -39,7 +39,8 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
   useEffect(() => {
     if (!station || !loggedInUser) return
     console.log('logged user',loggedInUser,'station.likedByUsers' , station.likedByUsers)
-    const isUserLikedStationBefore = loggedInUser.likedStations.some(stationId => stationId === station._id)
+    const isUserLikedStationBefore = loggedInUser.likedStations?.some(stationId => stationId === station._id)
+    if(!isUserLikedStationBefore) loggedInUser.likedStations = []
     setIsLikeByLoggedUser(isUserLikedStationBefore)
   }, [])
 
