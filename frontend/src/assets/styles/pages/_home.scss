@@ -22,6 +22,18 @@
     overflow-y: hidden;
     overscroll-behavior-x: contain;
 
+    @include for-small-layout {
+      overflow: visible;
+      min-width: 100%;
+      .station-list {
+        overflow: visible;
+        padding-right: 0;
+        grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+        gap: 20px;
+        grid-gap: 0;
+      }
+    }
+
     .station-list {
       padding-bottom: 10px;
     }

@@ -11,8 +11,6 @@ export const StationList = ({ stations }) => {
 
     const [columnCount, setColumnCount] = useState(Math.floor((window.innerWidth - 240) / 232))
 
-
-
     useEffect(() => {
         // if (window.innerWidth <= 640) return
         const getColumnCount = () => {

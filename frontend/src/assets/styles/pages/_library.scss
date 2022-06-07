@@ -8,6 +8,8 @@
         color: $clr8;
         display: flex;
         margin: 16px 0px;
+        font-size: 1.5rem;
+        font-family: 'circular';
     }
 
     .library-list {
@@ -16,13 +18,15 @@
             grid-auto-flow: row;
             grid-gap: 0;
             gap: 2em;
-            grid-template-columns: repeat(auto-fill, minmax(170px,190px));
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            padding-right: 0px;
+
             .station-preview {
                 width: 100%;
             }
+
             @include for-mobile-layout {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                padding-right: 0px;
             }
         }
     }
