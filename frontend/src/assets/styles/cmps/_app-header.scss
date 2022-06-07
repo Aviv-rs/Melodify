@@ -15,7 +15,10 @@
   .btns-container {
     display: flex;
     white-space: nowrap;
+    @include for-mobile-layout{
+      margin-right: -40px;
 
+    }
     .btn-login {
       border-radius: 500px;
       font-size: inherit;

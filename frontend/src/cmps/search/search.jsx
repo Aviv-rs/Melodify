@@ -31,11 +31,11 @@ export const Search = ({ onSearchSongs, isInStationDetails = false }) => {
         onSearchSongs(songs)
     }
 
-    const debouncedOnSearch = utilService.debounce(onSearch, 2000)
+    const debouncedOnSearch = utilService.debounce(onSearch, 400)
 
     return (
         <div className={searchClass}>
-            <form>
+            <form onSubmit={(ev)=>ev.preventDefault()}>
                 <button> <SearchBarIcon /> </button>
                 <input
                     // type="search"

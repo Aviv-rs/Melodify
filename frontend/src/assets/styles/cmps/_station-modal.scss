@@ -7,6 +7,8 @@
     background-color: rgb(0 0 0 / 70%);
     z-index: 20;
 
+    
+
     @include for-mobile-layout {
         .station-modal-content {
             min-width: 300px;
@@ -41,6 +43,11 @@
         .album-image-description {
             height: 70px;
         }
+        .save-container-modal{
+            width: 100%;
+            justify-content: flex-end;
+            display: flex;
+        }
     }
 
     @include for-small-layout {
@@ -68,8 +75,9 @@
         }
 
         .album-image-description {
-            height: 124px;
+            height: 70px;
         }
+
     }
 
     .hero-img {
@@ -125,8 +133,8 @@
 
 
         .modal-hero-img {
-            height: 180px;
-            width: 180px;
+            height: 190px;
+            width: 190px;
         }
 
         .edit-details-title {
@@ -182,7 +190,7 @@
             padding: 8px 8px 28px;
             resize: none;
             width: 100%;
-            margin-top: 8px;
+            // margin-top: 8px;
         }
 
         .album-image-description:focus-visible {

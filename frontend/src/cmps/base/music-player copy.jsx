@@ -1,26 +1,26 @@
-// import YouTube from 'react-youtube'
+import YouTube from 'react-youtube'
 
 
-//     const onChangeSong = (diff) => {
-//         const newStation = { ...station }
-//         setSongTime(0)
-//         newStation.currSongIdx = newStation.currSongIdx + diff
+    const onChangeSong = (diff) => {
+        const newPlaylist = { ...playlist }
+        setSongTime(0)
+        newPlaylist.currSongIdx = newPlaylist.currSongIdx + diff
 
-//         if (newStation.currSongIdx < 0 || isRepeat) {
-//             player.seekTo(0)
-//             return
-//         } else if (newStation.currSongIdx >= newStation.songs.length || !station) {
+        if (newPlaylist.currSongIdx < 0) {
+            player.seekTo(0)
+            return
+        } else if (newPlaylist.currSongIdx >= newPlaylist.songs.length || !playlist) {
 
-//             if (currTimeInterval.current) clearInterval(currTimeInterval.current)
-//             player.seekTo(0)
-//             player.pauseVideo()
-//             dispatch(setIsPlaying(false))
-//             return
-//         }
-//         const currSong = newStation.songs[newStation.currSongIdx]
-//         dispatch(getActionSetStation(newStation))
-//         dispatch(setCurrSong(currSong))
-//         dispatch(setIsPlaying(true))
-//     }
+            if (currTimeInterval.current) clearInterval(currTimeInterval.current)
+            player.seekTo(0)
+            player.pauseVideo()
+            dispatch(setIsPlaying(false))
+            return
+        }
+        const currSong = newPlaylist.songs[newPlaylist.currSongIdx]
+        dispatch(getActionSetPlaylist(newPlaylist))
+        dispatch(setCurrSong(currSong))
+        dispatch(setIsPlaying(true))
+    }
 
 

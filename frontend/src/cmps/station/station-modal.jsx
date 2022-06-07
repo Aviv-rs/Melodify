@@ -71,7 +71,9 @@ export const StationModal = ({ setIsModalOpen, handleImgUpload, station, onSaveD
                             }
                         }
                     />
-                    <button className='save-button'>Save</button>
+                    <div className='save-container-modal'>
+                        <button className='save-button'>Save</button>
+                    </div>
                 </div>
             </div>
         </form>
