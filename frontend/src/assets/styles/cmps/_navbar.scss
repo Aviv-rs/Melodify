@@ -21,8 +21,8 @@
         height: calc(100vh - 470px);
         border-top: 0.7px solid #424242;
         border-bottom: 0.7px solid #424242;
-        
-        .activity-log-container{
+
+        .activity-log-container {
             display: flex;
             flex-direction: column-reverse;
             gap: 10px;
@@ -32,8 +32,8 @@
             display: none;
         }
 
-        .title{
-            text-decoration:underline;
+        .title {
+            text-decoration: underline;
             margin-bottom: 8px;
         }
 
@@ -42,8 +42,8 @@
             flex-direction: column;
             gap: 5px;
             border-bottom: 0.7px solid #424242;
-
-            
+            position: relative;
+            padding: 8px 0;
 
             .username {
                 color: $clr4;
@@ -51,10 +51,17 @@
 
             .activity-timestamp {
                 color: $clr7;
+                position: absolute;
+                bottom: -8px;
+                right: 12px;
+                background: #000;
+                letter-spacing: -0.04em;
+                font-size: 12px;
+                padding: 0 5px;
             }
 
             .activity-type {
-                text-transform:capitalize;
+                text-transform: capitalize;
             }
         }
 
@@ -63,7 +70,7 @@
         }
 
 
-        .user-container{
+        .user-container {
             display: flex;
             align-items: center;
             gap: 5px;

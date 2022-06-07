@@ -159,7 +159,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 </div>
 
                 <div className="duration-and-actions-container flex align-center">
-                    <div className="btn-like" onClick={onTogggleLikeSong}>
+                    <div className={`btn-like ${isLikeByLoggedUser ? 'liked' : 'unliked'}`} onClick={onTogggleLikeSong}>
                         {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
                         {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" height={'16px'} width={'16px'} />}
                     </div>
