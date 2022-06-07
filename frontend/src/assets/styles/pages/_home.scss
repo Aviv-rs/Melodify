@@ -45,6 +45,9 @@
         font-weight: 600;
         color: $clr7;
 
+        @include for-mobile-layout {
+          display: none;
+        }
         &:hover {
           text-decoration: underline;
         }

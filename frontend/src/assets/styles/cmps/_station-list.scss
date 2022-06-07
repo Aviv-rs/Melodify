@@ -5,10 +5,17 @@
   overflow-y: hidden;
   grid-auto-flow: column;
   width: 100%;
-  grid-gap: 3rem;
+  grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
   padding-right: 20px;
   margin-bottom: 3em;
+  
+  
+  @include for-mobile-layout {
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    margin-bottom: 0em;
+  }
 
 
   // @include for-mobile-layout {
@@ -65,10 +72,11 @@
     transition: background-color .3s ease;
     // width: 100%;
     width: 200px;
-
+    
     @include for-mobile-layout {
       background-color: inherit;
       padding: 0px;
+      width: 150px;
     }
 
 
