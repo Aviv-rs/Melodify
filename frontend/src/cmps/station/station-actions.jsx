@@ -38,9 +38,8 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
 
   useEffect(() => {
     if (!station || !loggedInUser) return
-    console.log('logged user',loggedInUser,'station.likedByUsers' , station.likedByUsers)
     const isUserLikedStationBefore = loggedInUser.likedStations?.some(stationId => stationId === station._id)
-    if(!isUserLikedStationBefore) loggedInUser.likedStations = []
+    if (!isUserLikedStationBefore) loggedInUser.likedStations = []
     setIsLikeByLoggedUser(isUserLikedStationBefore)
   }, [])
 
@@ -144,6 +143,9 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
     dispatch(setCurrSong(station.songs[station.currSongIdx]))
   }
 
+  const isAllowedToEditStation = (loggedInUser && station.createdBy?.isAdmin && loggedInUser.isAdmin) ||
+    (!station.createdBy?.isAdmin)
+
   return <div className='hero-footer content-spacing'>
     <div className='buttons'>
 
@@ -156,9 +158,11 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
           {!isLikeByLoggedUser && <LikeIconHollow fill="#b3b3b3" />}
           {isLikeByLoggedUser && <LikedSongsIcon fill="#1ed760" />}
         </button>}
-      {(loggedInUser && station.createdBy?.isAdmin && loggedInUser.isAdmin) || (!station.createdBy?.isAdmin) && <button className='btn-more-hero-footer clean-btn' onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <BtnMoreIcon />
-      </button>}
+      {isAllowedToEditStation &&
+        <button className='btn-more-hero-footer clean-btn'
+          onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <BtnMoreIcon />
+        </button>}
 
       <div className="station-menu-container" ref={stationMenuRef}>
 
@@ -172,7 +176,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
             setIsModalOpen(true);
             setIsMenuOpen(false);
           }
-        }]} isOpen={isMenuOpen && !station.createdBy?.isAdmin} className={'station-options-menu'} />
+        }]} isOpen={isMenuOpen} className={'station-options-menu'} />
       </div>
 
     </div>

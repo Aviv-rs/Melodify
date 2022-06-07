@@ -12,9 +12,9 @@ async function getSongs(value) {
     try {
         console.log('hi idx', idx);
         const { data } = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YT_KEY}&q=${value}`)
-        const songs = data.items.map(({snippet, id}) => {
-            let {title, publishTime, description,thumbnails} = snippet
-            const {videoId} = id
+        const songs = data.items.map(({ snippet, id }) => {
+            let { title, publishTime, description, thumbnails } = snippet
+            const { videoId } = id
             title = proccessSpecialChars(title)
             return {
                 title,
@@ -33,21 +33,26 @@ async function getSongs(value) {
     }
 }
 
-function proccessSpecialChars(str){
+function proccessSpecialChars(str) {
     const specialChars = [
-        {char:'&amp;', render: '&'},
-        {char:'&quot;', render: '"'},
-        {char:'&#39;', render: `'`},
-        {char:'&lt;', render: `<`},
-        {char:'&gt;', render: `>`}]
+        { char: '&amp;', render: '&' },
+        { char: '&quot;', render: '"' },
+        { char: '&#39;', render: `'` },
+        { char: '&lt;', render: `<` },
+        { char: '&gt;', render: `>` }]
+
+    const bracketsRegex = /[\(\[].+[\)\]]/g
+
     str = str.split(' ')
     str = str.map((word) => {
-        for (let i = 0; i < specialChars.length; i++){
-            if(word.includes(specialChars[i].char)) word = word.replaceAll(specialChars[i].char, specialChars[i].render)
+        for (let i = 0; i < specialChars.length; i++) {
+            if (word.includes(specialChars[i].char))
+                word = word
+                    .replaceAll(specialChars[i].char, specialChars[i].render)
         }
         return word
     })
-    return str.join(' ')
+    return str.join(' ').replace(bracketsRegex, '')
 }
 
 async function getSongDuration(songId) {
