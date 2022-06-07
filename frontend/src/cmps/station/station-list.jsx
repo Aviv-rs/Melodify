@@ -2,49 +2,46 @@ import { useEffect, useState } from 'react'
 import { StationPreview } from './station-preview'
 
 export const StationList = ({ stations }) => {
-    //  aviv screen width 1536
-    // navbar width 240
-    // column width 200
-    // width for cards = (screen width - navbar width - (column count - 1) * gap - horizontal padding)
-    // horizontal padding = 16 * 2 = 32
-    // screenWidth
 
-
-
-    const [columnCount, setColumnCount] = useState(Math.floor((window.innerWidth - 240) / 232))
+    const [listLayoutStyle, setListLayoutStyle] = useState(null)
 
     useEffect(() => {
-        const getColumnCount = () => {
-            const screenWidth = window.innerWidth
-            const minGap = 12
-            const minWidth = 180
-            // const maxWidth = 230
+        const getListLayoutStyle = () => {
+            const screenWidth = window.innerWidth - 240 - 64
+            const minGap = 18
+            const minWidth = 170
+
+            const columnCount = Math.floor((screenWidth - minGap) / (minWidth + minGap))
+            const columnWidth = (screenWidth - minGap) / columnCount / (1 + minGap / minWidth)
+            const gap = columnWidth * minGap / minWidth
 
 
-        //    let columnCount = Math.floor((innerWidth - minGap) / (minWidth + minGap))
-
-        //    let columnWidth = (innerWidth - minGap) / columnCount / (1+minGap/minWidth)
-
-        //    let gap = columnWidth * minGap/minWidth
-
-            setColumnCount(Math.floor((screenWidth - 240) / 232))
+            setListLayoutStyle({ columnCount, columnWidth, gap })
         }
 
-        window.addEventListener('resize', getColumnCount)
+        if (!listLayoutStyle) getListLayoutStyle()
 
-        return () => window.removeEventListener('resize', getColumnCount)
+        window.addEventListener('resize', getListLayoutStyle)
+
+        return () => window.removeEventListener('resize', getListLayoutStyle)
     }, [])
 
-    if (!stations) return
-    return <section className='station-list'>
-        {stations.map((station, idx) => {
-            if (station._id === 'liked' || idx >= columnCount && window.innerWidth > 640) return
-            return <StationPreview
-                station={station}
-                key={idx}
-            />
-        })}
-    </section>
+    if (!stations || !listLayoutStyle) return
+    return <section style={{
+        '--grid-gap': listLayoutStyle.gap + 'px',
+        '--column-width': listLayoutStyle.columnWidth,
+        '--column-count': listLayoutStyle.columnCount
+    }} as CSSProperties className="station-list" >
+        {
+            stations.map((station, idx) => {
+                if (station._id === 'liked' || idx >= listLayoutStyle.columnCount && window.innerWidth >= 640 ) return
+                return <StationPreview
+                    station={station}
+                    key={idx}
+                />
+            })
+        }
+    </section >
 
 }
 
