@@ -29,7 +29,7 @@ async function getSongs(value) {
         console.log('request faild', error)
         idx = (idx >= keys.length) ? 0 : idx + 1
         YT_KEY = keys[idx]
-        getSongs(value)
+        return await getSongs(value)
     }
 }
 
