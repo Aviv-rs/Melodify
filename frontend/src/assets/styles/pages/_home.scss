@@ -1,38 +1,58 @@
 .home-page {
-    grid-gap: 24px;
-    display: grid;
-    padding-top: 24px;
-    padding-left: 32px;
-    padding-right: 32px;
+  grid-gap: 24px;
+  display: grid;
+  padding-top: 24px;
+  padding-left: 32px;
+  padding-right: 32px;
 
-    @include for-mobile-layout {
-        padding-right: 0px;
-        padding-left: 15px;
-        grid-gap: 0px;
+  @include for-mobile-layout {
+    padding-right: 0px;
+    padding-left: 15px;
+    grid-gap: 0px;
+  }
+
+  .station-collection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    min-height: 300px;
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+
+    .station-list {
+      padding-bottom: 10px;
+    }
+
+    .tag-title-container {
+      margin: 1rem 0 2rem;
+
+
+      .tag-title {
+        font-family: bold circular, gotham-bold, helvetica, arial, sans-serif;
+        flex: 1;
+        margin: 0;
       }
 
-    .station-collection {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 16px;
-        min-height: 300px;
-        position: relative;
-        width: 100%;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        overscroll-behavior-x: contain;
+      .link-see-all {
+        -webkit-tap-highlight-color: transparent;
+        font-size: 12px;
+        line-height: 0.857rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+        color: $clr7;
 
-        .station-list {
-          padding-bottom: 10px;
+        &:hover {
+          text-decoration: underline;
         }
-
-        .tag-title {
-          font-family: bold circular, gotham-bold, helvetica, arial, sans-serif;
-          margin: 1rem 0 2rem;
-        }
-
-        @include for-mobile-layout {
-            margin-bottom: 0px;
-          }
+      }
     }
+
+    @include for-mobile-layout {
+      margin-bottom: 0px;
+    }
+  }
 }
