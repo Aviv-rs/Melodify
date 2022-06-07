@@ -4,7 +4,7 @@ import { tags } from '../data/station'
 import { StationList } from '../cmps/station/station-list'
 import { Loader } from '../cmps/util/loader'
 import { Link } from 'react-router-dom'
-
+import { utilService } from '../services/util.service'
 
 export const HomePage = () => {
 
@@ -34,7 +34,7 @@ export const HomePage = () => {
                         return <section key={idx} className="station-collection">
                             <div className="tag-title-container flex align-center">
                                 <h2 className="tag-title">{tag}</h2>
-                                <Link className="link-see-all" to={`genre/${tag.toLowerCase()}`}>
+                                <Link className="link-see-all" to={`genre/${utilService.getCapitalizedStr(tag)}`}>
                                     See all
                                 </Link>
                             </div>

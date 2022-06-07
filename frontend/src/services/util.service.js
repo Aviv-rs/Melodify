@@ -5,7 +5,8 @@ export const utilService = {
     delay,
     convertSecToMin,
     shuffle,
-    debounce
+    debounce,
+    getCapitalizedStr
 }
 
 function shuffle(array) {
@@ -77,6 +78,10 @@ function debounce(func, timeout = 2000) {
         clearTimeout(timer)
         timer = setTimeout(() => { func.apply(this, args) }, timeout)
     }
+}
+
+function getCapitalizedStr(str){
+   return str.split(' ').map(word=>word[0].toUpperCase() + word.slice(1)).join(' ')
 }
 
 
