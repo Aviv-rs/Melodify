@@ -41,6 +41,11 @@
         .album-image-description {
             height: 70px;
         }
+        .save-container-modal{
+            width: 100%;
+            justify-content: flex-end;
+            display: flex;
+        }
     }
 
     @include for-small-layout {
@@ -70,6 +75,7 @@
         .album-image-description {
             height: 124px;
         }
+
     }
 
     .hero-img {
