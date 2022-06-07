@@ -8,18 +8,22 @@ import { Loader } from '../cmps/util/loader'
 export const HomePage = () => {
 
     const [stations, setStations] = useState([])
-    const [isLoading,setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         loadStations()
     }, [])
 
     const loadStations = async () => {
+        setIsLoading(true)
         const stations = await stationService.query()
         setStations(stations)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 500)
     }
 
-    if (!stations) return <div className="loader-logo"><Loader /></div>
+    if (isLoading) return <div className="loader-logo"><Loader /></div>
     return (
         <main>
             <section className="home-page">

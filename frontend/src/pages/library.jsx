@@ -29,7 +29,7 @@ export const Library = () => {
 
     }
 
-    if (!stations) return <div className="loader-logo"><Loader /></div>
+    if (!stations.length) return <div className="loader-logo"><Loader /></div>
     return <section className="library">
         <div className="library-title"><h1>Library</h1></div>
         <div className="library-list">{stations && <StationList stations={stations} />}</div>

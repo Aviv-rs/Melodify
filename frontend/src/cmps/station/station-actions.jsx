@@ -37,9 +37,10 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
   }, [station, isPlaying])
 
   useEffect(() => {
-    if (!station) return
-    const isUserLikedStationBefore = station.likedByUsers.find(user => user._id === loggedInUser?._id)
-    if (isUserLikedStationBefore) setIsLikeByLoggedUser(true)
+    if (!station || !loggedInUser) return
+    console.log('logged user',loggedInUser,'station.likedByUsers' , station.likedByUsers)
+    const isUserLikedStationBefore = loggedInUser.likedStations.some(stationId => stationId === station._id)
+    setIsLikeByLoggedUser(isUserLikedStationBefore)
   }, [])
 
   useEffect(() => {
@@ -132,7 +133,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
       activity.createdBy = newUser
       socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
     } catch (error) {
-      console.log(error);
+      console.log(error)
       dispatch(setUserMsg({ type: 'danger', txt: 'Something went wrong, please try again later' }))
     }
   }
