@@ -36,12 +36,6 @@ async function save(station) {
     if (station._id) {
         const { data } = await axios.put(BASE_URL + station._id, station)
         socketService.emit(SOCKET_EMIT_UPDATE_STATION, station)
-        const activity = {
-            entity: station,
-            user: userService.getLoggedinUser() || 'Guest',
-            type: 'update'
-        }
-        // socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
         return data
     } else {
         const loggedinUser = userService.getLoggedinUser()

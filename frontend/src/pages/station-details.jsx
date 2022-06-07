@@ -94,10 +94,12 @@ export const StationDetails = () => {
 
 
     const onAddSong = async (song) => {
+        
         const activity = {
-            entity: song,
+            entityName: song.title,
             type: 'added',
-            isStation: false
+            isStation: false,
+            createdBy: userService.getLoggedinUser() || 'Guest'
           }
         if (!isStationEmpty) {
             const isSongInStation = station.songs.some(currSong =>
