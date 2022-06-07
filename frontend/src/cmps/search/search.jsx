@@ -31,7 +31,7 @@ export const Search = ({ onSearchSongs, isInStationDetails = false }) => {
         onSearchSongs(songs)
     }
 
-      const debouncedOnSearch = utilService.debounce(onSearch, 2000)
+    const debouncedOnSearch = utilService.debounce(onSearch, 2000)
 
     return (
         <div className={searchClass}>
