@@ -132,8 +132,11 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        gap: 6%;
-        padding: 3px 15px 3px 15px;
+        padding: 5px 0px 5px 0px;
+
+        li {
+            flex-grow: 1;
+        }
     }
 
 
