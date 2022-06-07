@@ -148,7 +148,7 @@ export const MusicPlayer = () => {
     const onTogggleLikeSong = async () => {
         try {
             const activity = {
-                entity: currSong,
+                entityName: currSong.title,
                 type: '',
                 isStation: false
             }
@@ -170,6 +170,7 @@ export const MusicPlayer = () => {
                 setIsLikeByLoggedUser(true)
                 activity.type = 'liked'
             }
+            activity.createdBy = newUser
             userService.update(newUser)
             socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
 

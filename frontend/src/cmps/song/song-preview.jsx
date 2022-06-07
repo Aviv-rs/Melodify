@@ -83,7 +83,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
     const onTogggleLikeSong = async () => {
         try {
             const activity = {
-                entity: song,
+                entityName: song.title,
                 type: '',
                 isStation: false
             }
@@ -106,6 +106,7 @@ export const SongPreview = ({ song, songIdx, station, onRemoveSong }) => {
                 activity.type = 'liked'
             }
             userService.update(newUser)
+            activity.createdBy = newUser
             socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
 
         } catch (error) {

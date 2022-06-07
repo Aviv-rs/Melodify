@@ -32,8 +32,8 @@ async function save(activity) {
         console.log('updated activity', data)
         return data
     } else {
-        activity.createdBy = userService.getLoggedinUser() || 'Guest'
-        activity.createdAt = new Date()
+        
+        if (!activity.createdAt) activity.createdAt = new Date()
         const { data } = await axios.post(BASE_URL, activity)
         return data
     }

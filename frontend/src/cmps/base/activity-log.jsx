@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { activityService } from '../../services/activity.service'
 import { DefaultAvatarIcon } from '../../services/img.import.service'
 import ReactTimeAgo from 'react-time-ago'
+
 export const ActivityLog = () => {
     const [activities, setActivities] = useState([])
     const activityRef = useRef()
@@ -27,27 +28,28 @@ export const ActivityLog = () => {
 
 
 
-    const onAddActivity = (data) => {
-        const activity = getActivity(data)
-        activityService.save(activity)
+    const onAddActivity = async (activity) => {
+        // const isActivityAlreadySaved = activities.some(currActivity=>currActivity._id === activity._id)
+        // if (isActivityAlreadySaved) return
         setActivities(prevActivities => [...prevActivities, activity])
+        console.log(activity)
         // activityRef.current.scrollIntoView()
     }
 
     const onSetActivity = (data) => {
         const activity = getActivity(data)
         setActivities(prevActivities => [...prevActivities, activity])
-        activityRef.current.scrollIntoView()
+        // activityRef.current.scrollIntoView()
     }
 
 
     const getActivity = (data) => {
-        console.log(data)
         return {
             createdBy: data.createdBy,
             entityName: data.entity.name || data.entity.title,
             type: data.type,
             isStation: data.isStation,
+            createdAt: data.createdAt
         }
     }
 
@@ -86,7 +88,7 @@ export const ActivityLog = () => {
 
                         <div className="activity-timestamp"> <ReactTimeAgo date={activity.createdAt || Date.now()} locale="en-US" /> </div>
 
-                        <div  ref={activityRef}></div>
+                        <div ref={activityRef}></div>
                     </section>
                 }
                 )

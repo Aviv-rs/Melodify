@@ -1,5 +1,6 @@
 const logger = require('./logger.service')
 const userService = require('../api/user/user.service')
+const activityService = require('../api/activity/activity.service')
 var gIo = null
 
 function setupSocketAPI(http) {
@@ -26,8 +27,9 @@ function setupSocketAPI(http) {
         socket.on('update-station', station => {
             socket.broadcast.to(station._id).emit('station-updated', station)
         })
-        socket.on('activity-log-made', data => {
-            socket.emit('activity-log-made', data)
+        socket.on('activity-log-made', activity => {
+            activityService.add(activity)
+            gIo.emit('activity-log-made', activity)
             // socket.broadcast.emit('activity-log-made-brodcast', data)
         })
         socket.on('chat-set-topic', topic => {

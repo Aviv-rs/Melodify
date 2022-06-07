@@ -96,7 +96,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
     try {
 
       const activity = {
-        entity: station,
+        entityName: station.name,
         type: '',
         isStation: true
       }
@@ -129,6 +129,7 @@ export const StationActions = ({ setIsModalOpen, station, setStation }) => {
       const savedStation = await stationService.save(newStation)
       await userService.update(newUser)
       setStation(savedStation)
+      activity.createdBy = newUser
       socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
     } catch (error) {
       console.log(error);
