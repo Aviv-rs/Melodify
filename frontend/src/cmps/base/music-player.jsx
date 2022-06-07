@@ -109,16 +109,15 @@ export const MusicPlayer = () => {
 
     const onChangeSong = (diff) => {
         const newStation = { ...station }
-
+        setSongTime(0)
         newStation.currSongIdx = newStation.currSongIdx + diff
+
         if (newStation.currSongIdx < 0 || isRepeat) {
             player.seekTo(0)
-            setSongTime(0)
             return
-            // if there are no more songs - reset player
         } else if (newStation.currSongIdx >= newStation.songs.length || !station) {
+
             if (currTimeInterval.current) clearInterval(currTimeInterval.current)
-            setSongTime(0)
             player.seekTo(0)
             player.pauseVideo()
             dispatch(setIsPlaying(false))
@@ -127,7 +126,6 @@ export const MusicPlayer = () => {
         const currSong = newStation.songs[newStation.currSongIdx]
         dispatch(getActionSetStation(newStation))
         dispatch(setCurrSong(currSong))
-        setSongTime(0)
         dispatch(setIsPlaying(true))
     }
 
@@ -197,7 +195,7 @@ export const MusicPlayer = () => {
                         </Link>
                     </div>
                     {currSong && <button onClick={onTogggleLikeSong} className={`btn-like clean-btn ${isLikeByLoggedUser ? '' : 'unliked'}`}>
-                        {isLikeByLoggedUser ? <LikedSongsIcon fill="#1ed760"  /> : <LikeIconHollow fill="#b3b3b3" /> }
+                        {isLikeByLoggedUser ? <LikedSongsIcon fill="#1ed760" /> : <LikeIconHollow fill="#b3b3b3" />}
                     </button>}
                 </div>
             </div>

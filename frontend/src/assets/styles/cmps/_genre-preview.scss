@@ -8,6 +8,10 @@
         position: relative;
         width: 100%;
 
+        @include for-mobile-layout {
+            height: 150px;
+        }
+
         &::after {
             content: "";
             display: block;
