@@ -3,6 +3,7 @@ import { stationService } from '../services/station.service'
 import { tags } from '../data/station'
 import { StationList } from '../cmps/station/station-list'
 import { Loader } from '../cmps/util/loader'
+import { Link } from 'react-router-dom'
 
 
 export const HomePage = () => {
@@ -31,8 +32,11 @@ export const HomePage = () => {
                     tags.map((tag, idx) => {
                         const stationsByTag = stations.filter(station => station.tags?.includes(tag))
                         return <section key={idx} className="station-collection">
-                            <div className="tag-title-container">
+                            <div className="tag-title-container flex align-center">
                                 <h2 className="tag-title">{tag}</h2>
+                                <Link className="link-see-all" to={`genre/${tag.toLowerCase()}`}>
+                                    See all
+                                </Link>
                             </div>
                             <StationList stations={stationsByTag} />
                         </section>
