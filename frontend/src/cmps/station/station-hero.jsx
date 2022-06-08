@@ -7,9 +7,18 @@ export const StationHero = ({ station, setIsModalOpen, bgColor }) => {
 
     const stationDuration = stationService.getStationDuration(station.songs)
 
-    const stationLikesTxt = station.likedByUsers.length > 1 ? station.likedByUsers.length + ' likes' : station.likedByUsers.length + ' like'
-    const stationSongsTxt = station.songs.length > 1 ? station.songs.length + ' songs, ' : station.songs.length + ' song, '
-    const isStationEmpty = station.songs.length === 0
+    let stationLikesTxt, stationSongsTxt, isStationEmpty
+
+    if (station) {
+        stationLikesTxt = station.likedByUsers.length > 1 ?
+            station.likedByUsers.length + ' likes' : station.likedByUsers.length + ' like'
+
+        stationSongsTxt = station.songs.length > 1 ?
+            station.songs.length + ' songs, ' : station.songs.length + ' song, '
+
+        isStationEmpty = station.songs.length === 0
+    }
+    
     return (
         <div className="station-hero" >
             <div style={{ backgroundColor: bgColor }} className="background-color"></div>
