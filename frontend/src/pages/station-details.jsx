@@ -39,7 +39,7 @@ export const StationDetails = () => {
     const searchContainerRef = useRef()
     const { stationId } = useParams()
 
-    const isStationEmpty = !station?.songs.length
+    const isStationEmpty = !station?.songs?.length
 
     useEffect(() => {
         socketService.off(SOCKET_EMIT_STATION_UPDATED, setStation)
