@@ -32,7 +32,6 @@ export const ActivityLog = () => {
         // const isActivityAlreadySaved = activities.some(currActivity=>currActivity._id === activity._id)
         // if (isActivityAlreadySaved) return
         setActivities(prevActivities => [...prevActivities, activity])
-        console.log(activity)
         // activityRef.current.scrollIntoView()
     }
 

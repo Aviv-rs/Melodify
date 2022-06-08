@@ -17,7 +17,6 @@ export const GenrePage = () => {
 
     const loadStations = async () => {
         const stations = await stationService.query({ tags: [tag[0].toUpperCase() + tag.substring(1)] })
-        console.log(stations)
         if (!stations) naviagte('/music/library')
         setStations(stations)
     }

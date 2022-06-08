@@ -10,7 +10,6 @@ export function saveStation(station) {
     return async (dispatch) => {
         try {
             const savedStation = await stationService.save(station)
-            console.log('Added Station', savedStation);
             dispatch(getActionSetStation(savedStation))
             return savedStation
         } catch (err) {

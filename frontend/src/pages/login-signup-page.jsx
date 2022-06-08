@@ -28,12 +28,11 @@ export const LoginSignupPage = () => {
     }
 
     const handleLogin = (googleData) => {
-        console.log("hello")
+        // console.log("hello")
     }
 
     const handleFailure = (result) => {
         // alert("login error",result)
-        console.log('id', process.env.REACT_APP_GOOGLE_CLIENT_ID);
     }
     return (
         <>

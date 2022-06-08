@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import './assets/styles/main.scss'
 import { App } from './root-cmp'
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import { store } from './store';
 
 //TIME AGO LIBARY
@@ -12,7 +12,7 @@ import en from 'javascript-time-ago/locale/en.json'
 import ru from 'javascript-time-ago/locale/ru.json'
 TimeAgo.addDefaultLocale(en)
 TimeAgo.addLocale(ru)
-//
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -21,6 +21,8 @@ root.render(
   </Provider>
 )
 
-serviceWorkerRegistration.unregister();
+serviceWorkerRegistration.register()
+
+
 
 

@@ -42,7 +42,6 @@ async function save(station) {
         if (loggedinUser) station.createdBy = loggedinUser
 
         const { data } = await axios.post(BASE_URL, station)
-        console.log('added station', data);
         return data
     }
 }

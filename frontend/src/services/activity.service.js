@@ -29,7 +29,6 @@ async function remove(activityId) {
 async function save(activity) {
     if (activity._id) {
         const { data } = await axios.put(BASE_URL + activity._id, activity)
-        console.log('updated activity', data)
         return data
     } else {
         
