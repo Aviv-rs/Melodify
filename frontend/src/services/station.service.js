@@ -12,7 +12,7 @@ export const stationService = {
 }
 const BASE_URL =
     process.env.NODE_ENV == 'production'
-        ? '/api/station'
+        ? '/api/station/'
         : 'http://localhost:3030/api/station/'
 
 

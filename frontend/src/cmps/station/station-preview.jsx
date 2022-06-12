@@ -22,6 +22,7 @@ export const StationPreview = ({ station }) => {
     useEffect(() => {
         if (stationModule?.station?._id === station?._id) setIsPlayShow(isPlaying)
         else setIsPlayShow(false)
+
     }, [station, isPlaying, stationModule])
 
     const onGoToStation = () => {
@@ -47,7 +48,7 @@ export const StationPreview = ({ station }) => {
     }
 
     const stationSongsTxt = station.songs.length > 1 ? station.songs.length + ' Songs' : station.songs.length + ' Song'
-    const isStationEmpty = station.songs.length <= 0 
+    const isStationEmpty = station.songs.length <= 0
     // TODO: rename class names
     return <div className="station-preview" onClick={onGoToStation}>
         <div className="inner-container">
@@ -68,9 +69,9 @@ export const StationPreview = ({ station }) => {
             <div className="station-details">
                 <div className="station-name"> {station.name} </div>
                 <div className="station-preview-info">
-                {station.createdBy.fullname ? `By ${station.createdBy.fullname}` 
-                : 
-                isStationEmpty ? 'By Guest' : stationSongsTxt} 
+                    {station.createdBy.fullname ? `By ${station.createdBy.fullname}`
+                        :
+                        isStationEmpty ? 'By Guest' : stationSongsTxt}
                 </div>
             </div>
         </div>

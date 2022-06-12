@@ -90,17 +90,18 @@ export const StationDetails = () => {
         if (!station.coverUrl) dispatch(setHeaderColor('rgb(83,83,83)'))
         else getAvgColor(station.coverUrl)
         dispatch(setCurrPageStation(station))
+
     }
 
 
     const onAddSong = async (song) => {
-        
+
         const activity = {
             entityName: song.title,
             type: 'added',
             isStation: false,
             createdBy: userService.getLoggedinUser() || 'Guest'
-          }
+        }
         if (!isStationEmpty) {
             const isSongInStation = station.songs.some(currSong =>
                 currSong.id === song.id
@@ -129,9 +130,9 @@ export const StationDetails = () => {
         }
         socketService.emit(SOCKET_EMIT_ACTIVITY_LOG, activity)
         dispatch(setUserMsg({ type: 'success', txt: 'Added song to playlist' }))
-        
+
     }
-    
+
     const onRemoveSong = async (songId) => {
         const newStation = { ...station, songs: [...station.songs.filter(currSong => currSong.id !== songId)] }
         await stationService.save(newStation)
@@ -176,7 +177,7 @@ export const StationDetails = () => {
             const newStation = { ...station, ...details }
             const savedStation = await stationService.save(newStation)
             if (!station._id) {
-                navigate(`/music/station/${savedStation._id}`) 
+                navigate(`/music/station/${savedStation._id}`)
                 dispatch(setUserMsg({ type: 'success', txt: 'Added playlist to your library' }))
             }
             setStation(savedStation)
