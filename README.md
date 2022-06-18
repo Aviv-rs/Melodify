@@ -10,7 +10,7 @@ Check it out: https://melodify-dya.herokuapp.com/
 [![Node.js](https://img.shields.io/badge/-Node.js-green?logo=nodedotjs)](https://nodejs.org/en/)
 [![MongoDB](https://img.shields.io/badge/-%20MongoDB-lightgrey?logo=mongodb)](https://www.mongodb.com/)
 [![heroku](https://img.shields.io/badge/-Heroku-blue?color=blueviolet&logo=heroku)](https://id.heroku.com/)
-[![PWA](https://api.blog.philo.co.nz/image/get/b121bf04-8f56-41e8-c7dc-08d6858dfc06)](https://web.dev/progressive-web-apps/)
+
 
 ## Authors
 
