@@ -13,6 +13,6 @@ Check it out: https://melodify-dya.herokuapp.com/
 
 ## Authors
 
-- [@Naama Arkin](https://github.com/yonatan104)
-- [@Tommy Irmia](https://github.com/DavidELBAZpro)
-- [@Tomer Morad](https://github.com/Aviv-rs)
+- [@Yehonatan Geller](https://github.com/yonatan104)
+- [@David Elbaz](https://github.com/DavidELBAZpro)
+- [@Aviv Roas](https://github.com/Aviv-rs)
