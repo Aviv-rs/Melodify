@@ -85,7 +85,7 @@ export const ActivityLog = () => {
                             {formattedActivity}
                         </div>}
 
-                        <div className="activity-timestamp"> <ReactTimeAgo date={activity.createdAt || Date.now()} locale="en-US" /> </div>
+                        <div className="activity-timestamp"> <ReactTimeAgo date={+activity.createdAt || Date.now()} locale="en-US" /> </div>
 
                         <div ref={activityRef}></div>
                     </section>

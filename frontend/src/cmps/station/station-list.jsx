@@ -31,7 +31,7 @@ export const StationList = ({ stations }) => {
         '--grid-gap': listLayoutStyle.gap + 'px',
         '--column-width': listLayoutStyle.columnWidth,
         '--column-count': listLayoutStyle.columnCount
-    }} as CSSProperties className="station-list" >
+    }} className="station-list" >
         {
             stations.map((station, idx) => {
                 if (station._id === 'liked' || idx >= listLayoutStyle.columnCount && window.innerWidth >= 640 ) return

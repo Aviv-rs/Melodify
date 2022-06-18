@@ -4,12 +4,22 @@ import { stationService } from '../../services/station.service'
 
 export const StationHero = ({ station, setIsModalOpen, bgColor }) => {
 
-
     const stationDuration = stationService.getStationDuration(station.songs)
 
-    const stationLikesTxt = station.likedByUsers.length > 1 ? station.likedByUsers.length + ' likes' : station.likedByUsers.length + ' like'
-    const stationSongsTxt = station.songs.length > 1 ? station.songs.length + ' songs, ' : station.songs.length + ' song, '
-    const isStationEmpty = station.songs.length === 0
+    let stationLikesTxt, stationSongsTxt, isStationEmpty, isStationLiked
+    const stationCreator = station.createdBy?.fullname
+
+    if (station.likedByUsers) {
+        isStationLiked = station.likedByUsers.length > 0
+        stationLikesTxt = station.likedByUsers.length > 1 ?
+            station.likedByUsers.length + ' likes' : station.likedByUsers.length + ' like'
+
+        stationSongsTxt = station.songs.length > 1 ?
+            station.songs.length + ' songs, ' : station.songs.length + ' song, '
+
+        isStationEmpty = station.songs.length === 0
+    }
+
     return (
         <div className="station-hero" >
             <div style={{ backgroundColor: bgColor }} className="background-color"></div>
@@ -29,8 +39,8 @@ export const StationHero = ({ station, setIsModalOpen, bgColor }) => {
                 </span>
                 {station.description && <h2 className='station-description'>{station.description}</h2>}
                 <div className="station-info flex align-center">
-                    <div className="created-by">{station.createdBy.fullname || 'Guest'} </div>
-                    {station.likedByUsers.length > 0 && <span className="like-count">{stationLikesTxt} </span>}
+                    <div className="created-by">{stationCreator || 'Guest'} </div>
+                    {isStationLiked && <span className="like-count">{stationLikesTxt} </span>}
                     {!isStationEmpty && <span className="duration-and-song-count-container">
 
                         {stationSongsTxt}
