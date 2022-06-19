@@ -16,7 +16,7 @@
     display: flex;
     white-space: nowrap;
     @include for-mobile-layout{
-      margin-right: -50px;
+      // margin-right: -50px;
 
     }
     .btn-login {
@@ -29,7 +29,7 @@
       @include for-mobile-layout {
         padding-block: 10px;
         padding-inline: 20px;
-        margin-right: 2em;
+        // margin-right: 2em;
       }
 
       &:hover {
