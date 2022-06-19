@@ -1,10 +1,11 @@
 const Cryptr = require('cryptr')
+require('dotenv').config()
 
 const bcrypt = require('bcrypt')
 const userService = require('../user/user.service')
 const logger = require('../../services/logger.service')
 
-const cryptr = new Cryptr(process.env.SECRET1 || 'Secret-Puk-1234')
+const cryptr = new Cryptr(process.env.CRYPTER_KEY)
 
 async function login(username, password) {
   logger.debug(`auth.service - login with username: ${username}`)

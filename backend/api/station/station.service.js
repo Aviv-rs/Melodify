@@ -3,25 +3,18 @@ const logger = require('../../services/logger.service')
 const ObjectId = require('mongodb').ObjectId
 
 async function query(queryParams) {
-  // const MAX_PAGE_SIZE = 15
-  const { filterBy = {}, pageSize } = queryParams
+  const { filterBy = {} } = queryParams
   const collection = await dbService.getCollection('station')
-  const stationAmount = await collection.estimatedDocumentCount()
   try {
     let filterCriteria
     if (filterBy) {
-      filterCriteria  = _buildCriteria(
+      filterCriteria = _buildCriteria(
         JSON.parse(filterBy),
-        // MAX_PAGE_SIZE
-        )
-      }else filterCriteria = {}
+      )
+    } else filterCriteria = {}
 
-    console.log('@@@@@@', filterCriteria)
     const stations = await collection
       .find(filterCriteria)
-      // .sort(sortCriteria)
-      // .skip(startIdx)
-      // .limit(pageSize)
       .toArray()
 
 
@@ -78,7 +71,7 @@ async function update(station) {
       name: station.name,
       description: station.description,
       coverUrl: station.coverUrl,
-      tags:station.tags,
+      tags: station.tags,
       songs: station.songs,
       likedByUsers: station.likedByUsers
     }
@@ -92,42 +85,19 @@ async function update(station) {
   }
 }
 
-async function saveMsgToHistory(stationId, msg) {
-  try {
-    var id = ObjectId(stationId)
-    const collection = await dbService.getCollection('station')
-    await collection.updateOne({ _id: id }, { $push: { chatHistory: msg } })
-  } catch (err) {
-    logger.error(`cannot update station ${stationId}`, err)
-    throw err
-  }
-}
 
-function _buildCriteria(filterBy, pageSize) {
-  const { name, createdAt, tags, sortBy, createdBy, duration } = filterBy
+
+function _buildCriteria(filterBy) {
+  const { name, createdAt, tags, createdBy, } = filterBy
   const filterCriteria = {}
-  
-  let sortCriteria, pageCriteria
-  
+
+
   if (name) filterCriteria.name = { $regex: name, $options: 'i' }
-  if (createdBy) filterCriteria['createdBy._id'] =  createdBy._id
+  if (createdBy) filterCriteria['createdBy._id'] = createdBy._id
   if (createdAt) filterCriteria.createdAt = JSON.parse(createdAt)
-  console.log('@@@@@@@',tags)
   if (tags?.length) filterCriteria.tags = { $in: [...tags] }
-  // switch (sortBy) {
-    //   case 'priceAscending':
-    //     sortCriteria = { price: 1 }
-    //     break
-    //   case 'priceDescending':
-    //     sortCriteria = { price: -1 }
-    //     break
-    //   default:
-    //     sortCriteria = { name: 1 }
-    // }
-    
-    
-    
-  return filterCriteria 
+
+  return filterCriteria
 }
 
 module.exports = {
@@ -136,5 +106,4 @@ module.exports = {
   getById,
   add,
   update,
-  saveMsgToHistory,
 }
