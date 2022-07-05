@@ -23,7 +23,6 @@ export const AppHeader = () => {
     const dispatch = useDispatch()
     const params = useParams()
 
-    // const { color } = useSelector(storeState => storeState.headerModule)
     const { isPlayPauseBtn, currPageStation, color } = useSelector(storeState => storeState.headerModule)
     const stationModule = useSelector((storeState) => storeState.stationModule)
     const { isPlaying, currSong} = useSelector(storeState => storeState.currSongModule)
@@ -46,7 +45,6 @@ export const AppHeader = () => {
         if (isLikedSongsPage) setColorToShow('rgb(80, 56, 160)')
         else if (matchStation) setColorToShow(color)
         else if (matchNewStation) setColorToShow('rgb(83,83,83)')
-        // else if(isSearchPage) setColorToShow('rgb(7,7,7)')
         else setColorToShow('rgb(18,18,18)')
         
         if (stationModule?.station?._id === matchStation?.params?.stationId) return
@@ -102,7 +100,7 @@ export const AppHeader = () => {
 
     return <header className="app-header" 
     style={{ background: `${colorToShow}`,
-     padding: isSearchPage ? 0 : '16px 32px' }}>
+     padding: isSearchPage ? 0 : '16px 12px' }}>
 
         {isSearchPage &&
             <Search onSearchSongs={conveySongsToStore} />

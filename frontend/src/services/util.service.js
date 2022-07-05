@@ -6,7 +6,11 @@ export const utilService = {
     convertSecToMin,
     shuffle,
     debounce,
-    getCapitalizedStr
+    getCapitalizedStr,
+    getTimeStamp
+}
+function getTimeStamp(dateStr) {
+    return new Date(dateStr).getTime()
 }
 
 function shuffle(array) {
@@ -80,8 +84,8 @@ function debounce(func, timeout = 2000) {
     }
 }
 
-function getCapitalizedStr(str){
-   return str.split(' ').map(word=>word[0].toUpperCase() + word.slice(1)).join(' ')
+function getCapitalizedStr(str) {
+    return str.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')
 }
 
 
