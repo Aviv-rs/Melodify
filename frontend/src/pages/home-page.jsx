@@ -18,6 +18,7 @@ export const HomePage = () => {
     const loadStations = async () => {
         setIsLoading(true)
         const stations = await stationService.query()
+        console.log("🚀 ~ file: home-page.jsx ~ line 21 ~ loadStations ~ stations", stations)
         setStations(stations)
         setTimeout(() => {
             setIsLoading(false)

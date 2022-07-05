@@ -27,13 +27,7 @@ export const LoginSignupPage = () => {
         }
     }
 
-    const handleLogin = (googleData) => {
-        // console.log("hello")
-    }
-
-    const handleFailure = (result) => {
-        // alert("login error",result)
-    }
+    
     return (
         <>
             <div className="btn-go-home-container">
@@ -41,13 +35,7 @@ export const LoginSignupPage = () => {
             </div>
             <section className="user-login">
                 <LoginSignup onLogin={onUserLogin} onSignup={onUserSignup} />
-                <GoogleLogin
-                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                    buttonText="Log in with Google"
-                    onSuccess={handleLogin}
-                    onFailure={handleFailure}
-                    cookiePolicy={'single_host_origin'}
-                ></GoogleLogin>
+               
             </section>
         </>
     )
