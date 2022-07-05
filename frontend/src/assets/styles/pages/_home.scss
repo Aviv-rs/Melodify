@@ -1,14 +1,15 @@
 .home-page {
-  grid-gap: 24px;
-  display: grid;
-  padding-top: 24px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-right: 0px;
+  padding-left: 15px;
+  grid-gap: 0px;
 
-  @include for-mobile-layout {
-    padding-right: 0px;
-    padding-left: 15px;
-    grid-gap: 0px;
+  
+  @include for-small-layout {
+    grid-gap: 24px;
+    display: grid;
+    padding-top: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   .station-collection {
