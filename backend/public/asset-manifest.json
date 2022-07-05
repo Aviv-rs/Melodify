@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.83c5e7c2.css",
-    "main.js": "/static/js/main.2de3c5de.js",
+    "main.css": "/static/css/main.1b96a066.css",
+    "main.js": "/static/js/main.735d1e38.js",
     "static/media/Melodify_welcome.jpeg": "/static/media/Melodify_welcome.4b0862f4d8722a4dbda2.jpeg",
     "static/media/CircularStd-Light.otf": "/static/media/CircularStd-Light.4a1a0bfcc3a53847a945.otf",
     "static/media/CircularStd-Black.otf": "/static/media/CircularStd-Black.757b8ac8efa71be3fcd0.otf",
@@ -36,11 +36,11 @@
     "static/media/play.svg": "/static/media/play.08ac9d4deb8809e6e570321c62323af2.svg",
     "static/media/arrow-up.svg": "/static/media/arrow-up.2ae62affdbb000c64d6cc4b84cacdbdf.svg",
     "static/media/arrow-down.svg": "/static/media/arrow-down.142c59bebd6ad85d9faa80a1627d8acd.svg",
-    "main.83c5e7c2.css.map": "/static/css/main.83c5e7c2.css.map",
-    "main.2de3c5de.js.map": "/static/js/main.2de3c5de.js.map"
+    "main.1b96a066.css.map": "/static/css/main.1b96a066.css.map",
+    "main.735d1e38.js.map": "/static/js/main.735d1e38.js.map"
   },
   "entrypoints": [
-    "static/css/main.83c5e7c2.css",
-    "static/js/main.2de3c5de.js"
+    "static/css/main.1b96a066.css",
+    "static/js/main.735d1e38.js"
   ]
 }
