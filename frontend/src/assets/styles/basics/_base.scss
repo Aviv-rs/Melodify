@@ -9,19 +9,18 @@ html {
 
 body {
   margin: 0;
-  // animation: fadeInAnimation ease 2s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
+  background-color: black;
 }
 
 
 @keyframes fadeInAnimation {
-0% {
+  0% {
     opacity: 0;
-}
-100% {
+  }
+
+  100% {
     opacity: 1;
- }
+  }
 }
 
 button {
@@ -84,15 +83,14 @@ p {
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(255,255,255,.3); 
+  background-color: rgba(255, 255, 255, .3);
   transition: background-color .2s;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255,255,255,.4); 
+  background-color: rgba(255, 255, 255, .4);
 }
-
