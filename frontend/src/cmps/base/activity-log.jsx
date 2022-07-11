@@ -2,6 +2,7 @@ import { socketService, SOCKET_EMIT_ACTIVITY_LOG, SOCKET_EMIT_ACTIVITY_LOG_BRODC
 import { useEffect, useRef, useState } from 'react'
 import { activityService } from '../../services/activity.service'
 import { DefaultAvatarIcon } from '../../services/img.import.service'
+import { utilService } from '../../services/util.service'
 import ReactTimeAgo from 'react-time-ago'
 
 export const ActivityLog = () => {
@@ -36,7 +37,6 @@ export const ActivityLog = () => {
     const onSetActivity = (data) => {
         const activity = getActivity(data)
         setActivities(prevActivities => [...prevActivities, activity])
-
     }
 
 
@@ -84,7 +84,7 @@ export const ActivityLog = () => {
                             {formattedActivity}
                         </div>}
 
-                        <div className="activity-timestamp"> <ReactTimeAgo date={activity.createdAt || Date.now()} locale="en-US" /> </div>
+                        <div className="activity-timestamp"> <ReactTimeAgo date={utilService.getTimeStamp(activity.createdAt) || Date.now()} locale="en-US" /> </div>
 
                         <div ref={activityRef}></div>
                     </section>
