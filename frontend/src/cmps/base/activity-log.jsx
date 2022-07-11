@@ -23,22 +23,20 @@ export const ActivityLog = () => {
 
     const loadActivities = async () => {
         const activities = await activityService.query()
+        activities.forEach(activity => console.log(new Date(activity.createdAt).getTime))
         if (activities) setActivities(activities)
     }
 
 
 
     const onAddActivity = async (activity) => {
-        // const isActivityAlreadySaved = activities.some(currActivity=>currActivity._id === activity._id)
-        // if (isActivityAlreadySaved) return
         setActivities(prevActivities => [...prevActivities, activity])
-        // activityRef.current.scrollIntoView()
     }
 
     const onSetActivity = (data) => {
         const activity = getActivity(data)
         setActivities(prevActivities => [...prevActivities, activity])
-        // activityRef.current.scrollIntoView()
+
     }
 
 
@@ -65,6 +63,7 @@ export const ActivityLog = () => {
 
                 {activities && activities.map((activity, idx) => {
                     const formattedActivity = getFormattedActivity(activity)
+                    console.log(activity.createdBy?.avatar)
                     return <section key={idx} className="activity-preview">
                         <div className="user-container">
 
@@ -85,7 +84,7 @@ export const ActivityLog = () => {
                             {formattedActivity}
                         </div>}
 
-                        <div className="activity-timestamp"> <ReactTimeAgo date={+activity.createdAt || Date.now()} locale="en-US" /> </div>
+                        <div className="activity-timestamp"> <ReactTimeAgo date={activity.createdAt || Date.now()} locale="en-US" /> </div>
 
                         <div ref={activityRef}></div>
                     </section>

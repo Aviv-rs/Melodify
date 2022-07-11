@@ -1,47 +1,44 @@
 .welcome-page {
     background-color: $clr1;
-    // background-image: url('https://images.pexels.com/photos/213207/pexels-photo-213207.jpeg');
     background-image: url(../../imgs/Melodify_welcome.jpeg);
-    // transition: 1s;
     display: grid;
     height: 100vh;
     background-size: cover;
-    // opacity: 0;
 
     -webkit-animation: 3s ease 0s normal forwards 1 fadein;
-        animation: 3s ease 0s normal forwards 1 fadein;
+    animation: 3s ease 0s normal forwards 1 fadein;
 
-        @keyframes fadein {
-                0% {
-                    opacity: 0;
-                }
-        
-                66% {
-                    opacity: 0;
-                }
-        
-                100% {
-                    opacity: 1;
-                }
-            }
-        
-            @-webkit-keyframes fadein {
-                0% {
-                    opacity: 0;
-                }
-        
-                66% {
-                    opacity: 0;
-                }
-        
-                100% {
-                    opacity: 1;
-                }
-            }
-    // &.show-bg {
-    //     opacity: 1;
+    @keyframes fadein {
+        0% {
+            opacity: 0;
+        }
 
-    // }
+        66% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadein {
+        0% {
+            opacity: 0;
+        }
+
+        66% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .preload {
+        display: none;
+    }
 
     .logo-container {
         height: 60px;
