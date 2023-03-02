@@ -5,7 +5,8 @@ async function getActivity(req, res) {
     try {
         const activity = await activityService.getById(req.params.id)
         res.send(activity)
-    } catch (err) {
+    } 
+    catch (err) {
         logger.error('Failed to get activity', err)
         res.status(500).send({ err: 'Failed to get activity' })
     }
