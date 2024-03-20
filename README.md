@@ -1,7 +1,9 @@
 # Melodify
 
+![Banner](https://ibb.co/QbQRbRM)
+
 Spotify mockup, uses youtube api for audio files, uses sockets.io for live editing. Built in React.
-Check it out: https://melodify-dya.herokuapp.com/
+Check it out: https://melodify.onrender.com/music
 
 ## Built with
 
