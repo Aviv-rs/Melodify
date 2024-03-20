@@ -8,6 +8,7 @@ export const stationService = {
     remove,
     save,
     getEmptyStation,
+    getSections,
     getStationDuration
 }
 const BASE_URL =
@@ -18,9 +19,17 @@ const BASE_URL =
 
 
 
-async function query(filterBy={}, pageSize) {
+async function query(filterBy={}) {
     const { data } = await axios.get(BASE_URL, {
-        params: { filterBy, pageSize },
+        params: { filterBy },
+    })
+    return data
+}
+
+// get stations sections grouped by tags
+async function getSections(tags=[]) {
+    const { data } = await axios.get(BASE_URL + 'sections', {
+        params: { tags },
     })
     return data
 }

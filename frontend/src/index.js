@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import './assets/styles/main.scss'
 import { App } from './root-cmp'
-import * as serviceWorkerRegistration from './serviceWorkerRegistration'
+// import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import { store } from './store';
 
 //TIME AGO LIBARY
@@ -19,7 +19,7 @@ root.render(
   </Provider>
 )
 
-serviceWorkerRegistration.register()
+// serviceWorkerRegistration.register()
 
 
 

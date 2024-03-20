@@ -24,7 +24,6 @@ export const ActivityLog = () => {
 
     const loadActivities = async () => {
         const activities = await activityService.query()
-        activities.forEach(activity => console.log(new Date(activity.createdAt).getTime))
         if (activities) setActivities(activities)
     }
 
@@ -63,7 +62,6 @@ export const ActivityLog = () => {
 
                 {activities && activities.map((activity, idx) => {
                     const formattedActivity = getFormattedActivity(activity)
-                    console.log(activity.createdBy?.avatar)
                     return <section key={idx} className="activity-preview">
                         <div className="user-container">
 

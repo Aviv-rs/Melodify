@@ -14,6 +14,19 @@ async function getStations(req, res) {
   }
 }
 
+// GET STATION SECTIONS BY TAGS
+async function getSections(req, res) {
+  try {
+    logger.debug('Getting stations sections')
+    const queryParams = req.query
+    const sections = await stationService.getSections(queryParams)
+    res.json(sections)
+  } catch (err) {
+    logger.error('Failed to get sections', err)
+    res.status(500).send({ err: 'Failed to get sections' })
+  }
+}
+
 // GET BY ID
 async function getStationById(req, res) {
   try {
@@ -31,7 +44,6 @@ async function addStation(req, res) {
   try {
     const station = req.body
     const addedStation = await stationService.add(station)
-    console.log(addedStation);
     res.json(addedStation)
   } catch (err) {
     logger.error('Failed to add station', err)
@@ -69,4 +81,5 @@ module.exports = {
   addStation,
   updateStation,
   removeStation,
+  getSections
 }
